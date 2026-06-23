@@ -2,6 +2,10 @@
 
 > Puffin Ship is a managed AI video production service. Businesses send raw material — clips, calls, webinars, product footage — and receive polished, on-brand short-form videos on a monthly cadence. No editor to hire, no production to manage.
 
+## The problem
+
+Video production today is too slow (production cannot keep up with channel demand), too expensive (agencies and editors do not scale cheaply), and too hard to manage (AI tools still need judgment and brand context). Most businesses already hold the raw material for great content — clips, calls, webinars, brand guidelines — it just never becomes finished video. Puffin Ship closes that gap.
+
 ## What it is
 
 Puffin Ship turns existing raw material into finished short-form video content, delivered every month. Operators use an AI-assisted production platform to cut, caption, brand-style, and review each video before delivery. The system learns a customer's brand look and voice over time, improving consistency with every delivery.
@@ -35,6 +39,24 @@ On-site filming and full social media management are available as add-ons. Volum
 - 1:1 square — for Instagram feed, LinkedIn
 
 All formats include on-brand captions and brand styling.
+
+## How the system improves over time
+
+Puffin Ship operates a compounding production loop:
+
+1. **Generate** — raw material and an objective in, AI-generated edits out
+2. **Review** — operators rank and select, customers approve or revise
+3. **Learn** — decisions train future edits and customer-specific brand memory
+
+More customers, more videos, more feedback, better automation. Videos delivered per operator hour improves over time, and customers graduate toward self-serve and API revenue.
+
+## Long-term vision
+
+The managed service is the wedge, not the destination. The long-term goal is to become the infrastructure layer for automated, brand-aware content — one platform that turns source material into finished content across formats, sold as software and a developer API.
+
+- **Expand formats** — video first, then podcasts and audio, social posts and newsletters, and multi-format campaigns from one set of source material
+- **Open the platform** — customers move from managed service, to assisted platform use, to self-serve software they run themselves
+- **Ship the API** — developers build brand-aware content automation directly into their own products and workflows
 
 ## Contact
 
