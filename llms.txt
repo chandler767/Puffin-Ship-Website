@@ -1,6 +1,6 @@
 # Puffin Ship
 
-> Puffin Ship is a managed AI video production service. Businesses send raw material — clips, calls, webinars, product footage — and receive polished, on-brand short-form videos on a monthly cadence. No editor to hire, no production to manage.
+> Puffin Ship is a managed AI video production service. Businesses send raw material — clips, calls, webinars, product footage — and receive polished, on-brand short-form videos on demand. No editor to hire, no production to manage.
 
 ## The problem
 
@@ -30,7 +30,7 @@ On-site filming and full social media management are available as add-ons. Volum
 
 1. **Send your material** — submit clips, calls, webinars, product footage, or existing long-form content, plus brand guidelines
 2. **We produce and review** — operators use the AI platform to cut, caption, and brand-style each video, then review and rank outputs for quality
-3. **Approve and publish** — polished short-form videos are delivered on a monthly cadence, ready to post; revisions are available within each package
+3. **Approve and publish** — polished short-form videos are delivered on demand, ready to post; revisions are available within each package
 
 ## Video formats delivered
 
