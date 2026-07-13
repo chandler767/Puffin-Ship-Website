@@ -1,67 +1,63 @@
 # Puffin Ship
 
-> Puffin Ship is a managed AI video production service. Businesses send raw material — clips, calls, webinars, product footage — and receive polished, on-brand short-form videos on demand. No editor to hire, no production to manage.
+> Puffin Ship is an AI content automation platform, starting with video. It turns anything you have — an idea, recordings, audio clips — into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
+
+## Status
+
+Puffin Ship is currently pre-launch and accepting early design partners. Contact chandler@chandlermayo.com or call 415-409-8722 to get involved.
 
 ## The problem
 
-Video production today is too slow (production cannot keep up with channel demand), too expensive (agencies and editors do not scale cheaply), and too hard to manage (AI tools still need judgment and brand context). Most businesses already hold the raw material for great content — clips, calls, webinars, brand guidelines — it just never becomes finished video. Puffin Ship closes that gap.
+Businesses are expected to create more video content across more channels, but most do not have the team, budget, or process to do it consistently. Production is too slow, too expensive, and too hard to manage. Most businesses already have the raw material — clips, calls, webinars, brand guidelines, product info, customer stories — it just never becomes finished video. Puffin Ship closes that gap with software.
 
 ## What it is
 
-Puffin Ship turns existing raw material into finished short-form video content, delivered every month. Operators use an AI-assisted production platform to cut, caption, brand-style, and review each video before delivery. The system learns a customer's brand look and voice over time, improving consistency with every delivery.
+Puffin Ship is a self-serve web application. A user connects source material and brand context. The platform ingests it, generates the missing pieces, assembles finished short-form videos, and improves from user feedback over time.
 
-This is a managed service, not self-serve software. Customers do not use the platform directly — they submit material and receive finished videos.
-
-## Packages and pricing
-
-- **Starter** — 6 videos per month, $750 to $1,500/mo. Includes short-form editing, captions and brand styling, monthly delivery, defined revisions.
-- **Growth** — 12 videos per month, $1,500 to $3,000/mo. Includes everything in Starter plus multi-format output (9:16, 16:9, 1:1), priority turnaround, brand memory.
-- **Pro** — 24+ videos per month, $3,000 to $6,000+/mo. Includes everything in Growth plus multiple brand workspaces, dedicated operator, volume rates.
-
-On-site filming and full social media management are available as add-ons. Volume and agency rates available on request.
-
-## Who it's for
-
-- **Direct businesses** — realtors, gyms, clinics, restaurants, and local service brands that need recurring video without an in-house production team
-- **Agencies** — social media and marketing agencies that need scalable video production capacity for client work without hiring more editors
-- **Expert-led businesses** — coaches, founders, consultants, and educators turning calls, webinars, and domain knowledge into a steady stream of short-form clips
+The product is software the customer runs — not a managed service. Customers connect their own material and run the platform themselves.
 
 ## How it works
 
-1. **Send your material** — submit clips, calls, webinars, product footage, or existing long-form content, plus brand guidelines
-2. **We produce and review** — operators use the AI platform to cut, caption, and brand-style each video, then review and rank outputs for quality
-3. **Approve and publish** — polished short-form videos are delivered on demand, ready to post; revisions are available within each package
+1. **Connect your source material** — add clips, calls, audio, ideas, docs, or brand guidelines. Brand context persists across every project.
+2. **AI builds your template** — your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, music, and structure — filling in whatever is missing.
+3. **Review, rank, and publish** — compare outputs, approve the best, flag what to improve. Every ranking improves future automation.
 
-## Video formats delivered
+## Core platform layers
 
-- 9:16 vertical — for TikTok, Instagram Reels, YouTube Shorts
-- 16:9 landscape — for YouTube, LinkedIn, ads
-- 1:1 square — for Instagram feed, LinkedIn
+- **Input and context layer** — ingests whatever the user has. Brand memory holds styling rules, voice, do's and don'ts, and preferences that persist across every project.
+- **Generation and template layer** — identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, transitions, and platform-specific versions.
+- **Review, feedback, and training layer** — users review outputs, compare alternatives, rank results, flag issues, and approve or request changes. All feedback improves future automation.
 
-All formats include on-brand captions and brand styling.
+## Pricing (pre-launch, subject to change)
 
-## How the system improves over time
+- **Free / Trial** — a few watermarked videos per month, core generation, one brand kit — $0
+- **Team / Growth** — higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling — $99 to $299/mo
+- **Agency / Business** — multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label — $399 to $999+/mo
+- **Usage credits** — metered rendering and generation beyond plan limits, available as an add-on
 
-Puffin Ship operates a compounding production loop:
+## Who it's for
 
-1. **Generate** — raw material and an objective in, AI-generated edits out
-2. **Review** — operators rank and select, customers approve or revise
-3. **Learn** — decisions train future edits and customer-specific brand memory
+- **Direct businesses** — businesses that need recurring on-brand video but don't have the team or budget to produce it consistently
+- **Agencies** — more production capacity across many client workspaces without hiring more editors; each client gets its own brand memory and approval flows
+- **Expert-led businesses** — coaches, founders, educators, and consultants turning calls, webinars, and expertise into consistent short-form content
 
-More customers, more videos, more feedback, better automation. Videos delivered per operator hour improves over time, and customers graduate toward self-serve and API revenue.
+## Competitive position
+
+- Different from AI video editors: those help users modify existing footage; Puffin Ship turns source material into finished content including deciding what to make
+- Different from AI video generators: those create assets from prompts; Puffin Ship builds repeatable content production workflows
+- Different from traditional agencies: agencies scale with people; Puffin Ship scales with software, feedback, and reusable templates
+- Different from social media management platforms: those manage distribution; Puffin Ship creates the content supply
 
 ## Long-term vision
 
-The managed service is the wedge, not the destination. The long-term goal is to become the infrastructure layer for automated, brand-aware content — one platform that turns source material into finished content across formats, sold as software and a developer API.
+The initial product is short-form video. The long-term platform is content automation across formats — podcasts, audio clips, written posts, newsletters, and multi-format campaigns generated from the same source material. After self-serve is proven, Puffin Ship will open a developer API so teams and products can build content automation into their own workflows.
 
-- **Expand formats** — video first, then podcasts and audio, social posts and newsletters, and multi-format campaigns from one set of source material
-- **Open the platform** — customers move from managed service, to assisted platform use, to self-serve software they run themselves
-- **Ship the API** — developers build brand-aware content automation directly into their own products and workflows
+The defensibility comes from the compounding loop between production, feedback, ranking, model training, and automation: more users create more videos, more videos create more feedback, more feedback improves automation.
 
 ## Contact
 
-To book a demo or discuss a package:
+To get early access or discuss design partnership:
 
-- Phone: 415-409-8722
 - Email: chandler@chandlermayo.com
+- Phone: 415-409-8722
 - Website: https://puffinship.com/

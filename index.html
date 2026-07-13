@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Puffin Ship: Managed AI Video Production Service</title>
-  <meta name="description" content="Managed AI video production service. Send clips, calls, or webinars — get polished, on-brand short-form videos on demand. Starter from $750/mo." />
+  <title>Puffin Ship: AI Content Automation Platform</title>
+  <meta name="description" content="AI content automation platform, starting with video. Turn clips, ideas, and recordings into finished, on-brand video — your prompt builds a reusable template that scales." />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="canonical" href="https://puffinship.com/" />
   <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://puffinship.com/llms.txt" />
@@ -13,18 +13,18 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Puffin Ship" />
-  <meta property="og:title" content="Puffin Ship: Managed AI Video Production Service" />
-  <meta property="og:description" content="Send clips, calls, or webinars — get polished, on-brand short-form videos on demand. Starter from $750/mo." />
+  <meta property="og:title" content="Puffin Ship: AI Content Automation Platform" />
+  <meta property="og:description" content="Turn clips, ideas, and recordings into finished, on-brand video. Your prompt builds a reusable template that scales." />
   <meta property="og:url" content="https://puffinship.com/" />
   <meta property="og:image" content="https://puffinship.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Puffin Ship — managed AI video production" />
+  <meta property="og:image:alt" content="Puffin Ship — AI content automation platform" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Puffin Ship: Managed AI Video Production Service" />
-  <meta name="twitter:description" content="Send clips, calls, or webinars — get polished, on-brand short-form videos on demand. Starter from $750/mo." />
+  <meta name="twitter:title" content="Puffin Ship: AI Content Automation Platform" />
+  <meta name="twitter:description" content="Turn clips, ideas, and recordings into finished, on-brand video. Your prompt builds a reusable template that scales." />
   <meta name="twitter:image" content="https://puffinship.com/assets/og-image.jpg" />
 
   <!-- Structured data: Organization + Service + FAQ -->
@@ -38,7 +38,7 @@
         "name": "Puffin Ship",
         "url": "https://puffinship.com/",
         "logo": "https://puffinship.com/assets/logo/puffin-mark-blue.png",
-        "description": "Managed AI video production service. Businesses send raw material and receive polished, on-brand short-form videos on demand.",
+        "description": "AI content automation platform, starting with video. Turns raw source material into finished, on-brand content using reusable AI-powered templates.",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+1-415-409-8722",
@@ -48,55 +48,46 @@
         }
       },
       {
-        "@type": "Service",
-        "@id": "https://puffinship.com/#service",
-        "name": "Managed AI Video Production",
-        "serviceType": "Video Production",
+        "@type": "SoftwareApplication",
+        "@id": "https://puffinship.com/#app",
+        "name": "Puffin Ship",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
         "provider": { "@id": "https://puffinship.com/#org" },
-        "description": "Monthly video content packages for businesses, agencies, and expert-led businesses. Send raw material; receive polished, on-brand short-form videos ready to publish.",
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Video production packages",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "name": "Starter",
-              "description": "6 videos per month. Short-form editing, captions, brand styling, on-demand delivery, defined revisions.",
-              "priceSpecification": {
-                "@type": "PriceSpecification",
-                "minPrice": "750",
-                "maxPrice": "1500",
-                "priceCurrency": "USD",
-                "unitText": "per month"
-              }
+        "description": "Self-serve web application that ingests source material and brand context, generates missing pieces, assembles finished short-form videos, and improves from user feedback over time.",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free / Trial",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "A few watermarked videos per month, core generation, one brand kit."
+          },
+          {
+            "@type": "Offer",
+            "name": "Team / Growth",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "99",
+              "maxPrice": "299",
+              "priceCurrency": "USD",
+              "unitText": "per month"
             },
-            {
-              "@type": "Offer",
-              "name": "Growth",
-              "description": "12 videos per month. Multi-format output (9:16, 16:9, 1:1), priority turnaround, brand memory.",
-              "priceSpecification": {
-                "@type": "PriceSpecification",
-                "minPrice": "1500",
-                "maxPrice": "3000",
-                "priceCurrency": "USD",
-                "unitText": "per month"
-              }
+            "description": "Higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling."
+          },
+          {
+            "@type": "Offer",
+            "name": "Agency / Business",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "399",
+              "maxPrice": "999",
+              "priceCurrency": "USD",
+              "unitText": "per month"
             },
-            {
-              "@type": "Offer",
-              "name": "Pro",
-              "description": "24+ videos per month. Multiple brand workspaces, dedicated operator, volume rates.",
-              "priceSpecification": {
-                "@type": "PriceSpecification",
-                "minPrice": "3000",
-                "maxPrice": "6000",
-                "priceCurrency": "USD",
-                "unitText": "per month"
-              }
-            }
-          ]
-        }
+            "description": "Multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label."
+          }
+        ]
       },
       {
         "@type": "FAQPage",
@@ -106,15 +97,15 @@
             "name": "What is Puffin Ship?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puffin Ship is a managed AI video production service. Businesses send raw material — clips, calls, webinars, product footage — and receive polished, on-brand short-form videos on demand. No editor to hire, no production to manage."
+              "text": "Puffin Ship is an AI content automation platform, starting with video. It turns anything you have — clips, recordings, audio, ideas — into finished, on-brand video. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale."
             }
           },
           {
             "@type": "Question",
-            "name": "How much does Puffin Ship cost?",
+            "name": "Does Puffin Ship generate video from scratch or edit existing footage?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puffin Ship offers three monthly packages: Starter (6 videos/month, $750–$1,500/mo), Growth (12 videos/month, $1,500–$3,000/mo), and Pro (24+ videos/month, $3,000–$6,000+/mo). Volume and agency rates are available on request."
+              "text": "Both. Content doesn't need to be AI generated. Puffin Ship can edit what you give it, generate everything from scratch, or a mix of both — using whatever source material you have."
             }
           },
           {
@@ -122,7 +113,7 @@
             "name": "Who is Puffin Ship for?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puffin Ship serves three customer types: direct businesses (realtors, gyms, clinics, restaurants, and service brands that need recurring video without an in-house team), agencies that need scalable production capacity for their clients without hiring more editors, and expert-led businesses such as coaches, founders, and educators who want to turn calls, webinars, and knowledge into a steady stream of short-form video clips."
+              "text": "Puffin Ship is built for businesses that need recurring on-brand video, agencies that need scalable production capacity across multiple clients, and expert-led businesses such as coaches, founders, and educators who want to turn recordings and ideas into a consistent stream of short-form content."
             }
           },
           {
@@ -130,23 +121,15 @@
             "name": "How does Puffin Ship work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "There are three steps: (1) Send your material — submit clips, calls, webinars, product footage, or long-form content plus your brand guidelines. (2) We produce and review — operators use our AI platform to cut, caption, and brand-style each video, then review and rank for quality. (3) Approve and publish — polished short-form videos arrive on demand, ready to post, with revisions available within your package."
+              "text": "Connect your source material and brand context. The AI identifies what is missing, generates the pieces needed, and assembles finished short-form videos using a reusable template. You review the outputs, rank results, and the system improves from your feedback over time."
             }
           },
           {
             "@type": "Question",
-            "name": "What video formats does Puffin Ship deliver?",
+            "name": "When is Puffin Ship launching?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puffin Ship produces short-form videos in 9:16 (vertical for TikTok, Instagram Reels, YouTube Shorts), 16:9 (landscape for YouTube and ads), and 1:1 (square for Instagram and LinkedIn). All formats include on-brand captions and styling."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I get started with Puffin Ship?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Book a 20-minute call to get started. Call 415-409-8722 or email chandler@chandlermayo.com. We will review your material and send a sample video."
+              "text": "Puffin Ship is currently in early development and accepting design partners and early access signups. Contact chandler@chandlermayo.com or call 415-409-8722 to get involved."
             }
           }
         ]
@@ -517,9 +500,30 @@
       .cta-band { padding: 40px 24px; }
       .nav-links { display: none; }
     }
+
+    /* ── Launch banner ──────────────────────────────────────────────────── */
+    .launch-banner {
+      background: var(--ink-900); color: var(--paper);
+      text-align: center; padding: 10px var(--space-6);
+      font-size: var(--text-sm); font-weight: 500;
+      display: flex; align-items: center; justify-content: center; gap: var(--space-3);
+    }
+    .launch-banner-pill {
+      background: var(--accent); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: var(--radius-pill); flex-shrink: 0;
+    }
+    .launch-banner a { color: var(--orange-300); font-weight: 600; text-decoration: underline; }
+    .launch-banner a:hover { color: var(--orange-200); }
   </style>
 </head>
 <body>
+
+  <!-- ── Launch banner ─────────────────────────────────────────────────── -->
+  <div class="launch-banner">
+    <span class="launch-banner-pill">Launching Soon</span>
+    <span>We're building in public and onboarding early design partners. <a href="mailto:chandler@chandlermayo.com">Get early access &rarr;</a></span>
+  </div>
 
   <!-- ── Nav ────────────────────────────────────────────────────────────── -->
   <header class="nav">
@@ -532,11 +536,9 @@
         <a href="#how">How it works</a>
         <a href="#pricing">Pricing</a>
         <a href="#who">Who it's for</a>
-        <a href="Puffin%20Ship%20Investor%20Memo.pdf" download="Puffin Ship Investor Memo.pdf">For Investors</a>
       </nav>
-      <a href="tel:+14154098722" class="btn btn-primary btn-sm" style="margin-left: auto;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Book a call
+      <a href="mailto:chandler@chandlermayo.com" class="btn btn-primary btn-sm" style="margin-left: auto;">
+        Get early access
       </a>
     </div>
   </header>
@@ -547,58 +549,57 @@
     <div>
       <div class="hero-eyebrow">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-        Managed AI video production
+        AI content automation · starting with video
       </div>
-      <h1 class="hero-h1">On-brand video,<br /><span>produced for you on demand.</span></h1>
-      <p class="hero-body">Send us your raw material: clips, calls, webinars, product footage. Puffin Ship turns it into a steady stream of polished, ready-to-publish short-form videos. No editor to hire, no production to manage.</p>
+      <h1 class="hero-h1">Turn anything you have<br /><span>into finished, on-brand video.</span></h1>
+      <p class="hero-body">It turns anything you have — an idea, recordings, audio clips — into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.</p>
       <div class="hero-actions">
-        <a href="tel:+14154098722" class="btn btn-primary btn-lg">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Book a call
-        </a>
-        <a href="mailto:chandler@chandlermayo.com" class="btn btn-outline btn-lg">
+        <a href="mailto:chandler@chandlermayo.com" class="btn btn-primary btn-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          Send a message
+          Get early access
+        </a>
+        <a href="#how" class="btn btn-outline btn-lg">
+          See how it works
         </a>
       </div>
       <p class="hero-note">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        From 6 to 24+ videos a month &nbsp;·&nbsp; fixed monthly price
+        Self-serve SaaS &nbsp;·&nbsp; video now, more formats coming
       </p>
     </div>
 
-    <!-- Console mockup (deliveries view) -->
+    <!-- App mockup (generate view) -->
     <div class="mockup">
       <div class="mockup-bar">
         <span class="dot dot-r"></span>
         <span class="dot dot-a"></span>
         <span class="dot dot-g"></span>
-        <span class="mockup-url">console.puffinship.com / deliveries</span>
+        <span class="mockup-url">app.puffinship.com / generate</span>
       </div>
       <div class="mockup-body">
         <div class="mockup-side">
           <img src="assets/logo/puffin-mark-paper.png" alt="" />
-          <!-- Upload / intake -->
+          <!-- Generate -->
           <span class="side-icon on">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
           </span>
-          <!-- Productions -->
+          <!-- Templates -->
           <span class="side-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
           </span>
-          <!-- Check / review -->
+          <!-- Review -->
           <span class="side-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           </span>
-          <!-- Channels -->
+          <!-- Brand kit -->
           <span class="side-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           </span>
         </div>
         <div class="mockup-main">
           <div class="mockup-head">
-            <span class="mockup-title">Deliveries</span>
-            <span class="mockup-badge">This month · 12</span>
+            <span class="mockup-title">Generate</span>
+            <span class="mockup-badge">Template · Q3 recap</span>
           </div>
           <div class="thumb-grid">
             <div class="thumb" style="background: linear-gradient(150deg,#136C90,#0f5470);">
@@ -631,7 +632,7 @@
   <section id="how" class="wrap section-pad">
     <div class="section-head">
       <div class="eyebrow">How it works</div>
-      <h2 class="section-h2">A content engine, managed for you</h2>
+      <h2 class="section-h2">From raw material to finished video — in software you run</h2>
     </div>
     <div class="steps-grid">
       <div class="card">
@@ -639,24 +640,24 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         </div>
         <div class="step-num">01</div>
-        <h3 class="step-title">Send your material</h3>
-        <p class="step-desc">Drop in clips, calls, webinars, product footage, or long-form content, plus your brand guidelines.</p>
+        <h3 class="step-title">Connect your source material</h3>
+        <p class="step-desc">Add clips, calls, audio, ideas, or docs. Set your brand context once and it persists across every project.</p>
       </div>
       <div class="card">
         <div class="step-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
         </div>
         <div class="step-num">02</div>
-        <h3 class="step-title">We produce &amp; review</h3>
-        <p class="step-desc">Operators use our AI platform to cut, caption, and brand-style each video, then review and rank for quality.</p>
+        <h3 class="step-title">AI builds your template</h3>
+        <p class="step-desc">Your prompt becomes a reusable template. The AI generates hooks, scripts, captions, audio, and structure — filling in whatever is missing.</p>
       </div>
       <div class="card">
         <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </div>
         <div class="step-num">03</div>
-        <h3 class="step-title">Approve &amp; publish</h3>
-        <p class="step-desc">Polished short-form videos delivered on demand, ready to post. Request revisions within your package.</p>
+        <h3 class="step-title">Review, rank &amp; publish</h3>
+        <p class="step-desc">Compare outputs, approve the best, and flag what to improve. Every ranking makes the next run more accurate.</p>
       </div>
     </div>
   </section>
@@ -666,44 +667,44 @@
     <div class="wrap section-pad">
       <div class="features-head">
         <div>
-          <div class="eyebrow" style="color: var(--orange-400);">What's included</div>
-          <h2 class="features-h2">The whole production line, handled</h2>
+          <div class="eyebrow" style="color: var(--orange-400);">Platform</div>
+          <h2 class="features-h2">Everything in the platform</h2>
         </div>
         <a href="mailto:chandler@chandlermayo.com" class="btn btn-ghost btn-md">
-          Get details
+          Get early access
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="features-grid">
         <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2z"/><path d="M7 7h.01"/></svg></div>
-          <h3 class="feat-title">From the material you have</h3>
-          <p class="feat-desc">Clips, calls, webinars, demos, docs. Turned into finished short-form video.</p>
+          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <h3 class="feat-title">Works with what you have</h3>
+          <p class="feat-desc">Clips, calls, audio, ideas, docs — ingest whatever you have. The AI figures out the rest.</p>
         </div>
         <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3 class="feat-title">Captions &amp; brand styling</h3>
-          <p class="feat-desc">On-brand burn-in subtitles and formatting on every cut.</p>
+          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></div>
+          <h3 class="feat-title">Reusable content templates</h3>
+          <p class="feat-desc">Your prompt defines how videos get made. Run the same template on new material, consistently, at scale.</p>
         </div>
         <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg></div>
           <h3 class="feat-title">Brand memory</h3>
-          <p class="feat-desc">The system learns your look and voice, so output stays consistent delivery after delivery.</p>
+          <p class="feat-desc">Set your brand context once. Every video automatically stays on-brand — voice, style, do's and don'ts.</p>
         </div>
         <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-          <h3 class="feat-title">Delivered on demand</h3>
-          <p class="feat-desc">Videos delivered on demand, on your schedule.</p>
+          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2z"/><path d="M7 7h.01"/></svg></div>
+          <h3 class="feat-title">AI generation built in</h3>
+          <p class="feat-desc">Hooks, scripts, captions, voice, music. Generate only what's missing or generate everything from scratch.</p>
         </div>
         <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-          <h3 class="feat-title">Every channel format</h3>
-          <p class="feat-desc">9:16, 16:9, and 1:1 versions for social, ads, and customer education.</p>
+          <h3 class="feat-title">Review &amp; ranking loop</h3>
+          <p class="feat-desc">Approve, reject, or rank outputs in the app. Every decision improves future automation.</p>
         </div>
         <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <h3 class="feat-title">Review &amp; revisions</h3>
-          <p class="feat-desc">Human review on every video, with defined revisions per package.</p>
+          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+          <h3 class="feat-title">More formats coming</h3>
+          <p class="feat-desc">Video first. Podcasts, social posts, newsletters, and multi-format campaigns from the same source material — next.</p>
         </div>
       </div>
     </div>
@@ -713,7 +714,7 @@
   <section id="who" class="wrap" style="padding: 8px var(--space-8) 64px;">
     <div class="section-head" style="margin-top: 64px;">
       <div class="eyebrow">Who it's for</div>
-      <h2 class="section-h2">Built for teams that already know content matters</h2>
+      <h2 class="section-h2">Built for anyone who needs more content than they can consistently produce</h2>
     </div>
     <div class="who-grid">
       <div class="card">
@@ -721,21 +722,21 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <h3 class="who-title">Direct businesses</h3>
-        <p class="who-desc">Realtors, gyms, clinics, restaurants, and service brands that need recurring video without an in-house team.</p>
+        <p class="who-desc">Businesses that need recurring on-brand video but don't have the budget or team to produce it consistently. Run the software — don't manage production.</p>
       </div>
       <div class="card">
         <div class="who-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="18" rx="1"/><rect x="9" y="3" width="7" height="18" rx="1"/><rect x="16" y="3" width="6" height="18" rx="1"/></svg>
         </div>
         <h3 class="who-title">Agencies</h3>
-        <p class="who-desc">More production capacity and faster turnaround for client work, without hiring more editors.</p>
+        <p class="who-desc">More production capacity across many client workspaces without hiring more editors. Each client gets its own brand memory, roles, and approval flows.</p>
       </div>
       <div class="card">
         <div class="who-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
         </div>
         <h3 class="who-title">Expert-led businesses</h3>
-        <p class="who-desc">Coaches, founders, and educators turning calls, webinars, and knowledge into a steady clip stream.</p>
+        <p class="who-desc">Coaches, founders, and educators with calls, webinars, and ideas that never become content. Turn existing knowledge into a consistent clip stream.</p>
       </div>
     </div>
   </section>
@@ -744,84 +745,84 @@
   <section id="pricing" class="wrap section-pad">
     <div class="section-head">
       <div class="eyebrow">Pricing</div>
-      <h2 class="section-h2">One monthly package. No surprises.</h2>
-      <p class="section-sub">A recurring video content engine, not cheap editing labor.</p>
+      <h2 class="section-h2">Subscription software. Pay for access, scale with usage.</h2>
+      <p class="section-sub">Tiers validated with early users — final pricing set at launch.</p>
     </div>
     <div class="pricing-grid">
 
-      <!-- Starter -->
+      <!-- Free -->
       <div class="pricing-card pricing-card-light">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-count pricing-count-light">6 videos / month</div>
-        <div class="pricing-price pricing-price-light">$750–$1,500<span class="pricing-per pricing-per-light"> /mo</span></div>
-        <p class="pricing-note pricing-note-light">For businesses getting consistent content off the ground.</p>
+        <div class="pricing-name">Free</div>
+        <div class="pricing-count pricing-count-light">Try it out</div>
+        <div class="pricing-price pricing-price-light">$0<span class="pricing-per pricing-per-light"> /mo</span></div>
+        <p class="pricing-note pricing-note-light">Get started and see what the platform can do with your material.</p>
         <div class="pricing-feats">
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Short-form editing</div>
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Captions &amp; brand styling</div>
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>On-demand delivery</div>
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Defined revisions</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>A few videos per month</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Core AI generation</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>One brand kit</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Watermarked output</div>
         </div>
-        <a href="tel:+14154098722" class="btn btn-outline btn-md btn-block">
-          Book a call
+        <a href="mailto:chandler@chandlermayo.com" class="btn btn-outline btn-md btn-block">
+          Get early access
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <!-- Growth — featured -->
+      <!-- Team — featured -->
       <div class="pricing-card pricing-card-dark">
         <div class="pricing-pill">Most popular</div>
-        <div class="pricing-name">Growth</div>
-        <div class="pricing-count pricing-count-dark">12 videos / month</div>
-        <div class="pricing-price pricing-price-dark">$1,500–$3,000<span class="pricing-per pricing-per-dark"> /mo</span></div>
-        <p class="pricing-note pricing-note-dark">For brands publishing across multiple channels.</p>
+        <div class="pricing-name">Team</div>
+        <div class="pricing-count pricing-count-dark">Businesses &amp; small teams</div>
+        <div class="pricing-price pricing-price-dark">$99–$299<span class="pricing-per pricing-per-dark"> /mo</span></div>
+        <p class="pricing-note pricing-note-dark">Higher volume, multiple seats, and review flows for teams that publish consistently.</p>
         <div class="pricing-feats">
-          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Everything in Starter</div>
-          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Multi-format (9:16 / 16:9 / 1:1)</div>
-          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Priority turnaround</div>
-          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Brand memory</div>
+          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Higher video volume</div>
+          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Multiple seats &amp; brand kits</div>
+          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Review &amp; approval flows</div>
+          <div class="pricing-feat"><span class="pricing-check-dark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Scheduling</div>
         </div>
-        <a href="tel:+14154098722" class="btn btn-primary btn-md btn-block">
-          Book a call
+        <a href="mailto:chandler@chandlermayo.com" class="btn btn-primary btn-md btn-block">
+          Get early access
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <!-- Pro -->
+      <!-- Agency -->
       <div class="pricing-card pricing-card-light">
-        <div class="pricing-name">Pro</div>
-        <div class="pricing-count pricing-count-light">24+ videos / month</div>
-        <div class="pricing-price pricing-price-light">$3,000–$6,000+<span class="pricing-per pricing-per-light"> /mo</span></div>
-        <p class="pricing-note pricing-note-light">For agencies &amp; high-volume content engines.</p>
+        <div class="pricing-name">Agency</div>
+        <div class="pricing-count pricing-count-light">Agencies &amp; multi-brand teams</div>
+        <div class="pricing-price pricing-price-light">$399–$999+<span class="pricing-per pricing-per-light"> /mo</span></div>
+        <p class="pricing-note pricing-note-light">Multiple client workspaces, white-label options, and priority processing.</p>
         <div class="pricing-feats">
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Everything in Growth</div>
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Multiple brand workspaces</div>
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Dedicated operator</div>
-          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Volume rates</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Everything in Team</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Brand memory per client</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Roles, approvals &amp; white-label</div>
+          <div class="pricing-feat"><span class="pricing-check-light"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Priority processing</div>
         </div>
-        <a href="tel:+14154098722" class="btn btn-outline btn-md btn-block">
-          Book a call
+        <a href="mailto:chandler@chandlermayo.com" class="btn btn-outline btn-md btn-block">
+          Get early access
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
     </div>
-    <p class="pricing-footer-note">On-site filming and full social management available as add-ons. Volume &amp; agency rates on request.</p>
+    <p class="pricing-footer-note">Usage-based credits available for heavy rendering. Developer API coming after self-serve launch.</p>
   </section>
 
   <!-- ── CTA ────────────────────────────────────────────────────────────── -->
   <section class="wrap" style="padding-bottom: var(--space-20);">
     <div class="cta-band">
       <img src="assets/logo/puffin-mark-paper.png" alt="Puffin Ship" />
-      <h2 class="cta-h2">Get your first videos this month</h2>
-      <p class="cta-body">Book a 20-minute call. We'll review your material and send a sample.</p>
+      <h2 class="cta-h2">Be among the first to use Puffin Ship</h2>
+      <p class="cta-body">We're onboarding a small cohort of design partners before public launch. Get in early and help shape the product.</p>
       <div class="cta-actions">
-        <a href="tel:+14154098722" class="btn btn-ink btn-lg">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          415-409-8722
-        </a>
-        <a href="mailto:chandler@chandlermayo.com" class="btn btn-ghost btn-lg">
+        <a href="mailto:chandler@chandlermayo.com" class="btn btn-ink btn-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           chandler@chandlermayo.com
+        </a>
+        <a href="tel:+14154098722" class="btn btn-ghost btn-lg">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          415-409-8722
         </a>
       </div>
     </div>
@@ -836,25 +837,24 @@
           <img src="assets/logo/puffin-mark.png" alt="Puffin Ship" />
           <span class="footer-brand-name">Puffin Ship</span>
         </div>
-        <p class="footer-tagline">Managed AI video production. Send your material, get a steady stream of on-brand short-form video.</p>
+        <p class="footer-tagline">AI content automation platform, starting with video. Turn raw source material into finished, on-brand content.</p>
         <address class="footer-contact">
           <a href="tel:+14154098722">415-409-8722</a>
           <a href="mailto:chandler@chandlermayo.com">chandler@chandlermayo.com</a>
         </address>
       </div>
       <div>
-        <div class="footer-col-head">Service</div>
+        <div class="footer-col-head">Platform</div>
         <div class="footer-col-links">
           <a href="#how">How it works</a>
           <a href="#pricing">Pricing</a>
           <a href="#who">Who it's for</a>
-          <a href="Puffin%20Ship%20Investor%20Memo.pdf" download="Puffin Ship Investor Memo.pdf">Investor memo</a>
         </div>
       </div>
     </div>
     <div class="wrap footer-bottom">
       <span>© 2026 Puffin Ship</span>
-      <span>Early access · demos by request</span>
+      <span>Launching soon · design partners welcome</span>
     </div>
   </footer>
 
