@@ -7,6 +7,20 @@
   <meta name="description" content="AI content automation platform, starting with video. Turn clips, ideas, and recordings into finished, on-brand video. Your prompt builds a reusable template that scales." />
   <link rel="icon" id="favicon" type="image/png" href="assets/logo/puffin-mark.png" />
   <script>
+    // Google Consent Mode v2 — set defaults before any tag can load. No analytics
+    // script is injected until the visitor accepts (see the cookie banner script
+    // near </body>).
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script>
     // The black mark disappears on dark browser tab strips — swap in the paper one there.
     (function () {
       var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
@@ -88,26 +102,14 @@
           {
             "@type": "Offer",
             "name": "Team / Growth",
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "minPrice": "99",
-              "maxPrice": "299",
-              "priceCurrency": "USD",
-              "unitText": "per month"
-            },
-            "description": "Higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling."
+            "priceCurrency": "USD",
+            "description": "Higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling. Pricing to be announced."
           },
           {
             "@type": "Offer",
             "name": "Agency / Business",
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "minPrice": "399",
-              "maxPrice": "999",
-              "priceCurrency": "USD",
-              "unitText": "per month"
-            },
-            "description": "Multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label."
+            "priceCurrency": "USD",
+            "description": "Multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label. Pricing to be announced."
           }
         ]
       },
@@ -505,7 +507,7 @@
 
     /* ── Footer ───────────────────────────────────────────────────────────── */
     .footer-wrap { border-top: 1px solid var(--border-subtle); background: var(--ink-50); }
-    .footer-inner { padding: 48px var(--space-8) 28px; display: grid; grid-template-columns: 2fr 1fr; gap: 28px; }
+    .footer-inner { padding: 48px var(--space-8) 28px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
     .footer-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
     .footer-brand img { width: 26px; }
     .footer-brand-name { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.03em; color: var(--ink-900); }
@@ -517,6 +519,11 @@
     .footer-col-links { display: flex; flex-direction: column; gap: 9px; }
     .footer-col-links a { font-size: 14px; color: var(--text-body); }
     .footer-col-links a:hover { color: var(--text-strong); }
+    .footer-linklike {
+      background: none; border: 0; padding: 0; font: inherit; color: inherit;
+      cursor: pointer; text-align: left;
+    }
+    .footer-linklike:hover { color: var(--text-strong); }
     .footer-bottom { padding: 0 var(--space-8) 28px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-faint); }
 
     /* ── Responsive ───────────────────────────────────────────────────────── */
@@ -549,6 +556,27 @@
     }
     .launch-banner a { color: var(--orange-300); font-weight: 600; text-decoration: underline; }
     .launch-banner a:hover { color: var(--orange-200); }
+
+    /* ── Cookie consent banner ────────────────────────────────────────────── */
+    #cookie-banner {
+      position: fixed; left: var(--space-5); right: var(--space-5); bottom: var(--space-5);
+      z-index: 200; max-width: 720px; margin: 0 auto;
+      background: var(--ink-900); color: var(--paper);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);
+      padding: var(--space-5) var(--space-6);
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4);
+    }
+    #cookie-banner[hidden] { display: none; }
+    .cookie-banner-text { flex: 1 1 320px; font-size: 13.5px; line-height: 1.5; color: rgba(247,249,251,0.85); }
+    .cookie-banner-text a { color: var(--orange-300); text-decoration: underline; }
+    .cookie-banner-text a:hover { color: var(--orange-200); }
+    .cookie-banner-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .cookie-banner-actions .btn { flex: 0 0 auto; }
+    @media (max-width: 600px) {
+      #cookie-banner { left: var(--space-3); right: var(--space-3); bottom: var(--space-3); padding: var(--space-4); }
+      .cookie-banner-actions { width: 100%; }
+      .cookie-banner-actions .btn { flex: 1 1 0; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -886,12 +914,105 @@
           <a href="#who">Who it's for</a>
         </div>
       </div>
+      <div>
+        <div class="footer-col-head">Legal</div>
+        <div class="footer-col-links">
+          <a href="https://app.puffinship.com/terms">Terms of Service</a>
+          <a href="https://app.puffinship.com/privacy">Privacy Policy</a>
+          <a href="https://app.puffinship.com/aup">Acceptable Use</a>
+          <button type="button" id="cookie-settings" class="footer-linklike">Cookie settings</button>
+        </div>
+      </div>
     </div>
     <div class="wrap footer-bottom">
       <span>© 2026 Puffin Ship · Puffin Ship™ is a trademark of Chandler Mayo</span>
       <span>Launching soon · design partners welcome</span>
     </div>
   </footer>
+
+  <!-- ── Cookie consent banner ─────────────────────────────────────────── -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <p class="cookie-banner-text">
+      We'd like to use Google Analytics to understand how this site is used. It's optional, and nothing is set unless you accept.
+      See our <a href="https://app.puffinship.com/privacy">Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-decline" class="btn btn-outline btn-sm">Decline</button>
+      <button type="button" id="cookie-accept" class="btn btn-outline btn-sm">Accept</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'ps_cookie_consent_v1';
+      var GA_ID = 'G-RY63074N1P';
+      var analyticsLoaded = false;
+
+      var banner = document.getElementById('cookie-banner');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var declineBtn = document.getElementById('cookie-decline');
+      var settingsBtn = document.getElementById('cookie-settings');
+
+      function showBanner() {
+        if (banner) banner.hidden = false;
+      }
+      function hideBanner() {
+        if (banner) banner.hidden = true;
+      }
+
+      function loadAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', GA_ID, { anonymize_ip: true });
+      }
+
+      function grant() {
+        localStorage.setItem(STORAGE_KEY, 'granted');
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        loadAnalytics();
+        hideBanner();
+      }
+
+      function deny() {
+        localStorage.setItem(STORAGE_KEY, 'denied');
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        hideBanner();
+      }
+
+      var stored;
+      try {
+        stored = localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        stored = null;
+      }
+
+      if (stored === 'granted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        loadAnalytics();
+      } else if (stored === 'denied') {
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+      } else {
+        showBanner();
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', grant);
+      if (declineBtn) declineBtn.addEventListener('click', deny);
+      if (settingsBtn) {
+        settingsBtn.addEventListener('click', function () {
+          try {
+            localStorage.removeItem(STORAGE_KEY);
+          } catch (e) {}
+          gtag('consent', 'update', { analytics_storage: 'denied' });
+          showBanner();
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
