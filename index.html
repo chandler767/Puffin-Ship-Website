@@ -5,7 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Puffin Ship: AI Content Automation Platform</title>
   <meta name="description" content="AI content automation platform, starting with video. Turn clips, ideas, and recordings into finished, on-brand video. Your prompt builds a reusable template that scales." />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" id="favicon" type="image/png" href="assets/logo/puffin-mark.png" />
+  <script>
+    // The black mark disappears on dark browser tab strips — swap in the paper one there.
+    (function () {
+      var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+      if (!mq) return;
+      function apply() {
+        document.getElementById('favicon').href =
+          'assets/logo/puffin-mark' + (mq.matches ? '-paper' : '') + '.png';
+      }
+      mq.addEventListener('change', apply);
+      apply();
+    })();
+  </script>
   <link rel="canonical" href="https://puffinship.com/" />
   <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://puffinship.com/llms.txt" />
   <meta name="robots" content="index, follow" />
