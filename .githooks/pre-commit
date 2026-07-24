@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Blocks a commit before it is made if the author/committer is an AI identity.
+# Wired via: git config core.hooksPath .githooks
+exec "$(dirname "$0")/check-ai-attribution.sh" --identity

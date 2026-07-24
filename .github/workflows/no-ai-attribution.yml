@@ -1,0 +1,25 @@
+name: No AI attribution
+
+# Enforces CLAUDE.md rule 1 on the server side. The local hooks in .githooks/
+# cover this machine; this covers everything else, including commits pushed
+# from cloud sessions that never touch a local checkout.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check history for AI attribution
+        run: |
+          # The whole history is checked, not just the pushed range. The repo is
+          # small, and this makes "no AI attribution anywhere" an invariant that
+          # cannot be reintroduced by a force-push or an unusual push range.
+          bash .githooks/check-ai-attribution.sh --range HEAD

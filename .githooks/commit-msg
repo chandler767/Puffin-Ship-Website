@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Blocks a commit whose message carries an AI attribution trailer.
+# pre-commit cannot see the message (it does not exist yet), so the message
+# half of the check lives here. Together they cover identity + message.
+exec "$(dirname "$0")/check-ai-attribution.sh" --message "$1"
