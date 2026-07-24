@@ -220,7 +220,7 @@
 <p><code>EditDecisions</code> on the output timeline level.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_HEYGEN_API_KEY</code>.</li>
+<li>Requires a <code>HEYGEN_API_KEY</code> set in your workspace's Service API Keys.</li>
 <li><strong>Never set <code>use_iv_model: false</code> or <code>matting: false</code></strong> — these are critical to output quality. If HeyGen fails due to insufficient credits, top up credits rather than disabling these options.</li>
 <li>Generated clips are cached in <code>heygen/manifest.json</code> (at the project root, or <code>&lt;output_dir&gt;/manifest.json</code> for custom <code>output_dir</code>). Re-running re-uses cached clips automatically.</li>
 <li>HeyGen API: <code>POST https://api.heygen.com/v2/video/generate</code>, status at <code>GET https://api.heygen.com/v3/videos/{video_id}</code>.</li>

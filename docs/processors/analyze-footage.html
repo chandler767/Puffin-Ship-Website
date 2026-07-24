@@ -112,7 +112,7 @@
 <p><code>Analysis</code> containing <code>FootageAnalysis</code> with per-clip metadata: transcript, silence ranges, visual summary, quality score, key moments, suggested usage (backbone/broll/skip).</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code> and <code>PUFFINSHIP_OPENAI_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI (no API key required); requires an <code>OPENAI_API_KEY</code> (set in your workspace's Service API Keys) for transcription.</li>
 <li><code>adaptive</code> mode is recommended — it starts with cheap audio analysis and only adds vision for clips with interesting content.</li>
 <li>Always use <code>cache: true</code> — analysis is expensive and deterministic.</li>
 </ul>

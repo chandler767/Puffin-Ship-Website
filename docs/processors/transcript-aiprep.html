@@ -100,7 +100,7 @@
 <p><code>Analysis</code> containing cleaned script text ready for TTS.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>The cleaning rules include: grammar fixes, brand name preservation (Redpanda → Redpanda, not &quot;red panda&quot;), acronym expansion where needed, numbers to words (<code>10M</code> → &quot;ten million&quot;), symbols to words (<code>99%</code> → &quot;ninety-nine percent&quot;), phonetic spelling for technical terms that TTS mispronounces.</li>
 <li>Use <code>cache: true</code> — the output is deterministic for the same transcript.</li>
 </ul>

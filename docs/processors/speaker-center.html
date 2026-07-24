@@ -94,7 +94,7 @@
 <p><code>TransformPatches</code> — per-EditDecision PositionX adjustments.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>More API cost than <code>motion_center</code> (one Claude Vision call per clip), but more accurate.</li>
 <li>Samples <code>frames_per_clip</code> frames per clip and uses the median of detected positions.</li>
 <li>Use <code>cache: true</code> — position detection is deterministic for the same source frames.</li>

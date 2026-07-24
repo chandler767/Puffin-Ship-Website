@@ -177,7 +177,7 @@ context block and call decision tools.</p>
 <p><code>EditDecisions</code> in most cases — whatever Claude chose to create via <code>create_edit_decision</code>. When <code>apply_transcript_corrections</code> is used, returns <code>Analysis</code> instead. The output type is dynamic (<code>OutputTypeUnknown</code>).</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>The prompt is sent as the system message. Keep it specific and instructional.</li>
 <li><code>review: true</code> is strongly recommended — always verify the AI's editorial decisions before continuing.</li>
 <li><code>cache: true</code> is recommended — saves API cost on re-runs where nothing has changed.</li>
@@ -288,15 +288,10 @@ context block and call decision tools.</p>
 </code></pre>
 <p>This is the recommended way to exclude AI-generated media (Veo, HeyGen) from a pipeline that only uses user-provided footage.</p>
 <h2 id="web-search">Web Search</h2>
-<p>When <code>PUFFINSHIP_SEARCH_URL</code> is set, the agent gains a <code>web_search</code> tool. Claude
-calls it autonomously to research topics, find recent news, or gather data.</p>
-<p><strong>Setup (SearXNG via Docker):</strong></p>
-<pre><code class="language-bash">docker run -d -p 8080:8080 searxng/searxng
-</code></pre>
-<p>Add to <code>.env</code>:</p>
-<pre><code>PUFFINSHIP_SEARCH_URL=http://localhost:8080
-</code></pre>
-<p>The tool is injected into every <code>ai_agent</code> step automatically when the env var is set.</p>
+<p>When web search is enabled on the platform, the agent gains a <code>web_search</code> tool
+that Claude calls autonomously to research topics, find recent news, or gather
+data. It's injected into every <code>ai_agent</code> step automatically — no configuration
+needed on your end.</p>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
   </main>

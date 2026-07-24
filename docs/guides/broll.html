@@ -85,7 +85,7 @@
 <p><strong>Matching is strict by design.</strong> &quot;Approved&quot; clips that don't match the content are left unused for a different gap or skipped entirely. This prevents random B-roll that doesn't relate to what's being said.</p>
 <hr>
 <h2 id="broll-veo-generate--generating-with-veo-3"><code>broll_veo_generate</code> — Generating with Veo 3</h2>
-<p>Fills gaps that <code>broll_place</code> didn't cover. Requires <code>PUFFINSHIP_GOOGLE_API_KEY</code>.</p>
+<p>Fills gaps that <code>broll_place</code> didn't cover. Requires a <code>GOOGLE_API_KEY</code> set in your workspace's Service API Keys.</p>
 <p>Veo 3 always generates 8-second clips. The analysis step <strong>aggressively trims</strong> each clip to its most impactful moment — by default targeting ~4s cuts with a 2s minimum. This creates faster visual rhythm. Use the full 8s only when the entire clip is uniformly excellent.</p>
 <pre><code class="language-yaml">- id: broll_ai
   processor: broll_veo_generate

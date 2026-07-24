@@ -109,7 +109,7 @@
 <p><code>SegmentPlan</code> — an ordered list of time ranges with assigned content type labels and optional notes.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>Downstream processors that respect the segment plan: <code>broll_place</code>, <code>drawings_ai_placer</code>, <code>broll_screenshot_websource</code>, <code>broll_imagen_generate</code>.</li>
 <li>The segment plan is accessed by those processors via their <code>backbone_step</code> param (they read it from the step output).</li>
 </ul>

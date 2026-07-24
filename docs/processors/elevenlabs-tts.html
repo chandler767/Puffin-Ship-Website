@@ -173,7 +173,7 @@
 <p><code>Analysis</code> with <code>Source</code> pointing to <code>.puffinship/elevenlabs/&lt;step_id&gt;.mp3</code>. This is <strong>not</strong> an <code>EditDecision</code> — it does not go on the timeline by itself. Use a follow-up <code>audio</code> step with <code>file: &quot;.puffinship/elevenlabs/&lt;step_id&gt;.mp3&quot;</code> and <code>cache_deps: [&lt;step_id&gt;]</code> to place it.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ELEVENLABS_API_KEY</code>.</li>
+<li>Requires an <code>ELEVENLABS_API_KEY</code> set in your workspace's Service API Keys.</li>
 <li>Always run <code>transcript_aiprep</code> with <code>target: &quot;elevenlabs&quot;</code> before this step.</li>
 <li>Use <code>cache: true</code> — generation is deterministic for the same text and params.</li>
 <li><code>generate_transcript</code> on the voiceover output must also use <code>file: &quot;.puffinship/elevenlabs/&lt;step_id&gt;.mp3&quot;</code> with <code>cache_deps</code> — it cannot use <code>step: voiceover</code> because the step output is <code>Analysis</code>, not a file path that <code>generate_transcript</code> accepts.</li>

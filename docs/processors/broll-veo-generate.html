@@ -191,7 +191,7 @@
 <p><code>EditDecisions</code> on the broll level.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code> (prompt judge) and <code>PUFFINSHIP_GOOGLE_API_KEY</code> (Veo 3 generation).</li>
+<li>Uses Puffin Ship's built-in AI for the prompt judge; requires a <code>GOOGLE_API_KEY</code> (set in your workspace's Service API Keys) for Veo 3 generation.</li>
 <li>Veo 3 always generates 8-second clips. The trim step finds the most impactful moment.</li>
 <li>A prompt judge (Claude) validates every prompt before generation. It rejects: people/faces/humanoids, screens/keyboards, objects passing through each other, intricate mechanical parts, abstract concepts, prompts over 3 sentences.</li>
 <li>Generated clips are saved to <code>broll/</code> (at the project root) and recorded in <code>manifest.json</code>.</li>
