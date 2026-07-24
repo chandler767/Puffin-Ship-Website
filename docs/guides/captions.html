@@ -45,13 +45,9 @@
     timeline: captions
   cache: true
 </code></pre>
-<h2 id="the-manifest">The manifest</h2>
-<p>On the first run, <code>captions</code> writes a manifest file to your project directory:</p>
-<pre><code>&lt;project&gt;/
-└── captions.yaml   # (step ID + &quot;.yaml&quot;)
-</code></pre>
-<p>This manifest controls everything about the captions output. Subsequent runs read from the manifest rather than recomputing from the transcript.</p>
-<h3 id="manifest-structure">Manifest structure</h3>
+<h2 id="how-captions-are-stored">How captions are stored</h2>
+<p>On the first run, <code>captions</code> computes a set of caption groups from the transcript
+— each group is the words shown together on screen as one rendered clip, e.g.:</p>
 <pre><code class="language-yaml">- start: 0.12
   end: 0.82
   text: &quot;Hello world&quot;
@@ -59,18 +55,18 @@
   end: 1.80
   text: &quot;this is a caption&quot;
 </code></pre>
-<p>Each entry is one caption group — displayed together on screen as a single rendered clip.</p>
-<h2 id="editing-the-manifest">Editing the manifest</h2>
-<p><strong>Fix groupings:</strong> Merge two entries by combining their <code>text</code> and adjusting <code>start</code>/<code>end</code>. Split an entry by duplicating it and dividing the time range.</p>
-<p><strong>Fix text:</strong> Change the <code>text</code> value directly. The timing stays the same.</p>
-<p><strong>Remove a caption:</strong> Delete the entry from the YAML list.</p>
-<p><strong>Add punctuation:</strong> Edit <code>text: &quot;Hello world&quot;</code> to <code>text: &quot;Hello, world.&quot;</code> — edit the string freely.</p>
-<p>After editing, run the template again — the <code>captions</code> step reads the updated manifest and regenerates the affected clips.</p>
-<h2 id="regenerating-from-scratch">Regenerating from scratch</h2>
-<p>Delete the manifest file:</p>
-<pre><code class="language-bash">rm &lt;project&gt;/captions.yaml
-</code></pre>
-<p>Then re-run. A fresh manifest is generated from the transcript.</p>
+<p>These groups are cached, so subsequent runs reuse them instead of recomputing.</p>
+<h2 id="fixing-captions">Fixing captions</h2>
+<p>You have three ways to correct captions, in increasing scope:</p>
+<ul>
+<li><strong>Edit a single caption's text</strong> — open the finished run's <strong>timeline</strong> and select
+a caption clip; its text is editable inline, then re-render.</li>
+<li><strong>Fix recurring mishears before grouping</strong> — use the <code>word_corrections</code> param
+(below), which rewrites words as the transcript is grouped, preserving timing.</li>
+<li><strong>Regenerate from scratch</strong> — clear the <code>captions</code> step's cache from the
+editor's cache controls and run the template again; a fresh set of caption
+groups is computed from the transcript.</li>
+</ul>
 <h2 id="word-corrections">word_corrections</h2>
 <p>Use <code>word_corrections</code> to fix common TTS mishears before grouping. These are applied before the manifest is generated:</p>
 <pre><code class="language-yaml">params:

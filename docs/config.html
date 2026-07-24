@@ -250,15 +250,10 @@ use for this config (the server's default is used when omitted). You use
     duration_step: ai_cut
 </code></pre>
 <h3 id="review-mode">Review mode</h3>
-<p>Steps with <code>review: true</code> pause after execution:</p>
-<pre><code>[a]pprove  [r]eject  [e]dit in vi  [s]kip
-</code></pre>
-<ul>
-<li><code>a</code> — accept and continue</li>
-<li><code>r</code> — reject (step will re-run next time)</li>
-<li><code>e</code> — open the output JSON in <code>$EDITOR</code> for manual edits</li>
-<li><code>s</code> — accept without reviewing</li>
-</ul>
+<p>Steps with <code>review: true</code> pause after execution and wait for you in the run
+view. You can <strong>approve</strong> the output, <strong>approve with edits</strong>, <strong>reject</strong> it (the
+run ends), or <strong>regenerate</strong> (re-run the step for new output). See
+<a href="concepts/review-gates.html">Review Gates</a>.</p>
 <hr>
 <h2 id="output"><code>output</code></h2>
 <pre><code class="language-yaml">output:

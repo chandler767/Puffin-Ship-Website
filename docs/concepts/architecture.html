@@ -30,7 +30,7 @@
 <h2 id="execution-flow">Execution flow</h2>
 <ol>
 <li><strong>Parse + validate</strong> <code>puffinship.yaml</code> (<code>internal/config/</code>) — resolves file globs, validates step references, applies defaults</li>
-<li><strong>Build processor registry</strong> (<code>cmd/puffinship/main.go</code>) — registers all available processors; API-dependent processors (HeyGen, ElevenLabs, Veo 3) are only registered when their API key is present</li>
+<li><strong>Build processor registry</strong> (<code>internal/processor/registry_full.go</code>) — registers all processors; each run resolves the service keys it needs (HeyGen, ElevenLabs, Veo 3) from your workspace secrets</li>
 <li><strong>Run steps sequentially</strong> (<code>internal/pipeline/</code>) — for each step:
 a. Check cache — if inputs + params haven't changed, return cached output
 b. Resolve inputs — fetch file paths or previous step outputs from context

@@ -43,17 +43,12 @@
 <li>A <code>review_requested</code> SSE event is broadcast to connected clients</li>
 <li>The <code>ReviewGate</code> UI component shows the JSON payload and action buttons</li>
 </ol>
-<p>Submit actions: <code>approved</code>, <code>rejected</code>, or <code>edited</code> (with modified JSON).</p>
-<h2 id="per-clip-review">Per-clip review</h2>
-<p>The <code>broll_place</code> and <code>broll_veo_generate</code> processors support <code>per_clip_review: true</code> for clip-by-clip decisions during generation:</p>
-<pre><code>[k]eep  [r]egenerate  [e]dit request  [s]kip
-</code></pre>
-<ul>
-<li><code>k</code> — keep the clip, continue placing</li>
-<li><code>r</code> — reject, mark for regeneration on next run</li>
-<li><code>e</code> — enter an edit request note, clip rejected</li>
-<li><code>s</code> — skip (clip rejected, gap left blank)</li>
-</ul>
+<p>Submit actions: <code>approved</code>, <code>rejected</code>, <code>edited</code> (with a modified payload), or <code>regenerate</code> (ask the step to produce new output).</p>
+<h2 id="reviewing-individual-clips">Reviewing individual clips</h2>
+<p>To review b-roll clip by clip, add a review gate to the b-roll step
+(<code>review: true</code>). At the gate you see the planned clips and can approve them,
+edit the selection, reject, or regenerate — the same approve/edit/reject/regenerate
+choices as any other gate, in the run view.</p>
 <h2 id="what-rejected-means">What &quot;rejected&quot; means</h2>
 <p>A rejected step outputs nothing. On the next run, the step's cache is invalid and it runs again from scratch (a new AI agent call, new Veo generation, etc.).</p>
 </article>
