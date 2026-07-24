@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Building in the editor · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link active" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="building-in-the-editor">Building in the editor</h1>
+<p>Puffin Ship templates are built visually. You don't have to write YAML — you add
+steps, pick processors, and fill in parameters through the editor, and the
+config is kept in sync for you. This guide covers the editor's layout and the
+main things you'll do in it.</p>
+<h2 id="starting-a-template">Starting a template</h2>
+<p>From a workspace, the <strong>Templates → New</strong> button opens <strong>Build a Template</strong>,
+which offers four starting points:</p>
+<ul>
+<li><strong>Gallery</strong> — start from a curated starter template.</li>
+<li><strong>Guided Wizard</strong> — answer a few questions (video type, add-ons such as
+captions or background music, aspect ratio, which AI features to use) and get
+a working pipeline assembled for you.</li>
+<li><strong>Chat + Steps</strong> — describe the video in plain language; the AI proposes a set
+of steps you can open in the editor.</li>
+<li><strong>Start empty</strong> — a blank template.</li>
+</ul>
+<p>All four land you in the visual editor.</p>
+<h2 id="the-editor-layout">The editor layout</h2>
+<p>The editor has three regions:</p>
+<ul>
+<li><strong>Left panel</strong> — tabbed between:
+<ul>
+<li><strong>Steps</strong> — the ordered list of steps in your pipeline.</li>
+<li><strong>Library</strong> — every processor, grouped by category, searchable.</li>
+<li><strong>Graph</strong> — a dependency view showing how steps feed each other.</li>
+</ul>
+</li>
+<li><strong>Center — the inspector</strong> — configures whichever step you've selected (or
+shows processor details when you're browsing the Library).</li>
+<li><strong>Right — the Runs panel</strong> — where you start runs and see run history. It
+collapses to a strip on narrow screens.</li>
+</ul>
+<p>The header has the template name, <strong>Undo/Redo</strong>, a <strong>YAML</strong> button that opens the
+raw config in a slide-over (handy if you prefer typing), a settings menu, and
+<strong>Save</strong>.</p>
+<h2 id="adding-and-arranging-steps">Adding and arranging steps</h2>
+<p>Each <strong>step</strong> runs one <strong>processor</strong>. To add a step:</p>
+<ul>
+<li>In the <strong>Steps</strong> tab, click <strong>+ add step</strong> (at the top, or between any two
+steps). A command palette opens; search for a processor and pick it.</li>
+<li>Or, in the <strong>Library</strong> tab, select a processor to see its details, then click
+<strong>+ Add to template</strong>.</li>
+</ul>
+<p>New steps get an automatic ID (<code>step_1</code>, <code>step_2</code>, …) you can rename. Reorder
+with the <strong>↑ / ↓</strong> controls (or ⌘↑ / ⌘↓), duplicate with <strong>⊕</strong> (⌘D), and remove
+with <strong>×</strong> (Delete). A colored dot on each step flags problems — red for a
+missing required parameter, yellow for a broken input reference.</p>
+<h2 id="configuring-a-step">Configuring a step</h2>
+<p>Select a step to open it in the inspector:</p>
+<ul>
+<li>
+<p><strong>Step ID</strong> — a unique name; other steps reference it.</p>
+</li>
+<li>
+<p><strong>Output Level</strong> — which timeline level this step writes to (e.g. <code>main</code>,
+<code>broll</code>, <code>captions</code>). See <a href="../concepts/timeline-levels.html">Timeline &amp; Levels</a>.</p>
+</li>
+<li>
+<p><strong>Prompt / Description</strong> — for AI processors, the instruction that drives the
+step.</p>
+</li>
+<li>
+<p><strong>Parameters</strong> — rendered from the processor's schema. Each parameter shows its
+label, a red <code>*</code> if it's required, and an <code>i</code> tooltip explaining it. Rarely
+used options are tucked behind <strong>Show advanced</strong>. The control matches the
+parameter type:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter type</th>
+<th>Control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>checkbox</td>
+</tr>
+<tr>
+<td>select</td>
+<td>dropdown (with a &quot;— default —&quot; option when optional)</td>
+</tr>
+<tr>
+<td>number / duration</td>
+<td>numeric input, with min/max and a unit suffix</td>
+</tr>
+<tr>
+<td>color</td>
+<td>color swatch + <code>#rrggbb</code> field</td>
+</tr>
+<tr>
+<td>text</td>
+<td>multi-line text area</td>
+</tr>
+<tr>
+<td>list</td>
+<td>comma-separated text field</td>
+</tr>
+<tr>
+<td>string / level / file</td>
+<td>single-line text field</td>
+</tr>
+</tbody>
+</table>
+<p>Every processor's parameters are also documented in the
+<a href="../processors/index.html">processor reference</a>.</p>
+</li>
+<li>
+<p><strong>Review gate</strong> — a checkbox that pauses the run at this step for your
+approval. See <a href="../concepts/review-gates.html">Review Gates</a>.</p>
+</li>
+</ul>
+<h2 id="wiring-inputs-between-steps">Wiring inputs between steps</h2>
+<p>Under <strong>Inputs</strong>, each input is a named slot fed by either a file or an earlier
+step. To add one, give the input an <strong>id</strong>, choose <strong>step</strong> or <strong>file</strong>, then:</p>
+<ul>
+<li><strong>step</strong> — pick an upstream step from the dropdown (only steps earlier in the
+pipeline appear). This is how one step consumes another's output.</li>
+<li><strong>file</strong> — type the name of a file you uploaded to the workspace.</li>
+</ul>
+<p>Input IDs are conventional (<code>source</code>, <code>transcript</code>, <code>backbone</code>, …); each
+processor's page lists the inputs it expects.</p>
+<h2 id="project-and-timeline-settings">Project and timeline settings</h2>
+<p>The editor's <strong>Settings</strong> slide-over (from the header menu) covers the
+project-level config: <strong>resolution</strong> (with 9:16 / 16:9 / 1:1 presets), <strong>FPS</strong>,
+the workspace's <strong>Variables &amp; Service API Keys</strong>, and template actions like
+<strong>Duplicate</strong> and <strong>Delete</strong>. Timeline <strong>levels</strong> — the stacked tracks your steps
+write to — and their order are part of the config; see
+<a href="../concepts/timeline-levels.html">Timeline &amp; Levels</a>.</p>
+<h2 id="the-ai-assistant">The AI Assistant</h2>
+<p>The floating <strong>AI Assistant</strong> (💬) is available throughout the app. In the editor
+it can edit your template for you: ask for a change (&quot;add captions&quot;, &quot;make the
+b-roll longer&quot;) and it proposes a config edit you can review as a diff and
+<strong>Apply to editor</strong>. It can also answer questions and, when you ask it to,
+perform actions like creating templates or starting runs (destructive actions
+ask for confirmation first).</p>
+<h2 id="running-and-reviewing">Running and reviewing</h2>
+<p>Start a run from the <strong>Runs</strong> panel with <strong>▶ Run</strong>. The template is saved, the run
+is named, and you're taken to the run view, where each step reports progress
+(pending, running, done, cached, failed). If a required service key is missing,
+you're prompted for it before the run proceeds.</p>
+<p>When a step has a review gate, the run pauses and shows you what it produced —
+a set of concept ideas, a script, or a segment plan — to <strong>approve</strong>, <strong>approve
+with edits</strong>, <strong>reject</strong>, or <strong>regenerate</strong>. When the run finishes, open its
+<strong>timeline</strong> to preview, adjust clip timing, rate clips, and export to FCPXML,
+SRT, or MP4.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="../config.html">Config Reference</a> — the YAML behind the editor</li>
+<li><a href="../processors/index.html">All Processors</a> — every processor and its parameters</li>
+<li><a href="../concepts/review-gates.html">Review Gates</a> — how approvals work</li>
+<li><a href="../concepts/timeline-levels.html">Timeline &amp; Levels</a> — how tracks stack and combine</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

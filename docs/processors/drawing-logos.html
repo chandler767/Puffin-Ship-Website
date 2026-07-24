@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>drawing_logos · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link active" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="drawing-logos"><code>drawing_logos</code></h1>
+<p>Renders company/product logos as a video clip with optional connector symbols and highlight.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use to display integrations, partners, or a technology stack visually.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml">- id: logos
+  processor: drawing_logos
+  params:
+    companies:
+      - &quot;Redpanda&quot;
+      - &quot;Kafka&quot;
+      - &quot;Flink&quot;
+    connector: &quot;+&quot;
+    highlight: &quot;Redpanda&quot;
+    duration_sec: 4.0
+    level: broll
+  output:
+    timeline: broll
+</code></pre>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>companies</code></td>
+<td>list</td>
+<td>—</td>
+<td>Company/product names. Logos are fetched automatically.</td>
+</tr>
+<tr>
+<td><code>connector</code></td>
+<td>select: <code>none</code>, <code>arrow</code></td>
+<td><code>&quot;none&quot;</code></td>
+<td>Symbol between logos: <code>&quot;+&quot;</code>, <code>&quot;vs&quot;</code>, <code>&quot;→&quot;</code>, <code>&quot;none&quot;</code></td>
+</tr>
+<tr>
+<td><code>highlight</code></td>
+<td>string</td>
+<td>—</td>
+<td>Name of a company to visually highlight</td>
+</tr>
+<tr>
+<td><code>duration_sec</code></td>
+<td>duration (s)</td>
+<td><code>5</code></td>
+<td>Clip duration</td>
+</tr>
+<tr>
+<td><code>position_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Place the clip at this timeline position (seconds). When omitted, the next available gap is used.</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>level</td>
+<td><code>&quot;broll&quot;</code></td>
+<td>Output timeline level</td>
+</tr>
+<tr>
+<td><code>background</code></td>
+<td>string</td>
+<td><code>&quot;auto&quot;</code></td>
+<td><code>&quot;auto&quot;</code> or <code>&quot;solid:#rrggbb&quot;</code></td>
+</tr>
+<tr>
+<td><code>brand_palette</code></td>
+<td>string</td>
+<td>—</td>
+<td>Comma-separated hex colors</td>
+</tr>
+<tr>
+<td><code>animation_style</code></td>
+<td>string</td>
+<td>—</td>
+<td>Override default animation style for this drawing type</td>
+</tr>
+<tr>
+<td><code>padding_pct</code></td>
+<td>number</td>
+<td><code>8</code></td>
+<td>Padding as % of frame</td>
+</tr>
+<tr>
+<td><code>safe_zone_bottom_pct</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Keep this percentage of the bottom frame height clear (for captions)</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> — one clip on the configured level.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Uses Puffin Ship's built-in AI for logo search and layout planning (no API key required).</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

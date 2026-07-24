@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>broll_screenshot_websource · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link active" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="broll-screenshot-websource"><code>broll_screenshot_websource</code></h1>
+<p>Generates animated background clips from web screenshots — the processor takes screenshots of relevant web pages, then renders them as video clips with motion effects (zoom, blur, pixelate) and an optional source attribution card overlay.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use when you want web-sourced imagery (article screenshots, product pages, documentation) as animated broll. By default (<code>auto_find: true</code>) the processor uses AI web search to find and screenshot relevant pages based on the transcript context.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml">- id: web_broll
+  processor: broll_screenshot_websource
+  input:
+    - id: transcript
+      step: transcribe_main
+  params:
+    backbone_step: ai_cut
+    min_gap_sec: 5
+    blur_type: blur
+    animation_style: zoom_blur
+  output:
+    timeline: broll
+  cache: true
+</code></pre>
+<h2 id="inputs">Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transcript</code></td>
+<td>step (optional)</td>
+<td>Transcript for context when auto-finding web sources</td>
+</tr>
+</tbody>
+</table>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_gap_sec</code></td>
+<td>duration (s)</td>
+<td><code>5</code></td>
+<td>Minimum gap to fill</td>
+</tr>
+<tr>
+<td><code>min_duration_sec</code></td>
+<td>duration (s)</td>
+<td><code>4</code></td>
+<td>Minimum clip duration</td>
+</tr>
+<tr>
+<td><code>max_duration_sec</code></td>
+<td>duration (s)</td>
+<td><code>10</code></td>
+<td>Maximum clip duration</td>
+</tr>
+<tr>
+<td><code>max_clips</code></td>
+<td>number</td>
+<td><code>5</code></td>
+<td>Max clips to generate (0 = unlimited)</td>
+</tr>
+<tr>
+<td><code>animation_style</code></td>
+<td>select: <code>zoom_blur</code>, <code>zoom_in</code>, <code>zoom_out</code>, <code>pan</code>, <code>none</code></td>
+<td><code>&quot;zoom_blur&quot;</code></td>
+<td><code>&quot;zoom_blur&quot;</code>, <code>&quot;pulse&quot;</code>, <code>&quot;noise&quot;</code>, <code>&quot;both&quot;</code>, <code>&quot;none&quot;</code></td>
+</tr>
+<tr>
+<td><code>animation_speed</code></td>
+<td>number</td>
+<td><code>1</code></td>
+<td>Pulse cycle duration in seconds</td>
+</tr>
+<tr>
+<td><code>zoom_factor</code></td>
+<td>number</td>
+<td><code>1.3</code></td>
+<td>Fractional zoom applied over the full clip (e.g. <code>0.08</code> = 8% zoom)</td>
+</tr>
+<tr>
+<td><code>blur_type</code></td>
+<td>select: <code>none</code>, <code>gaussian</code>, <code>pixelate</code></td>
+<td><code>&quot;none&quot;</code></td>
+<td><code>&quot;none&quot;</code>, <code>&quot;pixelate&quot;</code>, <code>&quot;blur&quot;</code>, <code>&quot;both&quot;</code></td>
+</tr>
+<tr>
+<td><code>blur_sigma</code></td>
+<td>number</td>
+<td><code>10</code></td>
+<td>Gaussian blur sigma</td>
+</tr>
+<tr>
+<td><code>pixelate_block_size</code></td>
+<td>number</td>
+<td><code>20</code></td>
+<td>Pixel block size for pixelate effect</td>
+</tr>
+<tr>
+<td><code>zoom_blur_max</code></td>
+<td>number</td>
+<td><code>5</code></td>
+<td>Max box-blur radius at the end of a zoom_blur clip</td>
+</tr>
+<tr>
+<td><code>source_label</code></td>
+<td>string</td>
+<td>—</td>
+<td>Label text above the URL</td>
+</tr>
+<tr>
+<td><code>source_label_font_size</code></td>
+<td>number</td>
+<td><code>24</code></td>
+<td>Font size for the label</td>
+</tr>
+<tr>
+<td><code>url_font_size</code></td>
+<td>number</td>
+<td><code>18</code></td>
+<td>Font size for the URL</td>
+</tr>
+<tr>
+<td><code>line_gap</code></td>
+<td>number</td>
+<td><code>6</code></td>
+<td>Vertical gap between card lines</td>
+</tr>
+<tr>
+<td><code>card_bg_color</code></td>
+<td>color</td>
+<td><code>&quot;#FFFFFF&quot;</code></td>
+<td>Card background color (supports alpha)</td>
+</tr>
+<tr>
+<td><code>card_accent_color</code></td>
+<td>color</td>
+<td><code>&quot;#0066CC&quot;</code></td>
+<td>Card accent bar color</td>
+</tr>
+<tr>
+<td><code>card_accent_width</code></td>
+<td>number</td>
+<td><code>4</code></td>
+<td>Card accent bar width in pixels</td>
+</tr>
+<tr>
+<td><code>card_position_y_frac</code></td>
+<td>number</td>
+<td><code>0.85</code></td>
+<td>Vertical position of the card as a fraction of frame height (0 = top, 1 = bottom)</td>
+</tr>
+<tr>
+<td><code>card_padding</code></td>
+<td>number</td>
+<td><code>16</code></td>
+<td>Internal padding of the card in pixels</td>
+</tr>
+<tr>
+<td><code>edge_padding_px</code></td>
+<td>number</td>
+<td><code>24</code></td>
+<td>Minimum distance from left/right edges (safe zone)</td>
+</tr>
+<tr>
+<td><code>screenshot_width</code></td>
+<td>number</td>
+<td><code>1280</code></td>
+<td>Screenshot capture width</td>
+</tr>
+<tr>
+<td><code>screenshot_height</code></td>
+<td>number</td>
+<td><code>720</code></td>
+<td>Screenshot capture height</td>
+</tr>
+<tr>
+<td><code>screenshot_timeout_sec</code></td>
+<td>duration (s)</td>
+<td><code>15</code></td>
+<td>Screenshot capture timeout</td>
+</tr>
+<tr>
+<td><code>screenshot_selector_priority</code></td>
+<td>list</td>
+<td>—</td>
+<td>CSS selectors tried in order to find main content</td>
+</tr>
+<tr>
+<td><code>screenshot_hide_selectors</code></td>
+<td>list</td>
+<td>—</td>
+<td>CSS selectors to hide before screenshotting</td>
+</tr>
+<tr>
+<td><code>output_level</code></td>
+<td>level</td>
+<td><code>&quot;broll&quot;</code></td>
+<td>Output timeline level</td>
+</tr>
+<tr>
+<td><code>favicon_fallback</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Fall back to a tiled favicon image when a screenshot is blank or gated</td>
+</tr>
+<tr>
+<td><code>dont_use_domains</code></td>
+<td>list</td>
+<td>—</td>
+<td>Domains to exclude from web search</td>
+</tr>
+<tr>
+<td><code>auto_find</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Use AI web search to discover URLs from transcript context</td>
+</tr>
+<tr>
+<td><code>backbone_step</code></td>
+<td>string</td>
+<td>—</td>
+<td>Step ID to read backbone timeline from</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> on the configured <code>output_level</code>.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Uses Puffin Ship's built-in AI for the agent loop and screenshot content validation (no API key required).</li>
+<li><code>auto_find: true</code> (default) uses the transcript to search for and screenshot relevant pages. Set <code>auto_find: false</code> and provide URLs via the transcript or prompt to control which pages are used.</li>
+<li><code>zoom_factor</code> is fractional (0.08 = 8% zoom), not a multiplier — <code>1.05</code> would mean 105% zoom which is excessive.</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>
