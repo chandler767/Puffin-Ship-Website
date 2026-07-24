@@ -1,10 +1,10 @@
 # Puffin Ship
 
-> Puffin Ship is an AI video content automation platform. It turns anything you have (an idea, recordings, audio clips) into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
+> Puffin Ship is a free AI video content automation platform. It turns anything you have (an idea, recordings, audio clips) into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
 
 ## Status
 
-Puffin Ship is currently pre-launch and accepting early design partners. Contact info@puffinship.com or call 415-409-8722 to get involved.
+Puffin Ship is live and free to use. Create a free account at https://app.puffinship.com/login to get started, or contact info@puffinship.com or call 415-409-8722.
 
 ## The problem
 
@@ -28,12 +28,9 @@ The product is software the customer runs, not a managed service. Customers conn
 - **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, transitions, and platform-specific versions.
 - **Review, feedback, and training layer**: users review outputs, compare alternatives, rank results, flag issues, and approve or request changes. All feedback improves future automation.
 
-## Pricing (pre-launch, subject to change)
+## Pricing
 
-- **Free / Trial**: a few watermarked videos per month, core generation, one brand kit. $0
-- **Team / Growth**: higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling. $99 to $299/mo
-- **Agency / Business**: multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label. $399 to $999+/mo
-- **Usage credits**: metered rendering and generation beyond plan limits, available as an add-on
+Puffin Ship is free to use. Create an account, connect your source material, and start generating finished, on-brand video — no credit card required. Core AI generation and editing, reusable templates, brand memory, the review and ranking loop, and platform-ready aspect ratios are all included at no cost. Teams that need higher volume, multiple client workspaces, or white-label options can contact us at https://app.puffinship.com/contact.
 
 ## Who it's for
 
@@ -56,7 +53,7 @@ The defensibility comes from the compounding loop between production, feedback, 
 
 ## Contact
 
-To get early access or discuss design partnership:
+To get started, sign up free at https://app.puffinship.com/login. To discuss higher-volume or agency needs:
 
 - Email: info@puffinship.com
 - Phone: 415-409-8722
