@@ -27,7 +27,7 @@
   <main class="content">
     <article class="doc"><h1 id="caching">Caching</h1>
 <h2 id="how-it-works">How it works</h2>
-<p>Every step with <code>cache: true</code> saves its output to <code>.puffinship/cache/&lt;stepID&gt;-&lt;hash&gt;.json</code>. On the next run, if the hash matches, the step is skipped and the cached output is returned immediately.</p>
+<p>Every step with <code>cache: true</code> saves its output to <code>.puffinship/cache/&lt;stepID&gt;.json</code> (with the hash recorded alongside in <code>&lt;stepID&gt;.meta.json</code>). On the next run, if the hash matches, the step is skipped and the cached output is returned immediately.</p>
 <p>The cache key is:</p>
 <pre><code>hash = CombineHashes(inputHash, configHash)
 </code></pre>

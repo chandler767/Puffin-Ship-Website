@@ -79,7 +79,7 @@ type Placement struct {
 </tr>
 <tr>
 <td><code>SegmentPlan</code></td>
-<td><code>video_director</code> — assigns content types to time ranges</td>
+<td><code>video_director</code>, or <code>ai_agent</code> in <code>mode: plan</code> — assigns content types to time ranges</td>
 </tr>
 <tr>
 <td><code>TransformPatches</code></td>
@@ -88,6 +88,10 @@ type Placement struct {
 <tr>
 <td><code>SourceRemaps</code></td>
 <td><code>chroma_key</code>, <code>noise_reduce</code> — substitutes source file paths</td>
+</tr>
+<tr>
+<td><code>ClipFilters</code></td>
+<td>processors that apply an ffmpeg filter chain to clips</td>
 </tr>
 </tbody>
 </table>

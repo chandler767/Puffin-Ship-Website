@@ -49,7 +49,6 @@
     max_gap_sec: 20              # gaps longer than this need coverage (default 0 = AI decides)
     max_duration_sec: 8          # max seconds to use from any single clip (default 8)
     backbone_step: ai_cut        # step to read backbone timeline from
-    per_clip_review: false       # pause for [k]eep/[s]kip per clip (default false)
     eval_prompt: &gt;
       Accept: direct visual match to spoken content.
       Reject: vague topic overlap, people facing away, blurry footage.
@@ -65,14 +64,14 @@
   cache: true
 </code></pre>
 <h3 id="clip-manifest">Clip Manifest</h3>
-<p>All analysis results are cached in <code>&lt;project&gt;/broll/manifest.json</code>. On subsequent runs, clips in the manifest are never re-analyzed or re-generated.</p>
+<p>All analysis results are cached (internally, under <code>.puffinship/broll/</code>). On subsequent runs, clips already analyzed are never re-analyzed or re-generated.</p>
 <p>Each entry records:</p>
 <ul>
 <li><code>verdict</code> — <code>approve</code> or <code>reject</code></li>
 <li><code>trim_in</code> / <code>trim_out</code> — clean usable range in seconds</li>
 <li><code>notes</code> — what the clip actually shows</li>
 </ul>
-<p>To force re-analysis, delete the entry from <code>manifest.json</code> or delete the file.</p>
+<p>To force re-analysis, clear the step's cache from the editor's cache controls.</p>
 <h3 id="clip-placement-logic">Clip Placement Logic</h3>
 <p>The AI agent follows this workflow:</p>
 <ol>
@@ -161,17 +160,12 @@
 ✓ Simple object interactions with clean physics</p>
 <h3 id="generation-budget">Generation Budget</h3>
 <p><code>max_generate</code> limits Veo 3 calls per pipeline run. Existing generated clips (already in the manifest) don't count toward the budget. Set <code>max_generate: 0</code> for unlimited.</p>
-<p>Generated clips are saved to <code>&lt;project&gt;/broll/</code> and cached in the manifest like existing clips. Re-running with a higher budget fills additional gaps.</p>
-<h3 id="per-clip-review">Per-clip Review</h3>
-<p>With <code>per_clip_review: true</code>, Puffin Ship pauses after each Veo 3 generation:</p>
-<pre><code>[k]eep  [r]egenerate  [e]dit request  [s]kip
-</code></pre>
-<ul>
-<li><code>k</code> — approve and continue placing</li>
-<li><code>r</code> — reject and mark for regeneration next run</li>
-<li><code>e</code> — enter an edit request (saved as a note, clip rejected)</li>
-<li><code>s</code> — skip (clip rejected, gap left blank)</li>
-</ul>
+<p>Generated clips are cached like existing clips. Re-running with a higher budget fills additional gaps.</p>
+<h3 id="reviewing-generated-b-roll">Reviewing generated b-roll</h3>
+<p>To approve or reject b-roll before it's finalized, add a <strong>review gate</strong> to the
+step (<code>review: true</code>). The run pauses at the gate and shows you the planned
+placements to approve, edit, reject, or regenerate — see
+<a href="../concepts/review-gates.html">Review Gates</a>.</p>
 <hr>
 <h2 id="full-timeline-awareness">Full Timeline Awareness</h2>
 <p>Both <code>broll_place</code> and <code>broll_veo_generate</code> see <strong>all clips placed on the broll level across all previous pipeline steps</strong> — not just what the current step has placed. This means:</p>
@@ -218,7 +212,7 @@
 </code></pre>
 <hr>
 <h2 id="broll-screenshot-websource--animated-web-screenshots"><code>broll_screenshot_websource</code> — Animated Web Screenshots</h2>
-<p>Generates animated background clips from web screenshots. By default (<code>auto_find: true</code>), it uses AI web search to find and screenshot relevant pages based on the transcript. You can also supply URLs directly. Motion effects (zoom, blur, pixelate) are applied to each screenshot. See <a href="../processors/broll-websource.html"><code>broll_screenshot_websource</code></a> for full params.</p>
+<p>Generates animated background clips from web screenshots. By default (<code>auto_find: true</code>), it uses AI web search to find and screenshot relevant pages based on the transcript. You can also supply URLs directly. Motion effects (zoom, blur, pixelate) are applied to each screenshot. See <a href="../processors/broll-screenshot-websource.html"><code>broll_screenshot_websource</code></a> for full params.</p>
 <hr>
 <h2 id="ordering-all-four-processors">Ordering all four processors</h2>
 <p>Earlier steps have first pick of gaps:</p>
