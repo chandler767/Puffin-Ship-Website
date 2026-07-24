@@ -28,7 +28,7 @@
     <article class="doc"><h1 id="av-recorder"><code>av_recorder</code></h1>
 <p>Pauses the pipeline to collect a user recording (webcam/mic capture), then returns it as a source clip for downstream steps.</p>
 <h2 id="when-to-use">When to use</h2>
-<p>Use <code>av_recorder</code> when you want to insert a live speaker recording into the pipeline at a specific point. The processor blocks until the user provides a recording file — either via the web UI (when <code>RecordingHandler</code> is wired) or by entering a file path at the terminal (CLI fallback).</p>
+<p>Use <code>av_recorder</code> when you want to insert a live speaker recording into the pipeline at a specific point. The processor blocks until the user records and uploads their take through the web UI.</p>
 <p>An optional <code>script</code> input is used to display teleprompter text during recording and to generate a brief AI shot concept (when an LLM is available).</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: record_intro
@@ -100,18 +100,17 @@
 </tbody>
 </table>
 <h2 id="output">Output</h2>
-<p><code>EditDecisions</code> — one edit decision with <code>Source</code> set to the absolute path of the recording file. <code>In</code> and <code>Out</code> are both nil (full file).</p>
+<p><code>EditDecisions</code> — one edit decision with <code>Source</code> set to the absolute path of the recording file. <code>In</code> is <code>0</code> and <code>Out</code> is the recording's probed duration (the full clip).</p>
 <h2 id="behavior">Behavior</h2>
 <ol>
 <li>If a <code>script</code> input is provided, the script text is read from disk.</li>
 <li>If an LLM is configured and a script is present, a 1-2 sentence shot concept is generated.</li>
 <li>Default concept (used when no LLM or script): <code>&quot;Record yourself reading the script to camera. Speak naturally.&quot;</code></li>
-<li><strong>Web mode</strong>: calls <code>ctx.RecordingHandler</code> (blocking) with the step ID, concept, and script. The handler is responsible for presenting the recording UI and returning the saved file path.</li>
-<li><strong>CLI fallback</strong>: prints the concept and script to stdout, then reads a file path from stdin.</li>
+<li>Calls <code>ctx.RecordingHandler</code> (blocking) with the step ID, concept, and script. The handler presents the recording UI in the browser and returns the saved file path. (If no handler is configured, the step errors — a recording cannot be collected without the web UI.)</li>
 </ol>
 <h3 id="steps">Steps</h3>
 <ol>
-<li><strong>Remux to MP4</strong>: Browser-recorded WebM files lack a duration header, which causes ffprobe to fail in downstream steps. The processor re-muxes the recording to MP4 using ffmpeg (<code>-c:v libx264 -preset fast -crf 18 -c:a aac -avoid_negative_ts make_zero -movflags +faststart</code>). The <code>-avoid_negative_ts make_zero</code> flag shifts all streams by the same offset so A/V sync is preserved — do not replace this with per-stream <code>setpts</code>/<code>asetpts</code> filters, which independently reset each stream to 0 and destroy the relative timing.</li>
+<li><strong>Remux to MP4</strong>: Browser-recorded WebM files lack a duration header, which causes ffprobe to fail in downstream steps. The processor re-muxes the recording to MP4 using ffmpeg (<code>-c:v libx264 -preset fast -crf 18 -c:a aac -movflags +faststart</code>). The MP4 muxer clips negative video PTS to 0 while audio stays at 0, keeping the two streams in sync — do not add <code>-avoid_negative_ts make_zero</code> or per-stream <code>setpts</code>/<code>asetpts</code> filters, which shift or independently reset the streams and destroy the relative timing.</li>
 <li><strong>Apply rotation</strong>: The final rotation is determined by: YAML <code>rotation</code> param (if non-zero) → web upload form <code>rotation</code> field → no rotation. A second ffmpeg pass applies the appropriate filter:
 <ul>
 <li><strong>90°</strong>: <code>transpose=1</code> (swaps dimensions to portrait for landscape input)</li>

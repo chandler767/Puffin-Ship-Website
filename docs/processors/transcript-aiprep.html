@@ -30,34 +30,22 @@
 <h2 id="when-to-use">When to use</h2>
 <p>Run before <code>elevenlabs_tts</code> or <code>heygen_speaker</code> when the source transcript contains raw text that would sound unnatural when read aloud (e.g. <code>99%</code>, <code>$10M</code>, <code>CQRS</code>, <code>kubectl</code>).</p>
 <h2 id="yaml-example">YAML Example</h2>
-<pre><code class="language-yaml"># When source is a static file in the workspace:
-- id: prep_script
-  processor: transcript_aiprep
-  input:
-    - id: source
-      file: script-text          # must be a file input — step: references are NOT accepted
-  params:
-    target: &quot;elevenlabs&quot;
-  cache: true
-</code></pre>
-<h2 id="chaining-from-write-script">Chaining from write_script</h2>
-<p><code>transcript_aiprep</code> does not accept step inputs. When chaining from a <code>write_script</code> step, reference its output file directly:</p>
+<p>The <code>source</code> input accepts either a text <strong>file</strong> or a <strong>step</strong> output. To chain
+from <code>write_script</code>, wire it directly:</p>
 <pre><code class="language-yaml">- id: write_script
   processor: write_script
-  ...
-  cache: true
+  # ...
 
 - id: prep_script
   processor: transcript_aiprep
   input:
     - id: source
-      file: &quot;.puffinship/write_script/write_script.txt&quot;  # step_id = &quot;write_script&quot;
-  cache_deps:
-    - write_script    # ensures write_script runs first and cache invalidates correctly
+      step: write_script     # write_script emits a Script; step inputs are accepted
   params:
     target: &quot;elevenlabs&quot;
   cache: true
 </code></pre>
+<p>To prep a static file instead, use <code>file: script-text</code> for the <code>source</code> input.</p>
 <h2 id="inputs">Inputs</h2>
 <table>
 <thead>
@@ -70,8 +58,8 @@
 <tbody>
 <tr>
 <td><code>source</code></td>
-<td>file only</td>
-<td>Transcript or script text file. <strong>Must be a <code>file:</code> input — <code>step:</code> references are not accepted and will fail validation.</strong> To consume <code>write_script</code> output, use <code>file: &quot;.puffinship/write_script/&lt;step_id&gt;.txt&quot;</code> with <code>cache_deps</code>.</td>
+<td>step or file</td>
+<td>Transcript or script text. A <code>step:</code> reference works (e.g. <code>write_script</code>, which emits a <code>Script</code>, or a <code>transcript_aiprep</code>/analysis output); a <code>file:</code> reference reads the text file directly.</td>
 </tr>
 </tbody>
 </table>

@@ -111,7 +111,7 @@
 <ul>
 <li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>Downstream processors that respect the segment plan: <code>broll_place</code>, <code>drawings_ai_placer</code>, <code>broll_screenshot_websource</code>, <code>broll_imagen_generate</code>.</li>
-<li>The segment plan is accessed by those processors via their <code>backbone_step</code> param (they read it from the step output).</li>
+<li>The segment plan is accessed by those processors via a <code>segment_plan</code> input wired to this step. (<code>backbone_step</code> is only used to compute total timeline duration, not to read the plan.)</li>
 </ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>

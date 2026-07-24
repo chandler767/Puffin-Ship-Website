@@ -28,7 +28,7 @@
     <article class="doc"><h1 id="drawing-remotion"><code>drawing_remotion</code></h1>
 <p>Renders a Remotion composition as a video clip. Available composition types: stats, chart, timeline, comparison.</p>
 <h2 id="when-to-use">When to use</h2>
-<p>Use for data-driven visuals that need more complex animation than the basic drawing processors support. Requires the Remotion server to be running locally.</p>
+<p>Use for data-driven visuals that need more complex animation than the basic drawing processors support. Rendering is handled by Puffin Ship — no setup needed on your end.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: stats_card
   processor: drawing_remotion
@@ -125,8 +125,8 @@
 <p><code>EditDecisions</code> — one clip on the configured level.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires the Remotion dev server running at <code>localhost:3000</code> (or configured endpoint).</li>
-<li><code>props</code> schema varies by <code>remotion_type</code> — see the Remotion compositions in <code>remotion/src/</code>.</li>
+<li>Clips are rendered by a headless Remotion process on the platform (ProRes 4444 MOV) and cached by content hash — there's no server or endpoint for you to run or configure.</li>
+<li>The <code>props</code> schema varies by <code>remotion_type</code>; each type maps to a built-in Remotion composition.</li>
 </ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>

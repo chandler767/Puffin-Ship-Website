@@ -180,8 +180,8 @@
 <p><code>EditDecisions</code> on the captions level — one clip per caption group.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li><strong>Manifest:</strong> On the first run, <code>captions</code> writes a <code>&lt;stepID&gt;.yaml</code> manifest in the project directory. Edit this file to fix groupings, merge/split caption groups, or correct text. Subsequent runs use the manifest. Delete it to regenerate from scratch.</li>
-<li><strong>Word corrections:</strong> merges matched words into single manifest entries with redistributed timestamps — corrections don't break caption timing.</li>
+<li><strong>Caption groups are cached</strong> after the first run, so later runs reuse them. To adjust them, edit caption text in the run timeline, use <code>word_corrections</code>, or clear the step's cache to recompute from the transcript (see &quot;Fixing captions&quot; above).</li>
+<li><strong>Word corrections:</strong> merges matched words into single caption entries with redistributed timestamps — corrections don't break caption timing.</li>
 <li>Rendered clips are saved to <code>.puffinship/captions/</code>.</li>
 <li>See the <a href="../guides/captions.html">Captions guide</a> for manifest editing details.</li>
 </ul>

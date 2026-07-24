@@ -175,7 +175,8 @@
 </table>
 <!-- END GENERATED PARAMS -->
 <h2 id="output">Output</h2>
-<p><code>Analysis</code> with <code>Source</code> pointing to <code>.puffinship/elevenlabs/&lt;step_id&gt;.mp3</code>. This is <strong>not</strong> an <code>EditDecision</code> — it does not go on the timeline by itself. Use a follow-up <code>audio</code> step with <code>file: &quot;.puffinship/elevenlabs/&lt;step_id&gt;.mp3&quot;</code> and <code>cache_deps: [&lt;step_id&gt;]</code> to place it.</p>
+<p><code>Analysis</code> with <code>Source</code> pointing to <code>.puffinship/elevenlabs/&lt;step_id&gt;.mp3</code>. In the normal path this is <strong>not</strong> an <code>EditDecision</code> — it does not go on the timeline by itself. Use a follow-up <code>audio</code> step with <code>file: &quot;.puffinship/elevenlabs/&lt;step_id&gt;.mp3&quot;</code> and <code>cache_deps: [&lt;step_id&gt;]</code> to place it.</p>
+<p>When a <code>segment_plan</code> input is wired (plan mode), the step instead returns <code>EditDecisions</code> placed directly on <code>output.timeline</code> for the planned segments.</p>
 <h2 id="notes">Notes</h2>
 <ul>
 <li>Requires an <code>ELEVENLABS_API_KEY</code> set in your workspace's Service API Keys.</li>

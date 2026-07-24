@@ -48,7 +48,7 @@
 <td><code>footage_analysis</code></td>
 <td>step</td>
 <td>no</td>
-<td>Output of <code>workspace_analyze</code> — used to match script topics to available visual moments</td>
+<td>Output of <code>analyze_footage</code> — used to match script topics to available visual moments</td>
 </tr>
 </tbody>
 </table>
@@ -100,7 +100,6 @@
 <li><strong>Ideas phase</strong> — Asks the LLM for 3–5 distinct script directions (each with a title and 2–3 sentence description).</li>
 <li><strong>Selection phase</strong> — Presents the directions to the user. The user picks a number or types free-form text. The chosen direction is injected into the script-writing prompt.</li>
 </ol>
-<p>In the <strong>CLI</strong>, this prints to the terminal and reads from stdin.</p>
 <p>In the <strong>web UI / API</strong>, the run pauses with status <code>awaiting_review</code>. The frontend receives a <code>review_requested</code> SSE event with <code>review_type: &quot;ideas&quot;</code>. Fetch the review to get the ideas list, then submit the chosen direction via:</p>
 <pre><code>POST /api/runs/{rid}/reviews/{revid}
 {&quot;status&quot;: &quot;edited&quot;, &quot;response&quot;: &quot;Lead with the customer transformation story...&quot;}
