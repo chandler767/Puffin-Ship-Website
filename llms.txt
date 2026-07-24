@@ -30,7 +30,7 @@ The product is software the customer runs, not a managed service. Customers conn
 
 ## Pricing
 
-Puffin Ship is free to use. Create an account, connect your source material, and start generating finished, on-brand video — no credit card required. Core AI generation and editing, reusable templates, brand memory, the review and ranking loop, and platform-ready aspect ratios are all included at no cost. Teams that need higher volume, multiple client workspaces, or white-label options can contact us at https://app.puffinship.com/contact.
+Puffin Ship is free to use. Create an account, connect your source material, and start generating finished, on-brand video, no credit card required. Core AI generation and editing, reusable templates, brand memory, the review and ranking loop, and platform-ready aspect ratios are all included at no cost. Teams that need higher volume, multiple client workspaces, or white-label options can contact us at https://app.puffinship.com/contact.
 
 ## Who it's for
 
