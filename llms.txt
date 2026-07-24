@@ -25,16 +25,16 @@ The product is software the customer runs, not a managed service. Customers conn
 ## Core platform layers
 
 - **Input and context layer**: ingests whatever the user has. Brand memory holds styling rules, voice, do's and don'ts, and preferences that persist across every project.
-- **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, transitions, and platform-specific versions.
+- **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, and transitions. The output ratio (9:16, 1:1, or 16:9) is set on the template.
 - **Review and export layer**: any step can be paused at a review gate where the user approves, edits, rejects, or regenerates its output before the run continues. Finished runs export as MP4, SRT subtitles, or an FCPXML project for Final Cut Pro.
 
 ## Pricing
 
-The Puffin Ship platform is free to use during early access, with no credit card required. Usage limits apply while the product is in early access. Core AI generation and editing, reusable templates, brand memory, review gates, platform-ready aspect ratios, and MP4/SRT/FCPXML exports are all included.
+The Puffin Ship platform is free to use during early access, with no credit card required. Usage limits apply while the product is in early access and we scale up; users who need higher limits can contact us. Core AI generation and editing, reusable templates, brand memory, review gates, selectable output ratios (9:16, 1:1, 16:9), and MP4/SRT/FCPXML exports are all included.
 
 There are third-party costs that do not go to Puffin Ship. Steps that call outside AI services (OpenAI for transcription, Google for AI video and image generation, HeyGen for AI presenters, ElevenLabs for voiceover) run on API keys the user supplies, and those providers bill the user directly at their own rates. Puffin Ship does not resell or mark up AI usage, and a user only needs keys for the services their template actually uses.
 
-Teams that need higher volume, multiple client workspaces, or white-label options can contact us at https://app.puffinship.com/contact.
+Teams that need higher limits or multiple client workspaces can contact us at https://app.puffinship.com/contact.
 
 ## Who it's for
 
