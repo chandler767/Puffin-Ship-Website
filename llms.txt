@@ -39,7 +39,7 @@ Teams that need higher volume, multiple client workspaces, or white-label option
 ## Who it's for
 
 - **Direct businesses**: businesses that need recurring on-brand video but don't have the team or budget to produce it consistently
-- **Agencies**: more production capacity across many client workspaces without hiring more editors; each client gets its own brand memory and approval flows
+- **Agencies**: more production capacity across many client workspaces without hiring more editors; each client gets its own workspace, brand memory, and review gates
 - **Expert-led businesses**: coaches, founders, educators, and consultants turning calls, webinars, and expertise into consistent short-form video
 
 ## Competitive position

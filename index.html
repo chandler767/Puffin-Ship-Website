@@ -485,7 +485,11 @@
       color: var(--ink-900); margin: 10px 0 0;
     }
     .format-row {
-      --frame-h: clamp(96px, 13.5vw, 176px);
+      /* The widest frame (16:9) is ~1.03x the frame height, so the height has
+         to track the column width or the grid squeezes the frame and the
+         aspect ratio — the whole point of this section — comes out wrong.
+         Tuned so the 16:9 frame always fits its column, down to 320px. */
+      --frame-h: clamp(72px, calc(29vw - 12px), 176px);
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: clamp(10px, 3vw, 24px); max-width: 720px; margin: 0 auto;
     }
@@ -530,6 +534,12 @@
     .formats-dest-list { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; }
     .dest-chip { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--ink-600); }
     .dest-sep { color: var(--ink-300); user-select: none; }
+    /* Narrow screens wrap this row; a separator stranded at the end of a line
+       reads as a typo, so drop them and let the gap do the separating. */
+    @media (max-width: 600px) {
+      .dest-sep { display: none; }
+      .formats-dest-list { gap: 10px 18px; }
+    }
 
     /* ── Section common ───────────────────────────────────────────────────── */
     .section-pad { padding: 72px var(--space-8); }
@@ -910,7 +920,7 @@
     <div class="section-head">
       <div class="eyebrow">How it works</div>
       <h2 class="section-h2">From raw material to finished video, in software you run</h2>
-      <p class="section-sub">Three steps, all in the browser. No editing suite to learn, no render farm to manage.</p>
+      <p class="section-sub">Three steps, all in the browser. Nothing to install, no render farm to manage.</p>
     </div>
     <div class="steps-grid">
       <div class="card">
@@ -967,7 +977,7 @@
         <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg></div>
           <h3 class="feat-title">Brand memory</h3>
-          <p class="feat-desc">Set your brand context once. Every video automatically stays on-brand: voice, style, and do's and don'ts.</p>
+          <p class="feat-desc">Set your brand context once. Every run builds from it: voice, style, and do's and don'ts.</p>
         </div>
         <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2z"/><path d="M7 7h.01"/></svg></div>
@@ -1007,7 +1017,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="18" rx="1"/><rect x="9" y="3" width="7" height="18" rx="1"/><rect x="16" y="3" width="6" height="18" rx="1"/></svg>
         </div>
         <h3 class="who-title">Agencies</h3>
-        <p class="who-desc">More production capacity across many client workspaces without hiring more editors. Each client gets its own brand memory, roles, and approval flows.</p>
+        <p class="who-desc">More production capacity across many client workspaces without hiring more editors. Each client gets its own workspace, brand memory, and review gates.</p>
       </div>
       <div class="card">
         <div class="who-icon">
@@ -1038,7 +1048,7 @@
             <span class="amt">$0</span>
             <span class="per">for the platform</span>
           </div>
-          <p class="free-sub">Every feature, no credit card. Fair-use limits apply while we're in early access.</p>
+          <p class="free-sub">Everything listed here, no credit card. Fair-use limits apply while we're in early access.</p>
           <a href="https://app.puffinship.com/login" class="btn btn-primary btn-lg btn-block">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
             Start free
@@ -1049,7 +1059,7 @@
           <div class="free-feats">
             <div class="free-feat"><span class="free-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>AI video generation and editing</div>
             <div class="free-feat"><span class="free-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Reusable content templates</div>
-            <div class="free-feat"><span class="free-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Brand memory that stays on-brand</div>
+            <div class="free-feat"><span class="free-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Brand memory across every project</div>
             <div class="free-feat"><span class="free-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Review gates on any step</div>
             <div class="free-feat"><span class="free-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>MP4, subtitle, and Final Cut exports</div>
           </div>
