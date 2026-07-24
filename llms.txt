@@ -19,7 +19,7 @@ The product is software the customer runs, not a managed service. Customers conn
 ## How it works
 
 1. **Connect your source material**: add clips, calls, audio, ideas, or docs. Whatever you already have becomes source material for the run.
-2. **AI builds your template**: your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, music, and structure, filling in whatever is missing.
+2. **AI builds your template**: your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, and structure, filling in whatever is missing.
 3. **Review, then export**: pause any step for review to approve, edit, or regenerate its output before the final render. Export a finished MP4, subtitle files (SRT), or a Final Cut Pro project (FCPXML).
 
 ## Core platform layers
