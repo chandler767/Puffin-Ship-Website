@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Broll Guide · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link active" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="broll-guide">Broll Guide</h1>
+<p>Broll in Puffin Ship is split across two processors that run in sequence:</p>
+<ol>
+<li><strong><code>broll_place</code></strong> — places existing clips from your project's media folder</li>
+<li><strong><code>broll_veo_generate</code></strong> — fills remaining gaps by generating new clips with Veo 3</li>
+</ol>
+<p>Run them in this order. The generate step reads the full timeline state and only targets positions that <code>broll_place</code> left empty.</p>
+<hr>
+<h2 id="broll-place--placing-existing-clips"><code>broll_place</code> — Placing Existing Clips</h2>
+<p>Point this at a folder of <code>.mp4</code> clips. Claude vision analyzes each one (cached), then an AI agent decides where to place them based on what the speaker is saying.</p>
+<pre><code class="language-yaml">- id: broll
+  processor: broll_place
+  input:
+    - id: transcript
+      step: transcribe_main      # word-level timestamps
+    - id: clips
+      file: broll-clips          # project input ID pointing to your clips folder
+    - id: backbone
+      step: ai_cut               # cache dep: re-run when the cut changes
+  params:
+    min_gap_sec: 8               # minimum spacing between placed clips (default 5)
+    max_gap_sec: 20              # gaps longer than this need coverage (default 0 = AI decides)
+    max_duration_sec: 8          # max seconds to use from any single clip (default 8)
+    backbone_step: ai_cut        # step to read backbone timeline from
+    per_clip_review: false       # pause for [k]eep/[s]kip per clip (default false)
+    eval_prompt: &gt;
+      Accept: direct visual match to spoken content.
+      Reject: vague topic overlap, people facing away, blurry footage.
+  output:
+    timeline: broll
+  prompt: |
+    Analyze every unanalyzed clip first (free, mandatory).
+    Then fill backbone timeline gaps using approved clips where the content
+    directly matches what the speaker is saying — vague topic overlap is not enough.
+    Each clip should be placed at most once.
+    Leave unfilled gaps blank — a broll_veo_generate step will handle those.
+  review: true
+  cache: true
+</code></pre>
+<h3 id="clip-manifest">Clip Manifest</h3>
+<p>All analysis results are cached in <code>&lt;project&gt;/broll/manifest.json</code>. On subsequent runs, clips in the manifest are never re-analyzed or re-generated.</p>
+<p>Each entry records:</p>
+<ul>
+<li><code>verdict</code> — <code>approve</code> or <code>reject</code></li>
+<li><code>trim_in</code> / <code>trim_out</code> — clean usable range in seconds</li>
+<li><code>notes</code> — what the clip actually shows</li>
+</ul>
+<p>To force re-analysis, delete the entry from <code>manifest.json</code> or delete the file.</p>
+<h3 id="clip-placement-logic">Clip Placement Logic</h3>
+<p>The AI agent follows this workflow:</p>
+<ol>
+<li>Get transcript and backbone timeline positions</li>
+<li>Check <code>get_timeline_state()</code> for what's already placed (including any previous broll steps)</li>
+<li>List all available clips and analyze any that aren't yet in the manifest</li>
+<li>For each backbone gap longer than <code>max_gap_sec</code>: find an approved clip whose <code>notes</code> directly illustrates the spoken content at that moment</li>
+<li>Place the clip; each clip is used at most once</li>
+</ol>
+<p><strong>Matching is strict by design.</strong> &quot;Approved&quot; clips that don't match the content are left unused for a different gap or skipped entirely. This prevents random B-roll that doesn't relate to what's being said.</p>
+<hr>
+<h2 id="broll-veo-generate--generating-with-veo-3"><code>broll_veo_generate</code> — Generating with Veo 3</h2>
+<p>Fills gaps that <code>broll_place</code> didn't cover. Requires <code>PUFFINSHIP_GOOGLE_API_KEY</code>.</p>
+<p>Veo 3 always generates 8-second clips. The analysis step <strong>aggressively trims</strong> each clip to its most impactful moment — by default targeting ~4s cuts with a 2s minimum. This creates faster visual rhythm. Use the full 8s only when the entire clip is uniformly excellent.</p>
+<pre><code class="language-yaml">- id: broll_ai
+  processor: broll_veo_generate
+  input:
+    - id: transcript
+      step: transcribe_main
+    - id: backbone
+      step: ai_cut
+  params:
+    min_gap_sec: 8
+    max_gap_sec: 20
+    backbone_step: ai_cut
+    per_clip_review: false
+    max_generate: 5              # Veo 3 budget per run (0 = unlimited)
+    min_clip_sec: 2.0            # minimum clip duration after trimming (default 2.0)
+    target_clip_sec: 4.0         # preferred clip duration to aim for (default 4.0)
+    trim_style: aggressive       # &quot;aggressive&quot; (default) or &quot;conservative&quot;
+    eval_prompt: &gt;
+      Accept: clear, focused shot without glitches or uncanny elements.
+      Reject: blurry, morphing objects, impossible physics.
+  output:
+    timeline: broll
+  prompt: |
+    Check get_timeline_state() first to see what's already placed.
+    Only generate clips for unfilled gaps longer than max_gap_sec.
+    Leave shorter gaps blank.
+
+    When writing prompts for generate_broll_clip:
+    - Feature animals, nature, food, architecture, vehicles, or objects — NO people
+    - Simple, literal, physical scene — no abstract concepts
+    - Cartoon/animated style works great for conceptual topics
+    - 1–3 sentences max
+
+    For longer gaps, consider placing multiple shorter clips rather than one long one.
+  review: true
+  cache: true
+</code></pre>
+<h3 id="trimming-behavior">Trimming Behavior</h3>
+<p>After generation, Claude vision analyzes every frame and:</p>
+<ol>
+<li>Scans for glitches (morphing objects, uncanny valley, impossible physics)</li>
+<li>Identifies the single most visually dynamic/interesting moment in the clip</li>
+<li>Sets <code>trim_in</code>/<code>trim_out</code> to isolate that moment — not just removing bad frames</li>
+</ol>
+<p>With <code>trim_style: aggressive</code> (default):</p>
+<ul>
+<li>Target ~<code>target_clip_sec</code> seconds (default 4s) — prefer a punchy cut over a long one</li>
+<li>Minimum <code>min_clip_sec</code> seconds (default 2s)</li>
+<li>Use the full 8s only when the entire clip is uniformly excellent</li>
+</ul>
+<p>With <code>trim_style: conservative</code>:</p>
+<ul>
+<li>Still finds the best portion but is less strict about cutting runtime</li>
+</ul>
+<h3 id="prompt-judge">Prompt Judge</h3>
+<p>Before calling Veo 3, every prompt is sent to Claude for validation. The judge <strong>rejects</strong> prompts that describe:</p>
+<ul>
+<li>People, faces, or humanoid figures — AI-generated humans trigger uncanny valley</li>
+<li>Computer/phone/tablet screens, keyboards, or UI elements</li>
+<li>Objects passing through each other or impossible physics</li>
+<li>Intricate mechanical objects (gears, watch internals, engine parts)</li>
+<li>Abstract concepts without a concrete visual scene</li>
+<li>More than 3 sentences</li>
+<li>Descriptor words like &quot;dramatic,&quot; &quot;cinematic,&quot; or &quot;epic&quot;</li>
+</ul>
+<p>If approved with minor issues, the judge rewrites the prompt before generation.</p>
+<h3 id="what-works-well">What works well</h3>
+<p>✓ Animals doing things — a cat knocking things off a shelf, birds landing
+✓ Food and cooking — coffee being poured, bread rising
+✓ Nature — clouds moving, waves, fire, rain
+✓ Architecture and spaces — empty offices, server rooms, city streets (no people)
+✓ Cartoon/animation style — good for abstract topics
+✓ Simple object interactions with clean physics</p>
+<h3 id="generation-budget">Generation Budget</h3>
+<p><code>max_generate</code> limits Veo 3 calls per pipeline run. Existing generated clips (already in the manifest) don't count toward the budget. Set <code>max_generate: 0</code> for unlimited.</p>
+<p>Generated clips are saved to <code>&lt;project&gt;/broll/</code> and cached in the manifest like existing clips. Re-running with a higher budget fills additional gaps.</p>
+<h3 id="per-clip-review">Per-clip Review</h3>
+<p>With <code>per_clip_review: true</code>, Puffin Ship pauses after each Veo 3 generation:</p>
+<pre><code>[k]eep  [r]egenerate  [e]dit request  [s]kip
+</code></pre>
+<ul>
+<li><code>k</code> — approve and continue placing</li>
+<li><code>r</code> — reject and mark for regeneration next run</li>
+<li><code>e</code> — enter an edit request (saved as a note, clip rejected)</li>
+<li><code>s</code> — skip (clip rejected, gap left blank)</li>
+</ul>
+<hr>
+<h2 id="full-timeline-awareness">Full Timeline Awareness</h2>
+<p>Both <code>broll_place</code> and <code>broll_veo_generate</code> see <strong>all clips placed on the broll level across all previous pipeline steps</strong> — not just what the current step has placed. This means:</p>
+<ul>
+<li>If you run <code>broll_place</code> first and it places 5 clips, <code>broll_veo_generate</code> will see those 5 clips when checking for gaps</li>
+<li>Overlap detection also checks against all previous steps, so two steps can never place overlapping clips on the same level</li>
+<li>You can run multiple <code>broll_place</code> steps with different clip sources — each one sees what the others already placed</li>
+</ul>
+<hr>
+<h2 id="ordering-and-priority">Ordering and Priority</h2>
+<p>The order of your broll steps controls placement priority. Earlier steps have first pick:</p>
+<pre><code class="language-yaml"># Higher priority — these existing clips get placed first
+- id: broll
+  processor: broll_place
+  ...
+
+# Lower priority — only fills what broll_place left empty
+- id: broll_ai
+  processor: broll_veo_generate
+  ...
+</code></pre>
+<p>You could flip the order to give AI-generated clips priority over existing ones, though this is rarely useful.</p>
+<hr>
+<h2 id="broll-imagen-generate--generating-with-imagen"><code>broll_imagen_generate</code> — Generating with Imagen</h2>
+<p>An alternative to Veo 3 when you want generated still images with motion rather than full video. Faster and cheaper per clip. See <a href="../processors/broll-imagen-generate.html"><code>broll_imagen_generate</code></a> for full params.</p>
+<pre><code class="language-yaml">- id: broll_img
+  processor: broll_imagen_generate
+  input:
+    - id: transcript
+      step: transcribe_main
+    - id: backbone
+      step: ai_cut
+  params:
+    backbone_step: ai_cut
+    max_generate: 8
+    target_dur_sec: 4.0
+    motion_style: zoom_in
+    eval_prompt: &gt;
+      Accept: clear, focused image without distortion or artifacts.
+      Reject: blurry, faces, text artifacts, impossible geometry.
+  output:
+    timeline: broll
+  cache: true
+</code></pre>
+<hr>
+<h2 id="broll-screenshot-websource--animated-web-screenshots"><code>broll_screenshot_websource</code> — Animated Web Screenshots</h2>
+<p>Generates animated background clips from web screenshots. By default (<code>auto_find: true</code>), it uses AI web search to find and screenshot relevant pages based on the transcript. You can also supply URLs directly. Motion effects (zoom, blur, pixelate) are applied to each screenshot. See <a href="../processors/broll-websource.html"><code>broll_screenshot_websource</code></a> for full params.</p>
+<hr>
+<h2 id="ordering-all-four-processors">Ordering all four processors</h2>
+<p>Earlier steps have first pick of gaps:</p>
+<pre><code class="language-yaml"># 1. Existing clips first — highest relevance
+- id: broll
+  processor: broll_place
+  ...
+
+# 2. Web screenshots — for specific topic coverage
+- id: web_broll
+  processor: broll_screenshot_websource
+  ...
+
+# 3. Imagen stills — fast generated imagery
+- id: broll_img
+  processor: broll_imagen_generate
+  ...
+
+# 4. Veo 3 video — fills remaining gaps with full video generation
+- id: broll_ai
+  processor: broll_veo_generate
+  ...
+</code></pre>
+<p>Each step reads the full broll level state and only targets gaps left by earlier steps.</p>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

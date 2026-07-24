@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ai_agent · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link active" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="ai-agent"><code>ai_agent</code></h1>
+<p>General-purpose Claude tool-use loop. Claude is given a prompt and a set of tools; it calls them iteratively until it's satisfied with the result.</p>
+<h2 id="when-to-use">When to use</h2>
+<p><code>ai_agent</code> is the flexible workhorse for any editing task that requires reasoning about content. The most common use is a content cut: Claude reads a transcript, reasons about what to keep, and creates edit decisions for each segment.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml">- id: ai_cut
+  processor: ai_agent
+  input:
+    - id: transcript
+      step: transcribe_main
+    - id: speaker
+      file: speaker-footage
+    - id: reference         # optional .txt reference script
+      file: transcript
+  prompt: |
+    You are an editor making a content cut. The transcript and silence intervals are
+    already provided in the context block above. Call get_input(&quot;speaker&quot;) to get the
+    source filename, then call create_edit_decision for each segment to keep.
+    Use source=files[0], type=&quot;video&quot;, level=&quot;main&quot;. Snap in/out to silence boundaries.
+  output:
+    timeline: main
+  review: true
+  cache: true
+</code></pre>
+<h3 id="example-with-suggest-ideas-and-context">Example with <code>suggest_ideas</code> and <code>context:</code></h3>
+<pre><code class="language-yaml">- id: ai_cut
+  processor: ai_agent
+  input:
+    - id: transcript
+      step: transcribe_main
+    - id: speaker
+      file: speaker-footage
+  params:
+    suggest_ideas: true
+    context:
+      dir: context/          # e.g. context/product-notes.md, context/talking-points.txt
+  prompt: |
+    You are an editor making a content cut of a Redpanda product demo.
+    Use get_input(&quot;transcript&quot;) for timestamps, get_input(&quot;speaker&quot;) for the source file.
+    Create edit decisions for the best segments — trim dead air and off-topic tangents.
+  output:
+    timeline: main
+  review: true
+  cache: true
+</code></pre>
+<h2 id="inputs">Inputs</h2>
+<p>Any number of named inputs. Reference them in your prompt using <code>get_input(&quot;&lt;id&gt;&quot;)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(any)</td>
+<td>file or step</td>
+<td>Accessible via <code>get_input()</code> in Claude's tool calls</td>
+</tr>
+</tbody>
+</table>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>guidelines</code></td>
+<td>text</td>
+<td>—</td>
+<td>Additional instructions or constraints for the AI agent beyond the prompt.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>text</td>
+<td>—</td>
+<td>Background context injected into the system prompt. Supports <code>text:</code>, <code>file:</code>, <code>dir:</code>, <code>files:</code>.</td>
+</tr>
+<tr>
+<td><code>suggest_ideas</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Before running, generate 3–5 editing directions and ask the human to pick one. The chosen direction is injected into the agent's system prompt.</td>
+</tr>
+<tr>
+<td><code>allowed_content_types</code></td>
+<td>list</td>
+<td>—</td>
+<td>Plan mode only: restrict the planner to these content types (e.g. [tts, clip]). If empty, all registered types are available.</td>
+</tr>
+<tr>
+<td><code>mute_audio</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Force <code>Volume=0</code> on all produced edit decisions.</td>
+</tr>
+<tr>
+<td><code>max_clip_sec</code></td>
+<td>duration (s)</td>
+<td>—</td>
+<td>Truncate long clips to this duration during analysis.</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="available-tools">Available tools</h2>
+<p>All data (transcript, footage analysis, silence intervals, workspace files) is pre-injected
+into the first user message. The agent does not need to call fetch tools — just read the
+context block and call decision tools.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_input(id)</code></td>
+<td>For media file inputs: returns the source filename. Transcript/analysis inputs are already in the context block.</td>
+</tr>
+<tr>
+<td><code>get_timeline_state()</code></td>
+<td>List all edit decisions created so far in this step, plus backbone duration and remaining time.</td>
+</tr>
+<tr>
+<td><code>create_edit_decision(source, type, level, in, out, ...)</code></td>
+<td>Add a clip to the timeline.</td>
+</tr>
+<tr>
+<td><code>list_edit_decisions(level)</code></td>
+<td>Filter existing edit decisions by level.</td>
+</tr>
+<tr>
+<td><code>apply_transcript_corrections(corrections)</code></td>
+<td>Find-replace on a transcript input.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> in most cases — whatever Claude chose to create via <code>create_edit_decision</code>. When <code>apply_transcript_corrections</code> is used, returns <code>Analysis</code> instead. The output type is dynamic (<code>OutputTypeUnknown</code>).</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>The prompt is sent as the system message. Keep it specific and instructional.</li>
+<li><code>review: true</code> is strongly recommended — always verify the AI's editorial decisions before continuing.</li>
+<li><code>cache: true</code> is recommended — saves API cost on re-runs where nothing has changed.</li>
+<li>Wire transcript, footage analysis, and workspace analysis as explicit <code>input:</code> entries — the processor pre-injects them into the context block automatically. You no longer need to call <code>get_analysis</code> or <code>list_workspace_files</code> in your prompt.</li>
+</ul>
+<h2 id="production-planner-mode">Production Planner Mode</h2>
+<p>Set <code>mode: plan</code> at the step level to have <code>ai_agent</code> produce a <code>SegmentPlan</code> instead of edit decisions. In this mode, the agent assigns content types and generation configs to every second of the timeline, which downstream processors execute.</p>
+<pre><code class="language-yaml">- id: plan
+  processor: ai_agent
+  mode: plan
+  input:
+    - id: script
+      step: write_script
+    - id: footage
+      file: &quot;clips/*.mp4&quot;
+  params:
+    guidelines: |
+      - Open with the hero footage clip.
+      - Use TTS narration for the middle section.
+      - Close with a HeyGen avatar call-to-action.
+  prompt: |
+    Create a production plan for a 60-second promotional video.
+</code></pre>
+<h3 id="available-content-types">Available Content Types</h3>
+<p>The planner's available content types are auto-discovered from registered <code>SegmentCapability</code> entries:</p>
+<table>
+<thead>
+<tr>
+<th>Content Type</th>
+<th>Processor</th>
+<th>Config Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clip</code></td>
+<td><code>broll_place</code></td>
+<td><code>file</code> (required), <code>in_sec</code>, <code>out_sec</code></td>
+</tr>
+<tr>
+<td><code>tts</code></td>
+<td><code>elevenlabs_tts</code></td>
+<td><code>text</code> (required), <code>voice_id</code></td>
+</tr>
+<tr>
+<td><code>veo</code></td>
+<td><code>broll_veo_generate</code></td>
+<td><code>prompt</code> (required), <code>style</code></td>
+</tr>
+<tr>
+<td><code>heygen</code></td>
+<td><code>heygen_speaker</code></td>
+<td><code>script</code> (required), <code>avatar_id</code>, <code>voice_id</code></td>
+</tr>
+</tbody>
+</table>
+<p>API-backed types (<code>tts</code>, <code>veo</code>, <code>heygen</code>) only appear when the corresponding API key is configured.</p>
+<h3 id="wiring-downstream-processors">Wiring Downstream Processors</h3>
+<p>Each downstream processor reads the plan via a <code>segment_plan</code> input:</p>
+<pre><code class="language-yaml">- id: narration
+  processor: elevenlabs_tts
+  input:
+    - id: segment_plan
+      step: plan
+  params:
+    voice_id: &quot;21m00Tcm4TlvDq8ikWAM&quot;
+
+- id: broll_ai
+  processor: broll_veo_generate
+  input:
+    - id: segment_plan
+      step: plan
+  output:
+    timeline: broll
+
+- id: presenter
+  processor: heygen_speaker
+  input:
+    - id: segment_plan
+      step: plan
+  params:
+    avatar_id: &quot;default&quot;
+  output:
+    timeline: main
+
+- id: place_clips
+  processor: broll_place
+  input:
+    - id: segment_plan
+      step: plan
+  output:
+    timeline: broll
+</code></pre>
+<h3 id="paramsguidelines">params.guidelines</h3>
+<p>Optional free-form instructions injected into the planner's system prompt to guide content type selection:</p>
+<pre><code class="language-yaml">params:
+  guidelines: |
+    - Open with existing footage when available.
+    - Use TTS for factual narration segments.
+    - Only use HeyGen for the closing segment.
+</code></pre>
+<h3 id="paramsallowed-content-types">params.allowed_content_types</h3>
+<p>Restrict the planner to a specific subset of content types. Any <code>create_segment</code> call with a type not in this list will be rejected by the tool, forcing the LLM to use only the permitted types. The system prompt is also filtered to only show the allowed types.</p>
+<pre><code class="language-yaml">params:
+  allowed_content_types:
+    - tts
+    - clip
+</code></pre>
+<p>This is the recommended way to exclude AI-generated media (Veo, HeyGen) from a pipeline that only uses user-provided footage.</p>
+<h2 id="web-search">Web Search</h2>
+<p>When <code>PUFFINSHIP_SEARCH_URL</code> is set, the agent gains a <code>web_search</code> tool. Claude
+calls it autonomously to research topics, find recent news, or gather data.</p>
+<p><strong>Setup (SearXNG via Docker):</strong></p>
+<pre><code class="language-bash">docker run -d -p 8080:8080 searxng/searxng
+</code></pre>
+<p>Add to <code>.env</code>:</p>
+<pre><code>PUFFINSHIP_SEARCH_URL=http://localhost:8080
+</code></pre>
+<p>The tool is injected into every <code>ai_agent</code> step automatically when the env var is set.</p>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

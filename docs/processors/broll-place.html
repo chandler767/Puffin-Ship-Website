@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>broll_place · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link active" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="broll-place"><code>broll_place</code></h1>
+<p>AI agent that places existing video clips from your project into gaps on the broll timeline level, matching clip content to what the speaker is saying.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use when you have a folder of broll clips and want AI to select and place them based on transcript content. Run before <code>broll_veo_generate</code> so existing clips get first pick of gaps. See the <a href="../guides/broll.html">Broll guide</a> for the full workflow.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml">- id: broll
+  processor: broll_place
+  input:
+    - id: transcript
+      step: transcribe_main
+    - id: clips
+      file: broll-clips
+    - id: backbone
+      step: ai_cut
+  params:
+    min_gap_sec: 8
+    max_gap_sec: 20
+    max_duration_sec: 8
+    backbone_step: ai_cut
+    per_clip_review: false
+    eval_prompt: &gt;
+      Accept: direct visual match to spoken content.
+      Reject: vague topic overlap, people facing away, blurry footage.
+  output:
+    timeline: broll
+  prompt: |
+    Analyze every unanalyzed clip first (free, mandatory).
+    Then fill backbone timeline gaps using approved clips where the content
+    directly matches what the speaker is saying.
+    Each clip should be placed at most once.
+    Leave unfilled gaps blank — a broll_veo_generate step will handle those.
+  review: true
+  cache: true
+</code></pre>
+<h2 id="inputs">Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transcript</code></td>
+<td>step</td>
+<td>Word-level timestamps from <code>generate_transcript</code></td>
+</tr>
+<tr>
+<td><code>clips</code></td>
+<td>file (glob)</td>
+<td>Broll clips folder</td>
+</tr>
+<tr>
+<td><code>backbone</code></td>
+<td>step</td>
+<td>Backbone timeline (used as a cache dep — re-run when cut changes)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eval_prompt</code></td>
+<td>text</td>
+<td>—</td>
+<td>Accept/reject criteria for clip analysis. Drives what qualifies as a good match.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>text</td>
+<td>—</td>
+<td>Background context injected into the system prompt. Supports <code>text:</code>, <code>file:</code>, <code>dir:</code>, <code>files:</code>.</td>
+</tr>
+<tr>
+<td><code>min_gap_sec</code></td>
+<td>duration (s)</td>
+<td><code>5</code></td>
+<td>Minimum spacing between placed clips</td>
+</tr>
+<tr>
+<td><code>max_gap_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Gaps longer than this need coverage (0 = AI decides)</td>
+</tr>
+<tr>
+<td><code>max_duration_sec</code></td>
+<td>duration (s)</td>
+<td><code>8</code></td>
+<td>Max seconds to use from any single clip</td>
+</tr>
+<tr>
+<td><code>min_clip_sec</code></td>
+<td>duration (s)</td>
+<td><code>2</code></td>
+<td>Shortest b-roll clip allowed after trimming.</td>
+</tr>
+<tr>
+<td><code>min_use_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Minimum clip use duration. Placements shorter than this are rejected.</td>
+</tr>
+<tr>
+<td><code>target_clip_sec</code></td>
+<td>duration (s)</td>
+<td><code>4</code></td>
+<td>Ideal b-roll clip length.</td>
+</tr>
+<tr>
+<td><code>trim_style</code></td>
+<td>select: <code>conservative</code>, <code>balanced</code>, <code>aggressive</code></td>
+<td><code>&quot;aggressive&quot;</code></td>
+<td>How aggressively to trim clips to their most impactful moment.</td>
+</tr>
+<tr>
+<td><code>full_coverage</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Require every second of the backbone to be covered — no gaps allowed</td>
+</tr>
+<tr>
+<td><code>required_clips</code></td>
+<td>list</td>
+<td>—</td>
+<td>Filenames that must be placed. The agent retries until all are placed.</td>
+</tr>
+<tr>
+<td><code>no_clip_reuse</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Reject placements that reuse overlapping in/out ranges from the same source file</td>
+</tr>
+<tr>
+<td><code>per_clip_review</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Pause for <code>[k]eep/[s]kip</code> per clip</td>
+</tr>
+<tr>
+<td><code>max_generate</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Maximum number of clips to place. 0 = no limit.</td>
+</tr>
+<tr>
+<td><code>backbone_step</code></td>
+<td>string</td>
+<td>—</td>
+<td>Step ID to read backbone timeline from (optional — enables backbone-aware placement)</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> on the broll level.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Clip analysis is cached in <code>broll/manifest.json</code> (at the project root). Delete an entry to force re-analysis.</li>
+<li>Matching is strict by design — clips are only placed where they directly illustrate the spoken content.</li>
+<li>This processor sees all broll clips placed by all previous pipeline steps, so two <code>broll_place</code> steps with different clip sources won't overlap.</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

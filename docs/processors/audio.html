@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>audio · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link active" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="audio"><code>audio</code></h1>
+<p>Places a music or sound file on a timeline level. Can loop a specific segment to fill the full edit duration.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use to add background music, looping ambient sound, or a one-shot sound effect. For voice-over narration, use <code>elevenlabs_tts</code> or <code>heygen_speaker</code> instead.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml"># Loop a music segment for the full cut
+- id: music
+  processor: audio
+  input:
+    - id: source
+      file: music-track
+  cache_deps:
+    - ai_cut
+  params:
+    loop: true
+    start_sec: 5
+    end_sec: 25
+    gain_db: -23
+    fade_in_sec: 0
+    fade_out_sec: 1.5
+    backbone_step: ai_cut
+  output:
+    timeline: music
+  cache: true
+
+# One-shot sound effect at a specific position
+- id: sting
+  processor: audio
+  input:
+    - id: source
+      file: sfx-track
+  params:
+    loop: false
+    start_sec: 0
+    end_sec: 2.5
+    position_sec: 12.0
+    gain_db: -10
+  output:
+    timeline: sfx
+</code></pre>
+<h2 id="inputs">Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>file</td>
+<td>Audio or video file (audio track used)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gain_db</code></td>
+<td>number</td>
+<td><code>-23</code></td>
+<td>Volume in dB</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Tile the segment to fill backbone duration</td>
+</tr>
+<tr>
+<td><code>loop_count</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Repeat the segment exactly N times when <code>loop: true</code>. 0 = tile to fill backbone duration. Mutually exclusive with <code>backbone_step</code>.</td>
+</tr>
+<tr>
+<td><code>min_loop_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Minimum segment duration for detected loop (used with <code>auto_cut_loop</code>)</td>
+</tr>
+<tr>
+<td><code>auto_duration</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Probe source file to determine <code>end_sec</code> at run time. Only valid when <code>loop: false</code>. Overrides any configured <code>end_sec</code>.</td>
+</tr>
+<tr>
+<td><code>fade_in_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Fade in on the first tile</td>
+</tr>
+<tr>
+<td><code>fade_out_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Fade out on the last tile</td>
+</tr>
+<tr>
+<td><code>start_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Start of the source segment to use</td>
+</tr>
+<tr>
+<td><code>end_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>End of the source segment to use</td>
+</tr>
+<tr>
+<td><code>position_sec</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Timeline position for one-shot placement (when <code>loop: false</code>)</td>
+</tr>
+<tr>
+<td><code>auto_cut_loop</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Detect the best loop point automatically. Requires <code>loop: true</code>.</td>
+</tr>
+<tr>
+<td><code>backbone_step</code></td>
+<td>string</td>
+<td>—</td>
+<td>Step ID for duration when <code>loop: true</code> and <code>loop_count</code> is 0. Required for loop mode unless <code>loop_count</code> is set.</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> — one edit decision per tile (loop mode) or one (one-shot mode).</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Use <code>cache_deps: [backbone_step]</code> with loop mode so the audio re-runs when the cut length changes.</li>
+<li>Tiles are placed end-to-end without gaps. The last tile is trimmed to match the backbone end exactly.</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>
