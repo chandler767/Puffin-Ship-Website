@@ -44,7 +44,6 @@
     max_gap_sec: 20
     max_duration_sec: 8
     backbone_step: ai_cut
-    per_clip_review: false
     eval_prompt: &gt;
       Accept: direct visual match to spoken content.
       Reject: vague topic overlap, people facing away, blurry footage.
@@ -80,9 +79,14 @@
 <td>Broll clips folder</td>
 </tr>
 <tr>
+<td><code>segment_plan</code></td>
+<td>step (optional)</td>
+<td>A <code>SegmentPlan</code> (e.g. from <code>video_director</code>) constraining where b-roll may go</td>
+</tr>
+<tr>
 <td><code>backbone</code></td>
-<td>step</td>
-<td>Backbone timeline (used as a cache dep — re-run when cut changes)</td>
+<td>step (optional)</td>
+<td>Backbone timeline (used as a cache dep — re-run when the cut changes)</td>
 </tr>
 </tbody>
 </table>
@@ -169,12 +173,6 @@
 <td>bool</td>
 <td><code>false</code></td>
 <td>Reject placements that reuse overlapping in/out ranges from the same source file</td>
-</tr>
-<tr>
-<td><code>per_clip_review</code></td>
-<td>bool</td>
-<td><code>false</code></td>
-<td>Pause for human review after each clip is generated</td>
 </tr>
 <tr>
 <td><code>max_generate</code></td>
