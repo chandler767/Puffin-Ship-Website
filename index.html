@@ -7,9 +7,12 @@
   <meta name="description" content="Puffin Ship is a free AI video content automation platform. Turn clips, ideas, and recordings into finished, on-brand video. Your prompt builds a reusable template that scales. Free to use." />
   <link rel="icon" id="favicon" type="image/png" href="assets/logo/puffin-mark.png" />
   <script>
-    // Google Consent Mode v2 — set defaults before any tag can load. No analytics
-    // script is injected until the visitor accepts (see the cookie banner script
-    // near </body>).
+    // Google Analytics with Consent Mode v2 (advanced). Consent defaults are set
+    // FIRST, before the tag processes anything, so analytics_storage is denied
+    // until the visitor accepts the banner near the end of the body. The tag then
+    // loads on every page view and, while consent is denied, sends only
+    // cookieless pings (no analytics cookies are set). Accepting flips
+    // analytics_storage to granted; see the cookie banner script near </body>.
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('consent', 'default', {
@@ -19,7 +22,11 @@
       analytics_storage: 'denied',
       wait_for_update: 500
     });
+    gtag('set', 'url_passthrough', true);
+    gtag('js', new Date());
+    gtag('config', 'G-RY63074N1P', { anonymize_ip: true });
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY63074N1P"></script>
   <script>
     // The black mark disappears on dark browser tab strips — swap in the paper one there.
     (function () {
@@ -1027,8 +1034,6 @@
   <script>
     (function () {
       var STORAGE_KEY = 'ps_cookie_consent_v1';
-      var GA_ID = 'G-RY63074N1P';
-      var analyticsLoaded = false;
 
       var banner = document.getElementById('cookie-banner');
       var acceptBtn = document.getElementById('cookie-accept');
@@ -1042,21 +1047,12 @@
         if (banner) banner.hidden = true;
       }
 
-      function loadAnalytics() {
-        if (analyticsLoaded) return;
-        analyticsLoaded = true;
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-        document.head.appendChild(script);
-        gtag('js', new Date());
-        gtag('config', GA_ID, { anonymize_ip: true });
-      }
-
+      // The tag is already loaded in <head> with analytics_storage denied by
+      // default, so Accept/Decline only flips the consent state; it never
+      // injects the tag.
       function grant() {
         localStorage.setItem(STORAGE_KEY, 'granted');
         gtag('consent', 'update', { analytics_storage: 'granted' });
-        loadAnalytics();
         hideBanner();
       }
 
@@ -1075,7 +1071,6 @@
 
       if (stored === 'granted') {
         gtag('consent', 'update', { analytics_storage: 'granted' });
-        loadAnalytics();
       } else if (stored === 'denied') {
         gtag('consent', 'update', { analytics_storage: 'denied' });
       } else {
