@@ -937,8 +937,11 @@
       See our <a href="https://app.puffinship.com/privacy">Privacy Policy</a>.
     </p>
     <div class="cookie-banner-actions">
-      <button type="button" id="cookie-decline" class="btn btn-outline btn-sm">Decline</button>
-      <button type="button" id="cookie-accept" class="btn btn-outline btn-sm">Accept</button>
+      <!-- btn-ghost, not btn-outline: the banner sits on --ink-900, and
+           btn-outline's dark --text-body gave 1.18:1 contrast (invisible).
+           Both buttons share one style so neither is the nudged option. -->
+      <button type="button" id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button>
+      <button type="button" id="cookie-accept" class="btn btn-ghost btn-sm">Accept</button>
     </div>
   </div>
 
