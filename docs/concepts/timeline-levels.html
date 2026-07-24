@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Timeline &amp; Levels · Puffin Ship Docs</title>
+<title>Timeline and levels · Puffin Ship Docs</title>
 <link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,11 +23,13 @@
   <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
 </header>
 <div class="layout">
-  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link active" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link active" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
   <main class="content">
-    <article class="doc"><h1 id="timeline--levels">Timeline &amp; Levels</h1>
-<h2 id="what-is-a-level">What is a level?</h2>
-<p>A level is a named track in the timeline. Every <code>EditDecision</code> belongs to a level. Levels are declared in the <code>timeline.levels</code> section of your config:</p>
+    <article class="doc"><h1 id="timeline-and-levels">Timeline and levels</h1>
+<p>A <strong>level</strong> is a named track in your timeline. Every clip a step places belongs
+to one. Levels are how you stack b-roll over a speaker, captions over both, and
+music underneath.</p>
+<p>Levels are declared once, in your template's timeline settings:</p>
 <pre><code class="language-yaml">timeline:
   levels:
     - name: music
@@ -47,24 +49,27 @@
       type: video
       backbone: false
 </code></pre>
+<p>Each step writes to one level, set by its <strong>Output level</strong> in the editor.</p>
 <h2 id="the-backbone-level">The backbone level</h2>
-<p>Exactly one level must be <code>backbone: true</code>. The backbone level:</p>
+<p>Exactly one level is the <strong>backbone</strong> (<code>backbone: true</code>). It is the spine of the
+video: it sets the total duration, and everything on other levels is positioned
+against it. In practice the backbone is your main footage or your voiceover.</p>
+<h2 id="stacking-order">Stacking order</h2>
+<p><code>order</code> decides what sits in front of what. Higher numbers render nearer the
+viewer, lower numbers further back, and the backbone sits in between at its own
+order. In the example above, b-roll covers the speaker, captions sit over the
+b-roll, and music plays underneath everything.</p>
+<h2 id="two-steps-on-the-same-level">Two steps on the same level</h2>
+<p>What happens when more than one step writes to the same level depends on whether
+it is the backbone:</p>
 <ul>
-<li>Drives total timeline duration</li>
-<li>Maps directly to the FCP <code>&lt;spine&gt;</code> element</li>
-<li>Is the reference point for all other levels</li>
+<li><strong>On the backbone, steps are intersected.</strong> Only the segments that every
+backbone step agrees to keep survive. Use this when you want two independent
+passes, say a content cut and a silence trim, and only want what both approve.</li>
+<li><strong>On any other level, steps are combined.</strong> Every clip is kept. This is how
+<code>broll_place</code> and <code>broll_veo_generate</code> can both fill the <code>broll</code> level without
+fighting each other.</li>
 </ul>
-<p>All non-backbone clips are positioned relative to backbone time.</p>
-<h2 id="non-backbone-levels-and-lanes">Non-backbone levels and lanes</h2>
-<p>Non-backbone levels map to FCP lane attributes. The lane number is computed as:</p>
-<pre><code>lane = levelOrder - backboneOrder
-</code></pre>
-<p>So with backbone at order 1: broll (order 2) is lane 1, captions (order 4) is lane 3, music (order -1) is lane -2.</p>
-<p>Lower order numbers render further back in the canvas.</p>
-<h2 id="multiple-backbone-steps-intersection">Multiple backbone steps: intersection</h2>
-<p>If two or more steps output to the backbone level, their edit decisions are <strong>intersected</strong> — only segments that both steps agree to keep survive. This is used when you have multiple independent AI cuts that must all agree on what to include.</p>
-<h2 id="non-backbone-steps-union">Non-backbone steps: union</h2>
-<p>Multiple steps writing to the same non-backbone level are <strong>unioned</strong> — all clips are kept. This is how <code>broll_place</code> and <code>broll_veo_generate</code> both write to the <code>broll</code> level without conflicting.</p>
 <h2 id="level-types">Level types</h2>
 <table>
 <thead>
@@ -84,19 +89,28 @@
 </tr>
 <tr>
 <td><code>any</code></td>
-<td>Mixed video/audio</td>
+<td>Mixed video and audio</td>
 </tr>
 <tr>
 <td><code>title</code></td>
-<td>FCP title clips</td>
+<td>Text and title cards</td>
 </tr>
 </tbody>
 </table>
-<h2 id="querying-levels-from-a-processor">Querying levels from a processor</h2>
-<p>Processors can read the full state of any level at any point during pipeline execution:</p>
-<pre><code class="language-go">ctx.AllEditDecisionsAtLevel(&quot;broll&quot;)
-</code></pre>
-<p>This is used by <code>broll_place</code> and <code>broll_veo_generate</code> to check what's already placed before deciding where to put new clips.</p>
+<p>The type records what the level is meant to carry, which keeps a template
+readable when it has several levels. Exactly one level must be the backbone, and
+level names must be unique; the editor tells you if either rule is broken.</p>
+<h2 id="levels-and-gaps">Levels and gaps</h2>
+<p>B-roll and title-card steps look at what is already on a level before placing
+anything, so they fill the gaps rather than covering work another step just did.
+That is why order matters in your pipeline: place your speaker footage first,
+then b-roll, then anything that fills what is left.</p>
+<h2 id="next">Next</h2>
+<ul>
+<li><a href="how-a-run-works.html">How a run works</a></li>
+<li><a href="../guides/broll.html">B-roll guide</a></li>
+<li><a href="../config.html">Config reference</a></li>
+</ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
   </main>

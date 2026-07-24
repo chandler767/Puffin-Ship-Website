@@ -23,21 +23,28 @@
   <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
 </header>
 <div class="layout">
-  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link active" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link active" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
   <main class="content">
     <article class="doc"><h1 id="av-recorder"><code>av_recorder</code></h1>
-<p>Pauses the pipeline to collect a user recording (webcam/mic capture), then returns it as a source clip for downstream steps.</p>
+<p>Pauses the run and asks you to record a take in the browser, then puts that
+recording on the timeline for later steps to work with.</p>
 <h2 id="when-to-use">When to use</h2>
-<p>Use <code>av_recorder</code> when you want to insert a live speaker recording into the pipeline at a specific point. The processor blocks until the user records and uploads their take through the web UI.</p>
-<p>An optional <code>script</code> input is used to display teleprompter text during recording and to generate a brief AI shot concept (when an LLM is available).</p>
+<p>Use <code>av_recorder</code> when a video needs you on camera and you would rather record to
+the script than film separately and upload. The run waits at this step until you
+record a take (or upload a file) and accept it.</p>
+<p>Give it a <code>script</code> input and you get a teleprompter during the take, plus a short
+shot direction describing what this take should be. Without a script, you get a
+freeform recording.</p>
+<p>For a walkthrough of the recording screen itself, see
+<a href="../guides/recording.html">Recording in the browser</a>.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: record_intro
   processor: av_recorder
   input:
     - id: script
-      file: .puffinship/scripts/intro.txt   # optional
+      step: write_intro   # optional: any step that produces a script
   params:
-    rotation: 90   # optional: 90, 180, or 270 — overrides web upload rotation, stable across reruns
+    rotation: 90          # optional: 90, 180, or 270
   output:
     timeline: main
 </code></pre>
@@ -54,14 +61,13 @@
 <tbody>
 <tr>
 <td><code>script</code></td>
-<td>file</td>
+<td>step or file</td>
 <td>no</td>
-<td>Script text file displayed to the user during recording and used for AI shot concept generation</td>
+<td>Script text shown on the teleprompter and used to write the shot direction. A <code>write_script</code> step or a text file both work.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="params">Params</h2>
-<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
 <table>
 <thead>
 <tr>
@@ -76,55 +82,34 @@
 <td><code>rotation</code></td>
 <td>select: <code>0</code>, <code>90</code>, <code>180</code>, <code>270</code></td>
 <td><code>&quot;0&quot;</code></td>
-<td>Clockwise rotation to apply to the recording in degrees. Valid values: <code>90</code>, <code>180</code>, <code>270</code>. When set, this overrides the rotation supplied via the web upload form, ensuring reruns use the same rotation without requiring a new recording. The rotation is part of the cache key — changing it invalidates the cache.</td>
-</tr>
-</tbody>
-</table>
-<!-- END GENERATED PARAMS -->
-<h2 id="web-form-parameters">Web Form Parameters</h2>
-<p>When using web mode (via <code>RecordingHandler</code>), the following optional parameters may be supplied with the recording upload:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>rotation</code></td>
-<td>int</td>
-<td>Clockwise rotation in degrees (90, 180, or 270). Applied as a fallback when no <code>rotation</code> YAML param is set. The YAML param takes precedence.</td>
+<td>Clockwise rotation to apply to the recording in degrees. Valid values: <code>90</code>, <code>180</code>, <code>270</code>. When set, this overrides the rotation you choose on the recording screen, so re-runs use the same rotation without needing a new take. Changing it makes the step run again.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="output">Output</h2>
-<p><code>EditDecisions</code> — one edit decision with <code>Source</code> set to the absolute path of the recording file. <code>In</code> is <code>0</code> and <code>Out</code> is the recording's probed duration (the full clip).</p>
+<p><code>EditDecisions</code>: one clip covering the whole recording, on the configured level.</p>
 <h2 id="behavior">Behavior</h2>
 <ol>
-<li>If a <code>script</code> input is provided, the script text is read from disk.</li>
-<li>If an LLM is configured and a script is present, a 1-2 sentence shot concept is generated.</li>
-<li>Default concept (used when no LLM or script): <code>&quot;Record yourself reading the script to camera. Speak naturally.&quot;</code></li>
-<li>Calls <code>ctx.RecordingHandler</code> (blocking) with the step ID, concept, and script. The handler presents the recording UI in the browser and returns the saved file path. (If no handler is configured, the step errors — a recording cannot be collected without the web UI.)</li>
-</ol>
-<h3 id="steps">Steps</h3>
-<ol>
-<li><strong>Remux to MP4</strong>: Browser-recorded WebM files lack a duration header, which causes ffprobe to fail in downstream steps. The processor re-muxes the recording to MP4 using ffmpeg (<code>-c:v libx264 -preset fast -crf 18 -c:a aac -movflags +faststart</code>). The MP4 muxer clips negative video PTS to 0 while audio stays at 0, keeping the two streams in sync — do not add <code>-avoid_negative_ts make_zero</code> or per-stream <code>setpts</code>/<code>asetpts</code> filters, which shift or independently reset the streams and destroy the relative timing.</li>
-<li><strong>Apply rotation</strong>: The final rotation is determined by: YAML <code>rotation</code> param (if non-zero) → web upload form <code>rotation</code> field → no rotation. A second ffmpeg pass applies the appropriate filter:
-<ul>
-<li><strong>90°</strong>: <code>transpose=1</code> (swaps dimensions to portrait for landscape input)</li>
-<li><strong>180°</strong>: <code>hflip,vflip</code> (horizontal and vertical flip)</li>
-<li><strong>270°</strong>: <code>transpose=2</code> (swaps dimensions)
-The rotated file is written as <code>&lt;name&gt;_rotated.mp4</code> and used as the output.</li>
-</ul>
-</li>
+<li>If a <code>script</code> is wired in, its text is read and shown on the teleprompter.</li>
+<li>A one or two sentence shot direction is written from the script. Without a
+script, or without an AI backend, you get the default direction: <em>&quot;Record
+yourself reading the script to camera. Speak naturally.&quot;</em></li>
+<li>The run pauses with the status <strong>awaiting recording</strong> and opens the recording
+panel. It waits as long as you need.</li>
+<li>You record a take (or upload a file you recorded elsewhere), review it, and
+accept it with <strong>Use this take</strong>.</li>
+<li>The take is prepared for editing, rotated if you asked for rotation, and
+placed on the timeline.</li>
 </ol>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>The processor works with or without an LLM — concept generation is best-effort and non-fatal.</li>
-<li>The processor has no required inputs; the <code>script</code> input is fully optional.</li>
-<li>Cache behaviour is identical to other processors — the step is cached after the recording path is returned. Clear the step cache to re-record.</li>
+<li>The step works with or without an AI backend. Without one you still get the
+teleprompter and the default shot direction.</li>
+<li>The <code>script</code> input is optional; the step has no required inputs.</li>
+<li>Once a take is accepted the step is done, and re-running the pipeline reuses
+it. To record again, use the <strong>↩</strong> control on the step in the run view.</li>
+<li>Your recording is an ordinary clip, so later steps can transcribe it, cut it,
+caption it, and lay b-roll over it.</li>
 </ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>

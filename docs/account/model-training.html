@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rating runs and model training · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link active" href="../account/model-training.html">Rating runs and model training</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="rating-runs-and-model-training">Rating runs and model training</h1>
+<p>Puffin Ship makes editorial judgements for you: which take to keep, which clip
+belongs where, how a script should read. Rating those judgements is how they get
+better. This page covers what rating does, and how to turn the training use off
+if you would rather not take part.</p>
+<h2 id="rating-a-finished-run">Rating a finished run</h2>
+<p>When a run finishes, the run view offers <strong>How was this run?</strong> Give it one to
+five stars, add a note if something specific was good or bad, and save. You can
+skip it; it will not ask again for that run.</p>
+<p>Two finer-grained ratings are available once a run has finished:</p>
+<ul>
+<li><strong>Per step.</strong> Each step in the run view has its own star control, so you can
+say the script was excellent and the b-roll was not.</li>
+<li><strong>Per clip.</strong> In the run's timeline view, individual placed clips can be
+rated, which is the most direct way to say &quot;this clip did not belong here.&quot;</li>
+</ul>
+<p>Notes are worth writing. A one-star rating says something went wrong; a note
+says what.</p>
+<h2 id="what-ratings-are-used-for">What ratings are used for</h2>
+<p>Ratings do two jobs.</p>
+<p>The first is yours: they are a record of which attempt was good, which is useful
+when a run group has half a dozen attempts in it.</p>
+<p>The second is ours. Rated runs may be used to train and improve the models
+behind Puffin Ship's editorial decisions, so the parts you rate highly become
+more likely and the parts you rate poorly become less so.</p>
+<p>The run rating has an <strong>Include in training data</strong> checkbox, ticked by default.
+Untick it to rate a run for your own reference without contributing it.</p>
+<h2 id="turning-training-use-off">Turning training use off</h2>
+<p>The workspace-wide control is in <strong>Workspace Settings → General → Model
+Training</strong>: <em>Help improve Puffin Ship's models</em>. It is on by default and only
+the <strong>workspace owner</strong> can change it.</p>
+<p>Turning it off stops any future use of that workspace's rated runs. Content that
+has already been used in training cannot be removed from a model that was
+already trained on it, which is why the setting stops future use rather than
+promising erasure.</p>
+<p>The <a href="https://app.puffinship.com/privacy">Privacy Policy</a> is the authoritative
+statement of what is collected and how it is used.</p>
+<p>Note the two controls are different in scope: the checkbox on a rating covers
+that one run, the workspace setting covers everything in the workspace from that
+point on.</p>
+<h2 id="comparing-model-output">Comparing model output</h2>
+<p>Some runs are executed twice, once by the main model and once by an alternative,
+so the two can be compared. When a run has a comparison available, a <strong>Compare</strong>
+button appears in the run's timeline view, with a count of the steps where the
+two disagreed.</p>
+<p>The comparison shows each step's decisions side by side, highlighting the
+differences, and lets you say which side you preferred. That preference is a
+rating like any other, and it is the most useful signal we get.</p>
+<h2 id="next">Next</h2>
+<ul>
+<li><a href="account-settings.html">Account settings</a>, including exporting and deleting your data</li>
+<li><a href="members.html">Workspace members and roles</a></li>
+<li><a href="../help/feedback.html">Feedback and reporting problems</a></li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>
