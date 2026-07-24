@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Puffin Ship API · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link active" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="puffin-ship-api">Puffin Ship API</h1>
+<p>The Puffin Ship API lets you drive the whole video pipeline from your own code:
+upload source material, run a template, track progress, and download the
+finished edit — everything you can do in the app, over HTTP.</p>
+<ul>
+<li><strong>Base URL:</strong> <code>https://app.puffinship.com</code></li>
+<li><strong>Format:</strong> JSON request and response bodies (<code>Content-Type: application/json</code>), UTF-8.</li>
+<li><strong>IDs:</strong> all resource IDs are UUIDs.</li>
+</ul>
+<blockquote>
+<p>The API is in preview and rolls out alongside self-serve access. Endpoints
+under <code>/api</code> are stable in behavior but not yet versioned; we'll announce a
+versioned path before making breaking changes.</p>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
+<p>Authenticate with an <strong>API key</strong>. Create one in the app under
+<strong>Account Settings → API Keys</strong>, then send it as a bearer token on every
+request:</p>
+<pre><code class="language-bash">curl https://app.puffinship.com/api/workspaces \
+  -H &quot;Authorization: Bearer psk_your_key_here&quot;
+</code></pre>
+<p>A key inherits your account's access. Two things to know:</p>
+<ul>
+<li><strong>Scope.</strong> A key can be scoped to a single workspace (recommended — it limits
+the blast radius if the key leaks) or left account-wide to reach every
+workspace you belong to. A workspace-scoped key returns <code>403</code> on any other
+workspace.</li>
+<li><strong>Expiry.</strong> A key can be given an expiry (30/90/365 days) or left
+non-expiring. Revoke a key any time from the same screen; revocation takes
+effect immediately.</li>
+</ul>
+<p>The key secret is shown <strong>once</strong>, at creation. Store it somewhere safe (a
+secrets manager or CI secret) — we only keep a hash and can't show it again.</p>
+<p>For security, API keys are limited to the developer surface below. They can
+<strong>not</strong> manage the account itself — changing your password, listing or revoking
+sessions, issuing or revoking API keys, deleting the account, or any admin
+action all require signing in interactively.</p>
+<h3 id="errors">Errors</h3>
+<p>Errors use standard HTTP status codes and a JSON body:</p>
+<pre><code class="language-json">{ &quot;error&quot;: &quot;not a member of that workspace&quot; }
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>400</code></td>
+<td>Malformed request (bad JSON, missing/invalid field)</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>Missing or invalid API key</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>Authenticated, but not allowed (e.g. key scoped to another workspace)</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Resource not found</td>
+</tr>
+<tr>
+<td><code>412</code></td>
+<td>The template needs a third-party service key you haven't set — see <a href="#running-a-template">Running a template</a></td>
+</tr>
+<tr>
+<td><code>429</code></td>
+<td>Rate limited</td>
+</tr>
+</tbody>
+</table>
+<h2 id="workspaces">Workspaces</h2>
+<p>A workspace is the container for your files, templates, and runs.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/workspaces</code></td>
+<td>List the workspaces you can access</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/workspaces</code></td>
+<td>Create a workspace — <code>{ &quot;name&quot;: &quot;...&quot; }</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/workspaces/{id}</code></td>
+<td>Get one workspace</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><code>/api/workspaces/{id}</code></td>
+<td>Rename — <code>{ &quot;name&quot;: &quot;...&quot; }</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="files">Files</h2>
+<p>Source material (video, audio, images) is uploaded in parts, then completed.
+The flow is: <strong>init → upload each part → complete</strong>.</p>
+<pre><code>POST /api/workspaces/{id}/files
+  { &quot;name&quot;: &quot;interview.mp4&quot;, &quot;content_type&quot;: &quot;video/mp4&quot; }
+  → { &quot;file_id&quot;, &quot;upload_id&quot;, &quot;s3_key&quot; }
+
+POST /api/workspaces/{id}/files/{file_id}/parts?upload_id={upload_id}&amp;part={n}
+  body: raw bytes of part n (1-based)
+  → { &quot;etag&quot; }
+
+POST /api/workspaces/{id}/files/{file_id}/complete
+  { &quot;upload_id&quot;: &quot;...&quot;, &quot;parts&quot;: [ { &quot;part_num&quot;: 1, &quot;etag&quot;: &quot;...&quot; } ] }
+  → the completed file; metadata (duration, dimensions) is probed asynchronously
+</code></pre>
+<p>List files (with presigned thumbnail/download URLs):</p>
+<pre><code>GET /api/workspaces/{id}/files
+</code></pre>
+<h2 id="templates">Templates</h2>
+<p>A template is a saved pipeline — the YAML config that describes your edit as a
+sequence of <a href="../processors/index.html">processors</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/workspaces/{id}/templates</code></td>
+<td>List templates</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/workspaces/{id}/templates</code></td>
+<td>Create — <code>{ &quot;name&quot;, &quot;config_yaml&quot; }</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/workspaces/{id}/templates/{tid}</code></td>
+<td>Get a template (includes its <code>config_yaml</code>)</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/workspaces/{id}/templates/{tid}</code></td>
+<td>Update name and/or <code>config_yaml</code></td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/workspaces/{id}/templates/{tid}</code></td>
+<td>Delete</td>
+</tr>
+</tbody>
+</table>
+<p>See the <a href="../config.html">configuration reference</a> for the YAML structure and the
+<a href="../processors/index.html">processor library</a> for every processor and its
+parameters.</p>
+<h2 id="running-a-template">Running a template</h2>
+<p>Trigger a run, then poll it (or stream events) until it finishes.</p>
+<pre><code>POST /api/workspaces/{id}/templates/{tid}/runs
+  → { &quot;run&quot;: { &quot;id&quot;, &quot;status&quot;, ... } }
+</code></pre>
+<p><strong>Missing service keys.</strong> Some processors call third-party services (ElevenLabs,
+HeyGen, Google, OpenAI) that are billed to you, so you supply those keys. If the
+template needs one you haven't set, the trigger is rejected with <code>412</code> and
+<strong>nothing runs</strong>:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;missing API keys required by this pipeline&quot;,
+  &quot;missing_secrets&quot;: [
+    { &quot;key&quot;: &quot;GOOGLE_API_KEY&quot;, &quot;service_name&quot;: &quot;Google / Veo3&quot;,
+      &quot;description&quot;: &quot;Required for AI video generation&quot;, &quot;needed_by&quot;: [&quot;generate_broll&quot;] }
+  ]
+}
+</code></pre>
+<p>Set the missing keys as workspace or template secrets, then retry. To check
+ahead of time without triggering a run:</p>
+<pre><code>POST /api/workspaces/{id}/templates/{tid}/runs/preflight
+  → { &quot;missing_secrets&quot;: [ ... ] }   // empty array means good to go
+</code></pre>
+<h3 id="tracking-a-run">Tracking a run</h3>
+<pre><code>GET /api/runs/{rid}            → { &quot;run&quot;, &quot;steps&quot;, &quot;reviews&quot; }
+GET /api/runs/{rid}/events     → Server-Sent Events stream of live progress
+</code></pre>
+<p>A run moves through these states:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queued</code></td>
+<td>Accepted, waiting for a worker</td>
+</tr>
+<tr>
+<td><code>running</code></td>
+<td>Processing steps</td>
+</tr>
+<tr>
+<td><code>awaiting_review</code></td>
+<td>Paused at a review gate (a step with <code>review: true</code>) — needs a decision</td>
+</tr>
+<tr>
+<td><code>awaiting_recording</code></td>
+<td>Paused for a webcam recording (the <code>av_recorder</code> step)</td>
+</tr>
+<tr>
+<td><code>completed</code></td>
+<td>Finished — exports are ready</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>Stopped on an error (see the run's steps for detail)</td>
+</tr>
+<tr>
+<td><code>cancelled</code></td>
+<td>Cancelled</td>
+</tr>
+</tbody>
+</table>
+<p>Cancel a run with <code>POST /api/runs/{rid}/cancel</code>.</p>
+<p>The SSE stream (<code>/events</code>) also accepts the key as a <code>?token=</code> query parameter,
+since EventSource can't send headers:
+<code>GET /api/runs/{rid}/events?token=psk_...</code>.</p>
+<h3 id="review-gates">Review gates</h3>
+<p>If a step has <code>review: true</code>, the run pauses at <code>awaiting_review</code> and exposes a
+pending review you resolve:</p>
+<pre><code>POST /api/runs/{rid}/reviews/{review_id}
+  { &quot;action&quot;: &quot;approved&quot; }                     // or &quot;rejected&quot;
+  { &quot;action&quot;: &quot;edited&quot;, &quot;response&quot;: { ... } }  // approve with an edited payload
+</code></pre>
+<h2 id="exports">Exports</h2>
+<p>Once a run is <code>completed</code>, download its outputs. Export endpoints return a
+redirect to a short-lived presigned URL.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/runs/{rid}/export/fcpxml</code></td>
+<td>Final Cut Pro XML bundle (<code>.fcpxmld</code>)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/runs/{rid}/export/srt</code></td>
+<td>Subtitles (<code>.srt</code>)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/runs/{rid}/export/video</code></td>
+<td>Rendered video (see below)</td>
+</tr>
+</tbody>
+</table>
+<p>The rendered video is produced on demand:</p>
+<pre><code>POST /api/runs/{rid}/video/render     → starts a render
+GET  /api/runs/{rid}/video/status     → { &quot;status&quot;: &quot;pending|rendering|ready|failed&quot;, ... }
+GET  /api/runs/{rid}/export/video     → the finished file, once status is &quot;ready&quot;
+</code></pre>
+<h2 id="a-minimal-end-to-end-example">A minimal end-to-end example</h2>
+<pre><code class="language-bash">KEY=&quot;psk_your_key_here&quot;
+BASE=&quot;https://app.puffinship.com/api&quot;
+
+# 1. Pick a workspace and template you already have.
+WS=$(curl -s $BASE/workspaces -H &quot;Authorization: Bearer $KEY&quot; | jq -r '.[0].id')
+TPL=$(curl -s $BASE/workspaces/$WS/templates -H &quot;Authorization: Bearer $KEY&quot; | jq -r '.[0].id')
+
+# 2. Trigger a run.
+RID=$(curl -s -X POST $BASE/workspaces/$WS/templates/$TPL/runs \
+  -H &quot;Authorization: Bearer $KEY&quot; | jq -r '.run.id')
+
+# 3. Poll until it finishes.
+while :; do
+  S=$(curl -s $BASE/runs/$RID -H &quot;Authorization: Bearer $KEY&quot; | jq -r '.run.status')
+  echo &quot;status: $S&quot;; [ &quot;$S&quot; = &quot;completed&quot; ] || [ &quot;$S&quot; = &quot;failed&quot; ] &amp;&amp; break
+  sleep 5
+done
+
+# 4. Download the Final Cut Pro export.
+curl -sL $BASE/runs/$RID/export/fcpxml -H &quot;Authorization: Bearer $KEY&quot; -o edit.fcpxmld
+</code></pre>
+<h2 id="rate-limits--fair-use">Rate limits &amp; fair use</h2>
+<p>The API shares your account's run quota (during the Early Access Period a daily
+run limit applies). Automated clients should poll runs on a sensible interval
+(a few seconds) rather than in a tight loop, and prefer the SSE <code>/events</code> stream
+for live progress.</p>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>
