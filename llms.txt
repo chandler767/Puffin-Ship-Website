@@ -1,6 +1,6 @@
 # Puffin Ship
 
-> Puffin Ship is an AI content automation platform, starting with video. It turns anything you have — an idea, recordings, audio clips — into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
+> Puffin Ship is an AI video content automation platform. It turns anything you have (an idea, recordings, audio clips) into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
 
 ## Status
 
@@ -8,49 +8,49 @@ Puffin Ship is currently pre-launch and accepting early design partners. Contact
 
 ## The problem
 
-Businesses are expected to create more video content across more channels, but most do not have the team, budget, or process to do it consistently. Production is too slow, too expensive, and too hard to manage. Most businesses already have the raw material — clips, calls, webinars, brand guidelines, product info, customer stories — it just never becomes finished video. Puffin Ship closes that gap with software.
+Businesses are expected to create more video content across more channels, but most do not have the team, budget, or process to do it consistently. Production is too slow, too expensive, and too hard to manage. Most businesses already have the raw material (clips, calls, webinars, brand guidelines, product info, customer stories); it just never becomes finished video. Puffin Ship closes that gap with software.
 
 ## What it is
 
 Puffin Ship is a self-serve web application. A user connects source material and brand context. The platform ingests it, generates the missing pieces, assembles finished short-form videos, and improves from user feedback over time.
 
-The product is software the customer runs — not a managed service. Customers connect their own material and run the platform themselves.
+The product is software the customer runs, not a managed service. Customers connect their own material and run the platform themselves.
 
 ## How it works
 
-1. **Connect your source material** — add clips, calls, audio, ideas, docs, or brand guidelines. Brand context persists across every project.
-2. **AI builds your template** — your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, music, and structure — filling in whatever is missing.
-3. **Review, rank, and publish** — compare outputs, approve the best, flag what to improve. Every ranking improves future automation.
+1. **Connect your source material**: add clips, calls, audio, ideas, docs, or brand guidelines. Brand context persists across every project.
+2. **AI builds your template**: your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, music, and structure, filling in whatever is missing.
+3. **Review, rank, and publish**: compare outputs, approve the best, flag what to improve. Every ranking improves future automation.
 
 ## Core platform layers
 
-- **Input and context layer** — ingests whatever the user has. Brand memory holds styling rules, voice, do's and don'ts, and preferences that persist across every project.
-- **Generation and template layer** — identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, transitions, and platform-specific versions.
-- **Review, feedback, and training layer** — users review outputs, compare alternatives, rank results, flag issues, and approve or request changes. All feedback improves future automation.
+- **Input and context layer**: ingests whatever the user has. Brand memory holds styling rules, voice, do's and don'ts, and preferences that persist across every project.
+- **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, transitions, and platform-specific versions.
+- **Review, feedback, and training layer**: users review outputs, compare alternatives, rank results, flag issues, and approve or request changes. All feedback improves future automation.
 
 ## Pricing (pre-launch, subject to change)
 
-- **Free / Trial** — a few watermarked videos per month, core generation, one brand kit — $0
-- **Team / Growth** — higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling — $99 to $299/mo
-- **Agency / Business** — multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label — $399 to $999+/mo
-- **Usage credits** — metered rendering and generation beyond plan limits, available as an add-on
+- **Free / Trial**: a few watermarked videos per month, core generation, one brand kit. $0
+- **Team / Growth**: higher volume, multiple seats, multiple brand kits, review and approval flows, scheduling. $99 to $299/mo
+- **Agency / Business**: multiple client workspaces, brand-per-client memory, roles and approvals, priority processing, white-label. $399 to $999+/mo
+- **Usage credits**: metered rendering and generation beyond plan limits, available as an add-on
 
 ## Who it's for
 
-- **Direct businesses** — businesses that need recurring on-brand video but don't have the team or budget to produce it consistently
-- **Agencies** — more production capacity across many client workspaces without hiring more editors; each client gets its own brand memory and approval flows
-- **Expert-led businesses** — coaches, founders, educators, and consultants turning calls, webinars, and expertise into consistent short-form content
+- **Direct businesses**: businesses that need recurring on-brand video but don't have the team or budget to produce it consistently
+- **Agencies**: more production capacity across many client workspaces without hiring more editors; each client gets its own brand memory and approval flows
+- **Expert-led businesses**: coaches, founders, educators, and consultants turning calls, webinars, and expertise into consistent short-form video
 
 ## Competitive position
 
-- Different from AI video editors: those help users modify existing footage; Puffin Ship turns source material into finished content including deciding what to make
-- Different from AI video generators: those create assets from prompts; Puffin Ship builds repeatable content production workflows
+- Different from AI video editors: those help users modify existing footage; Puffin Ship turns source material into finished video including deciding what to make
+- Different from AI video generators: those create assets from prompts; Puffin Ship builds repeatable video production workflows
 - Different from traditional agencies: agencies scale with people; Puffin Ship scales with software, feedback, and reusable templates
-- Different from social media management platforms: those manage distribution; Puffin Ship creates the content supply
+- Different from social media management platforms: those manage distribution; Puffin Ship creates the video supply
 
 ## Long-term vision
 
-The initial product is short-form video. The long-term platform is content automation across formats — podcasts, audio clips, written posts, newsletters, and multi-format campaigns generated from the same source material. After self-serve is proven, Puffin Ship will open a developer API so teams and products can build content automation into their own workflows.
+Puffin Ship is building the platform for automated video production: more source types, deeper brand intelligence, and more of the editing and publishing workflow handled for you. After self-serve is proven, Puffin Ship will open a developer API so teams and products can build video content automation into their own workflows.
 
 The defensibility comes from the compounding loop between production, feedback, ranking, model training, and automation: more users create more videos, more videos create more feedback, more feedback improves automation.
 
