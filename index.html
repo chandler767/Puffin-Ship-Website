@@ -622,6 +622,11 @@
     .free-price .per { font-size: 15px; font-weight: 600; color: var(--text-muted); }
     .free-sub { font-size: 14.5px; color: var(--text-muted); line-height: 1.55; margin-bottom: var(--space-6); max-width: 34ch; }
     .free-card-right { padding: 40px 36px; background: var(--ink-50); border-left: 1px solid var(--border-subtle); }
+    /* The left column runs taller than this list, so centre the block rather
+       than pinning it to the top and leaving dead space under the last item.
+       Only bites on the two-column desktop layout; stacked, there is no
+       spare height to distribute. */
+    .free-card-right { display: flex; flex-direction: column; justify-content: center; }
     .free-list-head { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 16px; }
     .free-feats { display: flex; flex-direction: column; gap: 13px; }
     .free-feat { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--text-body); }
