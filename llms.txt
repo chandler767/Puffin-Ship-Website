@@ -1,10 +1,10 @@
 # Puffin Ship
 
-> Puffin Ship is a free AI video content automation platform. It turns anything you have (an idea, recordings, audio clips) into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
+> Puffin Ship is an AI video content automation platform. It turns anything you have (an idea, recordings, audio clips) into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
 
 ## Status
 
-Puffin Ship is live and free to use. Create a free account at https://app.puffinship.com/login to get started, or contact info@puffinship.com or call 415-409-8722.
+Puffin Ship is live and free to use during early access. Create a free account at https://app.puffinship.com/login to get started, or contact info@puffinship.com or call 415-409-8722.
 
 ## The problem
 
@@ -12,7 +12,7 @@ Businesses are expected to create more video content across more channels, but m
 
 ## What it is
 
-Puffin Ship is a self-serve web application. A user connects source material and brand context. The platform ingests it, generates the missing pieces, assembles finished short-form videos, and improves from user feedback over time.
+Puffin Ship is a self-serve web application. A user connects source material and brand context. The platform ingests it, generates the missing pieces, and assembles finished short-form videos, pausing for the user's review wherever they ask it to.
 
 The product is software the customer runs, not a managed service. Customers connect their own material and run the platform themselves.
 
@@ -20,17 +20,21 @@ The product is software the customer runs, not a managed service. Customers conn
 
 1. **Connect your source material**: add clips, calls, audio, ideas, docs, or brand guidelines. Brand context persists across every project.
 2. **AI builds your template**: your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, music, and structure, filling in whatever is missing.
-3. **Review, rank, and publish**: compare outputs, approve the best, flag what to improve. Every ranking improves future automation.
+3. **Review, then export**: pause any step for review to approve, edit, or regenerate its output before the final render. Export a finished MP4, subtitle files (SRT), or a Final Cut Pro project (FCPXML).
 
 ## Core platform layers
 
 - **Input and context layer**: ingests whatever the user has. Brand memory holds styling rules, voice, do's and don'ts, and preferences that persist across every project.
 - **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, transitions, and platform-specific versions.
-- **Review, feedback, and training layer**: users review outputs, compare alternatives, rank results, flag issues, and approve or request changes. All feedback improves future automation.
+- **Review and export layer**: any step can be paused at a review gate where the user approves, edits, rejects, or regenerates its output before the run continues. Finished runs export as MP4, SRT subtitles, or an FCPXML project for Final Cut Pro.
 
 ## Pricing
 
-Puffin Ship is free to use. Create an account, connect your source material, and start generating finished, on-brand video, no credit card required. Core AI generation and editing, reusable templates, brand memory, the review and ranking loop, and platform-ready aspect ratios are all included at no cost. Teams that need higher volume, multiple client workspaces, or white-label options can contact us at https://app.puffinship.com/contact.
+The Puffin Ship platform is free to use during early access, with no credit card required. Usage limits apply while the product is in early access. Core AI generation and editing, reusable templates, brand memory, review gates, platform-ready aspect ratios, and MP4/SRT/FCPXML exports are all included.
+
+There are third-party costs that do not go to Puffin Ship. Steps that call outside AI services (OpenAI for transcription, Google for AI video and image generation, HeyGen for AI presenters, ElevenLabs for voiceover) run on API keys the user supplies, and those providers bill the user directly at their own rates. Puffin Ship does not resell or mark up AI usage, and a user only needs keys for the services their template actually uses.
+
+Teams that need higher volume, multiple client workspaces, or white-label options can contact us at https://app.puffinship.com/contact.
 
 ## Who it's for
 
@@ -47,13 +51,13 @@ Puffin Ship is free to use. Create an account, connect your source material, and
 
 ## Long-term vision
 
-Puffin Ship is building the platform for automated video production: more source types, deeper brand intelligence, and more of the editing and publishing workflow handled for you. After self-serve is proven, Puffin Ship will open a developer API so teams and products can build video content automation into their own workflows.
+Puffin Ship is building the platform for automated video production: more source types, deeper brand intelligence, and more of the editing and publishing workflow handled for you. A developer API is already in preview at https://puffinship.com/docs/developer/api.html, so teams and products can build video content automation into their own workflows.
 
-The defensibility comes from the compounding loop between production, feedback, ranking, model training, and automation: more users create more videos, more videos create more feedback, more feedback improves automation.
+The defensibility comes from the compounding loop between production, feedback, and automation: more users create more videos, more videos create more feedback, and that feedback sharpens the templates and the platform over time.
 
 ## Contact
 
-To get started, sign up free at https://app.puffinship.com/login. To discuss higher-volume or agency needs:
+To get started, sign up free at https://app.puffinship.com/login (free during early access). To discuss higher-volume or agency needs:
 
 - Email: info@puffinship.com
 - Phone: 415-409-8722
