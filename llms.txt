@@ -8,29 +8,29 @@ Puffin Ship is live and free to use during early access. Create a free account a
 
 ## The problem
 
-Businesses are expected to create more video content across more channels, but most do not have the team, budget, or process to do it consistently. Production is too slow, too expensive, and too hard to manage. Most businesses already have the raw material (clips, calls, webinars, brand guidelines, product info, customer stories); it just never becomes finished video. Puffin Ship closes that gap with software.
+Businesses are expected to create more video content across more channels, but most do not have the team, budget, or process to do it consistently. Production is too slow, too expensive, and too hard to manage. Most businesses already have the raw material (clips, calls, webinars, product info, customer stories); it just never becomes finished video. Puffin Ship closes that gap with software.
 
 ## What it is
 
-Puffin Ship is a self-serve web application. A user connects source material and brand context. The platform ingests it, generates the missing pieces, and assembles finished short-form videos, pausing for the user's review wherever they ask it to.
+Puffin Ship is a self-serve web application. A user connects source material. The platform ingests it, generates the missing pieces, and assembles finished short-form videos, pausing for the user's review wherever they ask it to.
 
 The product is software the customer runs, not a managed service. Customers connect their own material and run the platform themselves.
 
 ## How it works
 
-1. **Connect your source material**: add clips, calls, audio, ideas, docs, or brand guidelines. Brand context persists across every project.
+1. **Connect your source material**: add clips, calls, audio, ideas, or docs. Whatever you already have becomes source material for the run.
 2. **AI builds your template**: your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, music, and structure, filling in whatever is missing.
 3. **Review, then export**: pause any step for review to approve, edit, or regenerate its output before the final render. Export a finished MP4, subtitle files (SRT), or a Final Cut Pro project (FCPXML).
 
 ## Core platform layers
 
-- **Input and context layer**: ingests whatever the user has. Brand memory holds styling rules, voice, do's and don'ts, and preferences that persist across every project.
+- **Input layer**: ingests whatever the user has: clips, calls, audio, ideas, and docs.
 - **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, and transitions. The output ratio (9:16, 1:1, or 16:9) is set on the template.
 - **Review and export layer**: any step can be paused at a review gate where the user approves, edits, rejects, or regenerates its output before the run continues. Finished runs export as MP4, SRT subtitles, or an FCPXML project for Final Cut Pro.
 
 ## Pricing
 
-The Puffin Ship platform is free to use during early access, with no credit card required. Usage limits apply while the product is in early access and we scale up; users who need higher limits can contact us. Core AI generation and editing, reusable templates, brand memory, review gates, selectable output ratios (9:16, 1:1, 16:9), and MP4/SRT/FCPXML exports are all included.
+The Puffin Ship platform is free to use during early access, with no credit card required. Usage limits apply while the product is in early access and we scale up; users who need higher limits can contact us. Core AI generation and editing, reusable templates, review gates, selectable output ratios (9:16, 1:1, 16:9), and MP4/SRT/FCPXML exports are all included.
 
 There are third-party costs that do not go to Puffin Ship. Steps that call outside AI services (OpenAI for transcription, Google for AI video and image generation, HeyGen for AI presenters, ElevenLabs for voiceover) run on API keys the user supplies, and those providers bill the user directly at their own rates. Puffin Ship does not resell or mark up AI usage, and a user only needs keys for the services their template actually uses.
 
@@ -38,8 +38,8 @@ Teams that need higher limits or multiple client workspaces can contact us at ht
 
 ## Who it's for
 
-- **Direct businesses**: businesses that need recurring on-brand video but don't have the team or budget to produce it consistently
-- **Agencies**: more production capacity across many client workspaces without hiring more editors; each client gets its own workspace, brand memory, and review gates
+- **Direct businesses**: businesses that need recurring video but don't have the team or budget to produce it consistently
+- **Agencies**: more production capacity across many client workspaces without hiring more editors; each client gets its own workspace and review gates
 - **Expert-led businesses**: coaches, founders, educators, and consultants turning calls, webinars, and expertise into consistent short-form video
 
 ## Competitive position
@@ -51,7 +51,7 @@ Teams that need higher limits or multiple client workspaces can contact us at ht
 
 ## Long-term vision
 
-Puffin Ship is building the platform for automated video production: more source types, deeper brand intelligence, and more of the editing and publishing workflow handled for you. A developer API is already in preview at https://puffinship.com/docs/developer/api.html, so teams and products can build video content automation into their own workflows.
+Puffin Ship is building the platform for automated video production: more source types and more of the editing and publishing workflow handled for you. A developer API is already in preview at https://puffinship.com/docs/developer/api.html, so teams and products can build video content automation into their own workflows.
 
 The defensibility comes from the compounding loop between production, feedback, and automation: more users create more videos, more videos create more feedback, and that feedback sharpens the templates and the platform over time.
 
