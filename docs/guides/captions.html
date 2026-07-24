@@ -65,7 +65,7 @@
 <p><strong>Fix text:</strong> Change the <code>text</code> value directly. The timing stays the same.</p>
 <p><strong>Remove a caption:</strong> Delete the entry from the YAML list.</p>
 <p><strong>Add punctuation:</strong> Edit <code>text: &quot;Hello world&quot;</code> to <code>text: &quot;Hello, world.&quot;</code> — edit the string freely.</p>
-<p>After editing, re-run <code>puffinship run</code> — the <code>captions</code> step reads the updated manifest and regenerates the affected clips.</p>
+<p>After editing, run the template again — the <code>captions</code> step reads the updated manifest and regenerates the affected clips.</p>
 <h2 id="regenerating-from-scratch">Regenerating from scratch</h2>
 <p>Delete the manifest file:</p>
 <pre><code class="language-bash">rm &lt;project&gt;/captions.yaml

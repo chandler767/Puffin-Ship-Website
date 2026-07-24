@@ -195,7 +195,7 @@
 <p><code>EditDecisions</code> on the broll level.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>Clip analysis is cached in <code>broll/manifest.json</code> (at the project root). Delete an entry to force re-analysis.</li>
 <li>Matching is strict by design — clips are only placed where they directly illustrate the spoken content.</li>
 <li>This processor sees all broll clips placed by all previous pipeline steps, so two <code>broll_place</code> steps with different clip sources won't overlap.</li>

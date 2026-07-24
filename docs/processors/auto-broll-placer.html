@@ -509,7 +509,7 @@
 <h2 id="output">Output</h2>
 <p><code>EditDecisions</code> — one per placed clip at the configured level. Generated and downloaded files are stored in <code>.puffinship/auto-broll/</code>.</p>
 <h2 id="manifest">Manifest</h2>
-<p>A unified manifest is saved to <code>.puffinship/auto-broll/manifest.json</code>. On re-runs (cache miss), previously generated/downloaded clips are reused from this manifest, avoiding redundant generation. Clear the step cache (<code>puffinship cache clear --step visuals</code>) to regenerate everything.</p>
+<p>A unified manifest tracks the generated/downloaded clips. On re-runs (cache miss), previously generated/downloaded clips are reused, avoiding redundant generation. Clear the step's cache from the editor's cache controls to regenerate everything.</p>
 <h2 id="notes">Notes</h2>
 <ul>
 <li>Categories whose required service is unavailable (no API key, no renderer) are silently excluded from the tool list — Claude never sees them.</li>

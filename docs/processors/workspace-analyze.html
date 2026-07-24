@@ -45,7 +45,7 @@
 <p><code>Analysis</code> containing descriptions of all discovered project files.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_ANTHROPIC_API_KEY</code>.</li>
+<li>Uses Puffin Ship's built-in AI — no API key required.</li>
 <li>Always use <code>cache: true</code> — the workspace doesn't change between runs.</li>
 <li>Wire as an <code>input:</code> entry in your <code>ai_agent</code> step: <code>{id: analysis, step: analyze_workspace}</code>. The agent receives it pre-injected in the context block — no tool call needed.</li>
 </ul>

@@ -110,7 +110,7 @@
 <p><code>Analysis</code> containing a <code>Transcript</code> with word-level timestamps.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Requires <code>PUFFINSHIP_OPENAI_API_KEY</code>.</li>
+<li>Requires an <code>OPENAI_API_KEY</code> set in your workspace's Service API Keys.</li>
 <li>Always use <code>cache: true</code> — transcription is slow and the result never changes for the same audio.</li>
 <li>When <code>cuts</code> input is provided, only the referenced source segments are sent to Whisper. Timestamps are remapped back to source file positions.</li>
 </ul>
