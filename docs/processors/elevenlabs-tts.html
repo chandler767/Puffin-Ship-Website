@@ -104,6 +104,11 @@
 <td>step or file</td>
 <td>Text content to speak. Step input must be a <code>transcript_aiprep</code> output (uses <code>Analysis.Source</code>); file input reads the text file directly. Do NOT pass a <code>write_script</code> step directly — its output type is <code>Script</code>, not <code>Analysis</code>.</td>
 </tr>
+<tr>
+<td><code>segment_plan</code></td>
+<td>step (optional)</td>
+<td>A <code>SegmentPlan</code> (e.g. from <code>video_director</code>) constraining which segments get voiced.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="params">Params</h2>
