@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>All processors · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link active" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="processors">Processors</h1>
+<p>All processors support <code>cache: true</code>. Processors marked ✓ review support <code>review: true</code>.</p>
+<p>When you add a new processor, add a row here and create <code>docs/processors/&lt;name&gt;.md</code>.</p>
+<h2 id="basic">Basic</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="trim.html"><code>trim</code></a></td>
+<td>Cut a clip to in/out points</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="cut.html"><code>cut</code></a></td>
+<td>Split a clip at timecodes</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="stitch.html"><code>stitch</code></a></td>
+<td>Concatenate files end-to-end</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="transcript">Transcript</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="generate-transcript.html"><code>generate_transcript</code></a></td>
+<td>Whisper transcription</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="deadspace-trimmer.html"><code>deadspace_trimmer</code></a></td>
+<td>Remove silence using transcript</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="transcript-aiprep.html"><code>transcript_aiprep</code></a></td>
+<td>Prepare transcript text for TTS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ai">AI</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="ai-agent.html"><code>ai_agent</code></a></td>
+<td>General Claude tool-use loop</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="workspace-analyze.html"><code>workspace_analyze</code></a></td>
+<td>AI summary of all project files</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="analyze-footage.html"><code>analyze_footage</code></a></td>
+<td>Analyze raw footage quality and content</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="footage-assembler.html"><code>footage_assembler</code></a></td>
+<td>Auto-assemble timeline from analyzed footage</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="assemble-transcript.html"><code>assemble_transcript</code></a></td>
+<td>Merge per-clip transcripts into timeline transcript</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="video-director.html"><code>video_director</code></a></td>
+<td>Produce a segment plan for downstream processors</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="write-script.html"><code>write_script</code></a></td>
+<td>Generate narration script with Claude</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transform">Transform</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="reframe.html"><code>reframe</code></a></td>
+<td>Scale landscape footage to portrait</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="motion-center.html"><code>motion_center</code></a></td>
+<td>Pan to center subject (variance analysis)</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="speaker-center.html"><code>speaker_center</code></a></td>
+<td>Pan to center speaker (Claude Vision)</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="chroma-key.html"><code>chroma_key</code></a></td>
+<td>Green/blue screen removal</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="scale-transform.html"><code>scale_transform</code></a></td>
+<td>Scale and position patch</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="audio">Audio</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="noise-reduce.html"><code>noise_reduce</code></a></td>
+<td>FFT audio denoising</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="volume-adjust.html"><code>volume_adjust</code></a></td>
+<td>Gain adjust on a level</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="audio.html"><code>audio</code></a></td>
+<td>Place/loop music or sound effects</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sound-fx.html"><code>sound_fx</code></a></td>
+<td>AI-placed social-media SFX on a dedicated audio level</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="elevenlabs-tts.html"><code>elevenlabs_tts</code></a></td>
+<td>Text-to-speech via ElevenLabs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="utility">Utility</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="fill-level.html"><code>fill_level</code></a></td>
+<td>Background spanning full cut duration</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="broll">Broll</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="auto-broll-placer.html"><code>auto_broll_placer</code></a></td>
+<td>Unified AI agent: places existing broll, web media, screenshots, Veo clips, Imagen images, and drawing overlays in one session</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="broll-place.html"><code>broll_place</code></a></td>
+<td>Place existing clips in gaps</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="broll-veo-generate.html"><code>broll_veo_generate</code></a></td>
+<td>Generate clips with Veo 3</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="broll-imagen-generate.html"><code>broll_imagen_generate</code></a></td>
+<td>Generate images with Imagen + motion</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="broll-websource.html"><code>broll_websource</code></a></td>
+<td>Fill gaps with Wikimedia Commons media</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="broll-screenshot-websource.html"><code>broll_screenshot_websource</code></a></td>
+<td>Animated web-source background clips</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="recording">Recording</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="av-recorder.html"><code>av_recorder</code></a></td>
+<td>Pause pipeline to collect a live user recording</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="avatar--speaker">Avatar &amp; Speaker</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="heygen-speaker.html"><code>heygen_speaker</code></a></td>
+<td>Generate HeyGen avatar talking-head clips</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<h2 id="overlay">Overlay</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="title-card.html"><code>title_card</code></a></td>
+<td>Rendered text overlays with fades</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="captions.html"><code>captions</code></a></td>
+<td>Per-word highlighted caption overlays</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="drawing">Drawing</h2>
+<table>
+<thead>
+<tr>
+<th>Processor</th>
+<th>What it does</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="drawings-ai-placer.html"><code>drawings_ai_placer</code></a></td>
+<td>AI agent places animated drawing clips</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><a href="drawing-diagram.html"><code>drawing_diagram</code></a></td>
+<td>Animated flow diagram</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="drawing-list.html"><code>drawing_list</code></a></td>
+<td>Animated bullet/numbered/checkmark list</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="drawing-logos.html"><code>drawing_logos</code></a></td>
+<td>Company logos display</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="drawing-text.html"><code>drawing_text</code></a></td>
+<td>Text/headline clip</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="drawing-remotion.html"><code>drawing_remotion</code></a></td>
+<td>Remotion composition (stats, chart, etc.)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

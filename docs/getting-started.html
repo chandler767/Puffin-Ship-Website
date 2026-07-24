@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Getting Started · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link active" href="getting-started.html">Getting Started</a><a class="nav-link" href="config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="concepts/architecture.html">Architecture</a><a class="nav-link" href="concepts/caching.html">Caching</a><a class="nav-link" href="concepts/data-model.html">Data Model</a><a class="nav-link" href="concepts/review-gates.html">Review Gates</a><a class="nav-link" href="concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="guides/broll.html">Broll Guide</a><a class="nav-link" href="guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="guides/captions.html">Captions Guide</a><a class="nav-link" href="guides/drawings.html">Drawings Guide</a><a class="nav-link" href="guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="processors/index.html">All processors</a><a class="nav-link" href="processors/ai-agent.html">ai_agent</a><a class="nav-link" href="processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="processors/audio.html">audio</a><a class="nav-link" href="processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="processors/av-recorder.html">av_recorder</a><a class="nav-link" href="processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="processors/broll-place.html">broll_place</a><a class="nav-link" href="processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="processors/broll-websource.html">broll_websource</a><a class="nav-link" href="processors/captions.html">captions</a><a class="nav-link" href="processors/chroma-key.html">chroma_key</a><a class="nav-link" href="processors/cut.html">cut</a><a class="nav-link" href="processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="processors/drawing-list.html">drawing_list</a><a class="nav-link" href="processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="processors/drawing-text.html">drawing_text</a><a class="nav-link" href="processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="processors/fill-level.html">fill_level</a><a class="nav-link" href="processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="processors/motion-center.html">motion_center</a><a class="nav-link" href="processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="processors/reframe.html">reframe</a><a class="nav-link" href="processors/scale-transform.html">scale_transform</a><a class="nav-link" href="processors/sound-fx.html">sound_fx</a><a class="nav-link" href="processors/speaker-center.html">speaker_center</a><a class="nav-link" href="processors/stitch.html">stitch</a><a class="nav-link" href="processors/title-card.html">title_card</a><a class="nav-link" href="processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="processors/trim.html">trim</a><a class="nav-link" href="processors/video-director.html">video_director</a><a class="nav-link" href="processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="getting-started">Getting Started</h1>
+<p>Puffin Ship is a web app that turns your raw material into a finished,
+on-brand video. You build a <strong>template</strong> — a pipeline of processing steps — then
+<strong>run</strong> it against your source files. Everything happens in the browser at
+<a href="https://app.puffinship.com">app.puffinship.com</a>; there's nothing to install.</p>
+<p>This page walks through your first video end to end. For a tour of the visual
+editor itself, see <a href="guides/building-in-the-editor.html">Building in the editor</a>.</p>
+<h2 id="1-sign-in-and-create-a-workspace">1. Sign in and create a workspace</h2>
+<p>Sign in at <a href="https://app.puffinship.com">app.puffinship.com</a>. From the dashboard,
+click <strong>+ New Workspace</strong> and give it a name.</p>
+<p>A <strong>workspace</strong> holds your source files, your templates, and your run history.
+Most people keep one workspace per brand or project.</p>
+<h2 id="2-upload-your-source-material">2. Upload your source material</h2>
+<p>Open the workspace and use <strong>Upload</strong> in the Files panel to add your footage,
+audio, or images. Steps in your template reference these files by name, so
+recognizable names help (<code>speaker.mp4</code>, <code>logo.png</code>). You can organize files into
+folders.</p>
+<h2 id="3-add-your-service-keys">3. Add your service keys</h2>
+<p>Some processors call third-party services that are billed to <strong>you</strong>, so you
+provide those keys once per workspace:</p>
+<table>
+<thead>
+<tr>
+<th>Service key</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HEYGEN_API_KEY</code></td>
+<td>AI avatar presenter (<code>heygen_speaker</code>)</td>
+</tr>
+<tr>
+<td><code>ELEVENLABS_API_KEY</code></td>
+<td>Text-to-speech voiceover (<code>elevenlabs_tts</code>)</td>
+</tr>
+<tr>
+<td><code>GOOGLE_API_KEY</code></td>
+<td>AI video/image generation (Veo 3, Imagen)</td>
+</tr>
+<tr>
+<td><code>OPENAI_API_KEY</code></td>
+<td>Whisper transcription (<code>generate_transcript</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Set them under <strong>Workspace Settings → Variables → Service API Keys</strong>. You only
+need the keys for the processors your template actually uses — and if you forget
+one, the app prompts you for it when you hit <strong>Run</strong> (see step 6). Keys are
+encrypted and can be overridden per template.</p>
+<h2 id="4-build-a-template">4. Build a template</h2>
+<p>In the Templates panel, click <strong>New</strong> to open <strong>Build a Template</strong>. You have four
+ways to start:</p>
+<ul>
+<li><strong>Gallery</strong> — begin from a curated starter template and tweak it.</li>
+<li><strong>Guided Wizard</strong> — answer a few questions (video type, add-ons like captions
+or music, aspect ratio) and get a working pipeline.</li>
+<li><strong>Chat + Steps</strong> — describe the video you want in plain language and let the AI
+assemble the steps.</li>
+<li><strong>Start empty</strong> — build from scratch in the editor.</li>
+</ul>
+<p>Any of these drops you into the visual editor, where each <strong>step</strong> runs one
+<strong>processor</strong>. Add steps from the <strong>Library</strong>, configure them in the inspector,
+and wire one step's output into the next step's input. Browse every processor
+and its parameters in the <a href="processors/index.html">processor reference</a>.</p>
+<p>Under the hood a template is just a YAML config. You can view and edit it
+directly with the <strong>YAML</strong> button in the editor; the full schema is in the
+<a href="config.html">Config Reference</a>. Here's what a minimal template looks like —
+transcribe footage, make an AI content cut, and hand it back for review:</p>
+<pre><code class="language-yaml">version: 1
+
+project:
+  name: &quot;My First Edit&quot;
+  resolution: [1080, 1920]   # portrait — swap to [1920, 1080] for landscape
+  fps: 30
+  sample_rate: 48000
+
+input:
+  - id: speaker-footage
+    select: &quot;speaker.mp4&quot;
+
+timeline:
+  levels:
+    - name: main
+      order: 1
+      type: any
+      backbone: true
+
+pipeline:
+  # Step 1: transcribe the footage
+  - id: transcribe
+    processor: generate_transcript
+    input:
+      - id: source
+        file: speaker-footage
+    params:
+      language: &quot;en&quot;
+    cache: true
+
+  # Step 2: AI content cut — Claude reads the transcript and removes filler/dead air
+  - id: ai_cut
+    processor: ai_agent
+    input:
+      - id: transcript
+        step: transcribe
+      - id: speaker
+        file: speaker-footage
+    prompt: |
+      You are an editor making a content cut. The transcript and silence intervals are
+      already provided in the context block above. Call get_input(&quot;speaker&quot;) to get the
+      source filename, then call create_edit_decision for each segment to keep.
+      Use source=files[0], type=&quot;video&quot;, level=&quot;main&quot;. Snap in/out to silence boundaries.
+      Remove: filler words, long pauses, false starts. Keep: complete sentences.
+    output:
+      timeline: main
+    review: true
+    cache: true
+</code></pre>
+<h2 id="5-run-it">5. Run it</h2>
+<p>Open the <strong>Runs</strong> panel and click <strong>▶ Run</strong>. Give the run a name; the template is
+saved and the pipeline starts. Each step runs in order, and you can watch live
+progress — pending, running, done, cached, or failed — for every step.</p>
+<h2 id="6-missing-keys-and-review-gates">6. Missing keys, and review gates</h2>
+<ul>
+<li>If your template uses a processor whose service key isn't set, the run is held
+and an <strong>API keys required</strong> dialog lists exactly what's missing. Paste the
+key, choose whether to save it to the whole workspace or just this template,
+and the run continues.</li>
+<li>The <code>ai_cut</code> step above has <code>review: true</code>, so the run pauses at a <strong>review
+gate</strong> and shows you what the AI decided. Approve it, approve with edits,
+reject it, or ask it to regenerate. See <a href="concepts/review-gates.html">Review Gates</a>.</li>
+</ul>
+<h2 id="7-export">7. Export</h2>
+<p>When the run finishes, open the run's <strong>timeline</strong> to preview the edit, fine-tune
+clip timing, and export:</p>
+<ul>
+<li><strong>FCPXML</strong> — a Final Cut Pro bundle you can open and finish in FCP.</li>
+<li><strong>SRT</strong> — subtitles.</li>
+<li><strong>MP4</strong> — a rendered video, generated on demand.</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="guides/building-in-the-editor.html">Building in the editor</a> — the visual editor in depth</li>
+<li><a href="config.html">Config Reference</a> — every YAML option</li>
+<li><a href="processors/index.html">All Processors</a> — every processor and its params</li>
+<li><a href="guides/broll.html">B-roll Guide</a> — add b-roll to your edit</li>
+<li><a href="guides/captions.html">Captions Guide</a> — per-word caption overlays</li>
+<li><a href="developer/api.html">Developer API</a> — drive Puffin Ship from your own code</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

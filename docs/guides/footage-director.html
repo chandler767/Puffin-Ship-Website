@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Footage Director Guide · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link active" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="footage-director-guide">Footage Director Guide</h1>
+<p>The footage director pipeline automatically assembles a timeline from raw, uncut footage — no manual edit points needed. Give it a folder of clips; it transcribes, analyzes quality, assembles a cut, and produces a unified transcript for downstream processors.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use this pipeline when:</p>
+<ul>
+<li>You have raw footage without pre-defined cut points</li>
+<li>You want AI to select the best moments and arrange them</li>
+<li>You're working with multi-clip footage (interviews, event footage, multi-camera)</li>
+</ul>
+<p>For single-clip pipelines with a clear structure, a simpler <code>generate_transcript</code> → <code>ai_agent</code> workflow is often sufficient.</p>
+<h2 id="the-pipeline">The pipeline</h2>
+<pre><code>analyze_footage → footage_assembler → video_director → assemble_transcript
+</code></pre>
+<h3 id="step-1-analyze-footage">Step 1: analyze_footage</h3>
+<p>Transcribes each clip, detects silence, and uses Claude Vision to assess quality, identify key moments, and suggest usage (backbone/broll/skip).</p>
+<pre><code class="language-yaml">- id: analyze_raw
+  processor: analyze_footage
+  input:
+    - id: clips
+      file: raw-footage       # glob matching all raw clips
+  params:
+    analysis_mode: adaptive
+    language: &quot;en&quot;
+  cache: true
+</code></pre>
+<p>Use <code>cache: true</code> — analysis is expensive and never changes for the same clips.</p>
+<h3 id="step-2-footage-assembler">Step 2: footage_assembler</h3>
+<p>AI agent that reviews the analysis and builds an initial timeline: backbone clips (speaker/presenter) and broll clips, based on quality scores and content.</p>
+<pre><code class="language-yaml">- id: assemble
+  processor: footage_assembler
+  input:
+    - id: analysis
+      step: analyze_raw
+  params:
+    style: documentary
+    prefer_original_audio: true
+    max_speaker_ratio: 0.4
+    target_duration_sec: 120
+  output:
+    timeline: main
+  review: true
+  cache: true
+</code></pre>
+<p><code>review: true</code> is important here — check that the assembly looks reasonable before spending time on subsequent processing.</p>
+<h3 id="step-3-video-director-optional">Step 3: video_director (optional)</h3>
+<p>Produces a segment plan — a structured assignment of time ranges to content types. Downstream processors (<code>heygen_speaker</code>, <code>drawings_ai_placer</code>, gap-filling broll) use this plan to know where to place their content.</p>
+<pre><code class="language-yaml">- id: direct
+  processor: video_director
+  input:
+    - id: transcript
+      step: transcript
+  params:
+    backbone_step: assemble
+    min_segment_sec: 3.0
+  cache: true
+</code></pre>
+<p>Skip this step if you're not using <code>heygen_speaker</code> or <code>drawings_ai_placer</code>.</p>
+<h3 id="step-4-assemble-transcript">Step 4: assemble_transcript</h3>
+<p>Merges per-clip transcripts from <code>analyze_footage</code> with the assembled backbone clips to produce a unified, timeline-relative transcript.</p>
+<pre><code class="language-yaml">- id: transcript
+  processor: assemble_transcript
+  input:
+    - id: analysis
+      step: analyze_raw
+    - id: footage
+      step: assemble
+  params:
+    backbone_level: main
+  cache: true
+</code></pre>
+<p>The output is in the same format as <code>generate_transcript</code> — use it anywhere a transcript step is required.</p>
+<h2 id="full-example">Full example</h2>
+<pre><code class="language-yaml">version: 1
+
+project:
+  name: &quot;Auto Assembly&quot;
+  resolution: [1080, 1920]
+  fps: 30
+
+input:
+  - id: raw-footage
+    select: &quot;footage/*.MP4&quot;
+
+timeline:
+  levels:
+    - name: main
+      order: 1
+      type: any
+      backbone: true
+    - name: broll
+      order: 2
+      type: video
+      backbone: false
+    - name: captions
+      order: 3
+      type: video
+      backbone: false
+
+pipeline:
+  - id: analyze_raw
+    processor: analyze_footage
+    input:
+      - id: clips
+        file: raw-footage
+    params:
+      analysis_mode: adaptive
+      language: &quot;en&quot;
+    cache: true
+
+  - id: assemble
+    processor: footage_assembler
+    input:
+      - id: analysis
+        step: analyze_raw
+    params:
+      style: documentary
+      target_duration_sec: 90
+    output:
+      timeline: main
+    review: true
+    cache: true
+
+  - id: transcript
+    processor: assemble_transcript
+    input:
+      - id: analysis
+        step: analyze_raw
+      - id: footage
+        step: assemble
+    cache: true
+
+  - id: direct
+    processor: video_director
+    input:
+      - id: transcript
+        step: transcript
+    params:
+      backbone_step: assemble
+    cache: true
+
+  - id: broll_ai
+    processor: broll_veo_generate
+    input:
+      - id: transcript
+        step: transcript
+      - id: backbone
+        step: assemble
+    params:
+      backbone_step: assemble
+      max_generate: 5
+      eval_prompt: &gt;
+        Accept: clear, focused shot without glitches or uncanny elements.
+        Reject: blurry, morphing objects, impossible physics.
+    output:
+      timeline: broll
+    cache: true
+
+  - id: captions
+    processor: captions
+    input:
+      - id: transcript
+        step: transcript
+      - id: backbone
+        step: assemble
+    output:
+      timeline: captions
+    cache: true
+
+output:
+  - save_finalcut:
+      path: &quot;./output/assembled.fcpxmld&quot;
+</code></pre>
+<h2 id="tips">Tips</h2>
+<ul>
+<li><code>analyze_footage</code> is the most expensive step. Always use <code>cache: true</code>.</li>
+<li>Adjust <code>max_speaker_ratio</code> in <code>footage_assembler</code> to control how much talking-head vs. broll you get. Lower value = less presenter on screen.</li>
+<li><code>video_director</code> is only needed if you're using <code>heygen_speaker</code> or <code>drawings_ai_placer</code> downstream.</li>
+<li>Check the <code>footage_assembler</code> output with <code>review: true</code> before running expensive downstream steps like Veo generation.</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

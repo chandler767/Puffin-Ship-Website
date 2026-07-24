@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Config Reference · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="getting-started.html">Getting Started</a><a class="nav-link active" href="config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="concepts/architecture.html">Architecture</a><a class="nav-link" href="concepts/caching.html">Caching</a><a class="nav-link" href="concepts/data-model.html">Data Model</a><a class="nav-link" href="concepts/review-gates.html">Review Gates</a><a class="nav-link" href="concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="guides/broll.html">Broll Guide</a><a class="nav-link" href="guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="guides/captions.html">Captions Guide</a><a class="nav-link" href="guides/drawings.html">Drawings Guide</a><a class="nav-link" href="guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="processors/index.html">All processors</a><a class="nav-link" href="processors/ai-agent.html">ai_agent</a><a class="nav-link" href="processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="processors/audio.html">audio</a><a class="nav-link" href="processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="processors/av-recorder.html">av_recorder</a><a class="nav-link" href="processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="processors/broll-place.html">broll_place</a><a class="nav-link" href="processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="processors/broll-websource.html">broll_websource</a><a class="nav-link" href="processors/captions.html">captions</a><a class="nav-link" href="processors/chroma-key.html">chroma_key</a><a class="nav-link" href="processors/cut.html">cut</a><a class="nav-link" href="processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="processors/drawing-list.html">drawing_list</a><a class="nav-link" href="processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="processors/drawing-text.html">drawing_text</a><a class="nav-link" href="processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="processors/fill-level.html">fill_level</a><a class="nav-link" href="processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="processors/motion-center.html">motion_center</a><a class="nav-link" href="processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="processors/reframe.html">reframe</a><a class="nav-link" href="processors/scale-transform.html">scale_transform</a><a class="nav-link" href="processors/sound-fx.html">sound_fx</a><a class="nav-link" href="processors/speaker-center.html">speaker_center</a><a class="nav-link" href="processors/stitch.html">stitch</a><a class="nav-link" href="processors/title-card.html">title_card</a><a class="nav-link" href="processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="processors/trim.html">trim</a><a class="nav-link" href="processors/video-director.html">video_director</a><a class="nav-link" href="processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="config-reference">Config Reference</h1>
+<p>A Puffin Ship config is a single YAML file (default <code>puffinship.yaml</code>).</p>
+<h2 id="top-level-structure">Top-level structure</h2>
+<pre><code class="language-yaml">version: 1
+
+project:   ...
+llm:       ...   # optional: override the language model for this config
+input:     ...
+timeline:  ...
+pipeline:  ...
+output:    ...   # optional: FCPXML / SRT export targets
+outputs:   ...   # optional: named MP4 / FCPXML outputs
+</code></pre>
+<p><code>version</code> must be <code>1</code>. <code>llm</code> is optional and names a language-model backend to
+use for this config (the server's default is used when omitted). You use
+<code>output:</code>, <code>outputs:</code>, or both — see the two sections at the end.</p>
+<hr>
+<h2 id="project"><code>project</code></h2>
+<pre><code class="language-yaml">project:
+  name: &quot;My Project&quot;
+  resolution: [1080, 1920]      # [width, height]; portrait = width &lt; height
+  fps: 30                       # integer, or [num, den] for fractional e.g. [24000, 1001]
+  sample_rate: 48000            # audio sample rate in Hz
+</code></pre>
+<p><strong>Defaults:</strong> resolution <code>[1920, 1080]</code>, fps <code>30</code>, sample_rate <code>48000</code>.</p>
+<hr>
+<h2 id="input"><code>input</code></h2>
+<p>Named file references used throughout the pipeline. Values are glob patterns relative to the project directory.</p>
+<pre><code class="language-yaml">input:
+  - id: speaker-footage
+    select: &quot;speaker.MP4&quot;
+
+  - id: broll-clips
+    select: &quot;broll/*.mp4&quot;       # matches multiple files
+
+  - id: transcript
+    select: &quot;transcript.txt&quot;    # text files are loaded as strings by ai_agent
+</code></pre>
+<p>Steps reference these by <code>id</code> in their <code>input</code> blocks.</p>
+<hr>
+<h2 id="timeline"><code>timeline</code></h2>
+<pre><code class="language-yaml">timeline:
+  duration: auto                # &quot;auto&quot; derives duration from the backbone level
+                                # or set an explicit &quot;HH:MM:SS&quot; max duration
+
+  levels:
+    - name: music
+      order: -1                 # rendered below the backbone
+      type: audio
+      backbone: false
+
+    - name: background
+      order: 0
+      type: any
+      backbone: false
+
+    - name: main
+      order: 1
+      type: any
+      backbone: true            # exactly one level must be backbone
+
+    - name: broll
+      order: 2
+      type: video
+      backbone: false
+
+    - name: overlay
+      order: 3
+      type: video
+      backbone: false
+
+    - name: captions
+      order: 4
+      type: video
+      backbone: false
+
+  transitions:                  # optional
+    - between: [main, broll]    # the two levels the transition applies between
+      style: crossfade          # crossfade | cut
+      duration: &quot;0.5s&quot;
+
+  rules:
+    gap_fill: black             # how to fill timeline gaps: black | freeze | none
+    overflow: error             # what to do if clips exceed timeline: error | trim | warn
+</code></pre>
+<p><strong>Backbone level:</strong> drives total timeline duration. All other levels' clips are positioned relative to it in FCPXML. The backbone maps to the FCP <code>&lt;spine&gt;</code>; other levels use FCP lane attributes.</p>
+<p><strong>Transitions</strong> (optional): each entry sets the <code>style</code> (<code>crossfade</code> or <code>cut</code>) and <code>duration</code> applied <code>between</code> a pair of levels. Omit the block entirely for hard cuts everywhere.</p>
+<p><strong>Level order:</strong> lower numbers render first (further back). Use negative values for tracks that should sit below the backbone.</p>
+<p><strong>Level types:</strong> <code>video</code>, <code>audio</code>, <code>any</code>, <code>title</code>. FCP uses this to determine clip compatibility.</p>
+<hr>
+<h2 id="pipeline"><code>pipeline</code></h2>
+<p>An ordered list of steps. Each step runs one processor.</p>
+<pre><code class="language-yaml">pipeline:
+  - id: my_step                 # unique step ID; used by other steps as input
+    processor: trim             # processor name (see Processors doc)
+
+    input:                      # what this step reads; every item requires id:
+      - id: source              # label for this input (required on every item)
+        file: speaker-footage   # reference a project-level input ID
+      - id: sources             # multiple project inputs
+        files:
+          - clip-a
+          - clip-b
+      - id: transcript          # give each input a meaningful label
+        step: transcribe_main   # reference another step's output
+      - id: clips
+        file: broll-clips
+
+    cache_deps:                 # step IDs that invalidate this step's cache
+      - ai_cut                  # re-run when ai_cut changes (even without using its output)
+
+    params:                     # processor-specific settings
+      key: value
+
+    prompt: |                   # prompt text for AI processors
+      ...
+
+    output:
+      timeline: main            # which level this step writes clips to
+      # placement:              # optional: pin output to a position on the timeline
+      #   position: &quot;00:00:05.000&quot;
+      #   anchor:               # or anchor relative to the backbone transcript
+      #     ref: transcribe_main
+      #     match: &quot;welcome&quot;    # place at the word/phrase &quot;welcome&quot;
+      #     offset: &quot;0.5s&quot;
+      #     on_fail: skip       # error | skip
+      # workspace: main         # optional: target workspace (advanced)
+
+    cache: true                 # persist output; re-run only if inputs/params change
+    review: false               # pause for human approval before continuing
+    mode: &quot;&quot;                    # optional; &quot;plan&quot; enables ai_agent's production-planner mode
+</code></pre>
+<p><strong>Step fields:</strong> <code>id</code>, <code>processor</code>, <code>input</code>, <code>cache_deps</code>, <code>params</code>, <code>prompt</code>, <code>output</code>, <code>cache</code> (default <code>true</code>), <code>review</code> (default <code>false</code>), and <code>mode</code> (optional; only <code>plan</code> is defined, used by <code>ai_agent</code>). The <code>output.placement</code>/<code>output.anchor</code> block is optional and rarely needed — most steps just set <code>output.timeline</code>.</p>
+<h3 id="input-ids">Input IDs</h3>
+<p>Every item in <code>input:</code> <strong>must</strong> have a non-empty <code>id:</code>. This makes YAML configs explicit and validates cleanly at load time. Standard conventions:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>Primary file or step input (single-input processors)</td>
+</tr>
+<tr>
+<td><code>sources</code></td>
+<td>Multiple file inputs (<code>stitch</code>)</td>
+</tr>
+<tr>
+<td><code>transcript</code></td>
+<td>Step output containing a transcript</td>
+</tr>
+<tr>
+<td><code>cuts</code></td>
+<td>Step output containing edit decisions</td>
+</tr>
+<tr>
+<td><code>backbone</code></td>
+<td>Step output defining backbone positions (<code>captions</code>)</td>
+</tr>
+<tr>
+<td><code>clips</code></td>
+<td>File input for a directory of media clips (<code>broll_place</code>)</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td>Optional text reference/script file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-output-types">Step output types</h3>
+<p>Most steps write <code>EditDecisions</code> (clip placements) to a timeline level. Some steps produce other output types that downstream steps consume as inputs:</p>
+<table>
+<thead>
+<tr>
+<th>Output type</th>
+<th>Produced by</th>
+<th>Consumed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Analysis</code></td>
+<td><code>generate_transcript</code>, <code>analyze_footage</code>, <code>workspace_analyze</code>, <code>assemble_transcript</code>, <code>elevenlabs_tts</code>, <code>transcript_aiprep</code></td>
+<td>AI processors via <code>step:</code> input</td>
+</tr>
+<tr>
+<td><code>Script</code></td>
+<td><code>write_script</code></td>
+<td><code>transcript_aiprep</code>, <code>heygen_speaker</code>, <code>elevenlabs_tts</code> via <code>step:</code> input</td>
+</tr>
+<tr>
+<td><code>SegmentPlan</code></td>
+<td><code>video_director</code> (primary); <code>footage_assembler</code> (secondary — alongside <code>EditDecisions</code>)</td>
+<td><code>broll_place</code>, <code>broll_imagen_generate</code>, <code>broll_screenshot_websource</code>, <code>drawings_ai_placer</code></td>
+</tr>
+<tr>
+<td><code>TransformPatches</code></td>
+<td><code>reframe</code>, <code>motion_center</code>, <code>speaker_center</code>, <code>scale_transform</code>, <code>volume_adjust</code></td>
+<td>Applied automatically by the runner</td>
+</tr>
+<tr>
+<td><code>SourceRemaps</code></td>
+<td><code>chroma_key</code>, <code>noise_reduce</code></td>
+<td>Applied automatically by the runner</td>
+</tr>
+</tbody>
+</table>
+<p><code>SegmentPlan</code> is the main inter-step coordination mechanism for the footage-director workflow: <code>footage_assembler</code> produces EditDecisions (placed clips) and a secondary SegmentPlan (unfilled gaps); <code>video_director</code> takes that as input and outputs a refined SegmentPlan as its primary output for downstream broll processors.</p>
+<h3 id="cache-deps">Cache deps</h3>
+<p>A step re-runs when its inputs or params change. To invalidate a step when an upstream step changes (even if you don't use its output as data), list the step IDs under <code>cache_deps:</code>:</p>
+<pre><code class="language-yaml">- id: background
+  processor: fill_level
+  input:
+    - id: source
+      file: background-image
+  cache_deps:
+    - ai_cut                     # background re-runs when ai_cut changes
+  params:
+    duration_step: ai_cut
+</code></pre>
+<h3 id="review-mode">Review mode</h3>
+<p>Steps with <code>review: true</code> pause after execution and wait for you in the run
+view. You can <strong>approve</strong> the output, <strong>approve with edits</strong>, <strong>reject</strong> it (the
+run ends), or <strong>regenerate</strong> (re-run the step for new output). See
+<a href="concepts/review-gates.html">Review Gates</a>.</p>
+<hr>
+<h2 id="output"><code>output</code></h2>
+<pre><code class="language-yaml">output:
+  - save_finalcut:
+      path: &quot;./output/project.fcpxmld&quot;   # FCP X bundle
+
+  - save_srt:
+      step: correct_transcript            # which transcript step to export
+      path: &quot;./output/project.srt&quot;
+</code></pre>
+<p>Multiple outputs are supported. The <code>.fcpxmld</code> bundle can be opened directly in Final Cut Pro.</p>
+<hr>
+<h2 id="outputs"><code>outputs</code></h2>
+<p>An alternative output declaration that supports both FCPXML and direct video rendering:</p>
+<pre><code class="language-yaml">outputs:
+  - type: fcpxml
+    name: my-project           # writes my-project.fcpxmld in the project directory
+
+  - type: video
+    name: my-project-1080p     # writes my-project-1080p.mp4 in the project directory
+    crf: 18                    # H.264 CRF quality (lower = better; default 18)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>&quot;fcpxml&quot;</code> or <code>&quot;video&quot;</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Output filename without extension (<code>.fcpxmld</code> added for fcpxml, <code>.mp4</code> for video)</td>
+</tr>
+<tr>
+<td><code>crf</code></td>
+<td>int</td>
+<td>H.264 CRF value for <code>type: video</code> (default <code>18</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>outputs:</code> when you want to produce an MP4 directly from Puffin Ship, or when you need multiple named output files. Use <code>output:</code> for path-controlled FCPXML or SRT export.</p>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

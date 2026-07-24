@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>heygen_speaker · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link active" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="heygen-speaker"><code>heygen_speaker</code></h1>
+<p>Generates avatar talking-head video clips using the HeyGen API to fill timeline gaps with a synthetic presenter.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use when you need an on-camera presenter but don't have source footage. Common in the auto-assembly pipeline after <code>write_script</code> and <code>transcript_aiprep</code>. Requires a HeyGen avatar ID and voice ID.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml">- id: avatar
+  processor: heygen_speaker
+  input:
+    - id: transcript
+      step: prep_script
+  params:
+    avatar_id: &quot;your-avatar-id&quot;
+    voice_id: &quot;your-voice-id&quot;
+    use_iv_model: true
+    matting: true
+  output:
+    timeline: main
+  review: true
+  cache: true
+</code></pre>
+<h2 id="required-secrets">Required secrets</h2>
+<p><code>HEYGEN_API_KEY</code> — set in workspace or template secrets. A run whose pipeline includes this processor is refused before it starts if the key is missing; the web UI prompts for it.</p>
+<h2 id="inputs">Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transcript</code></td>
+<td>step</td>
+<td>Text to speak (from <code>write_script</code>, <code>transcript_aiprep</code>, etc.) Required in TTS mode.</td>
+</tr>
+<tr>
+<td><code>audio</code></td>
+<td>step (optional)</td>
+<td>Pre-generated audio from <code>elevenlabs_tts</code>. When provided, TTS is skipped — HeyGen lip-syncs to this audio.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avatar_id</code></td>
+<td>string</td>
+<td>—</td>
+<td>HeyGen avatar ID</td>
+</tr>
+<tr>
+<td><code>voice_id</code></td>
+<td>string</td>
+<td>—</td>
+<td>HeyGen voice ID. Not required when <code>audio</code> input is provided.</td>
+</tr>
+<tr>
+<td><code>avatar_style</code></td>
+<td>select: <code>normal</code>, <code>circle</code>, <code>closeUp</code></td>
+<td><code>&quot;normal&quot;</code></td>
+<td>Avatar pose style</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td>number</td>
+<td><code>1</code></td>
+<td>Voice speed (0.5–2.0). 0 = API default.</td>
+</tr>
+<tr>
+<td><code>pitch</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Voice pitch (-50–50). 0 = omit.</td>
+</tr>
+<tr>
+<td><code>emotion</code></td>
+<td>select: <code>Excited</code>, <code>Friendly</code>, <code>Serious</code>, <code>Soothing</code>, <code>Broadcaster</code></td>
+<td>—</td>
+<td><code>Excited</code>, <code>Friendly</code>, <code>Serious</code>, <code>Soothing</code>, or <code>Broadcaster</code></td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Character scale multiplier (0 = API default)</td>
+</tr>
+<tr>
+<td><code>background_color</code></td>
+<td>color</td>
+<td><code>&quot;#00FF00&quot;</code></td>
+<td>Green screen background color when <code>matting: false</code></td>
+</tr>
+<tr>
+<td><code>background_image</code></td>
+<td>string</td>
+<td>—</td>
+<td>Path to a local image file to use as background. Overrides <code>background_color</code>.</td>
+</tr>
+<tr>
+<td><code>use_iv_model</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Use HeyGen interactive video model. <strong>Always set to <code>true</code>.</strong></td>
+</tr>
+<tr>
+<td><code>matting</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable background removal (transparent output). <strong>Always set to <code>true</code>.</strong></td>
+</tr>
+<tr>
+<td><code>elevenlabs_model</code></td>
+<td>string</td>
+<td>—</td>
+<td>ElevenLabs model ID for voice synthesis (e.g. <code>eleven_v3</code>)</td>
+</tr>
+<tr>
+<td><code>elevenlabs_stability</code></td>
+<td>number</td>
+<td>—</td>
+<td>ElevenLabs stability (0–1)</td>
+</tr>
+<tr>
+<td><code>elevenlabs_similarity_boost</code></td>
+<td>number</td>
+<td>—</td>
+<td>ElevenLabs similarity boost (0–1)</td>
+</tr>
+<tr>
+<td><code>elevenlabs_style</code></td>
+<td>number</td>
+<td>—</td>
+<td>ElevenLabs style (0–1)</td>
+</tr>
+<tr>
+<td><code>elevenlabs_speaker_boost</code></td>
+<td>bool</td>
+<td>—</td>
+<td>ElevenLabs speaker boost</td>
+</tr>
+<tr>
+<td><code>fill_gaps</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Generate one clip per gap instead of one full video. Requires <code>audio</code> input and <code>gap_level</code>.</td>
+</tr>
+<tr>
+<td><code>gap_level</code></td>
+<td>level</td>
+<td>—</td>
+<td>Timeline level to find gaps in (required when <code>fill_gaps: true</code>)</td>
+</tr>
+<tr>
+<td><code>overflow_start</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Extend each gap start backward by this many seconds</td>
+</tr>
+<tr>
+<td><code>overflow_end</code></td>
+<td>duration (s)</td>
+<td><code>0</code></td>
+<td>Extend each gap end forward by this many seconds</td>
+</tr>
+<tr>
+<td><code>force_reuse</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Never generate new clips — only reuse clips already on disk</td>
+</tr>
+<tr>
+<td><code>output_dir</code></td>
+<td>string</td>
+<td><code>&quot;heygen&quot;</code></td>
+<td>Subdirectory under project root for generated clips</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> on the output timeline level.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Requires a <code>HEYGEN_API_KEY</code> set in your workspace's Service API Keys.</li>
+<li><strong>Never set <code>use_iv_model: false</code> or <code>matting: false</code></strong> — these are critical to output quality. If HeyGen fails due to insufficient credits, top up credits rather than disabling these options.</li>
+<li>Generated clips are cached in <code>heygen/manifest.json</code> (at the project root, or <code>&lt;output_dir&gt;/manifest.json</code> for custom <code>output_dir</code>). Re-running re-uses cached clips automatically.</li>
+<li>HeyGen API: <code>POST https://api.heygen.com/v2/video/generate</code>, status at <code>GET https://api.heygen.com/v3/videos/{video_id}</code>.</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

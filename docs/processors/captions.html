@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>captions · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/architecture.html">Architecture</a><a class="nav-link" href="../concepts/caching.html">Caching</a><a class="nav-link" href="../concepts/data-model.html">Data Model</a><a class="nav-link" href="../concepts/review-gates.html">Review Gates</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline &amp; Levels</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link active" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="captions"><code>captions</code></h1>
+<p>Per-word highlighted caption overlays. Each word is rendered in <code>highlight_color</code> when it is being spoken, creating a karaoke-style effect.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use after your transcript and edit cut are finalized. Requires both a transcript step and a backbone step to map source timestamps to timeline positions.</p>
+<h2 id="yaml-example">YAML Example</h2>
+<pre><code class="language-yaml">- id: captions
+  processor: captions
+  input:
+    - id: transcript
+      step: correct_transcript
+    - id: backbone
+      step: ai_cut
+  params:
+    max_words: 5
+    font_size: 72
+    position_y: -480
+    scale: 0.75
+    highlight_color: &quot;red&quot;
+    text_color: &quot;white&quot;
+    outline_color: &quot;black&quot;
+    outline_size: 8
+    outline_fuzziness: 3
+    line_gap: 10
+    font_file: &quot;&quot;
+    word_corrections:
+      &quot;ninety nine percent&quot;: &quot;99%&quot;
+      &quot;red panda&quot;: &quot;Redpanda&quot;
+  output:
+    timeline: captions
+  cache: true
+</code></pre>
+<h2 id="inputs">Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transcript</code></td>
+<td>step</td>
+<td>Transcript with word timestamps (use the corrected transcript if available)</td>
+</tr>
+<tr>
+<td><code>backbone</code></td>
+<td>step (optional)</td>
+<td>Edit decisions — maps source timestamps to timeline positions. When omitted, source timestamps are used as-is.</td>
+</tr>
+<tr>
+<td><code>original</code></td>
+<td>step or file (optional)</td>
+<td>Original script or transcript used by <code>ai_correct: true</code> for alignment. Accepts a step output or a text file.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="params">Params</h2>
+<!-- BEGIN GENERATED PARAMS — edit a processor's Schema() (internal/processor), then `go run ./cmd/gen-processor-schemas`. Descriptions here are preserved on regen. -->
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_words</code></td>
+<td>number</td>
+<td><code>5</code></td>
+<td>Words per caption group</td>
+</tr>
+<tr>
+<td><code>font_size</code></td>
+<td>number</td>
+<td><code>72</code></td>
+<td>Base font size in pixels</td>
+</tr>
+<tr>
+<td><code>position_y</code></td>
+<td>number</td>
+<td><code>-480</code></td>
+<td>FCP pixels from center (negative = below center)</td>
+</tr>
+<tr>
+<td><code>line_gap</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Vertical gap between lines</td>
+</tr>
+<tr>
+<td><code>highlight_color</code></td>
+<td>color</td>
+<td><code>&quot;red&quot;</code></td>
+<td>Color of the active (currently spoken) word</td>
+</tr>
+<tr>
+<td><code>text_color</code></td>
+<td>color</td>
+<td><code>&quot;white&quot;</code></td>
+<td>Color of inactive words</td>
+</tr>
+<tr>
+<td><code>outline_color</code></td>
+<td>color</td>
+<td><code>&quot;black&quot;</code></td>
+<td>Outline color</td>
+</tr>
+<tr>
+<td><code>outline_size</code></td>
+<td>number</td>
+<td><code>8</code></td>
+<td>Outline width in pixels</td>
+</tr>
+<tr>
+<td><code>outline_fuzziness</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>Shadow spread in pixels</td>
+</tr>
+<tr>
+<td><code>font_file</code></td>
+<td>string</td>
+<td>—</td>
+<td>Path to <code>.ttf</code>. Auto-detects Arial Bold if empty.</td>
+</tr>
+<tr>
+<td><code>ai_correct</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Align cut transcript against a full-recording transcript to restore symbols (<code>%</code>, <code>$</code>, <code>-</code>) and compound words (<code>USB-C</code>, <code>CI/CD</code>) that Whisper drops. Requires an <code>original</code> input (step or file).</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td>number</td>
+<td><code>1</code></td>
+<td>FCP transform scale</td>
+</tr>
+<tr>
+<td><code>word_corrections</code></td>
+<td>text</td>
+<td>—</td>
+<td>Multi-word find→replace applied before grouping (preserves timing)</td>
+</tr>
+</tbody>
+</table>
+<!-- END GENERATED PARAMS -->
+<h2 id="output">Output</h2>
+<p><code>EditDecisions</code> on the captions level — one clip per caption group.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><strong>Manifest:</strong> On the first run, <code>captions</code> writes a <code>&lt;stepID&gt;.yaml</code> manifest in the project directory. Edit this file to fix groupings, merge/split caption groups, or correct text. Subsequent runs use the manifest. Delete it to regenerate from scratch.</li>
+<li><strong>Word corrections:</strong> merges matched words into single manifest entries with redistributed timestamps — corrections don't break caption timing.</li>
+<li>Rendered clips are saved to <code>.puffinship/captions/</code>.</li>
+<li>See the <a href="../guides/captions.html">Captions guide</a> for manifest editing details.</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>
