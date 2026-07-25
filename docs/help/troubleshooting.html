@@ -144,6 +144,15 @@ run in progress, and export a finished one.</li>
 </ul>
 <p>If a time is given, that is when we expect to be taking new runs again. There
 is nothing to do at your end except start the run once the banner clears.</p>
+<h2 id="save-and-run-are-greyed-out-in-the-editor">Save and Run are greyed out in the editor</h2>
+<p>The template's YAML does not parse, so there is nothing valid to save or run.
+Open the <strong>YAML</strong> tab in the middle of the editor: the reason and the line
+number are shown above the document, and the offending text is underlined.
+Common causes are a stray colon in an unquoted value, a line indented with a tab
+instead of spaces, and an opening bracket or quote with no closing one.</p>
+<p>Your text is not lost while this is true. It stays in the editor exactly as you
+typed it, and <code>Cmd/Ctrl+Z</code> will walk it back. As soon as the document parses,
+both buttons come back.</p>
 <h2 id="still-stuck">Still stuck</h2>
 <p><a href="feedback.html">Send us a report</a> with the run name, the step that failed, and the
 error message. That is usually enough for us to reproduce it.</p>

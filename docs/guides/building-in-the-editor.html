@@ -28,8 +28,9 @@
     <article class="doc"><h1 id="building-in-the-editor">Building in the editor</h1>
 <p>Puffin Ship templates are built visually. You don't have to write YAML: you add
 steps, pick processors, and fill in parameters through the editor, and the
-config is kept in sync for you. This guide covers the editor's layout and the
-main things you'll do in it.</p>
+config is kept in sync for you. If you'd rather type, the same template is
+editable as YAML in a full code editor, and the two views stay in step. This
+guide covers the editor's layout and the main things you'll do in it.</p>
 <h2 id="starting-a-template">Starting a template</h2>
 <p>From a workspace, the <strong>Templates → New</strong> button opens <strong>Build a Template</strong>,
 which offers four starting points:</p>
@@ -53,14 +54,19 @@ of steps you can open in the editor.</li>
 <li><strong>Graph</strong>: a dependency view showing how steps feed each other.</li>
 </ul>
 </li>
-<li><strong>Center (the inspector)</strong>: configures whichever step you've selected (or
-shows processor details when you're browsing the Library).</li>
+<li><strong>Center</strong>: tabbed between:
+<ul>
+<li><strong>Inspector</strong>: configures whichever step you've selected (or shows
+processor details when you're browsing the Library).</li>
+<li><strong>YAML</strong>: the template's config as text, in a full code editor. See
+<a href="#editing-the-yaml-directly">Editing the YAML directly</a>.</li>
+</ul>
+</li>
 <li><strong>Right (the Runs panel)</strong>: where you start runs and see run history. It
 collapses to a strip on narrow screens.</li>
 </ul>
-<p>The header has the template name, <strong>Undo/Redo</strong>, a <strong>YAML</strong> button that opens the
-raw config in a slide-over (handy if you prefer typing), a settings menu, and
-<strong>Save</strong>.</p>
+<p>The header has the template name, <strong>Undo/Redo</strong>, a button that switches the
+center between <strong>Inspector</strong> and <strong>YAML</strong>, a settings menu, and <strong>Save</strong>.</p>
 <h2 id="adding-and-arranging-steps">Adding and arranging steps</h2>
 <p>Each <strong>step</strong> runs one <strong>processor</strong>. To add a step:</p>
 <ul>
@@ -148,6 +154,75 @@ pipeline appear). This is how one step consumes another's output.</li>
 </ul>
 <p>Input IDs are conventional (<code>source</code>, <code>transcript</code>, <code>backbone</code>, …); each
 processor's page lists the inputs it expects.</p>
+<h2 id="editing-the-yaml-directly">Editing the YAML directly</h2>
+<p>The <strong>YAML</strong> tab in the center of the editor shows the whole template as text.
+It is a full code editor, not a text box, and anything you can express in the
+<a href="../config.html">config reference</a> you can write here, including options the
+Inspector has no control for.</p>
+<p><strong>Reading it.</strong> The document is syntax-highlighted using the same colors the
+Inspector uses for the same kinds of value (strings green, numbers blue,
+booleans amber), with line numbers down the side and matching brackets and
+quotes highlighted as you move through them.</p>
+<p><strong>Hover for help.</strong> Point at anything in the document and the editor explains
+it:</p>
+<ul>
+<li>A <strong>processor name</strong> shows what that processor does, its category, the
+timeline level it writes to, whether it uses an AI model, and its settings
+(required ones first) with each setting's type, units, range and default.</li>
+<li>A <strong>setting name</strong> under <code>params:</code> shows that setting's description, read
+from the schema of the processor that step actually runs. Two steps using
+different processors get different help for the same setting name.</li>
+<li>A <strong>structural key</strong> shows what it means in the place it appears. <code>id</code> on a
+step is the name other steps refer to; <code>id</code> on one of that step's inputs is
+the input slot being filled.</li>
+</ul>
+<p>This is the same information the Inspector shows in its parameter tooltips and
+the <a href="../processors/index.html">processor reference</a> publishes, so it is always
+current.</p>
+<p><strong>Typing in it.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tab</code></td>
+<td>With text selected, or with the cursor in a line's leading spaces, indents the whole line. Mid-line, inserts spaces to the next indent stop. It never inserts a tab character, which YAML does not allow.</td>
+</tr>
+<tr>
+<td><code>Shift+Tab</code></td>
+<td>Removes one level of indentation.</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>Keeps the current indentation, and indents one level deeper after a line ending in <code>:</code> or a bare <code>-</code>.</td>
+</tr>
+<tr>
+<td><code>Cmd/Ctrl+F</code></td>
+<td>Search the document.</td>
+</tr>
+<tr>
+<td><code>Cmd/Ctrl+Z</code></td>
+<td>Undo, including undoing back past mistakes made in the Inspector.</td>
+</tr>
+</tbody>
+</table>
+<p>Opening brackets and quotes close themselves as you type.</p>
+<p><strong>Mistakes are visible, not silent.</strong> If the document stops parsing, the
+offending text is underlined, the tab shows a dot, and the line number and
+reason appear above the editor. Your text stays exactly as you typed it so you
+can fix it, but <strong>Save</strong>, <strong>Run</strong> and <strong>Save as template</strong> are unavailable until
+it parses, so a broken pipeline can't be saved over a working one or turned
+into a run.</p>
+<p><strong>Comments are kept.</strong> Editing here changes the text and nothing else, so your
+comments, blank lines, key order and quoting style survive exactly as written.
+Changing a step in the <strong>Inspector</strong> is different: it rewrites the file from the
+pipeline it describes, and only the comment block at the very top survives. When
+your document has comments further down, the YAML tab tells you how many would
+be lost that way. If comments matter to you, make that edit in the YAML tab.</p>
 <h2 id="project-and-timeline-settings">Project and timeline settings</h2>
 <p>The editor's <strong>Settings</strong> slide-over (from the header menu) covers the
 project-level config: <strong>resolution</strong> (with 9:16 / 16:9 / 1:1 presets), <strong>FPS</strong>,
