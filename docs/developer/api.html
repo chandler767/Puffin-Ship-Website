@@ -262,20 +262,17 @@ GET /api/runs/{rid}/events     → Server-Sent Events stream of live progress
 </tr>
 <tr>
 <td><code>failed</code></td>
-<td>Stopped on an error (see the run's steps for detail)</td>
-</tr>
-<tr>
-<td><code>rejected</code></td>
-<td>Stopped because a review gate was rejected</td>
-</tr>
-<tr>
-<td><code>cancelled</code></td>
-<td>Cancelled</td>
+<td>Stopped without finishing (see <code>error</code> and the run's steps for detail)</td>
 </tr>
 </tbody>
 </table>
-<p>The terminal states are <code>done</code>, <code>failed</code>, <code>rejected</code>, and <code>cancelled</code>. Cancel a
-run with <code>POST /api/runs/{rid}/cancel</code>.</p>
+<p>The terminal states are <code>done</code> and <code>failed</code>. Those are the only two a run can
+end in, so polling for anything else will wait forever.</p>
+<p><code>failed</code> covers every way a run stops short, not just a crash. Cancelling a run
+(<code>POST /api/runs/{rid}/cancel</code>) ends it as <code>failed</code> with <code>error</code> set to
+<code>cancelled by user</code>, and rejecting a review gate ends it as <code>failed</code> with an
+<code>error</code> naming the rejected step. Read <code>error</code> when you need to tell a genuine
+error from a deliberate stop.</p>
 <p>The SSE stream (<code>/events</code>) also accepts the key as a <code>?token=</code> query parameter,
 since EventSource can't send headers:
 <code>GET /api/runs/{rid}/events?token=psk_...</code>.</p>
@@ -284,7 +281,7 @@ since EventSource can't send headers:
 pending review you resolve:</p>
 <pre><code>POST /api/runs/{rid}/reviews/{review_id}
   { &quot;action&quot;: &quot;approved&quot; }                     // approve as-is
-  { &quot;action&quot;: &quot;rejected&quot; }                      // reject → run ends as &quot;rejected&quot;
+  { &quot;action&quot;: &quot;rejected&quot; }                      // reject → run ends as &quot;failed&quot;
   { &quot;action&quot;: &quot;edited&quot;, &quot;response&quot;: { ... } }   // approve with an edited payload
   { &quot;action&quot;: &quot;regenerate&quot; }                    // ask the step to produce new output
   → { &quot;status&quot;: &quot;ok&quot; }
@@ -343,7 +340,7 @@ RID=$(curl -s -X POST $BASE/workspaces/$WS/templates/$TPL/runs \
 while :; do
   S=$(curl -s $BASE/runs/$RID -H &quot;Authorization: Bearer $KEY&quot; | jq -r '.run.status')
   echo &quot;status: $S&quot;
-  case &quot;$S&quot; in done|failed|rejected|cancelled) break;; esac
+  case &quot;$S&quot; in done|failed) break;; esac
   sleep 5
 done
 
