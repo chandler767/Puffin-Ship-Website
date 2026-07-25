@@ -39,7 +39,7 @@ output:    ...   # optional: FCPXML / SRT export targets
 outputs:   ...   # optional: named MP4 / FCPXML outputs
 </code></pre>
 <p><code>version</code> must be <code>1</code>. <code>llm</code> is optional and names a language-model backend to
-use for this config (the server's default is used when omitted). You use
+use for this config (Puffin Ship's default is used when omitted). You use
 <code>output:</code>, <code>outputs:</code>, or both: see the two sections at the end.</p>
 <hr>
 <h2 id="project"><code>project</code></h2>
@@ -213,12 +213,12 @@ use for this config (the server's default is used when omitted). You use
 <tr>
 <td><code>TransformPatches</code></td>
 <td><code>reframe</code>, <code>motion_center</code>, <code>speaker_center</code>, <code>scale_transform</code>, <code>volume_adjust</code></td>
-<td>Applied automatically by the runner</td>
+<td>Nothing: applied to the clips they target automatically</td>
 </tr>
 <tr>
 <td><code>SourceRemaps</code></td>
 <td><code>chroma_key</code>, <code>noise_reduce</code></td>
-<td>Applied automatically by the runner</td>
+<td>Nothing: applied to the clips they target automatically</td>
 </tr>
 </tbody>
 </table>
@@ -254,7 +254,7 @@ run ends), or <strong>regenerate</strong> (re-run the step for new output). See
 <p><strong>The <code>path</code> values are not used.</strong> They date from when a pipeline ran on your
 own machine and wrote files to disk. Runs now happen on the server and you
 download the results from the run page, so nothing is written to the path you
-give. <code>path</code> is still required by the validator, so an existing config keeps
+give. <code>path</code> is still required by the config format, so an existing config keeps
 working, but changing it changes nothing.</p>
 <p>Prefer <a href="#outputs"><code>outputs</code></a> below for new configs: it names the file you
 download and supports video rendering as well as Final Cut Pro. The <code>.fcpxmld</code>
