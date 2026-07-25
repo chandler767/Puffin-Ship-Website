@@ -4,7 +4,7 @@
 
 ## Status
 
-Puffin Ship is live and free to use during early access. Create a free account at https://app.puffinship.com/login to get started, or contact info@puffinship.com or call 415-409-8722.
+Puffin Ship is live and free to use during early access. Create an account at https://app.puffinship.com/login to get started, or contact info@puffinship.com or call 415-409-8722.
 
 ## The problem
 
@@ -57,7 +57,7 @@ The defensibility comes from the compounding loop between production, feedback, 
 
 ## Contact
 
-To get started, sign up free at https://app.puffinship.com/login (free during early access). To discuss higher-volume or agency needs:
+To get started, sign up at https://app.puffinship.com/login (free during early access). To discuss higher-volume or agency needs:
 
 - Email: info@puffinship.com
 - Phone: 415-409-8722
