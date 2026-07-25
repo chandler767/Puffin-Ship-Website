@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Starter Templates · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link active" href="../guides/starter-templates.html">Starter Templates</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a><a class="nav-link" href="../account/storage-limits.html">Storage limits</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="starter-templates">Starter Templates</h1>
+<p>The Gallery tab in <strong>Build a Template</strong> opens with four starter templates. Each
+one is a complete, working pipeline: every step already has its inputs, settings
+and output level filled in, so you only have to supply your footage and any
+service key the template needs. Pick one, and it is copied into your workspace
+as a normal template you can edit.</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>What it does</th>
+<th>You supply</th>
+<th>Service key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assemble Clips</td>
+<td>Joins several clips end to end</td>
+<td>A folder of clips</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Script, Record, Caption</td>
+<td>Writes a script, records you reading it, captions the take</td>
+<td>Nothing</td>
+<td><code>OPENAI_API_KEY</code></td>
+</tr>
+<tr>
+<td>Trim Dead Space</td>
+<td>Cuts the silences out of a long recording</td>
+<td>One video</td>
+<td><code>OPENAI_API_KEY</code></td>
+</tr>
+<tr>
+<td>Auto-Caption a Clip</td>
+<td>Puts per-word captions on a clip</td>
+<td>One video</td>
+<td><code>OPENAI_API_KEY</code></td>
+</tr>
+</tbody>
+</table>
+<p>Service keys are set once per workspace under <strong>Workspace Settings, Variables &amp;
+Keys</strong>. See <a href="../getting-started.html">Getting Started</a> for where to find them.</p>
+<h2 id="assemble-clips">Assemble Clips</h2>
+<p>The simplest one, and the best first run: no AI, no service key, no waiting.</p>
+<p>Upload the clips you want joined into a folder named <code>clips</code>. They are placed
+end to end in filename order, so name them <code>clip-01.mp4</code>, <code>clip-02.mp4</code>,
+<code>clip-03.mp4</code> and they play in that order. Run it and you get one continuous
+edit you can preview and export.</p>
+<p>Clips keep their own format, so the result looks best when they share a
+resolution and frame rate. If you are mixing footage from different cameras,
+expect the preview to change size between clips.</p>
+<p>To change the order, either rename the files or replace the <code>clips</code> input with
+an explicit list of file names in the order you want.</p>
+<h2 id="script-record-caption">Script, Record, Caption</h2>
+<p>The full loop, with nothing to upload.</p>
+<ol>
+<li><strong>Script.</strong> Claude writes a short script. The step ships with a placeholder
+brief; replace it with a few lines about your own product. The run pauses at
+a <a href="../concepts/review-gates.html">review gate</a> so you approve the wording
+before you say it out loud.</li>
+<li><strong>Record.</strong> The run pauses again and opens the recording panel, using the
+approved script as a teleprompter. See
+<a href="recording.html">Recording in the browser</a>.</li>
+<li><strong>Transcript.</strong> Your take is transcribed, so the captions match what you
+actually said rather than what the script planned.</li>
+<li><strong>Captions.</strong> Per-word captions are burned on, sized for a vertical frame.</li>
+</ol>
+<p>It is set up portrait (1080x1920) for social. For landscape, change
+<code>resolution</code> to <code>[1920, 1080]</code> and set the captions <code>position_y</code> to about
+<code>-380</code>.</p>
+<h2 id="trim-dead-space">Trim Dead Space</h2>
+<p>Point this at one long recording and it removes the pauses.</p>
+<p>The clip is transcribed, then everything between the spoken words is cut and the
+speech is joined back up. Two settings control how aggressive it is:</p>
+<ul>
+<li><code>min_silence_duration</code> (0.8 seconds) is how long a gap has to be before it is
+cut. Raise it to cut less.</li>
+<li><code>padding</code> (0.1 seconds) is how much air is kept around each kept segment.
+Raise it if words are being clipped.</li>
+</ul>
+<p>The input matches a single <code>.mp4</code> at the top level of the workspace. If you keep
+several videos there, change it to the file name you want.</p>
+<h2 id="auto-caption-a-clip">Auto-Caption a Clip</h2>
+<p>One clip in, the same clip out with per-word captions on top. The footage is not
+re-cut, so this is the one to reach for when the edit is already finished
+elsewhere.</p>
+<p>Caption styling lives on the captions step: <code>font_size</code>, <code>position_y</code>,
+<code>text_color</code>, <code>highlight_color</code> and <code>outline_color</code> are the ones worth touching
+first. The full list is in the
+<a href="../processors/captions.html">captions reference</a>, and the
+<a href="captions.html">Captions Guide</a> covers fixing mishears and repositioning.</p>
+<p>To caption only part of the clip, set <code>in</code> and <code>out</code> on the <code>place_clip</code> step.</p>
+<h2 id="next">Next</h2>
+<ul>
+<li><a href="building-in-the-editor.html">Building in the editor</a>: change a starter template once it is yours</li>
+<li><a href="../config.html">Config Reference</a>: every YAML option</li>
+<li><a href="../processors/index.html">All Processors</a>: every processor and its params</li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>

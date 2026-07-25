@@ -23,43 +23,57 @@
   <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
 </header>
 <div class="layout">
-  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link active" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link active" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/starter-templates.html">Starter Templates</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a><a class="nav-link" href="../account/storage-limits.html">Storage limits</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
   <main class="content">
     <article class="doc"><h1 id="reusing-work-between-runs">Reusing work between runs</h1>
 <p>Most of what a pipeline does costs money or time: transcription, AI editing
-decisions, generated video, synthesized speech. Puffin Ship remembers what a
-step produced so you do not pay for the same work twice. This page explains when
-that reuse happens, and, just as importantly, when it deliberately does not.</p>
-<h2 id="where-reused-work-lives">Where reused work lives</h2>
-<p>Reusable step output belongs to a <strong>run group</strong>, not to a template. Every run
-happens inside a group, and a group's saved work is available to later runs in
-that same group.</p>
-<p>That leads to the single most useful thing to know about running templates:</p>
+decisions, generated video, synthesized speech. Puffin Ship can remember what a
+step produced so you do not pay for the same work twice. This page explains
+exactly when that reuse happens, and, just as importantly, when it deliberately
+does not.</p>
+<h2 id="the-short-version">The short version</h2>
 <blockquote>
-<p><strong>Tip:</strong> Clicking <strong>▶ Run</strong> on a template deliberately starts fresh. It creates
-a brand new run group, which has nothing saved yet, so every step runs again
-and every generated asset is generated again.</p>
-<p>To reuse earlier work and avoid paying to regenerate it, open the run group
-you were working in and run from there, or use <strong>↩ Re-run from this step</strong> on a
-step in the run view. Everything before that step is reused; that step and
-everything after it runs again.</p>
+<p>Saved step output belongs to a <strong>run group</strong>, not to a template.</p>
+<ul>
+<li>Clicking <strong>▶ Run</strong> on a template starts a <strong>new run group with nothing
+saved</strong>. Every step runs again, every generated asset is generated again,
+and nothing from any earlier run is reused.</li>
+<li>Starting a run <strong>from inside an existing run group</strong> can reuse that group's
+saved work.</li>
+<li><strong>↩ Re-run from this step</strong> on a finished or failed run reuses everything
+before that step.</li>
+</ul>
 </blockquote>
-<p>Both behaviors are intentional. A new video should not inherit another video's
-decisions, and a second attempt at the same video should not cost full price.</p>
-<h2 id="turning-reuse-on-for-a-step">Turning reuse on for a step</h2>
-<p>Reuse is opt-in per step, with <code>cache: true</code>:</p>
-<pre><code class="language-yaml">- id: transcribe
-  processor: generate_transcript
-  input:
-    - id: source
-      file: speaker-footage
-  cache: true
-</code></pre>
-<p>In the editor this is a checkbox on the step. Leave it off for steps you always
-want fresh, and on for anything expensive.</p>
+<p>Both halves of that are intentional. A new video should not inherit another
+video's decisions, and a second attempt at the same video should not cost full
+price.</p>
+<h2 id="starting-fresh-no-reuse">Starting fresh: no reuse</h2>
+<p>There is no &quot;reuse from the last run&quot; behavior. Two separate runs launched from
+a template are independent: the second one does not look at what the first one
+produced, even if you changed nothing at all in between. It starts a new group,
+that group has nothing saved yet, and every step executes from scratch.</p>
+<p>If you clicked <strong>▶ Run</strong> expecting to pick up where the previous run left off,
+that is why everything ran again. Use one of the two reuse paths below instead.</p>
+<h2 id="reusing-work-run-from-inside-the-group">Reusing work: run from inside the group</h2>
+<p>Open the run group you were working in and start a run there. That run can reuse
+any step the group already has saved, so only the steps affected by your change
+have to run again.</p>
+<p>This is the normal way to iterate on one video: adjust a prompt or a parameter,
+run again inside the same group, and pay only for what actually changed.</p>
+<p>See <a href="run-groups.html">Run groups and variants</a> for how groups work.</p>
+<h2 id="reusing-work-re-run-from-a-step">Reusing work: re-run from a step</h2>
+<p>Once a run has finished or failed, each step in the run view gets a <strong>↩</strong>
+control. It starts a new run in the same group beginning at that step, reusing
+everything before it. Use it when one decision was wrong and everything up to it
+was fine, for example when the script is good but the b-roll choices are not.</p>
+<p>That step and everything after it runs again. Everything before it is reused.</p>
+<p>For AI steps that brainstorm concepts first, <strong>↩</strong> re-picks the concept from the
+ones already generated, and the <strong>⋯</strong> menu beside it offers <strong>Generate new
+concepts</strong> (throw the brainstorm out and start over) or <strong>Keep same concept</strong>
+(re-run the step with the concept it already chose).</p>
 <h2 id="when-a-saved-step-runs-again-anyway">When a saved step runs again anyway</h2>
-<p>A saved step is reused only if nothing it depends on has changed. It runs again
-when:</p>
+<p>Even inside a run group, a saved step is only reused if nothing it depends on
+has changed. It runs again when:</p>
 <ul>
 <li>an input file changed</li>
 <li>an upstream step produced something different</li>
@@ -67,6 +81,17 @@ when:</p>
 <li>a step listed under <code>cache_deps</code> changed</li>
 <li>you re-ran from that step, or from a step before it</li>
 </ul>
+<h2 id="turning-saving-off-for-a-step">Turning saving off for a step</h2>
+<p>Steps save their output by default. To force a step to run every time, set
+<code>cache: false</code> on it. In the editor that goes in the step's raw YAML overrides:</p>
+<pre><code class="language-yaml">- id: transcribe
+  processor: generate_transcript
+  input:
+    - id: source
+      file: speaker-footage
+  cache: false
+</code></pre>
+<p>Leave it alone for anything expensive.</p>
 <h2 id="cache-deps">cache_deps</h2>
 <p>Sometimes a step depends on another step without reading its output directly.
 <code>cache_deps</code> makes that dependency explicit so the step is not reused when it
@@ -80,19 +105,9 @@ should not be:</p>
     - ai_cut           # run again when ai_cut changes, even though we don't read its output
   params:
     duration_step: ai_cut
-  cache: true
 </code></pre>
 <p>Without <code>cache_deps</code>, <code>background</code> would keep its old result even after <code>ai_cut</code>
 produced a shorter timeline.</p>
-<h2 id="re-running-from-a-step">Re-running from a step</h2>
-<p>Once a run has finished or failed, each step in the run view gets a <strong>↩</strong>
-control. It starts a new run in the same group beginning at that step, reusing
-everything before it. Use it when one decision was wrong and everything up to it
-was fine, for example when the script is good but the b-roll choices are not.</p>
-<p>For AI steps that brainstorm concepts first, <strong>↩</strong> re-picks the concept from the
-ones already generated, and the <strong>⋯</strong> menu beside it offers <strong>Generate new
-concepts</strong> (throw the brainstorm out and start over) or <strong>Keep same concept</strong>
-(re-run the step with the concept it already chose).</p>
 <h2 id="clearing-saved-work">Clearing saved work</h2>
 <p>From the template's settings you can clear saved work for the whole template, or
 from a chosen step onward. Clearing from a step also discards everything after
