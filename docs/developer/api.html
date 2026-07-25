@@ -53,7 +53,10 @@ the blast radius if the key leaks) or left account-wide to reach every
 workspace you belong to. A workspace-scoped key returns <code>403</code> on any other
 workspace. That applies however you address the resource: runs and run groups
 are reached by their own IDs rather than under a workspace path, and a scoped
-key is refused on those too.</li>
+key is refused on those too. Endpoints that list across workspaces, such as
+<code>GET /api/workspaces</code> and <code>GET /api/runs/recent</code>, return only the scoped
+workspace's entries rather than a <code>403</code>. There is no other workspace to
+refuse, because none of them appear.</li>
 <li><strong>Expiry.</strong> A key can be given an expiry (30/90/365 days) or left
 non-expiring. Revoke a key any time from the same screen; revocation takes
 effect immediately.</li>
