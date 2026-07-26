@@ -29,6 +29,12 @@
 <p>AI agent that fills remaining broll gaps by generating 8-second clips with Google Veo 3, then aggressively trimming each clip to its most impactful moment.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Run after <code>broll_place</code> to cover gaps that existing clips couldn't fill. See the <a href="../guides/broll.html">Broll guide</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>B-Roll</strong> group), or with <strong>+ add step</strong> and a search for <code>broll_veo_generate</code>, below your <code>broll_place</code> step so that footage you already have gets first pick of the gaps.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input and <code>backbone</code> as a <strong>step</strong> input pointing at your cut. The step's <strong>Prompt</strong> describes the kind of shot you want, and it is worth being concrete and physical: animals, food, streets, objects. <strong>max_generate</strong> is a hard budget for the run and the single most useful setting here, because each clip costs money. <strong>min_gap_sec</strong> decides which gaps are worth filling, <strong>target_clip_sec</strong> how long the trimmed result should be, and <strong>eval_prompt</strong> is the standard each generated clip must meet before it is used.</p>
+<p>This step needs your own Google key. Add it in the workspace's <strong>Variables &amp; Service API Keys</strong>, from the editor's <strong>Settings</strong>. A run that needs a key you have not set is refused before it starts, so nothing is generated or charged.</p>
+<p>Tick <strong>Review gate</strong> and look at what came back before continuing.</p>
+<p>Generated clips appear on the b-roll level in the run timeline. Every prompt is checked before anything is generated, and prompts featuring people, faces, screens or objects passing through each other are rejected: those are what generated video gets visibly wrong. Clips already generated in a run group are reused rather than paid for twice.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: broll_ai
   processor: broll_veo_generate

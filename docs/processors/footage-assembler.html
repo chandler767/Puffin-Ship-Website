@@ -29,6 +29,11 @@
 <p>AI agent that reviews footage analysis and assembles an initial timeline, choosing which clips go on the backbone (speaker cuts) and which become broll, based on content and quality.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after <code>analyze_footage</code> as part of an auto-assembly pipeline. See <a href="../guides/footage-director.html">Footage Director guide</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>footage_assembler</code>, straight after your <code>analyze_footage</code> step.</p>
+<p>Under <strong>Inputs</strong>, add <code>analysis</code> as a <strong>step</strong> input pointing at that analysis step. <strong>style</strong> is a dropdown for the shape of the edit (documentary, explainer, highlight reel, interview). <strong>target_duration_sec</strong> is how long you want the result to be, and leaving it empty means it uses everything worth using. <strong>max_speaker_ratio</strong> caps how much of the video is a talking head, so the rest becomes b-roll. <strong>backbone_level</strong> and <strong>broll_level</strong> name the levels the two kinds of clip go on.</p>
+<p>Tick <strong>Review gate</strong> on this step. It is the one that decides the shape of your video, and the gate stops the run to show you the assembly so you can approve it, edit it, or send it back for another pass before anything downstream is built on top of it.</p>
+<p>After it runs, the timeline is populated: your main clips on the backbone level, supporting clips on the b-roll level, ready to preview and adjust.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: assemble
   processor: footage_assembler

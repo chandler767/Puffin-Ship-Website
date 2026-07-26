@@ -29,6 +29,11 @@
 <p>AI agent that generates still images with Google Imagen and adds subtle motion (zoom/pan), then places them as broll clips in timeline gaps.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>An alternative to <code>broll_veo_generate</code> when you want still images with motion rather than fully generated video. Images are faster and cheaper to generate. See the <a href="../guides/broll.html">Broll guide</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>B-Roll</strong> group), or with <strong>+ add step</strong> and a search for <code>broll_imagen_generate</code>, after your transcript and your main cut.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input, and <code>backbone</code> as a <strong>step</strong> input pointing at the step that made the cut, so that changing the cut makes this step think again rather than reusing pictures made for a different edit. Use the step's <strong>Prompt</strong> to say what the images should be like; that instruction is what steers them. <strong>max_generate</strong> is your budget for the run, <strong>target_dur_sec</strong> how long each image is held, and <strong>motion_style</strong> with <strong>zoom_pct</strong> or <strong>pan_pct</strong> give the stills their slow drift. <strong>eval_prompt</strong> is the standard each generated image is judged against, and images that fail it are thrown away rather than used.</p>
+<p>This step needs your own Google key. Add it in the workspace's <strong>Variables &amp; Service API Keys</strong>, from the editor's <strong>Settings</strong>. A run that needs a key you have not set is stopped before it starts, so you are not charged for half a video.</p>
+<p>The images appear as clips on the b-roll level in the run timeline, filling the gaps where you are not on screen, and the generated files are saved into your project so you can reuse them. Preview before shipping: generated images are convincing at a glance and odd on a second look.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: broll_img
   processor: broll_imagen_generate

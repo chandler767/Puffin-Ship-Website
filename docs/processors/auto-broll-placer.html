@@ -29,6 +29,13 @@
 <p>A unified AI agent that reads your full transcript and fills timeline gaps using the best available content type (existing broll clips, web-sourced media, web screenshots, AI-generated video with Veo, AI-generated images with Imagen, or animated drawing overlays), all decided in a single Claude session.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use <code>auto_broll_placer</code> as a single step that does the work of <code>broll_place</code>, <code>broll_websource</code>, and <code>drawings_ai_placer</code> combined. Claude sees the whole transcript and timeline state at once and picks the most appropriate content type per gap.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>auto_broll_placer</code>. It replaces a row of separate b-roll and overlay steps, so a template using it is usually one transcript step, one cut, and this.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input. Then set the few parameters that shape the whole thing: <strong>max_generate</strong> is the total number of clips it may place, <strong>min_gap_sec</strong> the shortest gap worth filling, and <strong>level</strong> where everything lands. <strong>backbone_step</strong> is the ID of the step that sets the video's length.</p>
+<p>The most useful control is <strong>exclude_tools</strong>, which is how you keep it away from the expensive options: excluding the generating tools leaves it to work with footage you already have and free web material. <strong>tools</strong> is the opposite, restricting it to a named set. Anything whose service you have no key for is left out on its own, so this step still works with no keys set at all.</p>
+<p>This step has a lot of parameters, most of them prefixed with the kind of content they apply to and tucked behind <strong>Show advanced</strong>. You do not need them to start. If you find yourself hunting for one, the <strong>YAML</strong> tab and its hover help on the processor name lists every setting with its type and default, which is often quicker than scrolling the form.</p>
+<p>Tick <strong>Review gate</strong>. A step that can fill a whole video in one pass is a step you want to see the output of before it becomes the basis for captions and titles.</p>
+<p>Everything it places appears on the level you chose in the run timeline, whatever it came from, and you can preview, retime or remove any of it there.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: visuals
   processor: auto_broll_placer

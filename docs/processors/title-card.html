@@ -29,6 +29,11 @@
 <p>Generates transparent text overlay clips with fade in/out and places them in the first available gap on a target timeline level.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to add lower-third title cards (name + title), section titles, or any text overlay that should appear during a broll gap. The processor finds the first available gap on the <code>gap_level</code> automatically; you don't need to specify a timestamp.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>title_card</code>, after the steps that fill your b-roll level.</p>
+<p>It takes no inputs. <strong>gap_level</strong> names the level it should look at for a quiet moment to put the card in, and <code>broll</code> is the usual answer. <strong>cards</strong> holds the cards themselves, each with its <strong>lines</strong> of text, and it is a free-form field: the <strong>YAML</strong> tab is the easier place to write more than one, and hovering a key there explains what belongs in it.</p>
+<p>Per card, <strong>duration_sec</strong> is the time on screen, <strong>fade_in_sec</strong> and <strong>fade_out_sec</strong> soften the entrance and exit, <strong>position_y</strong> moves it up or down the frame (negative is lower), and the color and outline settings make it readable over whatever is behind it. Set <strong>position_sec</strong> if you want the card at an exact moment instead of in the next free gap. Set <strong>Output Level</strong> to an overlay level that draws above your footage.</p>
+<p>The cards appear as their own clips on that overlay level in the run timeline. Because the step looks at the finished b-roll level rather than taking an input, add the b-roll step to <strong>cache_deps</strong> in the YAML tab, so changing your b-roll makes the cards find their gaps again.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: title_card
   processor: title_card

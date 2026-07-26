@@ -29,6 +29,11 @@
 <p>Places a background image or ambient clip that spans the full duration of a reference step's timeline.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to add a solid background image or looping ambient clip that fills the entire edit. Common for portrait videos with a background behind the speaker.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Utility</strong> group), or with <strong>+ add step</strong> and a search for <code>fill_level</code>.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>file</strong> input naming the background image or clip. The step needs to know how long the finished video is, and it gets that from another step: either add a second input of type <strong>step</strong> pointing at the step that sets the length (usually your main cut), or set <strong>duration_step</strong> to that step's ID.</p>
+<p>Set <strong>Output Level</strong> to a level that sits behind everything else. Levels and their order are in the editor's <strong>Settings</strong>, and a background level wants a low order number so the rest of the video draws on top of it.</p>
+<p>The run timeline shows a single clip stretching the whole length of the video. A still image is held or looped to fill that time, so a background does not have to be a video.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: background
   processor: fill_level

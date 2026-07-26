@@ -29,6 +29,11 @@
 <p>Analyzes raw video clips using Whisper transcription, silence detection, and adaptive Claude Vision to classify each clip's quality, speaker presence, and suggested usage.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use as the first step in an auto-assembly pipeline (see <a href="../guides/footage-director.html">Footage Director guide</a>). The output feeds <code>footage_assembler</code> and <code>assemble_transcript</code>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>analyze_footage</code>, as the first step of an auto-assembly template.</p>
+<p>Under <strong>Inputs</strong>, add <code>clips</code> as a <strong>file</strong> input naming the footage. This one usually points at a whole set of files rather than a single one, since the point of the step is to sift through everything you shot. <strong>analysis_mode</strong> decides how closely it looks: <code>audio_only</code> listens, <code>keyframe</code> looks at frames spread through the clip, and <code>adaptive</code> (the default) listens first and only looks closely at the parts that seem worth it. Set <strong>language</strong> if you know it, or leave it empty to let the transcription work it out.</p>
+<p>This step needs your own OpenAI key for transcription. Add it in the workspace's <strong>Variables &amp; Service API Keys</strong>, reachable from the editor's <strong>Settings</strong>; a run that needs a key you have not set stops and asks for it before it does any work.</p>
+<p>Nothing appears on the timeline. What you get is a read on every clip: how good it is, whether someone is speaking, what happens in it, and whether it is better used as your main footage, as b-roll, or not at all. That report is what <code>footage_assembler</code> and <code>assemble_transcript</code> read, so wire this step into them as an input.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: analyze_raw
   processor: analyze_footage

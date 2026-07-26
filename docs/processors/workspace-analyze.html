@@ -30,6 +30,11 @@
 <h2 id="when-to-use">When to use</h2>
 <p>Include as the first step in <strong>every pipeline that uses <code>ai_agent</code></strong>, even single-file projects. Wire it as an <code>input:</code> entry in the <code>ai_agent</code> step; the processor will pre-inject its output into the agent's context block as a <code>=== WORKSPACE ANALYSIS ===</code> section. Without it, the agent has no content summaries, topics, or key moments for your files.</p>
 <p>Also useful standalone for understanding what's in a new project folder.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transcript</strong> group), or with <strong>+ add step</strong> and a search for <code>workspace_analyze</code>, and move it to the top of the pipeline with the <strong>↑</strong> control.</p>
+<p>There is nothing to fill in. The step has no parameters, and it finds the workspace's files by itself, so the Inspector shows only the step ID.</p>
+<p>To let an AI step use what it found, select that step, add an entry under <strong>Inputs</strong>, give it an id such as <code>analysis</code>, choose <strong>step</strong>, and pick this step from the dropdown. The AI step then starts knowing what every file in the workspace contains, instead of starting blank.</p>
+<p>Nothing lands on the timeline. This step produces reading material for later steps, so in the run view it simply reports done, and its effect shows up in the quality of the steps that follow it.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: analyze_workspace
   processor: workspace_analyze

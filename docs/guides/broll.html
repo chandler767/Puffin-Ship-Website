@@ -32,6 +32,12 @@
 <li><strong><code>broll_veo_generate</code></strong>: fills remaining gaps by generating new clips with Veo 3</li>
 </ol>
 <p>Run them in this order. The generate step reads the full timeline state and only targets positions that <code>broll_place</code> left empty.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Both steps come from the <strong>Library</strong>, under <strong>B-Roll</strong>, and go after your transcript and your cut. Add <code>broll_place</code> first, then <code>broll_veo_generate</code> below it: the order in the step list is the order they run, and it is what gives footage you already have first pick of the gaps.</p>
+<p>For <code>broll_place</code>, wire <code>transcript</code> and <code>backbone</code> as <strong>step</strong> inputs and <code>clips</code> as a <strong>file</strong> input naming your folder of footage. For <code>broll_veo_generate</code>, wire <code>transcript</code> and <code>backbone</code> the same way and set <strong>max_generate</strong>, which is a hard cap on how many clips it may generate and therefore on what the step can cost. Generation also needs your own Google key, added under <strong>Variables &amp; Service API Keys</strong>; a run that needs a key you have not set stops before it starts rather than partway through.</p>
+<p>Tick <strong>Review gate</strong> on both. B-roll is the part of a video people notice when it is wrong, and the gate lets you look before captions and titles are built on top of it.</p>
+<p>What you get in the run timeline is a b-roll level filled with clips over the moments you are not the focus. Preview it, retime or delete anything that does not work, and re-run just that step with the <strong>↩</strong> control rather than starting over.</p>
+<p>If you would rather have one step decide everything, <a href="../processors/auto-broll-placer.html"><code>auto_broll_placer</code></a> does the job of both plus web media and overlays in a single pass.</p>
 <hr>
 <h2 id="broll-place-placing-existing-clips"><code>broll_place</code>: Placing Existing Clips</h2>
 <p>Point this at a folder of <code>.mp4</code> clips. Claude vision analyzes each one (cached), then an AI agent decides where to place them based on what the speaker is saying.</p>

@@ -29,6 +29,11 @@
 <p>AI agent that places existing video clips from your project into gaps on the broll timeline level, matching clip content to what the speaker is saying.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use when you have a folder of broll clips and want AI to select and place them based on transcript content. Run before <code>broll_veo_generate</code> so existing clips get first pick of gaps. See the <a href="../guides/broll.html">Broll guide</a> for the full workflow.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>B-Roll</strong> group), or with <strong>+ add step</strong> and a search for <code>broll_place</code>, after your transcript and your main cut.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input, <code>clips</code> as a <strong>file</strong> input naming the folder of footage you want it to choose from, and <code>backbone</code> as a <strong>step</strong> input pointing at your cut so that changing the cut makes it think again. The step's <strong>Prompt</strong> is where you say how it should choose, and <strong>eval_prompt</strong> is the bar a clip has to clear to be used at all. <strong>min_gap_sec</strong> and <strong>max_duration_sec</strong> control the rhythm: how far apart placements sit and how much of any one clip is used. Turn on <strong>full_coverage</strong> if you want no gaps left anywhere.</p>
+<p>Tick <strong>Review gate</strong> so the run stops and shows you the choices before anything else is built on them.</p>
+<p>The chosen clips appear on the b-roll level in the run timeline, over the gaps where you are not the focus, and you can preview, retime or remove any of them there. Run this before any generating step: it costs nothing to use footage you already have, so give it first pick of the gaps.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: broll
   processor: broll_place

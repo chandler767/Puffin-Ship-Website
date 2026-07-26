@@ -29,6 +29,10 @@
 <p>Splits a source file at specified timecodes into sequential segments.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use <code>cut</code> when you want to divide a source file into multiple fixed segments at known timecodes. For AI-assisted content cuts based on a transcript, use <a href="ai-agent.html"><code>ai_agent</code></a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Utility</strong> group), or with <strong>+ add step</strong> and a search for <code>cut</code>.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>file</strong> input naming the video you want divided. <strong>points</strong> is required, and shows as a comma-separated field: type the timecodes to cut at, in <code>HH:MM:SS.mmm</code> form. Each timecode is a boundary, so two points give you three segments. Set <strong>Output Level</strong> to the level the pieces should land on.</p>
+<p>The run timeline shows the pieces laid end to end in order, one clip per segment, which you can then preview and retime individually. If what you actually want is for the cuts to follow what is being said, use <a href="ai-agent.html"><code>ai_agent</code></a> or <a href="deadspace-trimmer.html"><code>deadspace_trimmer</code></a> instead: this step only cuts where you tell it to.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: split_sections
   processor: cut

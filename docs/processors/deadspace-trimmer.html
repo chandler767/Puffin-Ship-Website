@@ -29,6 +29,11 @@
 <p>Reads a transcript and removes silence, keeping only speech regions.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after <code>generate_transcript</code> to automatically cut out pauses, dead air, and long silences. This is a fast, deterministic alternative to the AI content cut for cases where you only want to remove silence (not make editorial decisions about content).</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Utility</strong> group), or with <strong>+ add step</strong> and a search for <code>deadspace_trimmer</code>, after the step that produced your transcript.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input pointing at that transcript step. Two parameters shape the result: <strong>min_silence_duration</strong> (pauses shorter than this are left alone) and <strong>padding</strong> (a little audio kept either side of each kept region, so the cuts do not clip the start of words).</p>
+<p>Tick <strong>Review gate</strong> if you want the run to stop and show you the cut before it goes any further. Approving keeps it, and rejecting or regenerating gives you another pass with different settings.</p>
+<p>The run timeline shows one clip per stretch of speech, with the silences gone. Too many very short clips means it is cutting too eagerly: raise <strong>min_silence_duration</strong>. Long silences surviving means the opposite.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: clean_cut
   processor: deadspace_trimmer

@@ -29,6 +29,11 @@
 <p>Renders company/product logos as a video clip with optional connector symbols and highlight.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to display integrations, partners, or a technology stack visually.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>drawing_logos</code>.</p>
+<p>It takes no inputs. List the names in <strong>companies</strong>, a comma-separated field: the logos themselves are found for you, so names are all you provide. <strong>connector</strong> puts a symbol between them, and <strong>highlight</strong> picks one out from the rest. <strong>duration_sec</strong> is the time on screen and <strong>position_sec</strong> an exact placement, or leave it empty for the next free gap.</p>
+<p>Set <strong>Output Level</strong> and the <code>level</code> parameter to where the clip goes, usually <code>broll</code>.</p>
+<p>You get one clip in the run timeline. Check it in the preview before you ship: logo lookup is automatic, and an unusual or ambiguous company name is the case most likely to come back with the wrong mark.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: logos
   processor: drawing_logos

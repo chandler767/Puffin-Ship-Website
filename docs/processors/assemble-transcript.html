@@ -29,6 +29,10 @@
 <p>Merges per-clip Whisper transcripts (from <code>analyze_footage</code>) with backbone-level edit decisions to produce a single timeline-relative transcript with word-level timestamps.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after <code>footage_assembler</code> when you need a unified transcript for captions, broll placement, or <code>video_director</code>. This is the auto-assembly equivalent of <code>generate_transcript</code>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transcript</strong> group), or with <strong>+ add step</strong> and a search for <code>assemble_transcript</code>, after the steps that analyzed and assembled your footage.</p>
+<p>Under <strong>Inputs</strong>, add two entries, both of type <strong>step</strong>: <code>analysis</code>, pointing at your <code>analyze_footage</code> step, and <code>footage</code>, pointing at your <code>footage_assembler</code> step. The one parameter, <strong>backbone_level</strong>, names the level whose cut the transcript should follow, and <code>main</code> is almost always right.</p>
+<p>It puts nothing on the timeline. What it produces is a transcript of the edit as it was actually assembled, which is what a captions step or a b-roll step wants to read. In the run view it reports done, and you then wire it into those steps as their <code>transcript</code> input.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: transcript
   processor: assemble_transcript

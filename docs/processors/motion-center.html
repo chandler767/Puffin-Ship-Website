@@ -29,6 +29,10 @@
 <p>Detects where the on-screen subject is horizontally by analyzing temporal variance across frames, then emits a PositionX patch to center them in the output frame.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after <code>reframe</code> when your source footage has a subject that's not centered horizontally. Cheaper than <code>speaker_center</code> (no API call) but less accurate: it finds the highest-motion column, which is usually the speaker. For guaranteed accuracy use <code>speaker_center</code>. See <a href="../guides/portrait-video.html">Portrait Video guide</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transforms</strong> group), or with <strong>+ add step</strong> and a search for <code>motion_center</code>, and put it after your <code>reframe</code> step.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code>: a <strong>file</strong> input to look at the whole file, or a <strong>step</strong> input to work out a separate position for each clip that step placed. There is nothing else to set. <strong>center_fraction</strong> lives behind <strong>Show advanced</strong> and exists for one situation: the automatic guess picked the wrong part of the frame, and you want to nudge it (0.5 is dead center, lower is left, higher is right).</p>
+<p>Like the other transform steps, it adds no clips of its own. After the run, the subject sits centered in the exported frame. If the framing is still off, set <strong>center_fraction</strong> and run again, or swap the step for <code>speaker_center</code>, which finds the speaker with AI instead of guessing from movement.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: center
   processor: motion_center

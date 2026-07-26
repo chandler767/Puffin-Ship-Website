@@ -29,6 +29,12 @@
 <p>Places a music or sound file on a timeline level. Can loop a specific segment to fill the full edit duration.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to add background music, looping ambient sound, or a one-shot sound effect. For voice-over narration, use <code>elevenlabs_tts</code> or <code>heygen_speaker</code> instead.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Audio</strong> group), or with <strong>+ add step</strong> and a search for <code>audio</code>.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>file</strong> input naming the music or effect. Then decide which of the two jobs you want.</p>
+<p>For background music, turn on <strong>loop</strong>, set <strong>backbone_step</strong> to the ID of the step that decides how long the video is, and use <strong>start_sec</strong> and <strong>end_sec</strong> to pick the part of the track worth repeating. <strong>fade_in_sec</strong> and <strong>fade_out_sec</strong> stop it starting and ending abruptly. For a single sound at a single moment, leave <strong>loop</strong> off and set <strong>position_sec</strong> to the second it should land on.</p>
+<p><strong>gain_db</strong> is the volume, and the default sits music well under a speaking voice. Set <strong>Output Level</strong> to an audio level such as <code>music</code> or <code>sfx</code>, kept separate from your voice so you can adjust one without the other.</p>
+<p>In the run timeline the music shows up as a run of clips end to end, the last one trimmed to finish exactly with the video; a one-shot shows up as a single clip where you placed it.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml"># Loop a music segment for the full cut
 - id: music

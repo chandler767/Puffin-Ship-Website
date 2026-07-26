@@ -29,6 +29,10 @@
 <p>Scales landscape source footage to fill a portrait output frame by computing the scale needed to fill the output height and centering the crop horizontally.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use when your source footage is landscape (e.g. 3840×2160 or 1920×1080) and your output is portrait (e.g. 1080×1920). Run before <code>motion_center</code> or <code>speaker_center</code> for dynamic subject centering. See <a href="../guides/portrait-video.html">Portrait Video guide</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transforms</strong> group), or with <strong>+ add step</strong> and a search for <code>reframe</code>.</p>
+<p>It has no parameters. The whole configuration is one entry under <strong>Inputs</strong>: an id of <code>source</code>, pointing at either a <strong>file</strong> (the footage you uploaded) or a <strong>step</strong> (an earlier step whose clips should be reframed).</p>
+<p>It produces no clips of its own, so it gets no row of its own in the run timeline. What you see instead is that the footage placed by other steps now fills a portrait frame. Where you put the step in the list matters in one way only: a <strong>step</strong> input can only point at a step above it, so wire it below whatever it reads. The reframing itself is applied to every matching clip when the run is exported, whichever step placed them.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: reframe
   processor: reframe
@@ -62,7 +66,8 @@
 <ul>
 <li>No API key required.</li>
 <li>The crop is always centered horizontally. To offset the horizontal center, follow with <code>motion_center</code> or <code>speaker_center</code>.</li>
-<li><code>reframe</code> must run before the steps it transforms (it patches edit decisions from previous steps).</li>
+<li>The transform is applied to every clip matching the patch when the timeline is built, so a <code>reframe</code> step does not have to sit before or after the steps that placed those clips. Position matters only for a <code>step</code> input, which can reference earlier steps only.</li>
+<li>Among transform steps, later ones win: a <code>motion_center</code> or <code>speaker_center</code> step further down the pipeline overrides the horizontal position this sets.</li>
 </ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>

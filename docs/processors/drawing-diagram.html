@@ -29,6 +29,11 @@
 <p>Renders an animated flow diagram (nodes and directed edges) as a video clip.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to visualize system architectures, workflows, or any graph with labeled nodes and connections. Nodes can display company logos.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>drawing_diagram</code>.</p>
+<p>It takes no inputs. The diagram is described by two fields: <strong>nodes</strong>, the boxes, each with an id and the label to show (set <code>logo: true</code> on one to show a company logo instead of text), and <strong>edges</strong>, the arrows, each naming the node it comes from and the node it goes to. Both are free-form fields, so the <strong>YAML</strong> tab is often the more comfortable place to type them, and hovering a key there explains what belongs in it.</p>
+<p><strong>duration_sec</strong> is the time on screen, <strong>position_sec</strong> an exact placement (empty means the next free gap), and <strong>Output Level</strong> with the <code>level</code> parameter decide where the clip sits. Colors are <strong>background</strong> and <strong>brand_palette</strong>.</p>
+<p>You get one clip in the run timeline. Diagrams get busy quickly, so preview before shipping: a handful of boxes reads at video size, a dozen does not.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: arch_diagram
   processor: drawing_diagram

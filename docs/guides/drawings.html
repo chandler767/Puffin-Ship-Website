@@ -58,6 +58,11 @@
 </tr>
 </tbody>
 </table>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Every drawing type is a step you add from the <strong>Library</strong>, under <strong>Overlays</strong>, and configure in the Inspector. There are two ways to work.</p>
+<p><strong>Place them yourself.</strong> Add one step per drawing, fill in its content (the lines of a list, the text of a headline, the companies in a logo row), and set <strong>duration_sec</strong>. Leave <strong>position_sec</strong> empty and each clip drops into the next free gap; set it and the clip appears at that second exactly. This is the approach when you know what you want on screen and when.</p>
+<p><strong>Let it decide.</strong> Add a single <code>drawings_ai_placer</code> step with your transcript wired in, and it invents the overlays and their timing from what is being said. Cap it with <strong>max_generate</strong>, and tick <strong>Review gate</strong> so you see the result before the run carries on.</p>
+<p>Either way the overlays arrive as their own clips on the level you chose, and you can preview, retime or delete them in the run timeline afterwards. Use the same <strong>brand_palette</strong> on every drawing step in a template, or the overlays will not look like they belong to the same video.</p>
 <h2 id="manual-placement">Manual placement</h2>
 <p>Add a drawing processor directly to your pipeline at a specific position:</p>
 <pre><code class="language-yaml">- id: features

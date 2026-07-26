@@ -29,6 +29,10 @@
 <p>Adjusts gain on all clips matching a level and/or source filter.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to bring audio levels to a consistent target. Common use: lower background music relative to the speaker, or normalize speaker audio.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Audio</strong> group), or with <strong>+ add step</strong> and a search for <code>volume_adjust</code>.</p>
+<p>It takes no inputs. <strong>gain_db</strong> is required, and the Inspector marks it with a red asterisk until you fill it in: negative numbers make things quieter, positive louder. Choose what it applies to with <strong>level</strong> (for example <code>music</code>, to duck the background track) or <strong>source</strong> (a single filename). Leaving both empty changes the volume of everything, which is rarely what you want.</p>
+<p>Nothing new appears in the run timeline; the clips that were already there simply play at the new level in the preview and the export. Balancing a voice against music usually means two of these steps, one per level, which is why they are cheap to add.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: vol_main
   processor: volume_adjust

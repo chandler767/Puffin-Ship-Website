@@ -35,6 +35,17 @@
 <li>You're working with multi-clip footage (interviews, event footage, multi-camera)</li>
 </ul>
 <p>For single-clip pipelines with a clear structure, a simpler <code>generate_transcript</code> → <code>ai_agent</code> workflow is often sufficient.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>This is four steps in a row, all from the <strong>Library</strong> under <strong>AI</strong> and <strong>Transcript</strong>, each one wired to the one above it:</p>
+<ol>
+<li><code>analyze_footage</code>, with a <code>clips</code> <strong>file</strong> input pointing at your raw footage.</li>
+<li><code>footage_assembler</code>, with an <code>analysis</code> <strong>step</strong> input pointing at step 1.</li>
+<li><code>video_director</code>, with a <code>transcript</code> <strong>step</strong> input.</li>
+<li><code>assemble_transcript</code>, with <code>analysis</code> pointing at step 1 and <code>footage</code> at step 2.</li>
+</ol>
+<p>Only two settings really shape the result: <strong>style</strong> and <strong>target_duration_sec</strong> on the assembler, plus <strong>max_speaker_ratio</strong>, which decides how much of the finished video is you talking and how much is everything else.</p>
+<p>Tick <strong>Review gate</strong> on <code>footage_assembler</code>. It is the step that decides which of your takes are worth using and in what order, and it is far cheaper to send it back for another pass at that point than after captions and b-roll have been built on its choices.</p>
+<p>The first two steps take a while, because they watch and listen to everything you shot. After they run, the timeline is populated and you can preview it, adjust individual clips, and re-run any later step on its own.</p>
 <h2 id="the-pipeline">The pipeline</h2>
 <pre><code>analyze_footage → footage_assembler → video_director → assemble_transcript
 </code></pre>

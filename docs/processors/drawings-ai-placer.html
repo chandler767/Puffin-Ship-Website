@@ -29,6 +29,11 @@
 <p>AI agent that reads a transcript and automatically places animated drawing clips (lists, text, logos, diagrams, Remotion compositions) into timeline gaps.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use when you want AI to decide which drawing type to create and where to place it, based on what the speaker is saying. For manual placement of specific drawings, use the individual drawing processors directly.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>drawings_ai_placer</code>, after your transcript step.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input. Then set the boundaries you want it to work within: <strong>max_generate</strong> caps how many overlays it may make, <strong>min_gap_sec</strong> stops it filling gaps too short to notice, and <strong>min_duration_sec</strong> with <strong>max_duration_sec</strong> bound how long each one stays up. <strong>level</strong> is where they go, <strong>brand_palette</strong> keeps them in your colors, and <strong>safe_zone_bottom_pct</strong> reserves space at the bottom of the frame so overlays and captions do not collide. <strong>backbone_step</strong> is the ID of the step that sets the video's length.</p>
+<p>Tick <strong>Review gate</strong>: this step invents content, and the gate lets you see the overlays before the rest of the run is built on them.</p>
+<p>After it runs, the overlays appear as clips on the level you chose, and you can preview, retime or delete them in the run timeline. If you want particular overlays at particular moments instead, place them yourself with the individual drawing steps.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: drawings
   processor: drawings_ai_placer

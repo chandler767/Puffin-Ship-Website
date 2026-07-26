@@ -27,6 +27,11 @@
   <main class="content">
     <article class="doc"><h1 id="write-script">write_script</h1>
 <p>Generates a narration script from written context and optional footage analysis. Uses an LLM to write short-form video narration optimized for spoken delivery.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>write_script</code>.</p>
+<p>Everything it needs can be typed in the Inspector. Put what the video is about into <strong>context_text</strong>: the product, the audience, the points that must be made. If that material already lives in a file you uploaded, add a <code>context</code> <strong>file</strong> input instead. <strong>target_duration_sec</strong> is how long the finished narration should take to say, and <strong>style</strong> is a dropdown for the tone.</p>
+<p>Turn on <strong>suggest_ideas</strong> if you would rather choose a direction than accept the first one. The run then pauses and offers a handful of angles to pick from before the script is written, described under <a href="#suggest_ideas">suggest_ideas</a> below. Tick <strong>Review gate</strong> as well to see the finished script before the run carries on.</p>
+<p>Nothing goes on the timeline. The script becomes a piece of text that later steps read: a voice step to speak it, a teleprompter step to show it to you while you record, or a prep step to tidy it for speaking. Wire this step into those as their <code>source</code> or <code>script</code> input, choosing <strong>step</strong> and picking it from the dropdown.</p>
 <h2 id="inputs">Inputs</h2>
 <table>
 <thead>

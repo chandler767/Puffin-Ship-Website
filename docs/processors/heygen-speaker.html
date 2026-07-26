@@ -29,6 +29,12 @@
 <p>Generates avatar talking-head video clips using the HeyGen API to fill timeline gaps with a synthetic presenter.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use when you need an on-camera presenter but don't have source footage. Common in the auto-assembly pipeline after <code>write_script</code> and <code>transcript_aiprep</code>. Requires a HeyGen avatar ID and voice ID.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Avatar</strong> group), or with <strong>+ add step</strong> and a search for <code>heygen_speaker</code>, after the step that produced the words to be spoken.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input pointing at your script or prepped-script step. <strong>avatar_id</strong> is required, and the Inspector marks it with a red asterisk; <strong>voice_id</strong> goes with it unless you are feeding in audio you generated elsewhere, in which case add an <code>audio</code> <strong>step</strong> input and the presenter lip-syncs to that instead. <strong>avatar_style</strong>, <strong>speed</strong>, <strong>pitch</strong> and <strong>emotion</strong> shape the delivery. Leave <strong>use_iv_model</strong> and <strong>matting</strong> on: they are what make the presenter look right and sit cleanly over your background.</p>
+<p>This step needs your own HeyGen key. Add it in the workspace's <strong>Variables &amp; Service API Keys</strong>, from the editor's <strong>Settings</strong>. A run that needs a key you have not set is refused before it starts rather than failing partway.</p>
+<p>Tick <strong>Review gate</strong>. Generated takes cost money, and the gate lets you watch one before the rest of the video is assembled around it.</p>
+<p>The presenter appears as a clip on the level you chose, and behaves like any other footage from then on. Takes already generated in a run group are reused, so an unchanged line is not paid for twice.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: avatar
   processor: heygen_speaker

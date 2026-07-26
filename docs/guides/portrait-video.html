@@ -58,6 +58,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Set the shape of the video first: open <strong>Settings</strong> from the editor header and pick the 9:16 preset, so the project is portrait before you build anything.</p>
+<p>Then add two steps from the <strong>Library</strong>, both under <strong>Transforms</strong>. First <code>reframe</code>, with a <code>source</code> input naming your footage. Then either <code>motion_center</code> (free, works from movement) or <code>speaker_center</code> (an AI call per sampled frame, works from finding the person). Neither needs anything else filled in to start.</p>
+<p>Neither step adds clips, so nothing new appears in the run timeline. What you check is the preview: play the finished run and see whether the subject sits in the middle of the frame. If they do not, set <strong>center_fraction</strong> on the centering step, which overrides the automatic guess, and run again. Values below 0.5 move the crop left, above 0.5 move it right.</p>
 <h2 id="step-1-reframe-always-required">Step 1: reframe (always required)</h2>
 <p><code>reframe</code> scales the source footage to fill the portrait output height. Without it, landscape footage leaves letterbox bars. It centers the crop horizontally; the other two processors then adjust that center.</p>
 <pre><code class="language-yaml">- id: reframe

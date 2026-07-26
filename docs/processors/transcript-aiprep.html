@@ -29,6 +29,10 @@
 <p>Prepares transcript text for TTS synthesis using Claude. Fixes grammar, expands acronyms, converts numbers and symbols to spoken form, and adds phonetic hints for ambiguous terms.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Run before <code>elevenlabs_tts</code> or <code>heygen_speaker</code> when the source transcript contains raw text that would sound unnatural when read aloud (e.g. <code>99%</code>, <code>$10M</code>, <code>CQRS</code>, <code>kubectl</code>).</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transcript</strong> group), or with <strong>+ add step</strong> and a search for <code>transcript_aiprep</code>, between the step that produced the words and the step that will speak them.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code>: a <strong>step</strong> input pointing at your script or transcript step, or a <strong>file</strong> input naming a text file you uploaded. <strong>target</strong> is a dropdown, and it matters: pick the voice service the audio is going to, because the two want text written slightly differently.</p>
+<p>Nothing appears on the timeline. The step passes on a cleaned version of the words, which the voice step then reads aloud, so <code>99%</code> is spoken as ninety-nine percent rather than as a symbol, and your product names survive intact. Wire this step, not the original script, into the voice step.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <p>The <code>source</code> input accepts either a text <strong>file</strong> or a <strong>step</strong> output. To chain
 from <code>write_script</code>, wire it directly:</p>

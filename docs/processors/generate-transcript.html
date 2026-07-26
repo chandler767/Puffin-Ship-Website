@@ -29,6 +29,11 @@
 <p>Transcribes audio via OpenAI Whisper, producing word-level timestamps.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Run <code>generate_transcript</code> early in your pipeline. Its output is consumed by <code>deadspace_trimmer</code>, <code>captions</code>, <code>broll_place</code>, <code>broll_veo_generate</code>, and <code>ai_agent</code>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transcript</strong> group), or with <strong>+ add step</strong> and a search for <code>generate_transcript</code>, early in the pipeline: captions, b-roll placement and silence trimming all read what it produces.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>file</strong> input naming your recording. Set <strong>language</strong> if you know it, or leave it empty and it will be worked out from the audio. The two optional inputs are for narrower cases: <code>cuts</code>, a <strong>step</strong> input, transcribes only the parts an earlier step kept rather than the whole file, and <code>footage</code>, a <strong>step</strong> input, transcribes an assembled edit that draws on several files.</p>
+<p>This step needs your own OpenAI key. Add it in the workspace's <strong>Variables &amp; Service API Keys</strong>, from the editor's <strong>Settings</strong>. If it is missing, the run stops and asks for it rather than failing halfway through.</p>
+<p>Nothing appears on the timeline. The result is the words with the exact time each one was said, which is what makes captions land in sync and lets other steps know what the video is about. Wire this step into those steps as their <code>transcript</code> input.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml"># Basic transcription
 - id: transcribe_main

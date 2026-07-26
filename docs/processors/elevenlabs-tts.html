@@ -28,8 +28,15 @@
     <article class="doc"><h1 id="elevenlabs-tts"><code>elevenlabs_tts</code></h1>
 <p>Generates audio from text using the ElevenLabs text-to-speech API.</p>
 <h2 id="when-to-use">When to use</h2>
-<p>Use to generate high-quality voice-over audio from a script. The generated MP3 is saved to <code>.puffinship/elevenlabs/&lt;step_id&gt;.mp3</code>.</p>
-<p><strong>Important:</strong> <code>elevenlabs_tts</code> outputs <code>Analysis</code> (a file reference), <strong>not</strong> <code>EditDecisions</code>. It does NOT place itself on the timeline. You must follow it with a separate <code>audio</code> step to place the MP3 on a timeline level, and a separate <code>generate_transcript</code> step pointing to the file directly.</p>
+<p>Use to generate high-quality voice-over audio from a script.</p>
+<p><strong>Important:</strong> <code>elevenlabs_tts</code> produces an audio file, <strong>not</strong> clips on the timeline. It does not place itself. A voiceover therefore takes three steps: this one to speak the script, an <code>audio</code> step to put the result on a timeline level, and a <code>generate_transcript</code> step if you want captions from it. Both of those take this step as a <code>step:</code> input; neither needs to know where the audio was written.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Audio</strong> group), or with <strong>+ add step</strong> and a search for <code>elevenlabs_tts</code>, after the step that prepared your script.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>step</strong> input pointing at your <code>transcript_aiprep</code> step, or as a <strong>file</strong> input naming a text file. <strong>voice_id</strong> is required, and the Inspector marks it with a red asterisk: it is the voice from your ElevenLabs account. <strong>model</strong> picks the engine, <strong>speed</strong> the pace, and <strong>stability</strong> with <strong>similarity_boost</strong> trade consistency against expressiveness.</p>
+<p>This step needs your own ElevenLabs key. Add it in the workspace's <strong>Variables &amp; Service API Keys</strong>, from the editor's <strong>Settings</strong>. A run that needs a key you have not set is refused before it starts.</p>
+<p>Now add the two steps that use it. An <code>audio</code> step with a <code>source</code> <strong>step</strong> input pointing at this one, <strong>auto_duration</strong> on and <strong>loop</strong> off, places the narration on an audio level. A <code>generate_transcript</code> step with a <code>source</code> <strong>step</strong> input pointing at this one gives you words with timings for captions. Because both are wired as steps rather than files, changing the script re-runs everything that depends on it, with no bookkeeping on your part.</p>
+<p>Your voice level has to exist before you can select it: add it under <strong>Settings</strong>, as an audio level marked as the backbone, so the length of the video follows the narration.</p>
+<p>After the run, the narration appears as a clip on that audio level, and you can hear it in the preview.</p>
 <h2 id="yaml-example-complete-voiceover-pipeline">YAML Example: complete voiceover pipeline</h2>
 <pre><code class="language-yaml"># 1. Generate the voiceover
 - id: voiceover
@@ -45,15 +52,13 @@
     speed: 1.0
   cache: true
 
-# 2. Place the MP3 on the audio backbone level
+# 2. Place the generated audio on the audio backbone level
 #    (elevenlabs_tts does NOT do this itself; an audio step is required)
 - id: place_vo
   processor: audio
   input:
     - id: source
-      file: &quot;.puffinship/elevenlabs/voiceover.mp3&quot;   # &lt;-- step_id is &quot;voiceover&quot;
-  cache_deps:
-    - voiceover
+      step: voiceover        # reads the audio the step generated
   params:
     loop: false
     auto_duration: true
@@ -62,18 +67,19 @@
     timeline: vo_audio       # must be a backbone: true, type: audio level
   cache: true
 
-# 3. Transcribe for captions: also references the file directly
+# 3. Transcribe for captions: same step reference
 - id: transcribe_vo
   processor: generate_transcript
   input:
     - id: source
-      file: &quot;.puffinship/elevenlabs/voiceover.mp3&quot;
-  cache_deps:
-    - voiceover
+      step: voiceover
   params:
     language: &quot;en&quot;
   cache: true
 </code></pre>
+<p>A <code>step:</code> input carries the dependency with it, so neither of these needs
+<code>cache_deps: [voiceover]</code>: rewriting the script re-runs the voice step, and
+both of these follow.</p>
 <h2 id="timeline-level-required">Timeline level required</h2>
 <p>The timeline must declare an audio backbone level for <code>place_vo</code> to target:</p>
 <pre><code class="language-yaml">timeline:
@@ -173,14 +179,14 @@
 </tbody>
 </table>
 <h2 id="output">Output</h2>
-<p><code>Analysis</code> with <code>Source</code> pointing to <code>.puffinship/elevenlabs/&lt;step_id&gt;.mp3</code>. In the normal path this is <strong>not</strong> an <code>EditDecision</code>; it does not go on the timeline by itself. Use a follow-up <code>audio</code> step with <code>file: &quot;.puffinship/elevenlabs/&lt;step_id&gt;.mp3&quot;</code> and <code>cache_deps: [&lt;step_id&gt;]</code> to place it.</p>
+<p><code>Analysis</code> referencing the generated audio file. In the normal path this is <strong>not</strong> an <code>EditDecision</code>; it does not go on the timeline by itself. Place it with a follow-up <code>audio</code> step taking <code>step: &lt;this step's id&gt;</code> as its <code>source</code>, which resolves to the generated audio without you naming a path.</p>
 <p>When a <code>segment_plan</code> input is wired (plan mode), the step instead returns <code>EditDecisions</code> placed directly on <code>output.timeline</code> for the planned segments.</p>
 <h2 id="notes">Notes</h2>
 <ul>
 <li>Requires an <code>ELEVENLABS_API_KEY</code> set in your workspace's Service API Keys.</li>
 <li>Always run <code>transcript_aiprep</code> with <code>target: &quot;elevenlabs&quot;</code> before this step.</li>
 <li>Use <code>cache: true</code>: generation is deterministic for the same text and params.</li>
-<li><code>generate_transcript</code> on the voiceover output must also use <code>file: &quot;.puffinship/elevenlabs/&lt;step_id&gt;.mp3&quot;</code> with <code>cache_deps</code>; it cannot use <code>step: voiceover</code> because the step output is <code>Analysis</code>, not a file path that <code>generate_transcript</code> accepts.</li>
+<li><code>generate_transcript</code> takes the same <code>step:</code> reference for its <code>source</code>: it reads the audio this step generated. Referring to the file by name is neither necessary nor advisable, since the location is not yours to depend on.</li>
 </ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>

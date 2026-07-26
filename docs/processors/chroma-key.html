@@ -29,6 +29,10 @@
 <p>Removes a chroma key background and outputs a transparent QuickTime RLE/ARGB file. Subsequent edit decisions reference the keyed file automatically.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use when your source footage was filmed against a green or blue screen. Run before placing the footage on the timeline; <code>chroma_key</code> substitutes the source file in all downstream edit decisions.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transforms</strong> group), or with <strong>+ add step</strong> and a search for <code>chroma_key</code>.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code>: a <strong>file</strong> input for the footage you shot against the screen, or a <strong>step</strong> input to key only the parts an earlier step kept, which is quicker because the rest of the file is never touched. <strong>color</strong> is a color swatch, set to the shade of your screen rather than a textbook green. If the edges come out ragged, raise <strong>similarity</strong> a little; <strong>blend</strong> softens them. The remaining controls are behind <strong>Show advanced</strong>.</p>
+<p>It creates no clips, so the run timeline is unchanged. What changes is that the background is gone wherever that footage appears, and whatever sits on a lower level shows through. Set your levels up so there is something behind it, or you will key a subject onto black.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: key
   processor: chroma_key

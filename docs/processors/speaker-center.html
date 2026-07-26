@@ -29,6 +29,10 @@
 <p>Uses Claude Vision to identify the horizontal position of the main speaker in each backbone clip, then emits PositionX patches to center them in the output frame.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after <code>reframe</code> for accurate per-clip speaker centering. More accurate than <code>motion_center</code> because it uses vision to find the speaker specifically, rather than motion. See <a href="../guides/portrait-video.html">Portrait Video guide</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transforms</strong> group), or with <strong>+ add step</strong> and a search for <code>speaker_center</code>, after your <code>reframe</code> step.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>step</strong> input pointing at the step that placed the clips you want centered, usually your main cut. That is the one wiring it needs. <strong>backbone_level</strong> limits it to a single level (<code>main</code> by default), and <strong>frames_per_clip</strong> is how many frames it looks at before deciding, so higher numbers cost more and steady the answer. <strong>center_fraction</strong> is an escape hatch for when it keeps choosing the wrong person or object: set it and the detection is ignored.</p>
+<p>It adds no clips, so the run timeline looks the same. What changes is the framing of the existing clips in the preview and the export, clip by clip, so a speaker who moves between takes stays centered in each one. It costs an AI call per sampled frame, which is why <code>motion_center</code> exists as the cheaper, blunter alternative.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: center
   processor: speaker_center

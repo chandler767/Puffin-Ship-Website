@@ -38,6 +38,11 @@
 </li>
 </ol>
 <p>Sound effects are prepared the first time they are needed and reused after that. Where a CC0-licensed recording is available it is used; otherwise the effect is synthesized.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Audio</strong> group), or with <strong>+ add step</strong> and a search for <code>sound_fx</code>, after your cut and your transcript.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code>, either a <strong>file</strong> input or a <strong>step</strong> input, whose length sets the bounds it works within. Add <code>transcript</code> as a <strong>step</strong> input as well: without it the step falls back to placing effects at the busiest edit points, which is much blunter than placing them where something is actually said. <code>timeline</code> as a <strong>step</strong> input tells it where your cuts are.</p>
+<p><strong>sfx_intensity</strong> is the setting to think about: <code>surgical</code> puts one or two effects on the real punchlines, <code>balanced</code> gives four to six, <code>hyped</code> covers everything. <strong>sfx_style</strong> picks the palette. <strong>hook_sfx</strong> puts a small sound at the very start if nothing else lands there. Point <strong>sfx_dir</strong> at a folder of your own sounds to override or extend the built-in ones.</p>
+<p>Set <strong>Output Level</strong> to a level of its own, such as <code>sfx</code>. The effects arrive as their own clips there in the run timeline, leaving your original audio untouched, so anything you dislike can simply be deleted.</p>
 <h2 id="example">Example</h2>
 <pre><code class="language-yaml">- id: sfx
   processor: sound_fx

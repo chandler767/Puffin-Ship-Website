@@ -29,6 +29,11 @@
 <p>Cuts a source file to specific in/out points.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use <code>trim</code> when you have a single source file and want to isolate a specific portion of it before running further processing. For multiple cut points, use <a href="cut.html"><code>cut</code></a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Utility</strong> group), or with <strong>+ add step</strong> and a search for <code>trim</code>.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code> as a <strong>file</strong> input naming the video or audio you want cut down. Then set <strong>in</strong> and <strong>out</strong> to timecodes in <code>HH:MM:SS.mmm</code> form. Both are optional: leave <strong>in</strong> empty to start at the beginning, leave <strong>out</strong> empty to run to the end, and leave both empty to put the whole file on the timeline untouched, which is the simplest way to get a clip into a template.</p>
+<p>Set <strong>Output Level</strong> to where the clip belongs, usually <code>main</code>.</p>
+<p>The run timeline shows one clip, positioned at the start of its level. To have it come in later, use a step that places clips at a position, or a <code>stitch</code> step to run several clips in sequence.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: clip_intro
   processor: trim

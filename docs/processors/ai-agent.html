@@ -29,6 +29,13 @@
 <p>General-purpose Claude tool-use loop. Claude is given a prompt and a set of tools; it calls them iteratively until it's satisfied with the result.</p>
 <h2 id="when-to-use">When to use</h2>
 <p><code>ai_agent</code> is the flexible workhorse for any editing task that requires reasoning about content. The most common use is a content cut: Claude reads a transcript, reasons about what to keep, and creates edit decisions for each segment.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>ai_agent</code>.</p>
+<p>The step's <strong>Prompt</strong> is the whole configuration: it is the instruction the agent works to. Say what you want done, and name the inputs it should read. Add those under <strong>Inputs</strong> with ids you choose, as <strong>step</strong> or <strong>file</strong>, and refer to them in the prompt by those ids. A content cut, the commonest use, wires a <code>transcript</code> step input and a <code>speaker</code> file input, and asks for the segments worth keeping.</p>
+<p><strong>guidelines</strong> holds standing constraints that are not really instructions (&quot;never cut mid-sentence&quot;, &quot;keep it under two minutes&quot;). <strong>suggest_ideas</strong> makes the run pause and offer you a few directions before it commits to one. <strong>context</strong> points at extra material you have uploaded for background.</p>
+<p>Set <strong>Output Level</strong> to the level the clips it creates should land on, usually <code>main</code>.</p>
+<p>Tick <strong>Review gate</strong>. This step reasons about your content and its answer varies, so seeing the cut before the rest of the run is built on it saves rebuilding everything afterwards.</p>
+<p>The clips it decides on appear on that level in the run timeline, ready to preview and adjust. Where a dedicated step exists for what you want, prefer it; this one is for the jobs nothing else covers.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: ai_cut
   processor: ai_agent

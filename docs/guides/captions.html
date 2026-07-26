@@ -27,6 +27,10 @@
   <main class="content">
     <article class="doc"><h1 id="captions-guide">Captions Guide</h1>
 <p>Puffin Ship generates per-word highlighted captions; each word lights up in <code>highlight_color</code> when it's being spoken.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add a <code>captions</code> step from the <strong>Library</strong>, under <strong>Overlays</strong>, at the end of your template. Under <strong>Inputs</strong>, wire <code>transcript</code> to your transcript step and <code>backbone</code> to the step that made the cut, both as <strong>step</strong> inputs. Set <strong>Output Level</strong> to your captions level.</p>
+<p>The settings worth trying first are <strong>max_words</strong> (fewer words on screen reads better on a phone), <strong>position_y</strong> (negative numbers sit the captions lower in the frame) and <strong>highlight_color</strong> (the word currently being spoken). If a name or a term keeps coming through wrong, put it in <strong>word_corrections</strong> rather than fixing it clip by clip.</p>
+<p>Order matters here more than for most steps: captions are timed against the cut, so build them once the cut is settled. If you change the cut afterwards, run the captions step again.</p>
 <h2 id="setup">Setup</h2>
 <p>You need a finalized transcript and a backbone cut. Run captions after your edit is stable (changing the cut after generating captions requires re-running captions).</p>
 <pre><code class="language-yaml">- id: captions

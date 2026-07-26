@@ -29,6 +29,10 @@
 <p>Applies a scale and/or position patch to all clips matching a level or source filter.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to zoom in on a clip, reposition it in the frame, or apply a uniform transform to an entire level. For subject-aware centering, use <code>motion_center</code> or <code>speaker_center</code> instead.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Transforms</strong> group), or with <strong>+ add step</strong> and a search for <code>scale_transform</code>.</p>
+<p>It takes no inputs. You choose what it affects with the <strong>level</strong> and <strong>source</strong> parameters: leave both empty and it touches every clip in the video, set <strong>level</strong> to <code>main</code> and it touches only the clips on that level, set <strong>source</strong> to a filename and it touches only clips from that file. Then set the change itself: <strong>scale_factor</strong> to zoom relative to what is there now (<code>1.15</code> is fifteen percent closer), or <strong>scale</strong> to set the size outright, plus <strong>position_x</strong> and <strong>position_y</strong> to move the frame.</p>
+<p>It adds no clips, so nothing new appears in the run timeline. What changes is how the affected clips are framed in the preview and the export. If you want the framing to follow a person rather than stay fixed, use <code>motion_center</code> or <code>speaker_center</code> instead.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: scale_speaker
   processor: scale_transform

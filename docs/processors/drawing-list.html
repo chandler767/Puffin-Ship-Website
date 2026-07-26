@@ -29,6 +29,11 @@
 <p>Renders an animated bullet, numbered, or checkmark list as a video clip.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to display step-by-step instructions, feature lists, or any enumerable content visually.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>drawing_list</code>.</p>
+<p>It takes no inputs. Type the lines into <strong>items</strong>, which is a comma-separated field in the Inspector, and put a heading in <strong>title</strong> if you want one. <strong>style</strong> is a dropdown: bullets, numbers, or checkmarks. <strong>duration_sec</strong> is how long the list is on screen, and <strong>position_sec</strong> places it at an exact second (leave it empty to use the next free gap).</p>
+<p>Set <strong>Output Level</strong> and the <code>level</code> parameter to where the clip should go, usually <code>broll</code> for a full-frame list. Colors live in <strong>background</strong> and <strong>brand_palette</strong>; the finer layout controls are behind <strong>Show advanced</strong>.</p>
+<p>You get one clip in the run timeline, which you can preview and retime like any other. Lists with very many lines get cramped, so several shorter steps usually read better than one long one.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: features_list
   processor: drawing_list

@@ -37,6 +37,11 @@ shot direction describing what this take should be. Without a script, you get a
 freeform recording.</p>
 <p>For a walkthrough of the recording screen itself, see
 <a href="../guides/recording.html">Recording in the browser</a>.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Recording</strong> group), or with <strong>+ add step</strong> and a search for <code>av_recorder</code>, wherever the footage of you belongs in the pipeline.</p>
+<p>There is nothing you must fill in. Under <strong>Inputs</strong>, add <code>script</code> as a <strong>step</strong> input pointing at your script step (or a <strong>file</strong> input naming a text file) if you want a teleprompter and a shot direction during the take; leave it out and you get a plain recording. <strong>rotation</strong> is for phones and cameras that record sideways: setting it here means a re-run keeps the same rotation without asking you again.</p>
+<p>When the run reaches this step it stops and waits, showing <strong>awaiting recording</strong>, and the recording panel opens. Take as long as you like; nothing is running while it waits. Record, watch it back, and accept it with <strong>Use this take</strong>.</p>
+<p>The take then appears as a clip on the level you chose, and behaves like any other footage: later steps can transcribe it, cut it, caption it, and lay b-roll over it. It is kept, so re-running the template reuses your take rather than asking again. To do it over, use the <strong>↩</strong> control on the step in the run view.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: record_intro
   processor: av_recorder

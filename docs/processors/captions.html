@@ -29,6 +29,12 @@
 <p>Per-word highlighted caption overlays. Each word is rendered in <code>highlight_color</code> when it is being spoken, creating a karaoke-style effect.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after your transcript and edit cut are finalized. Requires both a transcript step and a backbone step to map source timestamps to timeline positions.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>captions</code>, once your transcript and your cut are settled: captions built against a cut you then change will be out of step with it.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input pointing at your transcript step, and <code>backbone</code> as a <strong>step</strong> input pointing at the step that made the cut. That second one is what keeps the words landing on the right frames after silences and mistakes have been removed.</p>
+<p><strong>max_words</strong> is how many words are on screen at once, and small numbers read better on a phone. <strong>font_size</strong>, <strong>scale</strong> and <strong>position_y</strong> size and place them: <strong>position_y</strong> counts from the middle of the frame, so a negative number sits the captions lower. <strong>highlight_color</strong> is the word being spoken and <strong>text_color</strong> the rest; <strong>outline_color</strong> with <strong>outline_size</strong> is what keeps them legible over busy footage. <strong>word_corrections</strong> is a find-and-replace applied before grouping, which is where you fix a product name that keeps coming through wrong.</p>
+<p>Set <strong>Output Level</strong> to a captions level that draws above your footage.</p>
+<p>The captions appear as their own clips on that level in the run timeline, one per group of words, and you can edit the text there after the run. Caption groups are kept with the run group, so a later run reuses them rather than rebuilding them.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: captions
   processor: captions

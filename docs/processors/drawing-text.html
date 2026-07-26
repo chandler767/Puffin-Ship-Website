@@ -29,6 +29,11 @@
 <p>Renders a text headline with optional subtext as a video clip.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use to display a key stat, quote, title slide, or any short text that should appear as a full-frame graphic.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>drawing_text</code>.</p>
+<p>It takes no inputs: everything it needs is typed into the Inspector. Fill in <strong>text</strong> with the headline, and <strong>subtext</strong> if you want a smaller line under it. <strong>duration_sec</strong> is how long the card stays on screen. Leave <strong>position_sec</strong> empty to drop the card into the next free gap, or set it to place the card at an exact second.</p>
+<p>Set <strong>Output Level</strong> (and the <code>level</code> parameter, which the clip is placed on) to the level you want the card to appear on, usually <code>broll</code> for a full-frame card or an overlay level to sit it on top of other footage. Colors are the <strong>background</strong> and <strong>brand_palette</strong> fields; the rest of the look is behind <strong>Show advanced</strong>.</p>
+<p>You get one clip per step in the run timeline, at the level you chose, and you can preview and retime it there like any other clip. To put several cards in a video, add several steps.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: stat_card
   processor: drawing_text

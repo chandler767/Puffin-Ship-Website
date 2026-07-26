@@ -29,6 +29,10 @@
 <p>Removes steady background noise (hum, hiss, air conditioning) from an audio or video source.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use when source audio has background noise (HVAC hum, room tone, camera noise). Run after chroma keying and before transcript generation for cleanest results.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Audio</strong> group), or with <strong>+ add step</strong> and a search for <code>noise_reduce</code>, before the step that transcribes your audio: a cleaner recording transcribes better.</p>
+<p>Under <strong>Inputs</strong>, add <code>source</code>, either as a <strong>file</strong> input naming the recording or as a <strong>step</strong> input pointing at the step that placed it. <strong>nr</strong> is how hard it works (start at 8; above 20 tends to sound processed), and <strong>nf</strong> describes how loud the noise floor is. <strong>level</strong> narrows it to one timeline level if you only want to clean one of them.</p>
+<p>No new clips appear in the run timeline. The same clips play with the hum removed, because the step quietly swaps in a cleaned copy of the audio behind them. Cleaning takes a while and gives the same answer every time, and steps save their output by default, so a second run in the same run group reuses it instead of doing the work again.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: denoise
   processor: noise_reduce

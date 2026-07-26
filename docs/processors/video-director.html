@@ -29,6 +29,10 @@
 <p>AI agent that reads a transcript and produces a <code>SegmentPlan</code>: time range assignments of content types (speaker, drawings, broll, empty) that downstream processors use to know what kind of content to place where.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use after you have a transcript, before running <code>drawings_ai_placer</code>, <code>broll_place</code>, or <code>broll_imagen_generate</code>. The segment plan constrains those processors so they only fill the time ranges assigned to their content type.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>AI</strong> group), or with <strong>+ add step</strong> and a search for <code>video_director</code>, after your transcript step and before the steps that fill the video with b-roll or overlays.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input pointing at any transcript step. Set <strong>backbone_step</strong> to the ID of the step that establishes how long the video is, usually your main cut. <strong>min_segment_sec</strong> stops it from proposing sections too short to be worth cutting to. <strong>content_types</strong> is where you tell it what kinds of section exist in your video and what each means; the default set covers a presenter, animated overlays, b-roll, and gaps.</p>
+<p>Nothing lands on the timeline. What you get is a plan: this stretch is the presenter, this one wants b-roll, this one wants a diagram. Steps that place content read that plan through their own <code>segment_plan</code> input, so wire this step into each of them. Without that wiring they will still run, but they will decide placement on their own rather than following the plan.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: direct
   processor: video_director

@@ -28,7 +28,11 @@
     <article class="doc"><h1 id="stitch"><code>stitch</code></h1>
 <p>Places multiple files end-to-end on a timeline level.</p>
 <h2 id="when-to-use">When to use</h2>
-<p>Use <code>stitch</code> when you have several pre-cut source files that should play back-to-back. For trimming before stitching, run <code>trim</code> steps first and reference their step outputs.</p>
+<p>Use <code>stitch</code> when you have several pre-cut source files that should play back-to-back. Its <code>sources</code> input reads files only, so files that still need cutting are trimmed by their own <code>trim</code> steps rather than fed through this one.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Utility</strong> group), or with <strong>+ add step</strong> and a search for <code>stitch</code>.</p>
+<p>There are no parameters. Under <strong>Inputs</strong>, add one entry with the id <code>sources</code> and choose <strong>file</strong>, naming the files you want joined. They play in the order you list them, so the order of that list is the order of the finished sequence. Set <strong>Output Level</strong> to the level the joined clips should sit on, usually <code>main</code>.</p>
+<p>In the run timeline you see one clip per file, laid end to end with no gaps. This step only reads files, not the output of other steps, so a file that needs cutting down first is a job for <code>trim</code> steps placing their own clips rather than for <code>stitch</code>.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: concat_clips
   processor: stitch

@@ -37,6 +37,10 @@
 <li><strong>Captions</strong>: Word-level captions with a green outline burn in over the final cut.</li>
 </ol>
 <p>No generated clips. No stock footage. No music. Portrait (9:16).</p>
+<h2 id="running-it-in-the-app">Running it in the app</h2>
+<p>The whole pipeline below can be pasted into a template's <strong>YAML</strong> tab, which is the quickest way to try it: open the editor, switch the center panel to <strong>YAML</strong>, paste, and <strong>Save</strong>. The Steps list fills in, and from then on you can edit any step in the Inspector like any other template. Anything that does not parse is underlined with the reason above the editor, and <strong>Save</strong> and <strong>Run</strong> stay unavailable until it does.</p>
+<p>Two things to set up before the first run: your OpenAI key, under <strong>Variables &amp; Service API Keys</strong> from the editor's <strong>Settings</strong>, and a camera you are happy with, since you record the talking head in the browser.</p>
+<p>The run stops three times to wait for you: once to pick an idea, once to approve the script, and once to record. That is by design, and the gaps between them are yours; nothing is running while it waits.</p>
 <h2 id="pipeline-yaml">Pipeline YAML</h2>
 <pre><code class="language-yaml">version: 1
 

@@ -29,6 +29,11 @@
 <p>Renders a Remotion composition as a video clip. Available composition types: stats, chart, timeline, comparison.</p>
 <h2 id="when-to-use">When to use</h2>
 <p>Use for data-driven visuals that need more complex animation than the basic drawing processors support. Rendering is handled by Puffin Ship; no setup needed on your end.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>Overlays</strong> group), or with <strong>+ add step</strong> and a search for <code>drawing_remotion</code>.</p>
+<p>It takes no inputs. <strong>remotion_type</strong> is a dropdown choosing the design: a stats card, a chart, a timeline, or a comparison. <strong>props</strong> is the content for that design, and it is a free-form field rather than a set of labelled boxes, which makes it the one drawing step where the <strong>YAML</strong> tab is often easier than the Inspector: switch to it and the hover help on the step shows what the processor accepts. Each design reads its own props, so the fields that matter depend on the type you picked.</p>
+<p><strong>duration_sec</strong> sets the time on screen; <strong>position_sec</strong> places it at an exact second, or leave it empty for the next free gap. Set <strong>Output Level</strong> and the <code>level</code> parameter to where the clip goes.</p>
+<p>You get one clip in the run timeline. Identical settings are only rendered once, so re-running a template after changing something else is fast.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: stats_card
   processor: drawing_remotion

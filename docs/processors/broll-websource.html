@@ -30,6 +30,11 @@
 <h2 id="when-to-use">When to use</h2>
 <p>Use <code>broll_websource</code> when you want to automatically fill broll gaps with free-licensed media from the web rather than generating new clips or using pre-downloaded footage. It runs a lightweight AI selection loop (no browser required, no screenshots) and is the fastest/cheapest way to add contextually relevant visual variety.</p>
 <p>A good pipeline pattern is <code>broll_place</code> → <code>broll_websource</code> → <code>broll_veo_generate</code>: existing clips first, then web-sourced media for remaining gaps, then Veo 3 for anything left.</p>
+<h2 id="in-the-editor">In the editor</h2>
+<p>Add it from the <strong>Library</strong> (<strong>B-Roll</strong> group), or with <strong>+ add step</strong> and a search for <code>broll_websource</code>. It sits naturally between <code>broll_place</code> and <code>broll_veo_generate</code>: your own footage first, then free material from the web, then generated clips for whatever is still empty.</p>
+<p>Under <strong>Inputs</strong>, add <code>transcript</code> as a <strong>step</strong> input, which is what the searches are built from. <strong>media_type</strong> chooses between video, stills, or both. <strong>min_gap_sec</strong> decides which gaps are worth filling and <strong>max_duration_sec</strong> how long anything stays up. <strong>max_clips</strong> caps the total. Leave <strong>review_clips</strong> on: it is what stops a diagram, a stock portrait or a wall of text from being dropped into your video. Leave <strong>auto_reframe</strong> on unless your project shape already matches the material.</p>
+<p><strong>providers</strong> picks where it looks. Leave it empty and it uses whatever your workspace has available, which is Wikimedia Commons unless you have added a Pexels key of your own under <strong>Variables &amp; Service API Keys</strong>.</p>
+<p>The chosen clips appear on the b-roll level in the run timeline, and the downloaded files are saved into your workspace's b-roll folder next to anything you uploaded, so you can see what it picked and reuse it later.</p>
 <h2 id="yaml-example">YAML Example</h2>
 <pre><code class="language-yaml">- id: web_broll
   processor: broll_websource
