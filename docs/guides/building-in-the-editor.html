@@ -50,7 +50,9 @@ of steps you can open in the editor.</li>
 <li><strong>Left panel</strong>: tabbed between:
 <ul>
 <li><strong>Steps</strong>: the ordered list of steps in your pipeline.</li>
-<li><strong>Library</strong>: every processor, grouped by category, searchable.</li>
+<li><strong>Library</strong>: every processor, grouped by category, searchable, with any
+published <strong>Blocks</strong> listed at the top. See
+<a href="#adding-a-block">Adding a block</a>.</li>
 <li><strong>Graph</strong>: a dependency view showing how steps feed each other.</li>
 </ul>
 </li>
@@ -144,6 +146,28 @@ parameter type:</p>
 approval. See <a href="../concepts/review-gates.html">Review Gates</a>.</p>
 </li>
 </ul>
+<h2 id="adding-a-block">Adding a block</h2>
+<p>A <strong>block</strong> is a reusable set of steps someone has shared: trim, caption and add
+sound effects as one thing you insert once. Blocks appear at the top of the
+<strong>Library</strong> tab, marked with who wrote them.</p>
+<p>Picking one opens a dialog that does three things before anything is written:</p>
+<ul>
+<li><strong>Wiring.</strong> Each input the block declares gets a dropdown of the steps already
+in your template. Required inputs have to be filled in before it will go any
+further.</li>
+<li><strong>Settings.</strong> The block's own options, rendered the same way a processor's
+parameters are.</li>
+<li><strong>The expansion.</strong> The steps it will add, by name, plus any service keys you
+will need and anything that does not fit your template. <strong>Insert</strong> stays
+unavailable until that last part is clean.</li>
+</ul>
+<p>Inserting adds the steps to your template, prefixed with a name of your choosing
+so they cannot collide with your own or with a second copy of the same block.
+From then on they are ordinary steps: edit them, delete them, or run them.</p>
+<p>Two things worth knowing. Inserting rewrites the file, so comments below the
+header are lost, and the dialog says how many before you commit. And a block you
+install does not update when its author publishes a change; install the newer
+version if you want it.</p>
 <h2 id="wiring-inputs-between-steps">Wiring inputs between steps</h2>
 <p>Under <strong>Inputs</strong>, each input is a named slot fed by either a file or an earlier
 step. To add one, give the input an <strong>id</strong>, choose <strong>step</strong> or <strong>file</strong>, then:</p>
