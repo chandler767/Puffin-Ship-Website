@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bring your own media service · Puffin Ship Docs</title>
+<link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="https://puffinship.com/">
+    <img src="/assets/logo/puffin-mark.png" alt="" width="24" height="24" />
+    <span>Puffin Ship<span class="brand-accent"> Docs</span></span>
+  </a>
+  <nav class="header-links">
+    <a href="https://puffinship.com/">Home</a>
+    <a href="https://app.puffinship.com/">Open app</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a><a class="nav-link" href="../concepts/template-library.html">The template library</a><a class="nav-link" href="../concepts/shared-blocks.html">Blocks</a><a class="nav-link" href="../concepts/media-services.html">Media services</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/starter-templates.html">Starter Templates</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/sharing-a-template.html">Sharing a template</a><a class="nav-link" href="../guides/authoring-a-block.html">Authoring a block</a><a class="nav-link active" href="../guides/bring-your-own-media-service.html">Bring your own media service</a><a class="nav-link" href="../guides/place-generated-media-in-gaps.html">Filling gaps and generating per segment</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a><a class="nav-link" href="../account/storage-limits.html">Storage limits</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/edit.html">edit</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/media.html">media</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <main class="content">
+    <article class="doc"><h1 id="bring-your-own-media-service">Bring your own media service</h1>
+<p>The <code>media</code> processor calls an external media service and places the result on your timeline. This guide walks through wiring one up, whether the service you want already has a preset or not. Background on how the pieces fit together is in <a href="../concepts/media-services.html">Media services</a>.</p>
+<h2 id="1-pick-a-preset-or-plan-to-write-a-spec">1. Pick a preset, or plan to write a spec</h2>
+<p>Check whether the service you want to use already has a shipped preset (see the <a href="../processors/media.html"><code>media</code> processor reference</a> for what's available). If it does, start there: a preset fills in the request shape for you, and you only need to add your key and a few variables.</p>
+<p>If there is no preset for your service, you can still use it. <code>media</code> does not require a preset, it works from any inline <strong>spec</strong> you write, as long as the service is reachable over HTTP. The worked example below does exactly this, for a plain text-to-speech service that has no shipped preset.</p>
+<p>When you write your own spec and the request body is JSON, interpolate any free text (like the prompt or script) through the <code>json</code> filter, not bare, so a value containing a quote, newline, or backslash still produces valid JSON: use <code>&quot;prompt&quot;: &quot;{{ .Text | json }}&quot;</code>, not <code>&quot;prompt&quot;: &quot;{{ .Text }}&quot;</code>. Shipped presets already do this for you; a hand-written spec does not unless you write it yourself.</p>
+<h2 id="2-set-the-services-api-key">2. Set the service's API key</h2>
+<p>Whatever service you use, the request needs to authenticate with it somehow, usually an API key. Add that key in the workspace's <strong>Variables &amp; Service API Keys</strong>, under the name your spec (or preset) expects.</p>
+<p>If a run needs a key that has not been set, it is refused before it starts, not partway through, so this step is worth doing before your first run.</p>
+<h2 id="3-choose-a-source-strategy">3. Choose a source strategy</h2>
+<p><code>source</code> controls how the request is built from your inputs. There are three strategies:</p>
+<ul>
+<li><code>single</code> builds one request from the text you wire into the step's <code>source</code> input. Point <code>source</code> at a step or file that contains the text you want turned into media, for example a script or voiceover line.</li>
+<li><code>gaps</code> scans a timeline level (set with <code>gap_level</code>) for empty spans and generates one request per gap, fitted to fill that span. See <a href="place-generated-media-in-gaps.html">Filling gaps and generating per segment</a> for a worked example.</li>
+<li><code>plan</code> reads a segment plan from a <code>segment_plan</code> input (a list of segments, each with its own text and duration) and generates one request per matching segment.</li>
+</ul>
+<h2 id="4-choose-a-place-strategy">4. Choose a place strategy</h2>
+<p><code>place</code> controls where the generated asset lands on your output timeline:</p>
+<ul>
+<li><code>at_position</code> places the asset at position 0 on the output timeline.</li>
+<li><code>chain</code> places the asset immediately after whatever is already on that timeline, end to end.</li>
+<li><code>gaps</code> fits each generated clip exactly to the span it was created to fill, trimming it if it runs long.</li>
+</ul>
+<p>Use <code>chain</code> when you are generating several pieces in sequence and want them to play back to back; use <code>at_position</code> when you are generating a single asset for a fixed spot; use <code>gaps</code> together with <code>source: gaps</code> (or <code>source: plan</code> when the plan targets specific spans) so each clip lands in the exact hole it was generated for.</p>
+<h2 id="5-run-it">5. Run it</h2>
+<p>Add a review gate if you want to approve the result before it is finalized, the same as any other step. Steps cache their output by default, including this one: the same request against the same inputs produces the same asset, so a re-run without changes will not call the service again.</p>
+<h2 id="worked-example-a-service-with-no-shipped-preset">Worked example: a service with no shipped preset</h2>
+<p>Say you want to use a fictional text-to-speech service, <code>voxcast</code>, that has no shipped preset. It authenticates with a bearer token, accepts a simple JSON body, and returns the audio bytes directly in the response. You describe it with an inline <code>spec</code>:</p>
+<pre><code class="language-yaml">- id: narration
+  processor: media
+  input:
+    - id: source
+      step: script            # step or file input providing the text to speak
+  params:
+    spec: |
+      transport: http
+      auth:
+        header: Authorization
+        value: 'Bearer {{ secret &quot;VOXCAST_API_KEY&quot; }}'
+      request:
+        method: POST
+        url: 'https://api.voxcast.example/v1/speak'
+        body: '{&quot;text&quot;:&quot;{{ .Text | json }}&quot;,&quot;voice&quot;:&quot;{{ .Voice }}&quot;}'
+      response:
+        kind: bytes
+    vars:
+      Voice: &quot;narrator-warm-1&quot;
+    source: single
+    place: chain
+  output:
+    timeline: main
+  review: true
+  cache: true
+</code></pre>
+<p>What each part is doing:</p>
+<ul>
+<li><code>spec</code> describes <code>voxcast</code> completely: how to authenticate (a bearer token read from a workspace secret named <code>VOXCAST_API_KEY</code>), what request to send (a <code>POST</code> with the spoken text and a voice name), and how to read the response (the audio comes back as raw bytes).</li>
+<li><code>{{ .Text }}</code> is filled in from the <code>source</code> input automatically; you never type your script into the spec itself.</li>
+<li><code>vars</code> supplies <code>Voice</code>, a value the request body needs that is not part of your source text. Add whatever extra values your service's request needs the same way.</li>
+<li><code>place: chain</code> lands the generated narration right after anything already on the <code>main</code> timeline, useful when you are stitching together several generated lines in order.</li>
+</ul>
+<p>Before running this, add <code>VOXCAST_API_KEY</code> under the workspace's <strong>Variables &amp; Service API Keys</strong>. Nothing else about this step differs from using a shipped preset: the same <code>source</code>, <code>place</code>, <code>vars</code>, <code>review</code>, and <code>cache</code> options apply either way.</p>
+<h2 id="worked-example-generating-images-with-a-preset">Worked example: generating images with a preset</h2>
+<p>You can also use a preset that already knows how to talk to a service. The <code>imagen</code> preset generates a still image from your text with Google's Imagen and animates it into a vertical motion clip:</p>
+<pre><code class="language-yaml">- id: cover_image
+  processor: media
+  input:
+    - id: source
+      step: script
+  params:
+    preset: imagen
+    vars:
+      Model: imagen-4.0-generate-001
+    source: single
+    place: at_position
+  output:
+    timeline: broll
+  cache: true
+</code></pre>
+<p>Set <code>GOOGLE_API_KEY</code> in the workspace's <strong>Variables &amp; Service API Keys</strong> before running this. The preset requests a still image from the service, then automatically animates it into a moving vertical clip before it lands on your timeline, so you never have to write your own post-processing step.</p>
+<h2 id="generate-video">Generate video</h2>
+<p>The <code>veo</code> preset generates a short video clip from your text with Google's Veo:</p>
+<pre><code class="language-yaml">- id: b_roll
+  processor: media
+  input:
+    - id: source
+      step: script
+  params:
+    preset: veo
+    source: single
+    place: chain
+  output:
+    timeline: broll
+  cache: true
+</code></pre>
+<p>Set <code>GOOGLE_API_KEY</code> in the workspace's <strong>Variables &amp; Service API Keys</strong> before running this. Video generation does not come back right away: the request kicks off a job on the service, and the step waits, checking in periodically, until the finished clip is ready before placing it on your timeline. You do not need to do anything differently for this, the step behaves like any other from the outside, it just takes longer to finish.</p>
+<h2 id="generate-avatar-presentations">Generate avatar presentations</h2>
+<p>The <code>heygen</code> preset generates a video of a digital avatar presenting your script with HeyGen:</p>
+<pre><code class="language-yaml">- id: avatar_video
+  processor: media
+  input:
+    - id: source
+      step: script
+  params:
+    preset: heygen
+    vars:
+      AvatarID: &quot;avatar_name_1&quot;
+      VoiceID: &quot;en_us_001&quot;
+    source: single
+    place: at_position
+  output:
+    timeline: main
+  cache: true
+</code></pre>
+<p>Set <code>HEYGEN_API_KEY</code> in the workspace's <strong>Variables &amp; Service API Keys</strong> before running this. Like video generation, avatar presentation does not come back right away: the step starts a background job with the service and waits, checking in periodically, until the finished video is ready before placing it on your timeline.</p>
+<h2 id="next">Next</h2>
+<ul>
+<li><a href="../concepts/media-services.html">Media services</a></li>
+<li><a href="../processors/media.html"><code>media</code> processor reference</a></li>
+<li><a href="../concepts/review-gates.html">Review gates</a></li>
+</ul>
+</article>
+    <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>
+  </main>
+</div>
+</body>
+</html>
