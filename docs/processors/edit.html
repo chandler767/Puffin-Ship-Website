@@ -28,8 +28,8 @@
     <article class="doc"><h1 id="edit"><code>edit</code></h1>
 <p>Applies an ordered chain of edit operations to your clips in a single step.</p>
 <h2 id="when-to-use">When to use</h2>
-<p>Use <code>edit</code> when you want to adjust how footage looks or sounds — zoom or reposition a clip, crop or rotate it, grade its color, sharpen it, change its volume, add a fade, or clean up background noise — and especially when you want to combine several of those changes at once. Operations run in the order you list them.</p>
-<p>Some operations are lightweight and change only how a clip is framed (scale, position, volume, reframe): these are applied instantly as adjustments, with no re-processing of the footage. Others change the picture or audio itself (color, crop, rotate, sharpen, fades, noise reduction, overlay): for these, the clip is re-processed. To keep that fast, only the parts of each source that actually appear in your edit are processed — unless you ask for the whole file. A few operations generate a brand-new clip instead of adjusting an existing one (title cards): because there's no existing clip to adjust, a generated operation must be the only entry in its step's <code>operations</code> list.</p>
+<p>Use <code>edit</code> when you want to adjust how footage looks or sounds: zoom or reposition a clip, crop or rotate it, grade its color, sharpen it, change its volume, add a fade, or clean up background noise, and especially when you want to combine several of those changes at once. Operations run in the order you list them.</p>
+<p>Some operations are lightweight and change only how a clip is framed (scale, position, volume, reframe): these are applied instantly as adjustments, with no re-processing of the footage. Others change the picture or audio itself (color, crop, rotate, sharpen, fades, noise reduction, overlay): for these, the clip is re-processed. To keep that fast, only the parts of each source that actually appear in your edit are processed, unless you ask for the whole file. A few operations generate a brand-new clip instead of adjusting an existing one (title cards): because there's no existing clip to adjust, a generated operation must be the only entry in its step's <code>operations</code> list.</p>
 <h2 id="in-the-editor">In the editor</h2>
 <p>Add it from the <strong>Library</strong> (<strong>Transforms</strong> group), or with <strong>+ add step</strong> and a search for <code>edit</code>.</p>
 <p>Point its <strong>source</strong> input at your footage (a file) or at an earlier step that produced edit decisions. Then build the <strong>operations</strong> list: each entry has a <code>type</code> and that operation's own settings. Use the <strong>segments</strong> control to choose whether it works only on the portions of a source that appear in the edit (the default) or on the entire source file.</p>
@@ -98,7 +98,7 @@
 </ul>
 <h2 id="available-operations">Available operations</h2>
 <p>Each entry in <code>operations</code> needs a <code>type</code> from the list below, plus that operation's own settings.</p>
-<p><strong>Framing — lightweight (applied instantly as an adjustment, no re-processing):</strong></p>
+<p><strong>Framing, lightweight (applied instantly as an adjustment, no re-processing):</strong></p>
 <table>
 <thead>
 <tr>
@@ -125,7 +125,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Framing — re-processing:</strong></p>
+<p><strong>Framing, re-processing:</strong></p>
 <table>
 <thead>
 <tr>
@@ -304,8 +304,8 @@
 <tbody>
 <tr>
 <td><code>advanced_filter</code></td>
-<td>An expert-only option for settings not exposed elsewhere. Its settings are specific to the current processing engine and may change between versions — most authors won't need it.</td>
-<td><code>video</code> (optional text), <code>audio</code> (optional text) — at least one is required</td>
+<td>An expert-only option for settings not exposed elsewhere. Its settings are specific to the current processing engine and may change between versions, so most authors won't need it.</td>
+<td><code>video</code> (optional text), <code>audio</code> (optional text), at least one is required</td>
 </tr>
 </tbody>
 </table>
