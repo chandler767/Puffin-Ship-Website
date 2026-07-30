@@ -103,6 +103,27 @@ first. The dialog names the workspaces blocking you. See
 Google.</li>
 </ul>
 <p>If you want a copy of your data, export it before you delete.</p>
+<h3 id="admin-actions-on-other-users">Admin actions on other users</h3>
+<p>Admins have additional options for managing other users' accounts, available
+from the admin user list:</p>
+<ul>
+<li><strong>Disable</strong> a user. This is reversible: the account stops working until an
+admin restores it.</li>
+<li><strong>Safety delete</strong> a user. The account is deleted immediately, but Puffin
+Ship keeps it in a recoverable state for 24 hours before the data is
+permanently removed. An admin can cancel the pending removal at any time
+during that window to restore the account.</li>
+<li><strong>Permanently delete</strong> a user. This removes the account and its data right
+away and cannot be undone.</li>
+</ul>
+<p>Admins can select multiple users at once and apply the same action to all of
+them. Deleting a user who is the sole owner of a workspace shared with other
+people is blocked until ownership is transferred, unless the admin chooses to
+force the deletion, which removes the shared workspace along with the user.
+If a force-deleted user is safety deleted instead of permanently deleted, the
+shared workspace is not removed right away: it is removed once the 24 hour
+grace period ends, so admins should transfer ownership during that window if
+the workspace needs to be kept.</p>
 <h2 id="next">Next</h2>
 <ul>
 <li><a href="members.html">Workspace members and roles</a></li>
