@@ -42,7 +42,7 @@ regenerate the earlier steps. See
 <a href="../concepts/caching.html">Reusing work between runs</a>.</li>
 </ol>
 <p>A failed run that never completed a real step does not count against your
-<a href="../account/run-limits.html">daily run limit</a>.</p>
+<a href="../account/run-limits.html">run limit</a>.</p>
 <h3 id="common-step-failures">Common step failures</h3>
 <table>
 <thead>
@@ -131,9 +131,11 @@ rundown of the timeline view.</p>
 disabled variant. Steps using <code>content_variants</code> place several options at the
 same position with only one enabled. See
 <a href="../concepts/run-groups.html">Run groups and variants</a>.</p>
-<h2 id="i-hit-the-daily-run-limit">I hit the daily run limit</h2>
-<p>You get a set number of runs per day. See
-<a href="../account/run-limits.html">Daily run limits</a> for what counts and how to make it
+<h2 id="i-hit-the-run-limit">I hit the run limit</h2>
+<p>Your plan gives you a set number of runs in a rolling time window (for example
+50 runs per 5 hours), not a fixed daily total. Once you are at the limit, the
+oldest run in the window has to age out before you get a slot back. See
+<a href="../account/run-limits.html">Run limits</a> for what counts and how to make it
 go further.</p>
 <h2 id="new-runs-are-paused">New runs are paused</h2>
 <p>Sometimes a banner appears saying new runs are paused, either because the
