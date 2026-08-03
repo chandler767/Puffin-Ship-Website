@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Daily run limits · Puffin Ship Docs</title>
+<title>Run limits · Puffin Ship Docs</title>
 <link rel="icon" type="image/png" href="/assets/logo/puffin-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,27 +23,28 @@
   <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
 </header>
 <div class="layout">
-  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a><a class="nav-link" href="../concepts/media-services.html">Media services</a><a class="nav-link" href="../concepts/template-library.html">The template library</a><a class="nav-link" href="../concepts/shared-blocks.html">Blocks</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/starter-templates.html">Starter Templates</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/ai-assistant.html">The AI Assistant</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/run-timeline.html">Editing and exporting a finished run</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/place-generated-media-in-gaps.html">Filling gaps and generating per segment</a><a class="nav-link" href="../guides/bring-your-own-media-service.html">Bring your own media service</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/sharing-a-template.html">Sharing a template</a><a class="nav-link" href="../guides/authoring-a-block.html">Authoring a block</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link active" href="../account/run-limits.html">Daily run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a><a class="nav-link" href="../account/storage-limits.html">Storage limits</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/edit.html">edit</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/media.html">media</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
+  <aside class="sidebar"><div class="nav-section"><div class="nav-heading">Start here</div><a class="nav-link" href="../getting-started.html">Getting Started</a><a class="nav-link" href="../config.html">Config Reference</a></div><div class="nav-section"><div class="nav-heading">Concepts</div><a class="nav-link" href="../concepts/how-a-run-works.html">How a run works</a><a class="nav-link" href="../concepts/timeline-levels.html">Timeline and levels</a><a class="nav-link" href="../concepts/run-groups.html">Run groups and variants</a><a class="nav-link" href="../concepts/caching.html">Reusing work between runs</a><a class="nav-link" href="../concepts/review-gates.html">Review gates</a><a class="nav-link" href="../concepts/media-services.html">Media services</a><a class="nav-link" href="../concepts/template-library.html">The template library</a><a class="nav-link" href="../concepts/shared-blocks.html">Blocks</a></div><div class="nav-section"><div class="nav-heading">Guides</div><a class="nav-link" href="../guides/starter-templates.html">Starter Templates</a><a class="nav-link" href="../guides/building-in-the-editor.html">Building in the editor</a><a class="nav-link" href="../guides/ai-assistant.html">The AI Assistant</a><a class="nav-link" href="../guides/recording.html">Recording in the browser</a><a class="nav-link" href="../guides/run-timeline.html">Editing and exporting a finished run</a><a class="nav-link" href="../guides/broll.html">Broll Guide</a><a class="nav-link" href="../guides/place-generated-media-in-gaps.html">Filling gaps and generating per segment</a><a class="nav-link" href="../guides/bring-your-own-media-service.html">Bring your own media service</a><a class="nav-link" href="../guides/captions.html">Captions Guide</a><a class="nav-link" href="../guides/drawings.html">Drawings Guide</a><a class="nav-link" href="../guides/portrait-video.html">Portrait Video Guide</a><a class="nav-link" href="../guides/footage-director.html">Footage Director Guide</a><a class="nav-link" href="../guides/ai-news-pipeline.html">AI News Video Pipeline</a><a class="nav-link" href="../guides/sharing-a-template.html">Sharing a template</a><a class="nav-link" href="../guides/authoring-a-block.html">Authoring a block</a></div><div class="nav-section"><div class="nav-heading">Account &amp; workspace</div><a class="nav-link" href="../account/account-settings.html">Account settings</a><a class="nav-link" href="../account/plans.html">Plans</a><a class="nav-link" href="../account/billing.html">Billing</a><a class="nav-link" href="../account/members.html">Workspace members and roles</a><a class="nav-link active" href="../account/run-limits.html">Run limits</a><a class="nav-link" href="../account/model-training.html">Rating runs and model training</a><a class="nav-link" href="../account/storage-limits.html">Storage limits</a></div><div class="nav-section"><div class="nav-heading">Help</div><a class="nav-link" href="../help/troubleshooting.html">Troubleshooting</a><a class="nav-link" href="../help/feedback.html">Feedback and reporting a problem</a></div><div class="nav-section"><div class="nav-heading">Processors</div><a class="nav-link" href="../processors/index.html">All processors</a><a class="nav-link" href="../processors/ai-agent.html">ai_agent</a><a class="nav-link" href="../processors/analyze-footage.html">analyze_footage</a><a class="nav-link" href="../processors/assemble-transcript.html">assemble_transcript</a><a class="nav-link" href="../processors/audio.html">audio</a><a class="nav-link" href="../processors/auto-broll-placer.html">auto_broll_placer</a><a class="nav-link" href="../processors/av-recorder.html">av_recorder</a><a class="nav-link" href="../processors/broll-imagen-generate.html">broll_imagen_generate</a><a class="nav-link" href="../processors/broll-place.html">broll_place</a><a class="nav-link" href="../processors/broll-screenshot-websource.html">broll_screenshot_websource</a><a class="nav-link" href="../processors/broll-veo-generate.html">broll_veo_generate</a><a class="nav-link" href="../processors/broll-websource.html">broll_websource</a><a class="nav-link" href="../processors/captions.html">captions</a><a class="nav-link" href="../processors/chroma-key.html">chroma_key</a><a class="nav-link" href="../processors/cut.html">cut</a><a class="nav-link" href="../processors/deadspace-trimmer.html">deadspace_trimmer</a><a class="nav-link" href="../processors/drawing-diagram.html">drawing_diagram</a><a class="nav-link" href="../processors/drawing-list.html">drawing_list</a><a class="nav-link" href="../processors/drawing-logos.html">drawing_logos</a><a class="nav-link" href="../processors/drawing-remotion.html">drawing_remotion</a><a class="nav-link" href="../processors/drawing-text.html">drawing_text</a><a class="nav-link" href="../processors/drawings-ai-placer.html">drawings_ai_placer</a><a class="nav-link" href="../processors/edit.html">edit</a><a class="nav-link" href="../processors/elevenlabs-tts.html">elevenlabs_tts</a><a class="nav-link" href="../processors/fill-level.html">fill_level</a><a class="nav-link" href="../processors/footage-assembler.html">footage_assembler</a><a class="nav-link" href="../processors/generate-transcript.html">generate_transcript</a><a class="nav-link" href="../processors/heygen-speaker.html">heygen_speaker</a><a class="nav-link" href="../processors/media.html">media</a><a class="nav-link" href="../processors/motion-center.html">motion_center</a><a class="nav-link" href="../processors/noise-reduce.html">noise_reduce</a><a class="nav-link" href="../processors/reframe.html">reframe</a><a class="nav-link" href="../processors/scale-transform.html">scale_transform</a><a class="nav-link" href="../processors/sound-fx.html">sound_fx</a><a class="nav-link" href="../processors/speaker-center.html">speaker_center</a><a class="nav-link" href="../processors/stitch.html">stitch</a><a class="nav-link" href="../processors/title-card.html">title_card</a><a class="nav-link" href="../processors/transcript-aiprep.html">transcript_aiprep</a><a class="nav-link" href="../processors/trim.html">trim</a><a class="nav-link" href="../processors/video-director.html">video_director</a><a class="nav-link" href="../processors/volume-adjust.html">volume_adjust</a><a class="nav-link" href="../processors/workspace-analyze.html">workspace_analyze</a><a class="nav-link" href="../processors/write-script.html">write_script</a></div><div class="nav-section"><div class="nav-heading">Developer</div><a class="nav-link" href="../developer/api.html">Puffin Ship API</a></div></aside>
   <main class="content">
-    <article class="doc"><h1 id="daily-run-limits">Daily run limits</h1>
-<p>During the Puffin Ship Early Access Period there is a cap on how many runs you
-can start per day, while capacity is scaled up.</p>
-<h2 id="the-cap">The cap</h2>
-<ul>
-<li>The default allowance is <strong>5 runs per day</strong>.</li>
-<li>The count is <strong>per person</strong>, not per workspace: runs you start in any
-workspace count against the same allowance.</li>
-<li>It resets at <strong>midnight UTC</strong>.</li>
-</ul>
-<p>Your current usage is shown in the app as <strong>&quot;2/5 runs today&quot;</strong>, in the account
-menu and as a badge. The account menu also spells out that the limit is an Early
-Access Period constraint and when it resets. If your account has no cap, it reads
-<strong>Unlimited</strong>.</p>
+    <article class="doc"><h1 id="run-limits">Run limits</h1>
+<p>Your plan sets a cap on how many runs you can start in a rolling window of
+time. This page covers the mechanics: what counts toward the cap, what happens
+when you hit it, and how to make your allowance go further. For the numbers
+themselves (how many runs, on which plan), see <a href="plans.html">Plans</a>.</p>
+<h2 id="how-the-window-works">How the window works</h2>
+<p>A run limit is a rolling window, for example &quot;50 runs per 5 hours.&quot; At any
+moment, look back over that window and count the runs you started in it. If
+you are under the limit you can start another; once you are at the limit, the
+oldest run in the window has to age out before you get a slot back. There is
+no fixed reset time: the window simply slides forward.</p>
+<p>The count is <strong>per account</strong>, not per workspace: runs you start in any
+workspace count against the same allowance. Your current usage is shown in the
+app as, for example, <strong>&quot;12/50 runs per 5h&quot;</strong>, in the account menu and as a
+badge. If your plan has no run cap, it reads <strong>Unlimited</strong>.</p>
 <h2 id="what-counts-as-a-run">What counts as a run</h2>
 <ul>
 <li>
-<p>Every run you start counts, including a re-run from a step and a run you later
-delete.</p>
+<p>Every run you start counts, including a re-run from a step and a run you
+later delete.</p>
 </li>
 <li>
 <p>A run that failed <strong>without doing any work</strong> does not count. If a run dies on
@@ -64,18 +65,18 @@ like any other.</p>
 </li>
 <li>
 <p>A run that is queued or in progress counts while it is in flight, so starting
-several at once cannot get you past the cap.</p>
+several at once cannot get you past the limit.</p>
 </li>
 </ul>
-<h2 id="when-you-hit-the-cap">When you hit the cap</h2>
+<h2 id="when-you-hit-the-limit">When you hit the limit</h2>
 <p>Starting a run is refused with a panel naming your usage, for example
-<em>&quot;daily run limit reached (5/5 runs today)&quot;</em>. Nothing is created, nothing is
-deleted, and no saved work is lost: the attempt simply does not happen. The panel
-says when your allowance resets and links straight to
-<a href="../help/feedback.html">Contact</a> so you can ask for the cap to be lifted.</p>
-<p>You can keep working while capped. Editing templates, uploading files, answering
-a review gate on a run already in progress, and exporting from finished runs all
-still work. Only starting a new run is blocked.</p>
+<em>&quot;run limit reached (50/50 runs per 5h)&quot;</em>. Nothing is created, nothing is
+deleted, and no saved work is lost: the attempt simply does not happen. The
+panel says roughly when you will get a slot back and links straight to
+<a href="plans.html">Plans</a> so you can upgrade if the limit is getting in the way.</p>
+<p>You can keep working while at the limit. Editing templates, uploading files,
+answering a review gate on a run already in progress, and exporting from
+finished runs all still work. Only starting a new run is blocked.</p>
 <h2 id="waiting-for-a-slot">Waiting for a slot</h2>
 <p>A limited number of runs execute at the same time, so a run you start may wait
 before it begins. While it does, the run view says how many runs are ahead of it
@@ -97,13 +98,15 @@ run is far cheaper in generation cost and usually finishes much faster. See
 <li><strong>Use review gates</strong> on expensive steps, so you catch a bad script before a
 run spends the rest of its budget acting on it.</li>
 <li><strong>Re-run from the step that went wrong</strong>, not from the beginning.</li>
+<li><strong>Upgrade to a plan with a higher allowance.</strong> See <a href="plans.html">Plans</a>.</li>
 </ul>
 <h2 id="need-more">Need more?</h2>
-<p>If the cap is getting in the way of real work, tell us through
-<a href="../help/feedback.html">Feedback</a> and say what you are building. Allowances can be
-raised per account.</p>
+<p>If a higher-tier plan is still not enough, tell us through
+<a href="../help/feedback.html">Feedback</a> and say what you are building, or ask about a
+<a href="billing.html#getting-a-custom-plan">Custom plan</a>.</p>
 <h2 id="next">Next</h2>
 <ul>
+<li><a href="plans.html">Plans</a>: the plans and their run allowances</li>
 <li><a href="../concepts/caching.html">Reusing work between runs</a></li>
 <li><a href="../concepts/run-groups.html">Run groups and variants</a></li>
 <li><a href="../help/troubleshooting.html">Troubleshooting</a></li>
