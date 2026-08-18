@@ -1,64 +1,53 @@
 # Puffin Ship
 
-> Puffin Ship is an AI video content automation platform. It turns anything you have (an idea, recordings, audio clips) into a fully edited video with AI. Your prompt builds a reusable template that defines how your videos get made, so you can produce them consistently at scale. Content doesn't need to be AI generated. It can edit what you give it, or generate everything from scratch.
+> Puffin Ship is a video content agency. We produce short form video for brands at a volume traditional agencies cannot match, using a production platform we built and run ourselves. Depending on what a brand needs, we hand over finished video, publish it to their channels on a schedule, or run the whole program and tune it against what performs.
 
-## Status
+## What we do
 
-Puffin Ship is live and free to use during early access. Create an account at https://app.puffinship.com/login to get started, or contact info@puffinship.com or call 415-409-8722.
+We make short form video for brands and we keep it coming. A brand tells us what they sell, who buys it, and what their content should sound like. We build the formats, the look, and the rules their videos follow, and then video ships steadily instead of in bursts.
 
-## The problem
+Every video arrives in the format the channel needs: vertical for Reels, Shorts, and TikTok, square for feeds, wide for YouTube and websites. Nothing goes out unchecked; every video passes a review step before it reaches the brand or its audience.
 
-Businesses are expected to create more video content across more channels, but most do not have the team, budget, or process to do it consistently. Production is too slow, too expensive, and too hard to manage. Most businesses already have the raw material (clips, calls, webinars, product info, customer stories); it just never becomes finished video. Puffin Ship closes that gap with software.
+## Why we can produce at this volume
 
-## What it is
+We built our own production platform and we run it ourselves. It is not a stack of subscriptions anyone can go and buy, and our output does not depend on how many editors we can hire. That is the reason we can promise a volume a traditional agency structurally cannot, and the reason the way our clients' content gets made is not available to their competitors.
 
-Puffin Ship is a self-serve web application. A user connects source material. The platform ingests it, generates the missing pieces, and assembles finished short-form videos, pausing for the user's review wherever they ask it to.
+A brand's rules are set once and applied to every video after that. No drift, no re-briefing, no explaining the brand again next month.
 
-The product is software the customer runs, not a managed service. Customers connect their own material and run the platform themselves.
+## Three ways to work with us
 
-## How it works
+1. **Produced**: we make the videos and the brand posts them. The brand keeps full control of its channels and we never need access to its accounts.
+2. **Published**: we make the videos and ship them to the brand's channels on a schedule, so the feed stays active without anyone on the brand's side managing it.
+3. **Growth program**: we produce, publish, and keep tuning against what actually performs. The full program, aimed at moving the number that matters to the brand.
 
-1. **Connect your source material**: add clips, calls, audio, ideas, or docs. Whatever you already have becomes source material for the run.
-2. **AI builds your template**: your prompt becomes a reusable template. The AI generates hooks, scripts, captions, voice, and structure, filling in whatever is missing.
-3. **Review, then export**: pause any step for review to approve, edit, or regenerate its output before the final render. Export a finished MP4, subtitle files (SRT), or a Final Cut Pro project (FCPXML).
+## How an engagement runs
 
-## Core platform layers
-
-- **Input layer**: ingests whatever the user has: clips, calls, audio, ideas, and docs.
-- **Generation and template layer**: identifies what is missing and generates it: hooks, scripts, captions, generated video and audio, templates, segment formats, and transitions. The output ratio (9:16, 1:1, or 16:9) is set on the template.
-- **Review and export layer**: any step can be paused at a review gate where the user approves, edits, rejects, or regenerates its output before the run continues. Finished runs export as MP4, SRT subtitles, or an FCPXML project for Final Cut Pro.
-
-## Pricing
-
-The Puffin Ship platform is free to use during early access, with no credit card required. Usage limits apply while the product is in early access and we scale up; users who need higher limits can contact us. Core AI generation and editing, reusable templates, review gates, selectable output ratios (9:16, 1:1, 16:9), and MP4/SRT/FCPXML exports are all included.
-
-There are third-party costs that do not go to Puffin Ship. Steps that call outside AI services (OpenAI for transcription, Google for AI video and image generation, HeyGen for AI presenters, ElevenLabs for voiceover) run on API keys the user supplies, and those providers bill the user directly at their own rates. Puffin Ship does not resell or mark up AI usage, and a user only needs keys for the services their template actually uses.
-
-Teams that need higher limits or multiple client workspaces can contact us at https://app.puffinship.com/contact.
+1. **We learn the brand**: what it sells, who buys it, and what its content should sound like. We do the work here so nobody is briefing us every month.
+2. **We build the content system**: the formats, the look, and the rules the videos follow. This is the part that makes everything after it repeatable.
+3. **Video ships on a schedule**: content arrives steadily, either delivered to the brand or published straight to its channels.
+4. **We iterate on what performs**: on the growth program we watch what lands and adjust, so the content gets better at its job over time.
 
 ## Who it's for
 
-- **Direct businesses**: businesses that need recurring video but don't have the team or budget to produce it consistently
-- **Agencies**: more production capacity across many client workspaces without hiring more editors; each client gets its own workspace and review gates
-- **Expert-led businesses**: coaches, founders, educators, and consultants turning calls, webinars, and expertise into consistent short-form video
+- **Brands and products**: companies that need a steady stream of content and don't have a team to make it. We become that team without them hiring one.
+- **Services and local businesses**: businesses that live on attention in their area and can't produce enough of it to stay top of mind.
+- **Founders and experts**: people with real knowledge and an audience worth building, who never find the time to turn one into the other.
 
-## Competitive position
+## Pricing
 
-- Different from AI video editors: those help users modify existing footage; Puffin Ship turns source material into finished video including deciding what to make
-- Different from AI video generators: those create assets from prompts; Puffin Ship builds repeatable video production workflows
-- Different from traditional agencies: agencies scale with people; Puffin Ship scales with software, feedback, and reusable templates
-- Different from social media management platforms: those manage distribution; Puffin Ship creates the video supply
+Pricing depends on volume and how involved a brand wants us to be, so we quote each brand individually. There are no published rates and no self-serve tiers.
 
-## Long-term vision
+To get a quote, use the form at https://puffinship.com/#contact and tell us what you need. We reply by email, usually within a day.
 
-Puffin Ship is building the platform for automated video production: more source types and more of the editing and publishing workflow handled for you. A developer API is already in preview at https://puffinship.com/docs/developer/api.html, so teams and products can build video content automation into their own workflows.
+## How we compare
 
-The defensibility comes from the compounding loop between production, feedback, and automation: more users create more videos, more videos create more feedback, and that feedback sharpens the templates and the platform over time.
+- Different from a traditional agency: agencies scale by hiring people, so their volume is capped by headcount. Ours is not.
+- Different from a freelancer or a single editor: output stays at the same pace in month six as it was in month one.
+- Different from a social media management tool: those manage distribution. We create the video supply, and publish it too if that is what the brand wants.
 
 ## Contact
 
-To get started, sign up at https://app.puffinship.com/login (free during early access). To discuss higher-volume or agency needs:
-
+- Form: https://puffinship.com/#contact
 - Email: info@puffinship.com
 - Phone: 415-409-8722
 - Website: https://puffinship.com/
