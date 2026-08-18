@@ -670,6 +670,38 @@
     .footer-linklike:hover { color: var(--text-strong); }
     .footer-bottom { padding: 0 var(--space-8) 28px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-muted); gap: var(--space-4); flex-wrap: wrap; }
 
+    /* ── Lead form ────────────────────────────────────────────────────────── */
+    .lead-card { max-width: 720px; margin: 0 auto; padding: 40px; }
+    .lead-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .lead-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4); border: 0; padding: 0; }
+    .lead-field > span, .lead-field > legend {
+      font-size: 14px; font-weight: 600; color: var(--ink-800); padding: 0;
+    }
+    .lead-field em { font-style: normal; font-weight: 500; color: var(--ink-500); }
+    .lead-field input[type="text"], .lead-field input[type="email"],
+    .lead-field input[type="url"], .lead-field textarea {
+      font: inherit; font-size: 15px; color: var(--ink-900); background: var(--white);
+      border: 1px solid var(--ink-300); border-radius: var(--radius-md);
+      padding: 11px 13px; width: 100%; box-sizing: border-box;
+    }
+    .lead-field input:focus, .lead-field textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(24,168,224,0.18);
+    }
+    .lead-checks { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+    .lead-checks label {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 15px; color: var(--ink-800); cursor: pointer;
+    }
+    .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .lead-error { color: #B4232A; font-size: 14px; margin: 0 0 var(--space-3); }
+    .lead-fine { font-size: 13px; color: var(--ink-500); margin: 14px 0 0; }
+    #lead-submit[disabled] { opacity: 0.6; cursor: default; }
+    @media (max-width: 640px) {
+      .lead-card { padding: 24px; }
+      .lead-row { grid-template-columns: 1fr; gap: 0; }
+    }
+
     /* ── Responsive ───────────────────────────────────────────────────────── */
     @media (max-width: 940px) {
       .free-card { grid-template-columns: 1fr; }
@@ -992,163 +1024,66 @@
     </div>
   </section>
 
-  <!-- ── Free ───────────────────────────────────────────────────────────── -->
-  <section id="free" class="free-band">
-    <div class="wrap section-pad">
-      <!-- PUFFIN_PRICING:START -->
-      <style>
-      #pricing.ps-pricing { padding: 0 var(--space-8, 32px) 64px; }
-      #pricing .ps-pricing-head { max-width: 640px; margin: 0 auto 40px; text-align: center; }
-      #pricing .ps-pricing-eyebrow {
-        font-size: var(--text-xs, 12px); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-        color: var(--accent, #18A8E0); margin-bottom: var(--space-2, 8px);
-      }
-      #pricing .ps-pricing-h2 {
-        font-family: var(--font-display, "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif);
-        font-weight: 800; font-size: clamp(26px, 3vw, 38px); letter-spacing: -0.025em;
-        color: var(--ink-900, #23272B); margin: 0;
-      }
-      #pricing .ps-pricing-sub { margin: 12px 0 0; font-size: 16px; color: var(--ink-600, #5C6268); }
-      #pricing .ps-pricing-grid {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5, 20px);
-        max-width: 1120px; margin: 0 auto;
-      }
-      @media (max-width: 860px) {
-        #pricing .ps-pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
-      }
-      #pricing .ps-pricing-card {
-        display: flex; flex-direction: column; background: var(--white, #FFFFFF);
-        border: 1px solid var(--ink-200, #E1E4E7); border-radius: var(--radius-lg, 14px);
-        box-shadow: var(--shadow-sm, 0 1px 3px rgba(35,39,43,0.08), 0 1px 2px rgba(35,39,43,0.05));
-        padding: 32px; gap: 20px;
-      }
-      #pricing .ps-pricing-card-featured {
-        border-color: var(--accent, #18A8E0); border-width: 2px;
-        box-shadow: var(--shadow-accent, 0 10px 28px -10px rgba(24,168,224,0.45));
-      }
-      #pricing .ps-pricing-card-head { display: flex; flex-direction: column; gap: 6px; }
-      #pricing .ps-pricing-badge {
-        align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-        text-transform: uppercase; color: #fff; background: var(--accent, #18A8E0);
-        border-radius: var(--radius-pill, 999px); padding: 4px 10px; margin-bottom: 2px;
-      }
-      #pricing .ps-pricing-name {
-        font-family: var(--font-display, "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif);
-        font-weight: 700; font-size: 20px; letter-spacing: -0.01em; color: var(--ink-900, #23272B);
-      }
-      #pricing .ps-pricing-desc { font-size: 14px; line-height: 1.5; color: var(--ink-600, #5C6268); }
-      #pricing .ps-pricing-price { display: flex; align-items: baseline; gap: 6px; }
-      #pricing .ps-pricing-price .amt {
-        font-family: var(--font-display, "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif);
-        font-weight: 800; font-size: 38px; letter-spacing: -0.03em; color: var(--accent, #18A8E0); line-height: 1;
-      }
-      #pricing .ps-pricing-price .per { font-size: 14px; font-weight: 600; color: var(--ink-600, #5C6268); }
-      #pricing .ps-pricing-tagline { font-size: 14px; line-height: 1.5; color: var(--ink-800, #2E3338); margin: 0; }
-      #pricing .ps-pricing-feats { display: flex; flex-direction: column; gap: 10px; flex: 1; }
-      #pricing .ps-pricing-feat {
-        display: flex; align-items: flex-start; gap: 9px; font-size: 14px; line-height: 1.4;
-        color: var(--ink-800, #2E3338);
-      }
-      #pricing .ps-pricing-check { color: var(--green-500, #18926A); flex: none; display: flex; margin-top: 1px; }
-      #pricing .ps-btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        font-family: var(--font-sans, "Hanken Grotesk", system-ui, -apple-system, sans-serif);
-        font-weight: 600; font-size: 15px; border: none; cursor: pointer; text-decoration: none;
-        border-radius: var(--radius-md, 10px); padding: 12px 20px; width: 100%; box-sizing: border-box;
-        transition: background 120ms, transform 120ms, box-shadow 120ms;
-      }
-      #pricing .ps-btn-primary {
-        background: var(--accent, #18A8E0); color: #fff;
-        box-shadow: var(--shadow-accent, 0 10px 28px -10px rgba(24,168,224,0.45));
-      }
-      #pricing .ps-btn-primary:hover { background: var(--accent-hover, #1389C2); }
-      #pricing .ps-btn-outline {
-        background: transparent; color: var(--ink-800, #2E3338);
-        border: 1.5px solid var(--ink-300, #C7CCD1);
-      }
-      #pricing .ps-btn-outline:hover { background: var(--ink-50, #F6F7F9); border-color: var(--ink-400, #A3AAB1); }
-      #pricing .ps-pricing-foot { max-width: 640px; margin: 28px auto 0; text-align: center; font-size: 13px; line-height: 1.5; color: var(--ink-500, #7C838A); }
-      </style>
-      <section id="pricing" class="ps-pricing">
-        <div class="ps-pricing-head">
-          <div class="ps-pricing-eyebrow">Plans</div>
-          <h2 class="ps-pricing-h2">Simple pricing that scales with you</h2>
-          <p class="ps-pricing-sub">Start free, upgrade for more capacity and programmatic access, or talk to us about a custom plan.</p>
-        </div>
-        <div class="ps-pricing-grid">
-          <div class="ps-pricing-card">
-            <div class="ps-pricing-card-head">
-              <h3 class="ps-pricing-name">Free</h3>
-              <p class="ps-pricing-desc">Get started with Puffin Ship at no cost.</p>
-            </div>
-            <div class="ps-pricing-price">
-              <span class="amt">$0</span>
-            </div>
-            <p class="ps-pricing-tagline">For trying Puffin Ship out.</p>
-            <div class="ps-pricing-feats">
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>5 runs per 5 hours</div>
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Community support</div>
-            </div>
-            <a href="https://app.puffinship.com/login" class="ps-btn ps-btn-outline">Start free</a>
-          </div>
-          <div class="ps-pricing-card ps-pricing-card-featured">
-            <div class="ps-pricing-card-head">
-              <span class="ps-pricing-badge">Most popular</span>
-              <h3 class="ps-pricing-name">Creator</h3>
-              <p class="ps-pricing-desc">For creators shipping content regularly.</p>
-            </div>
-            <div class="ps-pricing-price">
-              <span class="amt">$20</span><span class="per">/month</span>
-            </div>
-            <p class="ps-pricing-tagline">For content automation at regular volume.</p>
-            <div class="ps-pricing-feats">
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>50 runs per 5 hours</div>
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>API access</div>
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Priority support</div>
-            </div>
-            <a href="https://app.puffinship.com/login" class="ps-btn ps-btn-primary">Start Creator</a>
-          </div>
-          <div class="ps-pricing-card">
-            <div class="ps-pricing-card-head">
-              <h3 class="ps-pricing-name">Custom</h3>
-              <p class="ps-pricing-desc">For teams that need more than Creator offers.</p>
-            </div>
-            <div class="ps-pricing-price">
-              <span class="amt">Contact us</span>
-            </div>
-            <p class="ps-pricing-tagline">For teams with volume or workflow needs beyond Creator.</p>
-            <div class="ps-pricing-feats">
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Unlimited runs</div>
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>API access</div>
-              <div class="ps-pricing-feat"><span class="ps-pricing-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Dedicated support</div>
-            </div>
-            <a href="https://app.puffinship.com/contact" class="ps-btn ps-btn-outline">Contact us</a>
-          </div>
-        </div>
-        <p class="ps-pricing-foot">You bring your own AI provider keys for services your template uses, and those providers bill you directly at their own rates.</p>
-      </section>
-      <!-- PUFFIN_PRICING:END -->
-      <p class="free-fineprint">Need multiple client workspaces or a volume plan? <a href="https://app.puffinship.com/contact" style="color: var(--accent); font-weight: 600;">Talk to us</a> and we'll sort it out.</p>
-    </div>
-  </section>
 
-  <!-- ── CTA ────────────────────────────────────────────────────────────── -->
+  <!-- ── Contact / lead form ─────────────────────────────────────────── -->
   <section id="contact" class="wrap section-pad">
-    <div class="cta-band">
-      <img src="assets/logo/puffin-mark-paper.png" alt="Puffin Ship" />
-      <h2 class="cta-h2">Start making video today</h2>
-      <p class="cta-body">Puffin Ship is live and in early access. Create an account and turn what you already have into finished video.</p>
-      <div class="cta-actions">
-        <a href="https://app.puffinship.com/login" class="btn btn-ink btn-lg">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
-          Get started
-        </a>
-        <a href="https://app.puffinship.com/contact" class="btn btn-ghost btn-lg">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          Contact us
-        </a>
+    <div class="section-head">
+      <div class="eyebrow">Pricing</div>
+      <h2 class="section-h2">Every brand needs something different</h2>
+      <p class="section-sub">Tell us what you need and we'll come back with pricing.</p>
+    </div>
+    <div class="card lead-card">
+      <form id="lead-form" novalidate>
+        <div class="lead-row">
+          <label class="lead-field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="lead-field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+        </div>
+        <div class="lead-row">
+          <label class="lead-field">
+            <span>Brand or company</span>
+            <input type="text" name="company" autocomplete="organization" required />
+          </label>
+          <label class="lead-field">
+            <span>Website <em>(optional)</em></span>
+            <input type="url" name="website_url" autocomplete="url" placeholder="https://" />
+          </label>
+        </div>
+        <label class="lead-field">
+          <span>What you sell <em>(optional)</em></span>
+          <input type="text" name="what_you_sell" />
+        </label>
+        <fieldset class="lead-field lead-channels">
+          <legend>Channels you want covered <em>(optional)</em></legend>
+          <div class="lead-checks">
+            <label><input type="checkbox" name="channels" value="TikTok" /> TikTok</label>
+            <label><input type="checkbox" name="channels" value="Instagram" /> Instagram</label>
+            <label><input type="checkbox" name="channels" value="YouTube" /> YouTube</label>
+            <label><input type="checkbox" name="channels" value="LinkedIn" /> LinkedIn</label>
+            <label><input type="checkbox" name="channels" value="X" /> X</label>
+            <label><input type="checkbox" name="channels" value="Facebook" /> Facebook</label>
+          </div>
+        </fieldset>
+        <label class="lead-field">
+          <span>What do you need?</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <div class="lead-hp" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <p class="lead-error" id="lead-error" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primary btn-lg" id="lead-submit">Get pricing</button>
+        <p class="lead-fine">We reply by email, usually within a day.</p>
+      </form>
+      <div id="lead-done" hidden>
+        <h3 class="who-title">Thanks. We got it.</h3>
+        <p class="who-desc">We'll read what you sent and come back to you by email with pricing.</p>
       </div>
-      <p class="cta-fine">No credit card required</p>
     </div>
   </section>
 
@@ -1266,6 +1201,68 @@
           showBanner();
         });
       }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var form = document.getElementById('lead-form');
+      if (!form) return;
+      var errEl = document.getElementById('lead-error');
+      var btn = document.getElementById('lead-submit');
+      var done = document.getElementById('lead-done');
+
+      function fail(msg) {
+        errEl.textContent = msg;
+        errEl.hidden = false;
+        btn.disabled = false;
+        btn.textContent = 'Get pricing';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errEl.hidden = true;
+
+        var data = new FormData(form);
+        var name = (data.get('name') || '').trim();
+        var email = (data.get('email') || '').trim();
+        var company = (data.get('company') || '').trim();
+        var message = (data.get('message') || '').trim();
+
+        if (!name || !company || !message) {
+          fail('Please fill in your name, your brand, and what you need.');
+          return;
+        }
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+          fail('Please enter a valid email address.');
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending';
+
+        fetch('https://app.puffinship.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            company: company,
+            website_url: (data.get('website_url') || '').trim(),
+            what_you_sell: (data.get('what_you_sell') || '').trim(),
+            channels: data.getAll('channels'),
+            message: message,
+            page_url: window.location.href,
+            website: data.get('website') || ''
+          })
+        }).then(function (res) {
+          if (!res.ok) throw new Error('bad status');
+          form.hidden = true;
+          done.hidden = false;
+        }).catch(function () {
+          fail('Something went wrong sending that. Please try again, or email info@puffinship.com.');
+        });
+      });
     })();
   </script>
 
