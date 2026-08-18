@@ -547,6 +547,16 @@
       box-shadow: var(--shadow-sm);
       padding: 28px;
     }
+    .card-featured {
+      border-color: var(--accent); border-width: 2px;
+      box-shadow: var(--shadow-accent);
+    }
+    .card-badge {
+      align-self: flex-start; display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; color: #fff;
+      background: var(--accent); border-radius: var(--radius-pill);
+      padding: 4px 10px; margin-bottom: 10px;
+    }
 
     /* ── How it works ─────────────────────────────────────────────────────── */
     .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -797,12 +807,12 @@
   </div>
 
   <!-- ── Formats band ───────────────────────────────────────────────────── -->
-  <section class="formats" aria-labelledby="formats-h">
+  <section id="what" class="formats" aria-labelledby="formats-h">
     <div class="wrap formats-inner">
       <div class="formats-head">
-        <div class="eyebrow">Formats</div>
-        <h2 id="formats-h" class="formats-h3">Export in 9:16, 1:1, or 16:9</h2>
-        <p class="section-sub">Set the output ratio on your template. Duplicate a template to run the same recipe for another channel.</p>
+        <div class="eyebrow">What you get</div>
+        <h2 id="formats-h" class="formats-h3">Finished video, in every format your channels need</h2>
+        <p class="section-sub">Vertical for Reels, Shorts, and TikTok. Square for feeds. Wide for YouTube and your site. Every video arrives ready to post.</p>
       </div>
       <div class="format-row">
         <div class="format">
@@ -827,6 +837,20 @@
           <p class="format-desc">YouTube, embeds, and landing pages</p>
         </div>
       </div>
+      <div class="who-grid" style="margin-top: 56px;">
+        <div class="card">
+          <h3 class="who-title">Volume that holds up</h3>
+          <p class="who-desc">Content keeps arriving at the same pace in month six as it did in month one. That consistency is the whole point.</p>
+        </div>
+        <div class="card">
+          <h3 class="who-title">Your brand, every time</h3>
+          <p class="who-desc">The look, the tone, and the rules you set stay the same across every single video we make for you.</p>
+        </div>
+        <div class="card">
+          <h3 class="who-title">Reviewed before it reaches you</h3>
+          <p class="who-desc">Nothing goes out unchecked. Every video passes a review step before it lands in your hands or on your channels.</p>
+        </div>
+      </div>
       <div class="formats-dest">
         <span class="formats-dest-label">Exports sized for</span>
         <div class="formats-dest-list">
@@ -839,37 +863,29 @@
     </div>
   </section>
 
-  <!-- ── How it works ───────────────────────────────────────────────────── -->
-  <section id="how" class="wrap section-pad">
+  <!-- Engagement levels -->
+  <section class="wrap section-pad">
     <div class="section-head">
-      <div class="eyebrow">How it works</div>
-      <h2 class="section-h2">From raw material to finished video, in software you run</h2>
-      <p class="section-sub">Three steps, all in the browser. Nothing to install, no render farm to manage.</p>
+      <div class="eyebrow">Working together</div>
+      <h2 class="section-h2">Three ways to work with us</h2>
+      <p class="section-sub">Every brand needs something different. Pick the level of involvement that fits.</p>
     </div>
-    <div class="steps-grid">
+    <div class="who-grid">
       <div class="card">
-        <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        </div>
-        <div class="step-num">01</div>
-        <h3 class="step-title">Connect your source material</h3>
-        <p class="step-desc">Add clips, calls, audio, ideas, or docs. Whatever you already have becomes source material for the run.</p>
+        <h3 class="who-title">Produced</h3>
+        <p class="who-desc">We make the videos. You post them. You keep full control of your channels and we never need access to your accounts.</p>
+        <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 20px;">Get pricing</a>
       </div>
       <div class="card">
-        <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
-        </div>
-        <div class="step-num">02</div>
-        <h3 class="step-title">AI builds your template</h3>
-        <p class="step-desc">Your prompt becomes a reusable template. The AI generates hooks, scripts, captions, audio, and structure, filling in whatever is missing.</p>
+        <h3 class="who-title">Published</h3>
+        <p class="who-desc">We make them and ship them to your channels on a schedule, so your feed stays active without anyone on your side managing it.</p>
+        <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 20px;">Get pricing</a>
       </div>
-      <div class="card">
-        <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </div>
-        <div class="step-num">03</div>
-        <h3 class="step-title">Review, then export</h3>
-        <p class="step-desc">Pause any step to approve, edit, or regenerate its output before the final render. Then export a finished MP4, subtitle files, or a Final Cut Pro project if you want to take it further yourself.</p>
+      <div class="card card-featured">
+        <span class="card-badge">Most complete</span>
+        <h3 class="who-title">Growth program</h3>
+        <p class="who-desc">We produce, publish, and keep tuning against what actually performs. The full program, aimed at moving the number that matters to you.</p>
+        <a href="#contact" class="btn btn-primary btn-sm" style="margin-top: 20px;">Get pricing</a>
       </div>
     </div>
   </section>
