@@ -362,10 +362,8 @@
     .hero-note { display: flex; align-items: center; gap: 7px; font-size: var(--text-sm); color: var(--text-muted); }
     .hero-note svg { color: var(--green-500); flex: none; }
 
-    /* ── Formats band ────────────────────────────────────────────────────── */
-    /* The frames are drawn at their true aspect ratios and share a common
-       baseline, so the shapes themselves carry the information. Destinations
-       sit below the rule in a deliberately quieter treatment. */
+    /* ── What you get ────────────────────────────────────────────────────── */
+    /* Channel names sit below the rule in a deliberately quieter treatment. */
     .formats { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); background: var(--white); }
     .formats-inner { padding: 56px var(--space-8); }
     .formats-head { text-align: center; margin-bottom: 38px; }
@@ -374,42 +372,6 @@
       font-size: clamp(21px, 2.4vw, 28px); letter-spacing: -0.025em;
       color: var(--ink-900); margin: 10px 0 0;
     }
-    .format-row {
-      /* The widest frame (16:9) is ~1.03x the frame height, so the height has
-         to track the column width or the grid squeezes the frame and the
-         aspect ratio — the whole point of this section — comes out wrong.
-         Tuned so the 16:9 frame always fits its column, down to 320px. */
-      --frame-h: clamp(72px, calc(29vw - 12px), 176px);
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: clamp(10px, 3vw, 24px); max-width: 720px; margin: 0 auto;
-    }
-    .format { text-align: center; min-width: 0; }
-    .format-stage { height: var(--frame-h); display: flex; align-items: flex-end; justify-content: center; }
-    .format-frame {
-      position: relative; overflow: hidden;
-      border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow-md);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .format-frame::after {
-      content: ""; position: absolute; inset: 0; opacity: 0.14;
-      background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 13px 13px;
-    }
-    /* Dark chip behind the label so white stays legible on the lighter fills. */
-    .format-frame span {
-      position: relative; z-index: 1;
-      font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.02em;
-      font-size: clamp(10px, 1.1vw, 13px); color: #fff;
-      background: rgba(16,22,28,0.55); padding: 3px 8px; border-radius: 5px;
-    }
-    .f-916 { height: var(--frame-h); aspect-ratio: 9 / 16; background: linear-gradient(150deg,#136C90,#0f5470); }
-    .f-11  { height: calc(var(--frame-h) * 0.735); aspect-ratio: 1; background: linear-gradient(150deg,#18A8E0,#1490c0); }
-    .f-169 { height: calc(var(--frame-h) * 0.58); aspect-ratio: 16 / 9; background: linear-gradient(150deg,#2BC4F2,#22a8d2); }
-    .format-name {
-      font-family: var(--font-display); font-weight: 700; font-size: 15px;
-      letter-spacing: -0.01em; color: var(--text-strong); margin: 16px 0 4px;
-    }
-    .format-desc { margin: 0; font-size: 13px; line-height: 1.45; color: var(--text-muted); }
     .formats-dest {
       max-width: 720px; margin: 38px auto 0; padding-top: 22px;
       border-top: 1px solid var(--border-subtle);
@@ -445,6 +407,32 @@
     }
     .section-sub { margin: 12px auto 0; font-size: 16px; color: var(--text-muted); max-width: 56ch; }
 
+    /* ── Statement band ───────────────────────────────────────────────────── */
+    /* The page's one prose moment. Breaks the rhythm of stacked card grids and
+       carries the pitch in a voice, not a menu. */
+    .statement-band { padding: 8px var(--space-8) 72px; }
+    .statement {
+      max-width: 780px; margin: 0 auto; text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 56px var(--space-5);
+    }
+    .statement .eyebrow { margin-bottom: var(--space-4); }
+    .statement-lead {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(26px, 3.4vw, 40px); line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink-900);
+      margin: 0 auto var(--space-5); max-width: 20ch; text-wrap: balance;
+    }
+    .statement-body {
+      font-size: 18px; line-height: 1.65; color: var(--text-body);
+      margin: 0 auto var(--space-8); max-width: 58ch; text-wrap: pretty;
+    }
+    @media (max-width: 880px) {
+      .statement-band { padding: 8px var(--space-5) 52px; }
+      .statement { padding: 40px 0; }
+    }
+
     /* ── Card ─────────────────────────────────────────────────────────────── */
     .card {
       background: var(--surface-card);
@@ -452,16 +440,6 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-sm);
       padding: 28px;
-    }
-    .card-featured {
-      border-color: var(--accent); border-width: 2px;
-      box-shadow: var(--shadow-accent);
-    }
-    .card-badge {
-      align-self: flex-start; display: inline-block; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.04em; text-transform: uppercase; color: #fff;
-      background: var(--accent); border-radius: var(--radius-pill);
-      padding: 4px 10px; margin-bottom: 10px;
     }
 
     /* ── How it works ─────────────────────────────────────────────────────── */
@@ -639,33 +617,10 @@
     <div class="wrap formats-inner">
       <div class="formats-head">
         <div class="eyebrow">What you get</div>
-        <h2 id="formats-h" class="formats-h3">Finished video, in every format your channels need</h2>
-        <p class="section-sub">Vertical for Reels, Shorts, and TikTok. Square for feeds. Wide for YouTube and your site. Every video arrives ready to post.</p>
+        <h2 id="formats-h" class="formats-h3">Finished video, ready to post</h2>
+        <p class="section-sub">Short form video for your channels, delivered on a schedule. No editors to brief, no production to manage, nothing to fix before it goes out.</p>
       </div>
-      <div class="format-row">
-        <div class="format">
-          <div class="format-stage">
-            <div class="format-frame f-916"><span>9:16</span></div>
-          </div>
-          <h3 class="format-name">Vertical</h3>
-          <p class="format-desc">Reels, Shorts, TikTok, and Stories</p>
-        </div>
-        <div class="format">
-          <div class="format-stage">
-            <div class="format-frame f-11"><span>1:1</span></div>
-          </div>
-          <h3 class="format-name">Square</h3>
-          <p class="format-desc">Feed posts that autoplay in-line</p>
-        </div>
-        <div class="format">
-          <div class="format-stage">
-            <div class="format-frame f-169"><span>16:9</span></div>
-          </div>
-          <h3 class="format-name">Widescreen</h3>
-          <p class="format-desc">YouTube, embeds, and landing pages</p>
-        </div>
-      </div>
-      <div class="who-grid" style="margin-top: 56px;">
+      <div class="who-grid">
         <div class="card">
           <h3 class="who-title">Volume that holds up</h3>
           <p class="who-desc">Content keeps arriving at the same pace in month six as it did in month one. That consistency is the whole point.</p>
@@ -692,29 +647,12 @@
   </section>
 
   <!-- Engagement levels -->
-  <section class="wrap section-pad">
-    <div class="section-head">
+  <section class="wrap statement-band">
+    <div class="statement">
       <div class="eyebrow">Working together</div>
-      <h2 class="section-h2">Three ways to work with us</h2>
-      <p class="section-sub">Every brand needs something different. Pick the level of involvement that fits.</p>
-    </div>
-    <div class="who-grid">
-      <div class="card">
-        <h3 class="who-title">Produced</h3>
-        <p class="who-desc">We make the videos. You post them. You keep full control of your channels and we never need access to your accounts.</p>
-        <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 20px;">Get pricing</a>
-      </div>
-      <div class="card">
-        <h3 class="who-title">Published</h3>
-        <p class="who-desc">We make them and ship them to your channels on a schedule, so your feed stays active without anyone on your side managing it.</p>
-        <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 20px;">Get pricing</a>
-      </div>
-      <div class="card card-featured">
-        <span class="card-badge">Most complete</span>
-        <h3 class="who-title">Growth program</h3>
-        <p class="who-desc">We produce, publish, and keep tuning against what actually performs. The full program, aimed at moving the number that matters to you.</p>
-        <a href="#contact" class="btn btn-primary btn-sm" style="margin-top: 20px;">Get pricing</a>
-      </div>
+      <p class="statement-lead">We build the program around what you need.</p>
+      <p class="statement-body">Some brands want finished video handed over and nothing else. Some want us publishing to their channels and tuning against what performs. Most land somewhere in between. We work out the shape of it with you, then we build it and keep it running.</p>
+      <a href="#contact" class="btn btn-primary btn-lg">Get pricing</a>
     </div>
   </section>
 
