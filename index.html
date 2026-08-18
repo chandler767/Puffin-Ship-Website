@@ -427,6 +427,20 @@
       background: rgba(247,249,251,0.92); color: var(--ink-900);
       display: flex; align-items: center; justify-content: center;
     }
+
+    /* Feed wall: three staggered columns of vertical cards. Decorative only. */
+    .feedwall { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+    .feedcol { display: flex; flex-direction: column; gap: var(--space-3); }
+    .feedcol-offset { transform: translateY(28px); }
+    .feedcard {
+      position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius-md);
+      overflow: hidden; box-shadow: var(--shadow-sm);
+    }
+    .feedcard .thumb-label { position: absolute; left: auto; right: 8px; bottom: 8px; }
+    @media (max-width: 900px) {
+      .feedwall { gap: var(--space-2); }
+      .feedcol-offset { transform: none; }
+    }
     .free-float {
       position: absolute; z-index: 2; left: -20px; bottom: -22px;
       background: var(--white); border: 1px solid var(--border-subtle);
@@ -707,29 +721,22 @@
 </head>
 <body>
 
-  <!-- ── Launch banner ─────────────────────────────────────────────────── -->
-  <div id="top" class="launch-banner">
-    <span class="launch-banner-pill"><span class="live-dot"></span>Now live</span>
-    <span>Puffin Ship is live. Start free, upgrade when you need more. <a href="https://app.puffinship.com/login">Get started &rarr;</a></span>
-  </div>
 
   <!-- ── Nav ────────────────────────────────────────────────────────────── -->
-  <header class="nav">
+  <header id="top" class="nav">
     <div class="wrap nav-inner">
       <a href="#top" class="nav-logo">
         <img src="assets/logo/puffin-mark.png" alt="Puffin Ship" />
         <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
       </a>
       <nav class="nav-links">
+        <a href="#what">What you get</a>
         <a href="#how">How it works</a>
-        <a href="#features">Features</a>
         <a href="#who">Who it's for</a>
-        <a href="/docs/">Docs</a>
       </nav>
       <div class="nav-cta">
-        <a href="https://app.puffinship.com/login" class="nav-signin">Sign in</a>
-        <a href="https://app.puffinship.com/login" class="btn btn-primary btn-sm">
-          Get started
+        <a href="#contact" class="btn btn-primary btn-sm">
+          Get pricing
         </a>
       </div>
     </div>
@@ -743,101 +750,47 @@
       <div>
         <div class="hero-eyebrow">
           <span class="live-dot"></span>
-          Now live · <span class="free-tag">Free plan available</span>
+          Viral content, automated.
         </div>
-        <h1 class="hero-h1">Turn anything you have <span>into finished video.</span></h1>
-        <p class="hero-body">Give Puffin Ship an idea, some recordings, or a few clips, and it produces a fully edited video with AI. Your prompt becomes a reusable template that defines how your videos get made, so you can produce them consistently at scale. It can edit what you give it or generate everything from scratch.</p>
+        <h1 class="hero-h1">Attention, at a volume <span>agencies can't match.</span></h1>
+        <p class="hero-body">We produce short form video for your brand at a pace a production team can't reach, and we keep it coming. More content in a month than most brands ship in a year, all of it made on a platform we built ourselves.</p>
         <div class="hero-actions">
-          <a href="https://app.puffinship.com/login" class="btn btn-primary btn-lg">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
-            Start free
+          <a href="#contact" class="btn btn-primary btn-lg">
+            Get pricing
           </a>
-          <a href="#how" class="btn btn-outline btn-lg">
-            See how it works
+          <a href="#what" class="btn btn-outline btn-lg">
+            See what you get
           </a>
         </div>
         <div class="hero-notes">
           <p class="hero-note">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            No credit card
+            Every channel
           </p>
           <p class="hero-note">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Bring your own AI keys
+            Every format
           </p>
         </div>
       </div>
 
-      <!-- App mockup (runs / review view) -->
       <div class="hero-visual">
-      <div class="mockup">
-        <div class="mockup-bar">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-a"></span>
-          <span class="dot dot-g"></span>
-          <span class="mockup-url">app.puffinship.com / runs</span>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-side">
-            <img src="assets/logo/puffin-mark-paper.png" alt="" />
-            <!-- Dashboard -->
-            <span class="side-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
-            </span>
-            <!-- Runs (active) -->
-            <span class="side-icon on">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
-            </span>
-            <!-- Templates -->
-            <span class="side-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
-            </span>
-            <!-- Exports -->
-            <span class="side-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </span>
+        <div class="feedwall" aria-hidden="true">
+          <div class="feedcol">
+            <div class="feedcard" style="background: linear-gradient(150deg,#136C90,#0f5470);"><div class="thumb-grain"></div><span class="thumb-label">0:28</span></div>
+            <div class="feedcard" style="background: linear-gradient(150deg,#2BC4F2,#22a8d2);"><div class="thumb-grain"></div><span class="thumb-label">0:19</span></div>
+            <div class="feedcard" style="background: linear-gradient(150deg,#2E89AD,#256d8a);"><div class="thumb-grain"></div><span class="thumb-label">0:41</span></div>
           </div>
-          <div class="mockup-main">
-            <div class="mockup-head">
-              <span class="mockup-title">Q3 recap</span>
-              <span class="mockup-badge"><span class="live-dot"></span>4 ready</span>
-            </div>
-            <div class="mockup-sub">template · run #128 · review gate</div>
-            <div class="thumb-grid">
-              <div class="thumb" style="background: linear-gradient(150deg,#136C90,#0f5470);">
-                <div class="thumb-grain"></div>
-                <span class="thumb-flag">Approved</span>
-                <span class="thumb-label">0:28</span>
-                <span class="thumb-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-              </div>
-              <div class="thumb" style="background: linear-gradient(150deg,#18A8E0,#1490c0);">
-                <div class="thumb-grain"></div>
-                <span class="thumb-label">0:41</span>
-                <span class="thumb-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-              </div>
-              <div class="thumb" style="background: linear-gradient(150deg,#2BC4F2,#22a8d2);">
-                <div class="thumb-grain"></div>
-                <span class="thumb-label">0:19</span>
-                <span class="thumb-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-              </div>
-              <div class="thumb" style="background: linear-gradient(150deg,#2E89AD,#256d8a);">
-                <div class="thumb-grain"></div>
-                <span class="thumb-label">0:33</span>
-                <span class="thumb-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-              </div>
-            </div>
+          <div class="feedcol feedcol-offset">
+            <div class="feedcard" style="background: linear-gradient(150deg,#18A8E0,#1490c0);"><div class="thumb-grain"></div><span class="thumb-label">0:33</span></div>
+            <div class="feedcard" style="background: linear-gradient(150deg,#0f5470,#136C90);"><div class="thumb-grain"></div><span class="thumb-label">0:22</span></div>
+            <div class="feedcard" style="background: linear-gradient(150deg,#22a8d2,#2BC4F2);"><div class="thumb-grain"></div><span class="thumb-label">0:15</span></div>
           </div>
-        </div>
-      </div>
-
-        <div class="free-float">
-          <span class="fchip">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </span>
-          <span>
-            <b>Early access</b>
-            <small>No credit card required</small>
-          </span>
+          <div class="feedcol">
+            <div class="feedcard" style="background: linear-gradient(150deg,#256d8a,#2E89AD);"><div class="thumb-grain"></div><span class="thumb-label">0:37</span></div>
+            <div class="feedcard" style="background: linear-gradient(150deg,#1490c0,#18A8E0);"><div class="thumb-grain"></div><span class="thumb-label">0:26</span></div>
+            <div class="feedcard" style="background: linear-gradient(150deg,#136C90,#22a8d2);"><div class="thumb-grain"></div><span class="thumb-label">0:31</span></div>
+          </div>
         </div>
       </div>
     </section>
