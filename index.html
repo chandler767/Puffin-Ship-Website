@@ -559,7 +559,8 @@
     }
 
     /* ── How it works ─────────────────────────────────────────────────────── */
-    .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    @media (max-width: 1040px) { .steps-grid { grid-template-columns: repeat(2,1fr); } }
     .step-icon {
       width: 48px; height: 48px; border-radius: var(--radius-md);
       background: var(--accent-tint); color: var(--accent);
@@ -573,7 +574,8 @@
     .features-dark { background: var(--ink-900); color: var(--paper); }
     .features-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; gap: var(--space-6); flex-wrap: wrap; }
     .features-h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px,3vw,38px); letter-spacing: -0.025em; margin: 12px 0 0; max-width: 21ch; line-height: 1.1; }
-    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(247,249,251,0.1); border-radius: var(--radius-lg); overflow: hidden; }
+    .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(247,249,251,0.1); border-radius: var(--radius-lg); overflow: hidden; }
+    @media (max-width: 1040px) { .features-grid { grid-template-columns: repeat(2,1fr); } }
     .feat-tile { background: var(--ink-900); padding: 26px; }
     .feat-icon { color: var(--orange-400); display: flex; margin-bottom: 14px; }
     .feat-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; margin: 0 0 6px; }
@@ -891,49 +893,70 @@
   </section>
 
   <!-- ── Features — dark ───────────────────────────────────────────────── -->
-  <section id="features" class="features-dark">
+  <section class="features-dark">
     <div class="wrap section-pad">
       <div class="features-head">
         <div>
-          <div class="eyebrow" style="color: var(--orange-400);">Platform</div>
-          <h2 class="features-h2">Everything in the platform, from day one</h2>
+          <div class="eyebrow" style="color: var(--orange-400);">Why we can do this</div>
+          <h2 class="features-h2">We built the platform. Nobody else has it.</h2>
         </div>
-        <a href="https://app.puffinship.com/login" class="btn btn-ghost btn-md">
-          Get started
+        <a href="#contact" class="btn btn-ghost btn-md">
+          Get pricing
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="features-grid">
         <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-          <h3 class="feat-title">Works with what you have</h3>
-          <p class="feat-desc">Clips, calls, audio, ideas, docs. Ingest whatever you have and the AI figures out the rest.</p>
-        </div>
-        <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></div>
-          <h3 class="feat-title">Reusable content templates</h3>
-          <p class="feat-desc">Your prompt defines how videos get made. Run the same template on new material, consistently, at scale.</p>
-        </div>
-        <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-          <h3 class="feat-title">Exports you can keep editing</h3>
-          <p class="feat-desc">Download a finished MP4, subtitle files, or a Final Cut Pro project to take further yourself.</p>
-        </div>
-        <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2z"/><path d="M7 7h.01"/></svg></div>
-          <h3 class="feat-title">AI generation built in</h3>
-          <p class="feat-desc">Hooks, scripts, captions, voice. Generate only what's missing or generate everything from scratch.</p>
-        </div>
-        <div class="feat-tile">
-          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-          <h3 class="feat-title">Review gates on any step</h3>
-          <p class="feat-desc">Pause a run where it matters. Approve, edit, reject, or regenerate a step's output before it reaches the final cut.</p>
+          <h3 class="feat-title">It's ours</h3>
+          <p class="feat-desc">We run our own production system, not a stack of subscriptions anyone can go and buy. The way your content gets made isn't available to your competitors.</p>
         </div>
         <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
-          <h3 class="feat-title">Sized for every channel</h3>
-          <p class="feat-desc">Set your template's output ratio: 9:16 for Reels and Shorts, 1:1 for feeds, 16:9 for YouTube and embeds.</p>
+          <h3 class="feat-title">Not limited by headcount</h3>
+          <p class="feat-desc">Our output doesn't depend on how many editors we can hire. That is why we can promise volume that a traditional agency structurally cannot.</p>
         </div>
+        <div class="feat-tile">
+          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></div>
+          <h3 class="feat-title">Your rules, applied every time</h3>
+          <p class="feat-desc">We set your brand's rules once and every video follows them. No drift, no re-briefing, no explaining your brand again next month.</p>
+        </div>
+        <div class="feat-tile">
+          <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <h3 class="feat-title">Nothing ships unreviewed</h3>
+          <p class="feat-desc">Every video passes a review step before it reaches you or your audience. Volume never comes at the cost of putting something wrong in front of your customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ────────────────────────────────────────────────── -->
+  <section id="how" class="wrap section-pad">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2 class="section-h2">What happens after you get in touch</h2>
+      <p class="section-sub">Four steps from first conversation to content landing on a schedule.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="card">
+        <div class="step-num">01</div>
+        <h3 class="step-title">We learn your brand</h3>
+        <p class="step-desc">What you sell, who buys it, and what your content should sound like. We do the work here so you aren't briefing us every month.</p>
+      </div>
+      <div class="card">
+        <div class="step-num">02</div>
+        <h3 class="step-title">We build your content system</h3>
+        <p class="step-desc">The formats, the look, and the rules your videos follow. This is the part that makes everything after it repeatable.</p>
+      </div>
+      <div class="card">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Video ships on a schedule</h3>
+        <p class="step-desc">Content arrives steadily instead of in bursts, either delivered to you or published straight to your channels.</p>
+      </div>
+      <div class="card">
+        <div class="step-num">04</div>
+        <h3 class="step-title">We iterate on what performs</h3>
+        <p class="step-desc">On the growth program we watch what lands and adjust, so the content gets better at its job over time.</p>
       </div>
     </div>
   </section>
@@ -942,29 +965,29 @@
   <section id="who" class="wrap" style="padding: 8px var(--space-8) 64px;">
     <div class="section-head" style="margin-top: 64px;">
       <div class="eyebrow">Who it's for</div>
-      <h2 class="section-h2">Built for anyone who needs more content than they can consistently produce</h2>
+      <h2 class="section-h2">Built for brands that need more attention than they can produce</h2>
     </div>
     <div class="who-grid">
       <div class="card">
         <div class="who-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
-        <h3 class="who-title">Direct businesses</h3>
-        <p class="who-desc">Businesses that need recurring video but don't have the budget or team to produce it consistently. Run the software, not production.</p>
+        <h3 class="who-title">Brands and products</h3>
+        <p class="who-desc">Companies that need a steady stream of content and don't have a team to make it. We become that team without you hiring one.</p>
       </div>
       <div class="card">
         <div class="who-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="18" rx="1"/><rect x="9" y="3" width="7" height="18" rx="1"/><rect x="16" y="3" width="6" height="18" rx="1"/></svg>
         </div>
-        <h3 class="who-title">Agencies</h3>
-        <p class="who-desc">More production capacity across many client workspaces without hiring more editors. Each client gets its own workspace and review gates.</p>
+        <h3 class="who-title">Services and local businesses</h3>
+        <p class="who-desc">Businesses that live on attention in their area and can't produce enough of it to stay top of mind.</p>
       </div>
       <div class="card">
         <div class="who-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
         </div>
-        <h3 class="who-title">Expert-led businesses</h3>
-        <p class="who-desc">Coaches, founders, and educators with calls, webinars, and ideas that never become content. Turn existing knowledge into a consistent clip stream.</p>
+        <h3 class="who-title">Founders and experts</h3>
+        <p class="who-desc">People with real knowledge and an audience worth building, who never find the time to turn one into the other.</p>
       </div>
     </div>
   </section>
