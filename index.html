@@ -429,7 +429,12 @@
     }
 
     /* Feed wall: three staggered columns of vertical cards. Decorative only. */
-    .feedwall { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+    .feedwall {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3);
+      max-height: 520px; overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 66%, transparent 100%);
+    }
     .feedcol { display: flex; flex-direction: column; gap: var(--space-3); }
     .feedcol-offset { transform: translateY(28px); }
     .feedcard {
@@ -438,7 +443,7 @@
     }
     .feedcard .thumb-label { position: absolute; left: auto; right: 8px; bottom: 8px; }
     @media (max-width: 900px) {
-      .feedwall { gap: var(--space-2); }
+      .feedwall { gap: var(--space-2); max-height: 420px; }
       .feedcol-offset { transform: none; }
     }
     .free-float {
@@ -886,7 +891,7 @@
         </div>
       </div>
       <div class="formats-dest">
-        <span class="formats-dest-label">Exports sized for</span>
+        <span class="formats-dest-label">Made for</span>
         <div class="formats-dest-list">
           <span class="dest-chip">TikTok</span><span class="dest-sep" aria-hidden="true">·</span>
           <span class="dest-chip">Instagram</span><span class="dest-sep" aria-hidden="true">·</span>
