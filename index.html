@@ -323,13 +323,14 @@
     .hero-glow {
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background:
-        radial-gradient(60% 55% at 78% 8%, rgba(43,196,242,0.22), transparent 60%),
-        radial-gradient(48% 48% at 8% 22%, rgba(24,168,224,0.14), transparent 62%);
+        radial-gradient(58% 52% at 50% -6%, rgba(43,196,242,0.24), transparent 62%),
+        radial-gradient(42% 42% at 12% 34%, rgba(24,168,224,0.12), transparent 64%),
+        radial-gradient(42% 42% at 88% 34%, rgba(24,168,224,0.12), transparent 64%);
     }
     .hero {
       position: relative; z-index: 1;
-      padding: var(--space-16) var(--space-8) var(--space-12);
-      display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
+      padding: 88px var(--space-8) 96px;
+      max-width: 1000px; margin: 0 auto; text-align: center;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
@@ -347,50 +348,19 @@
     @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } html { scroll-behavior: auto; } }
     .hero-h1 {
       font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(38px, 4.7vw, 58px); line-height: 1.02;
-      letter-spacing: -0.035em; color: var(--ink-900); margin-bottom: 18px;
+      font-size: clamp(40px, 6.6vw, 84px); line-height: 0.98;
+      letter-spacing: -0.042em; color: var(--ink-900);
+      margin: 0 auto 22px; max-width: 16ch; text-wrap: balance;
     }
     .hero-h1 span { color: var(--accent); }
     .hero-body {
-      font-size: 18px; line-height: 1.55; color: var(--text-body);
-      max-width: 48ch; margin-bottom: var(--space-8);
+      font-size: 19px; line-height: 1.6; color: var(--text-body);
+      max-width: 56ch; margin: 0 auto var(--space-8); text-wrap: pretty;
     }
-    .hero-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: 18px; }
-    .hero-notes { display: flex; flex-wrap: wrap; gap: var(--space-5); }
+    .hero-actions { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: 20px; }
+    .hero-notes { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-5); }
     .hero-note { display: flex; align-items: center; gap: 7px; font-size: var(--text-sm); color: var(--text-muted); }
     .hero-note svg { color: var(--green-500); flex: none; }
-
-    /* ── Console mockup ──────────────────────────────────────────────────── */
-    .hero-visual { position: relative; z-index: 1; }
-    .thumb-grain {
-      position: absolute; inset: 0; opacity: 0.16;
-      background-image: radial-gradient(#fff 1px, transparent 1px);
-      background-size: 13px 13px;
-    }
-    .thumb-label {
-      position: absolute; left: 10px; bottom: 10px; font-size: 10px; font-weight: 600;
-      color: #fff; background: rgba(22,18,13,0.6); padding: 2px 6px;
-      border-radius: 5px; font-family: var(--font-mono);
-    }
-
-    /* Feed wall: three staggered columns of vertical cards. Decorative only. */
-    .feedwall {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3);
-      max-height: 520px; overflow: hidden;
-      -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 100%);
-      mask-image: linear-gradient(to bottom, #000 66%, transparent 100%);
-    }
-    .feedcol { display: flex; flex-direction: column; gap: var(--space-3); }
-    .feedcol-offset { transform: translateY(28px); }
-    .feedcard {
-      position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius-md);
-      overflow: hidden; box-shadow: var(--shadow-sm);
-    }
-    .feedcard .thumb-label { position: absolute; left: auto; right: 8px; bottom: 8px; }
-    @media (max-width: 900px) {
-      .feedwall { gap: var(--space-2); max-height: 420px; }
-      .feedcol-offset { transform: none; }
-    }
 
     /* ── Formats band ────────────────────────────────────────────────────── */
     /* The frames are drawn at their true aspect ratios and share a common
@@ -425,8 +395,7 @@
       content: ""; position: absolute; inset: 0; opacity: 0.14;
       background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 13px 13px;
     }
-    /* Dark chip behind the label so white stays legible on the lighter
-       fills — same treatment as the thumbnails in the hero mockup. */
+    /* Dark chip behind the label so white stays legible on the lighter fills. */
     .format-frame span {
       position: relative; z-index: 1;
       font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.02em;
@@ -576,7 +545,7 @@
       .lead-row { grid-template-columns: 1fr; gap: 0; }
     }
     @media (max-width: 880px) {
-      .hero { grid-template-columns: 1fr; padding: 48px var(--space-5); }
+      .hero { padding: 56px var(--space-5) 64px; }
       .steps-grid, .features-grid, .who-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
       .wrap, .section-pad, .hero { padding-left: var(--space-5); padding-right: var(--space-5); }
@@ -638,51 +607,29 @@
   <div class="hero-outer">
     <div class="hero-glow" aria-hidden="true"></div>
     <section class="wrap hero">
-      <div>
-        <div class="hero-eyebrow">
-          <span class="live-dot"></span>
-          Viral content, automated.
-        </div>
-        <h1 class="hero-h1">Attention, at a volume <span>agencies can't match.</span></h1>
-        <p class="hero-body">We produce short form video for your brand at a pace a production team can't reach, and we keep it coming. More content in a month than most brands ship in a year, all of it made on a platform we built ourselves.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-lg">
-            Get pricing
-          </a>
-          <a href="#what" class="btn btn-outline btn-lg">
-            See what you get
-          </a>
-        </div>
-        <div class="hero-notes">
-          <p class="hero-note">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Every channel
-          </p>
-          <p class="hero-note">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Every format
-          </p>
-        </div>
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Viral content, automated.
       </div>
-
-      <div class="hero-visual">
-        <div class="feedwall" aria-hidden="true">
-          <div class="feedcol">
-            <div class="feedcard" style="background: linear-gradient(150deg,#136C90,#0f5470);"><div class="thumb-grain"></div><span class="thumb-label">0:28</span></div>
-            <div class="feedcard" style="background: linear-gradient(150deg,#2BC4F2,#22a8d2);"><div class="thumb-grain"></div><span class="thumb-label">0:19</span></div>
-            <div class="feedcard" style="background: linear-gradient(150deg,#2E89AD,#256d8a);"><div class="thumb-grain"></div><span class="thumb-label">0:41</span></div>
-          </div>
-          <div class="feedcol feedcol-offset">
-            <div class="feedcard" style="background: linear-gradient(150deg,#18A8E0,#1490c0);"><div class="thumb-grain"></div><span class="thumb-label">0:33</span></div>
-            <div class="feedcard" style="background: linear-gradient(150deg,#0f5470,#136C90);"><div class="thumb-grain"></div><span class="thumb-label">0:22</span></div>
-            <div class="feedcard" style="background: linear-gradient(150deg,#22a8d2,#2BC4F2);"><div class="thumb-grain"></div><span class="thumb-label">0:15</span></div>
-          </div>
-          <div class="feedcol">
-            <div class="feedcard" style="background: linear-gradient(150deg,#256d8a,#2E89AD);"><div class="thumb-grain"></div><span class="thumb-label">0:37</span></div>
-            <div class="feedcard" style="background: linear-gradient(150deg,#1490c0,#18A8E0);"><div class="thumb-grain"></div><span class="thumb-label">0:26</span></div>
-            <div class="feedcard" style="background: linear-gradient(150deg,#136C90,#22a8d2);"><div class="thumb-grain"></div><span class="thumb-label">0:31</span></div>
-          </div>
-        </div>
+      <h1 class="hero-h1">Attention, at a volume <span>agencies can't match.</span></h1>
+      <p class="hero-body">We produce short form video for your brand at a pace a production team can't reach, and we keep it coming. More content in a month than most brands ship in a year, all of it made on a platform we built ourselves.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">
+          Get pricing
+        </a>
+        <a href="#what" class="btn btn-outline btn-lg">
+          See what you get
+        </a>
+      </div>
+      <div class="hero-notes">
+        <p class="hero-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Every channel
+        </p>
+        <p class="hero-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Every format
+        </p>
       </div>
     </section>
   </div>
