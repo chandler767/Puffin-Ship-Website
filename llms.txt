@@ -14,6 +14,10 @@ We built our own production platform and we run it ourselves. It is not a stack 
 
 A brand's rules are set once and applied to every video after that. No drift, no re-briefing, no explaining the brand again next month.
 
+## Using the platform directly
+
+Access to the platform and its API can be part of an engagement, if a brand's team would rather run some of it themselves. We set that access up as part of the engagement; there is no public sign-up and no self-serve plan.
+
 ## How we work with a brand
 
 We build the program around what the brand needs. Some want finished video handed over and nothing else. Some want us publishing to their channels and tuning against what performs. Most land somewhere in between. We work out the shape of it with them, then we build it and keep it running.
