@@ -52,8 +52,8 @@
     - id: backbone
       step: ai_cut               # cache dep: re-run when the cut changes
   params:
-    min_gap_sec: 8               # minimum spacing between placed clips (default 5)
-    max_gap_sec: 20              # gaps longer than this need coverage (default 0 = AI decides)
+    min_gap_sec: 8               # only fill gaps at least this long (default 5)
+    max_gap_sec: 20              # skip gaps longer than this (default 0 = no limit)
     max_duration_sec: 8          # max seconds to use from any single clip (default 8)
     backbone_step: ai_cut        # step to read backbone timeline from
     eval_prompt: &gt;
@@ -85,7 +85,7 @@
 <li>Get transcript and backbone timeline positions</li>
 <li>Check <code>get_timeline_state()</code> for what's already placed (including any previous broll steps)</li>
 <li>List all available clips and analyze any that aren't yet in the manifest</li>
-<li>For each backbone gap longer than <code>max_gap_sec</code>: find an approved clip whose <code>notes</code> directly illustrates the spoken content at that moment</li>
+<li>For each backbone gap between <code>min_gap_sec</code> and <code>max_gap_sec</code> long: find an approved clip whose <code>notes</code> directly illustrates the spoken content at that moment</li>
 <li>Place the clip; each clip is used at most once</li>
 </ol>
 <p><strong>Matching is strict by design.</strong> &quot;Approved&quot; clips that don't match the content are left unused for a different gap or skipped entirely. This prevents random B-roll that doesn't relate to what's being said.</p>
@@ -115,8 +115,8 @@
     timeline: broll
   prompt: |
     Check get_timeline_state() first to see what's already placed.
-    Only generate clips for unfilled gaps longer than max_gap_sec.
-    Leave shorter gaps blank.
+    Only generate clips for unfilled gaps within the configured gap sizes.
+    Leave anything outside them blank.
 
     When writing prompts for generate_broll_clip:
     - Feature animals, nature, food, architecture, vehicles, or objects. NO people

@@ -118,6 +118,7 @@
 <li>Uses Puffin Ship's built-in AI (no API key required); requires an <code>OPENAI_API_KEY</code> (set in your workspace's Service API Keys) for transcription.</li>
 <li><code>adaptive</code> mode is recommended: it starts with cheap audio analysis and only adds vision for clips with interesting content.</li>
 <li>Always use <code>cache: true</code>: analysis is expensive and deterministic.</li>
+<li>Still images (photos and screenshots) can sit in the same folder as your video. They are looked at like any other source, and since there is no audio there is nothing to transcribe, so what you get back is the visual read. <code>frame_interval_sec</code> does not apply to them: an image is a single frame and is analyzed as one.</li>
 </ul>
 </article>
     <footer class="doc-footer">© 2026 Puffin Ship · <a href="https://puffinship.com/">puffinship.com</a></footer>

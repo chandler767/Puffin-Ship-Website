@@ -61,7 +61,7 @@
     timeline: broll
   prompt: |
     Check get_timeline_state() first to see what's already placed.
-    Only generate clips for unfilled gaps longer than max_gap_sec.
+    Only generate clips for unfilled gaps within the configured gap sizes.
     Feature animals, nature, food, architecture, objects. NO people or faces.
     Simple, literal, physical scene. 1–3 sentences max.
   review: true
@@ -123,13 +123,13 @@
 <td><code>min_gap_sec</code></td>
 <td>duration (s)</td>
 <td><code>5</code></td>
-<td>Minimum gap size to fill</td>
+<td>Only generate for gaps at least this long</td>
 </tr>
 <tr>
 <td><code>max_gap_sec</code></td>
 <td>duration (s)</td>
 <td><code>0</code></td>
-<td>Gaps longer than this need coverage (0 = AI decides)</td>
+<td>Skip gaps longer than this. 0 means no limit</td>
 </tr>
 <tr>
 <td><code>max_duration_sec</code></td>

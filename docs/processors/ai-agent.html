@@ -125,6 +125,12 @@
 <td>Before running, generate 3–5 editing directions and ask the human to pick one. The chosen direction is injected into the agent's system prompt.</td>
 </tr>
 <tr>
+<td><code>script_output</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Return the agent's written answer as a script rather than clips, so a later step can read it: a recording step for the teleprompter, a voice step to speak it, or write_script as background. Only applies when the agent places no clips.</td>
+</tr>
+<tr>
 <td><code>allowed_content_types</code></td>
 <td>list</td>
 <td>none</td>
