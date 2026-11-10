@@ -148,6 +148,19 @@ class CheckSiteTests(unittest.TestCase):
     def test_title_checked(self):
         self.assertFlags(page(head_extra="<title>Puffin Ship \u2014 clips</title>"), "em dash")
 
+    def test_violation_quotes_the_offending_sentence_not_page_start(self):
+        problems = check(page(body_extra="<p>Some long intro text here. Then we say Start free now.</p>"), GOOD_LLMS)
+        hit = [p for p in problems if "free" in p]
+        self.assertTrue(hit)
+        self.assertIn("Start free now", hit[0])
+        self.assertNotIn("How it works", hit[0])
+
+    def test_free_form_and_hyphenated_free_not_flagged(self):
+        self.assertClean(page(body_extra="<p>Write free-form notes.</p>"))
+
+    def test_free_standing_still_flagged(self):
+        self.assertFlags(page(body_extra="<p>It is free to try.</p>"), "free")
+
 
 if __name__ == "__main__":
     unittest.main()

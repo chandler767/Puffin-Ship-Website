@@ -8,7 +8,8 @@ Rules (see CLAUDE.md and the repositioning design):
 - No em dash in anything a visitor or crawler reads: visible text, readable
   attributes, JSON-LD strings, llms.txt. Comments, CSS and JS are exempt.
 - No "early access", "waitlist", "launching soon", "beta" or "free" (the
-  product is not free; new accounts get starting credit).
+  product is not free; new accounts get starting credit). Hyphenated forms
+  like "free-form" are allowed.
 - No dollar amounts (the starting credit amount may change).
 - Every in-page anchor points at an id that exists.
 - Every "Get started" link carries data-signup and points at SIGNUP_URL, and
@@ -27,8 +28,11 @@ EM_DASH = "—"
 BANNED = ["early access", "waitlist", "launching soon", "beta", "free"]
 # Words inside a phrase may be joined by any spacing or punctuation, so
 # "early-access" and "early&nbsp;access" are caught too.
-BANNED_RE = re.compile(
-    r"\b(" + "|".join(r"[\W_]+".join(map(re.escape, w.split())) for w in BANNED) + r")\b", re.I)
+# "free" only as a standalone word: "free-form", "hands-free" and the like say
+# nothing about price.
+_PATTERNS = [r"(?<!-)free(?!-)" if w == "free" else r"[\W_]+".join(map(re.escape, w.split()))
+             for w in BANNED]
+BANNED_RE = re.compile(r"\b(" + "|".join(_PATTERNS) + r")\b", re.I)
 DOLLAR_RE = re.compile(r"\$\s?\d")
 READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder", "value"}
 
@@ -120,14 +124,22 @@ def _strings(obj):
             yield from _strings(v)
 
 
+def _around(s, start, end, pad=50):
+    """The text around a match, so a report points at the offending sentence."""
+    lo, hi = max(0, start - pad), min(len(s), end + pad)
+    return ("..." if lo else "") + s[lo:hi].strip() + ("..." if hi < len(s) else "")
+
+
 def _copy_rules(where, s):
     out = []
-    if EM_DASH in s:
-        out.append(f"{where}: em dash in {s.strip()[:80]!r}")
+    i = s.find(EM_DASH)
+    if i >= 0:
+        out.append(f"{where}: em dash in {_around(s, i, i + 1)!r}")
     for m in BANNED_RE.finditer(s):
-        out.append(f"{where}: banned word {m.group(0).lower()!r} in {s.strip()[:80]!r}")
-    if DOLLAR_RE.search(s):
-        out.append(f"{where}: dollar amount in {s.strip()[:80]!r}")
+        out.append(f"{where}: banned word {m.group(0).lower()!r} in {_around(s, m.start(), m.end())!r}")
+    m = DOLLAR_RE.search(s)
+    if m:
+        out.append(f"{where}: dollar amount in {_around(s, m.start(), m.end())!r}")
     return out
 
 
