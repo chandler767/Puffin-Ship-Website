@@ -331,7 +331,9 @@
       letter-spacing: 0; color: var(--text-body);
     }
     .nav-links { display: flex; gap: var(--space-6); flex: 1; margin-left: var(--space-2); }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-body); }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-body); white-space: nowrap; }
+    /* Six links need room; below this width the nav keeps only the logo and Get started. */
+    @media (max-width: 960px) { .nav-links { display: none; } }
     .nav-links a:hover { color: var(--text-strong); }
     .nav-cta { display: flex; align-items: center; gap: var(--space-3); margin-left: auto; }
 
@@ -651,6 +653,7 @@
       </a>
       <nav class="nav-links">
         <a href="#how">How it works</a>
+        <a href="#examples">Examples</a>
         <a href="#why">Why Puffin Ship</a>
         <a href="#who">Who it's for</a>
         <a href="#pricing">Pricing</a>
