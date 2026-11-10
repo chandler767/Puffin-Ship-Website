@@ -24,7 +24,7 @@ The site shows four example shorts (a webinar turned into a short, an event inte
 
 If it can be recorded, it can become clips. The same templates that cut up a webinar work on whatever footage a team has, long or short:
 
-- **Talking heads and interviews**: record yourself or a conversation, and it trims the pauses, frames each speaker for vertical, and adds captions and b-roll.
+- **Talking heads and interviews**: upload what was shot, or paste a script and record it in the browser on a teleprompter. It trims the pauses, frames the speaker for vertical and adds captions.
 - **Gameplay and screen recordings with commentary**: a play session, a walkthrough or an on-screen tutorial, talked through as it goes. It pulls out the highlights, keeps the screen in view and captions the commentary.
 - **Educational shorts**: one idea per video, explained on camera and finished in the brand, made the same way every time.
 
@@ -33,6 +33,10 @@ If it can be recorded, it can become clips. The same templates that cut up a web
 - **Marketing teams with webinars and demos** (the main audience): teams that already record a webinar, a launch demo or a customer session every week and want a steady run of clips from each one without adding an editor.
 - **Agencies**: run the same system for every client, each in its own workspace with its own template and look.
 - **Streamers and podcasters**: every stream or episode becomes highlights for Shorts, Reels and TikTok without scrubbing through hours of footage.
+
+## Ready-made templates
+
+No template has to be built first. Teams start from ready-made ones, including Webinar to Clips, Stream and Screen Highlights, Trim Dead Space, Teleprompter Short, Demo Explainer Short, News Talking Head and Assemble Clips, and change them later. None needs an account with another service.
 
 ## Set up for you
 
