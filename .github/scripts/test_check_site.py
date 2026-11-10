@@ -128,6 +128,26 @@ class CheckSiteTests(unittest.TestCase):
                     jsonld_faq=[("Can I review?", "Yes & it waits for you.")])
         self.assertClean(html)
 
+    def test_get_started_with_arrow_wrong_href(self):
+        self.assertFlags(page(body_extra='<a href="https://example.com">Get started <span>&rarr;</span></a>'),
+                         "Get started")
+
+    def test_get_started_button_flagged(self):
+        self.assertFlags(page(body_extra='<button>Get started</button>'), "Get started")
+
+    def test_banned_phrase_with_hyphen_or_nbsp(self):
+        self.assertFlags(page(body_extra="<p>Join early-access</p>"), "early")
+        self.assertFlags(page(head_extra='<meta name="x" content="early&nbsp;access" />'), "early")
+
+    def test_value_attribute_checked(self):
+        self.assertFlags(page(body_extra='<input value="Try it free" />'), "free")
+
+    def test_em_dash_entity_in_text(self):
+        self.assertFlags(page(body_extra="<p>A &mdash; b &#8212; c</p>"), "em dash")
+
+    def test_title_checked(self):
+        self.assertFlags(page(head_extra="<title>Puffin Ship \u2014 clips</title>"), "em dash")
+
 
 if __name__ == "__main__":
     unittest.main()

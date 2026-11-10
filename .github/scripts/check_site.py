@@ -25,9 +25,12 @@ SIGNUP_URL = "https://app.puffinship.com/login"
 
 EM_DASH = "—"
 BANNED = ["early access", "waitlist", "launching soon", "beta", "free"]
-BANNED_RE = re.compile(r"\b(" + "|".join(re.escape(w) for w in BANNED) + r")\b", re.I)
+# Words inside a phrase may be joined by any spacing or punctuation, so
+# "early-access" and "early&nbsp;access" are caught too.
+BANNED_RE = re.compile(
+    r"\b(" + "|".join(r"[\W_]+".join(map(re.escape, w.split())) for w in BANNED) + r")\b", re.I)
 DOLLAR_RE = re.compile(r"\$\s?\d")
-READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder"}
+READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder", "value"}
 
 
 def _norm(s):
@@ -63,11 +66,13 @@ class _Collector(HTMLParser):
             self._script_type = a.get("type")
             self._buf = []
             return
+        if tag == "button":
+            self._link = {"href": None, "data_signup": "data-signup" in a, "text": [], "tag": "button"}
         if tag == "a":
             href = a.get("href") or ""
             if href.startswith("#"):
                 self.anchors.append(href)
-            self._link = {"href": href, "data_signup": "data-signup" in a, "text": []}
+            self._link = {"href": href, "data_signup": "data-signup" in a, "text": [], "tag": "a"}
         cls = (a.get("class") or "").split()
         if "faq-q" in cls:
             self._faq_field, self._faq_buf = "q", []
@@ -81,7 +86,7 @@ class _Collector(HTMLParser):
             self._skip = max(0, self._skip - 1)
             self._script_type = None
             return
-        if tag == "a" and self._link is not None:
+        if tag in ("a", "button") and self._link is not None:
             self._link["text"] = _norm("".join(self._link["text"]))
             self.links.append(self._link)
             self._link = None
@@ -166,10 +171,13 @@ def check(html, llms):
         if href != "#" and href[1:] not in p.ids:
             problems.append(f"broken in-page link {href}")
 
-    starts = [l for l in p.links if l["text"].lower() == "get started"]
+    starts = [l for l in p.links if re.match(r"get started\b", l["text"], re.I)]
     if not starts:
         problems.append("no Get started link on the page")
     for l in starts:
+        if l["tag"] == "button":
+            problems.append("Get started is a button; it must be a link to the signup URL")
+            continue
         if l["href"] != SIGNUP_URL:
             problems.append(f"Get started link points at {l['href']!r}, not {SIGNUP_URL}")
         if not l["data_signup"]:
