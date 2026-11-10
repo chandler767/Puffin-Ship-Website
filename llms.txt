@@ -54,6 +54,7 @@ Customers keep ownership of everything they upload, and it is used to make their
 
 - Sign up: https://app.puffinship.com/login
 - Help setting it up: https://puffinship.com/#contact
+- Documentation: https://app.puffinship.com/docs/
 
 ## Contact
 
