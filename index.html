@@ -160,7 +160,15 @@
           "name": "Does it work with our tools and AI agents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Runs, templates and files are all available through an API, so you can start runs from your own systems on your own schedule. AI assistants such as Claude can drive it directly over MCP."
+            "text": "Yes. Runs, templates and files are all available through an API, so you can start runs from your own systems on your own schedule. Claude Code, Claude Desktop and any other MCP client can drive it directly, and can even write your templates for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to my footage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It stays yours. You keep ownership of everything you upload, and it is used to make your videos. Runs you rate can also help improve Puffin Ship's models; that is on by default, and a workspace admin can turn it off at any time in workspace settings."
           }
         }
       ]
@@ -390,6 +398,17 @@
     .hero-notes { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-5); }
     .hero-note { display: flex; align-items: center; gap: 7px; font-size: var(--text-sm); color: var(--text-muted); }
     .hero-note svg { color: var(--green-500); flex: none; }
+
+    /* ── Hero visual ─────────────────────────────────────────────────────── */
+    .hero-visual { margin: 44px auto 0; max-width: 760px; }
+    .hero-visual svg { display: block; width: 100%; height: auto; }
+    .hv-label { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-600); }
+    .hv-link { fill: none; stroke: var(--orange-300); stroke-width: 2; stroke-dasharray: 4 5; }
+    @media (max-width: 600px) { .hero-visual { margin-top: 32px; } }
+
+    /* ── Closing band ────────────────────────────────────────────────────── */
+    .closing { text-align: center; padding: 64px var(--space-8) 72px; }
+    .closing .section-h2 { margin-bottom: 24px; }
 
     /* ── How it works band ───────────────────────────────────────────────── */
     /* Channel names sit below the rule in a deliberately quieter treatment. */
@@ -652,6 +671,53 @@
           Nothing posts until you post it
         </p>
       </div>
+      <!-- Diagram, not a screenshot: one long recording with highlighted
+           moments becoming vertical, captioned clips. Shapes only, no fake
+           product UI or invented footage. -->
+      <figure class="hero-visual" role="img" aria-label="One long recording becomes several vertical, captioned clips">
+        <svg viewBox="0 0 760 300" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="hv-clip" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2E3338"/><stop offset="1" stop-color="#23272B"/>
+            </linearGradient>
+          </defs>
+          <!-- source recording -->
+          <rect x="20" y="24" width="720" height="64" rx="12" fill="#FFFFFF" stroke="#E1E4E7"/>
+          <text x="36" y="46" class="hv-label">Webinar recording</text>
+          <g class="hv-wave">
+            <rect x="36" y="58" width="688" height="18" rx="4" fill="#EEF0F2"/>
+          </g>
+          <rect x="120" y="56" width="70" height="22" rx="5" fill="#18A8E0" opacity=".9"/>
+          <rect x="345" y="56" width="58" height="22" rx="5" fill="#18A8E0" opacity=".9"/>
+          <rect x="560" y="56" width="80" height="22" rx="5" fill="#18A8E0" opacity=".9"/>
+          <!-- connectors -->
+          <path d="M155 92 C155 130 150 130 150 150" class="hv-link"/>
+          <path d="M374 92 C374 130 380 130 380 150" class="hv-link"/>
+          <path d="M600 92 C600 130 610 130 610 150" class="hv-link"/>
+          <!-- vertical clips -->
+          <g>
+            <rect x="105" y="150" width="90" height="140" rx="12" fill="url(#hv-clip)"/>
+            <circle cx="150" cy="192" r="14" fill="#45BBE8" opacity=".45"/>
+            <path d="M124 238 Q150 204 176 238 Z" fill="#45BBE8" opacity=".45"/>
+            <rect x="117" y="250" width="66" height="8" rx="3" fill="#FFFFFF"/>
+            <rect x="127" y="262" width="46" height="8" rx="3" fill="#84D2F0"/>
+          </g>
+          <g>
+            <rect x="335" y="150" width="90" height="140" rx="12" fill="url(#hv-clip)"/>
+            <circle cx="380" cy="192" r="14" fill="#45BBE8" opacity=".45"/>
+            <path d="M354 238 Q380 204 406 238 Z" fill="#45BBE8" opacity=".45"/>
+            <rect x="347" y="250" width="66" height="8" rx="3" fill="#FFFFFF"/>
+            <rect x="357" y="262" width="46" height="8" rx="3" fill="#84D2F0"/>
+          </g>
+          <g>
+            <rect x="565" y="150" width="90" height="140" rx="12" fill="url(#hv-clip)"/>
+            <circle cx="610" cy="192" r="14" fill="#45BBE8" opacity=".45"/>
+            <path d="M584 238 Q610 204 636 238 Z" fill="#45BBE8" opacity=".45"/>
+            <rect x="577" y="250" width="66" height="8" rx="3" fill="#FFFFFF"/>
+            <rect x="587" y="262" width="46" height="8" rx="3" fill="#84D2F0"/>
+          </g>
+        </svg>
+      </figure>
     </section>
   </div>
 
@@ -720,7 +786,7 @@
         <div class="feat-tile">
           <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
           <h3 class="feat-title">Built to automate</h3>
-          <p class="feat-desc">Start runs from your own tools through the API, on whatever schedule your team records, or let an AI assistant such as Claude drive it over MCP. Nobody has to open an editor.</p>
+          <p class="feat-desc">Start runs from your own tools through the API, on whatever schedule your team records, or connect Claude Code, Claude Desktop or any other MCP client and let it do the work. Nobody has to open an editor.</p>
         </div>
       </div>
     </div>
@@ -852,7 +918,11 @@
         </div>
         <div class="faq-item">
           <h3 class="faq-q">Does it work with our tools and AI agents?</h3>
-          <p class="faq-a">Yes. Runs, templates and files are all available through an API, so you can start runs from your own systems on your own schedule. AI assistants such as Claude can drive it directly over MCP.</p>
+          <p class="faq-a">Yes. Runs, templates and files are all available through an API, so you can start runs from your own systems on your own schedule. Claude Code, Claude Desktop and any other MCP client can drive it directly, and can even write your templates for you.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q">What happens to my footage?</h3>
+          <p class="faq-a">It stays yours. You keep ownership of everything you upload, and it is used to make your videos. Runs you rate can also help improve Puffin Ship's models; that is on by default, and a workspace admin can turn it off at any time in workspace settings.</p>
         </div>
     </div>
   </section>
@@ -919,6 +989,12 @@
         <p class="who-desc">We'll read what you sent and reply by email.</p>
       </div>
     </div>
+  </section>
+
+  <!-- ── Closing call to action ──────────────────────────────────────── -->
+  <section class="wrap closing" aria-labelledby="closing-h">
+    <h2 id="closing-h" class="section-h2">Your next recording is a week of clips.</h2>
+    <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
   </section>
 
   </main>

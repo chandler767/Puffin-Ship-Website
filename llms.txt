@@ -12,7 +12,7 @@
 
 - **One recording in, a week of shorts out.** It finds the moments people will actually watch, frames the speaker for vertical, adds captions and cuts the pauses.
 - **The same look on every clip.** A template sets the fonts, colors, captions and layout once. Clip two hundred looks like clip one, whoever on the team made it. A run can stop and wait for review before it finishes, and nothing is posted on anyone's behalf.
-- **Built to automate.** Runs, templates and files are available through an API, so teams can start runs from their own systems on their own schedule. AI assistants such as Claude can drive Puffin Ship directly over MCP.
+- **Built to automate.** Runs, templates and files are available through an API, so teams can start runs from their own systems on their own schedule. Claude Code, Claude Desktop and any other MCP client can drive Puffin Ship directly, including writing templates.
 
 ## Not just webinars
 
@@ -35,6 +35,10 @@ Teams that would rather not set it up themselves can have the Puffin Ship team d
 ## Pricing
 
 There is one plan for everyone, priced by usage. There are no tiers and no per-seat charges, and every workspace gets every feature. New accounts start with credit included, so the first clips can be made before spending anything. The bill shows what each template and each teammate used.
+
+## Your footage
+
+Customers keep ownership of everything they upload, and it is used to make their videos. Rated runs can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
 
 ## Get started
 
