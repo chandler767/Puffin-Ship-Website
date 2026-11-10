@@ -1,6 +1,6 @@
 # Puffin Ship
 
-> Puffin Ship is a video automation platform that turns video of people talking into on-brand short clips. Teams upload the webinars, product demos, livestreams and podcast episodes they already record, or the talking-head videos they shoot for social, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. One recording becomes a week of clips for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
+> Puffin Ship is a video automation platform that turns recorded video into on-brand short clips. Teams upload the webinars, product demos, livestreams and podcast episodes they already record, or anything else they film, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. One recording becomes a week of clips for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
 
 ## How it works
 
@@ -14,12 +14,12 @@
 - **The same look on every clip.** A template sets the fonts, colors, captions and layout once. Clip two hundred looks like clip one, whoever on the team made it. A run can stop and wait for review before it finishes, and nothing is posted on anyone's behalf.
 - **Built to automate.** Runs, templates and files are available through an API, so teams can start runs from their own systems on their own schedule. AI assistants such as Claude can drive Puffin Ship directly over MCP.
 
-## Not just long recordings
+## Not just webinars
 
-The same templates that cut up a webinar also finish short videos shot on purpose:
+If it can be recorded, it can become clips. The same templates that cut up a webinar work on whatever footage a team has, long or short:
 
-- **Talking-head videos**: record once, and it trims the pauses, frames the speaker for vertical, and adds captions and b-roll.
-- **Interviews**: two people on camera become clips, with each speaker framed and captioned as they talk.
+- **Talking heads and interviews**: record yourself or a conversation, and it trims the pauses, frames each speaker for vertical, and adds captions and b-roll.
+- **Gameplay and screen recordings**: a play session, a walkthrough or an on-screen tutorial. It pulls out the highlights, crops them for vertical and captions the commentary.
 - **Educational shorts**: one idea per video, explained on camera and finished in the brand, made the same way every time.
 
 ## Who it's for
