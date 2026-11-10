@@ -1,0 +1,24 @@
+name: Site copy and link rules
+
+# Enforces the copy rules from CLAUDE.md and the site's link rules on every
+# push: no em dashes or banned launch words, no credit amounts, in-page links
+# resolve, every "Get started" goes to signup, and the FAQ structured data
+# matches the visible FAQ.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test the checker
+        run: python3 -m unittest discover -s .github/scripts -v
+      - name: Check the site
+        run: python3 .github/scripts/check_site.py index.html llms.txt
