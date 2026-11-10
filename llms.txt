@@ -5,15 +5,19 @@
 ## How it works
 
 1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
-2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen across all of a team's recordings, then pulls out the moments that stand on their own.
-3. **Get clips ready to post**: it cuts them into shorts, combining moments from different recordings and a fresh intro if one is recorded, then frames, captions and brands every clip. The team reviews them, then posts.
+2. **It suggests the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
+3. **Get clips ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses trimmed, in the brand. Moments from different recordings in the same workspace can also be combined with a fresh intro. The team reviews them, then posts.
 
 This is more than clipping. One short can combine a moment from a webinar, a moment from a product demo and a moment from a podcast, opened by a new intro recorded on camera, all cut together and finished in the brand.
 
+## Examples
+
+The site shows four example shorts (a webinar turned into a short, an event interview, an educational short and a news explainer) made with the same process Puffin Ship automates. Together they have passed 100,000 views.
+
 ## Why teams use it
 
-- **One recording in, a week of shorts out.** It finds the moments people will actually watch, frames the speaker for vertical, adds captions and cuts the pauses.
-- **The same look on every clip.** A template sets the fonts, colors, captions and layout once. Clip two hundred looks like clip one, whoever on the team made it. A run can stop and wait for review before it finishes, and nothing is posted on anyone's behalf.
+- **One recording in, a week of shorts out.** It suggests the moments worth posting, and each one picked becomes its own clip: cropped for vertical, captioned, pauses cut.
+- **The same look on every clip.** A template sets the colors, captions and layout once. Clip two hundred looks like clip one, whoever on the team made it. A run can stop and wait for review before it finishes, and nothing is posted on anyone's behalf.
 - **Built to automate.** Runs, templates and files are available through an API, so teams can start runs from their own systems on their own schedule. Claude Code, Claude Desktop and any other MCP client can drive Puffin Ship directly, including writing templates.
 
 ## Not just webinars
@@ -21,7 +25,7 @@ This is more than clipping. One short can combine a moment from a webinar, a mom
 If it can be recorded, it can become clips. The same templates that cut up a webinar work on whatever footage a team has, long or short:
 
 - **Talking heads and interviews**: record yourself or a conversation, and it trims the pauses, frames each speaker for vertical, and adds captions and b-roll.
-- **Gameplay and screen recordings**: a play session, a walkthrough or an on-screen tutorial. It pulls out the highlights, crops them for vertical and captions the commentary.
+- **Gameplay and screen recordings with commentary**: a play session, a walkthrough or an on-screen tutorial, talked through as it goes. It pulls out the highlights, keeps the screen in view and captions the commentary.
 - **Educational shorts**: one idea per video, explained on camera and finished in the brand, made the same way every time.
 
 ## Who it's for
