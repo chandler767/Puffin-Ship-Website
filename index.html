@@ -112,7 +112,7 @@
           "name": "What does Puffin Ship do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It turns long recordings, such as webinars, product demos, livestreams and podcast episodes, into short clips that are ready to post. It finds the moments worth sharing, crops them to vertical, adds captions, trims dead air and applies your brand."
+            "text": "It turns long recordings, such as webinars, product demos, livestreams and podcast episodes, into short clips that are ready to post. It finds the moments worth sharing, crops them to vertical, adds captions, trims dead air and applies your brand. It can also combine moments from several recordings, with a new intro you record on camera, into one short."
           }
         },
         {
@@ -400,11 +400,23 @@
     .hero-note svg { color: var(--green-500); flex: none; }
 
     /* ── Hero visual ─────────────────────────────────────────────────────── */
-    .hero-visual { margin: 44px auto 0; max-width: 760px; }
+    .hero-visual { margin: 48px auto 0; max-width: 820px; }
     .hero-visual svg { display: block; width: 100%; height: auto; }
-    .hv-label { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-600); }
-    .hv-link { fill: none; stroke: var(--orange-300); stroke-width: 2; stroke-dasharray: 4 5; }
-    @media (max-width: 600px) { .hero-visual { margin-top: 32px; } }
+    .hv-narrow { display: none !important; max-width: 340px; margin: 0 auto; }
+    .hv-head { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; fill: var(--ink-500); }
+    .hv-label { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-700); }
+    .hv-seg { font-family: var(--font-sans); font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+    .hv-seg-dark { font-family: var(--font-sans); font-size: 13px; font-weight: 700; fill: var(--ink-900); }
+    .hv-src { fill: var(--white); stroke: var(--ink-200); }
+    .hv-src-new { fill: var(--green-50); stroke: var(--green-100); }
+    .hv-link { fill: none; stroke-width: 2; stroke-dasharray: 4 4; opacity: .85; }
+    .hv-arrow { fill: none; stroke: var(--ink-400); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .hero-visual-cap { margin: 18px auto 0; max-width: 52ch; font-size: 15px; color: var(--text-muted); text-wrap: balance; }
+    @media (max-width: 600px) {
+      .hero-visual { margin-top: 36px; }
+      .hv-wide { display: none !important; }
+      .hv-narrow { display: block !important; }
+    }
 
     /* ── Closing band ────────────────────────────────────────────────────── */
     .closing { text-align: center; padding: 64px var(--space-8) 72px; }
@@ -671,52 +683,102 @@
           Nothing posts until you post it
         </p>
       </div>
-      <!-- Diagram, not a screenshot: one long recording with highlighted
-           moments becoming vertical, captioned clips. Shapes only, no fake
-           product UI or invented footage. -->
-      <figure class="hero-visual" role="img" aria-label="One long recording becomes several vertical, captioned clips">
-        <svg viewBox="0 0 760 300" aria-hidden="true" focusable="false">
+      <figure class="hero-visual">
+        <div role="img" aria-label="Moments from a webinar, a product demo and a podcast, plus a new intro recorded on camera, are edited together into one finished vertical short with captions and branding.">
+        <!-- Wide layout: sources on the left, the edit in the middle (note the
+             reordering: the new intro goes first), the finished short on the
+             right. Colors tie each source moment to its place in the edit. -->
+        <svg class="hv-wide" viewBox="0 0 760 290" aria-hidden="true" focusable="false">
           <defs>
-            <linearGradient id="hv-clip" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#2E3338"/><stop offset="1" stop-color="#23272B"/>
-            </linearGradient>
+            <linearGradient id="hv-phone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E3338"/><stop offset="1" stop-color="#23272B"/></linearGradient>
           </defs>
-          <!-- source recording -->
-          <rect x="20" y="24" width="720" height="64" rx="12" fill="#FFFFFF" stroke="#E1E4E7"/>
-          <text x="36" y="46" class="hv-label">Webinar recording</text>
-          <g class="hv-wave">
-            <rect x="36" y="58" width="688" height="18" rx="4" fill="#EEF0F2"/>
-          </g>
-          <rect x="120" y="56" width="70" height="22" rx="5" fill="#18A8E0" opacity=".9"/>
-          <rect x="345" y="56" width="58" height="22" rx="5" fill="#18A8E0" opacity=".9"/>
-          <rect x="560" y="56" width="80" height="22" rx="5" fill="#18A8E0" opacity=".9"/>
-          <!-- connectors -->
-          <path d="M155 92 C155 130 150 130 150 150" class="hv-link"/>
-          <path d="M374 92 C374 130 380 130 380 150" class="hv-link"/>
-          <path d="M600 92 C600 130 610 130 610 150" class="hv-link"/>
-          <!-- vertical clips -->
-          <g>
-            <rect x="105" y="150" width="90" height="140" rx="12" fill="url(#hv-clip)"/>
-            <circle cx="150" cy="192" r="14" fill="#45BBE8" opacity=".45"/>
-            <path d="M124 238 Q150 204 176 238 Z" fill="#45BBE8" opacity=".45"/>
-            <rect x="117" y="250" width="66" height="8" rx="3" fill="#FFFFFF"/>
-            <rect x="127" y="262" width="46" height="8" rx="3" fill="#84D2F0"/>
-          </g>
-          <g>
-            <rect x="335" y="150" width="90" height="140" rx="12" fill="url(#hv-clip)"/>
-            <circle cx="380" cy="192" r="14" fill="#45BBE8" opacity=".45"/>
-            <path d="M354 238 Q380 204 406 238 Z" fill="#45BBE8" opacity=".45"/>
-            <rect x="347" y="250" width="66" height="8" rx="3" fill="#FFFFFF"/>
-            <rect x="357" y="262" width="46" height="8" rx="3" fill="#84D2F0"/>
-          </g>
-          <g>
-            <rect x="565" y="150" width="90" height="140" rx="12" fill="url(#hv-clip)"/>
-            <circle cx="610" cy="192" r="14" fill="#45BBE8" opacity=".45"/>
-            <path d="M584 238 Q610 204 636 238 Z" fill="#45BBE8" opacity=".45"/>
-            <rect x="577" y="250" width="66" height="8" rx="3" fill="#FFFFFF"/>
-            <rect x="587" y="262" width="46" height="8" rx="3" fill="#84D2F0"/>
-          </g>
+          <text x="20" y="16" class="hv-head">Your recordings</text>
+          <text x="400" y="16" class="hv-head">Edited together</text>
+          <text x="600" y="16" class="hv-head">One finished short</text>
+
+          <rect x="20" y="30" width="300" height="46" rx="10" class="hv-src"/>
+          <text x="34" y="48" class="hv-label">Webinar</text>
+          <rect x="34" y="56" width="272" height="10" rx="3" fill="#EEF0F2"/>
+          <rect x="190" y="55" width="44" height="12" rx="3" fill="#18A8E0"/>
+
+          <rect x="20" y="88" width="300" height="46" rx="10" class="hv-src"/>
+          <text x="34" y="106" class="hv-label">Product demo</text>
+          <rect x="34" y="114" width="272" height="10" rx="3" fill="#EEF0F2"/>
+          <rect x="84" y="113" width="52" height="12" rx="3" fill="#136C90"/>
+
+          <rect x="20" y="146" width="300" height="46" rx="10" class="hv-src"/>
+          <text x="34" y="164" class="hv-label">Podcast</text>
+          <rect x="34" y="172" width="272" height="10" rx="3" fill="#EEF0F2"/>
+          <rect x="236" y="171" width="40" height="12" rx="3" fill="#45BBE8"/>
+
+          <rect x="20" y="204" width="300" height="46" rx="10" class="hv-src-new"/>
+          <text x="34" y="222" class="hv-label">New intro, recorded on camera</text>
+          <rect x="34" y="230" width="60" height="12" rx="3" fill="#18926A"/>
+
+          <path d="M320 61 C 355 61, 355 165, 390 165" class="hv-link" stroke="#18A8E0"/>
+          <path d="M320 119 C 355 119, 355 111, 390 111" class="hv-link" stroke="#136C90"/>
+          <path d="M320 177 C 355 177, 355 219, 390 219" class="hv-link" stroke="#45BBE8"/>
+          <path d="M320 235 C 355 235, 355 57, 390 57" class="hv-link" stroke="#18926A"/>
+
+          <rect x="390" y="34" width="150" height="46" rx="8" fill="#18926A"/>
+          <text x="465" y="62" class="hv-seg" text-anchor="middle">1  Intro</text>
+          <rect x="390" y="88" width="150" height="46" rx="8" fill="#136C90"/>
+          <text x="465" y="116" class="hv-seg" text-anchor="middle">2  Demo</text>
+          <rect x="390" y="142" width="150" height="46" rx="8" fill="#18A8E0"/>
+          <text x="465" y="170" class="hv-seg" text-anchor="middle">3  Webinar</text>
+          <rect x="390" y="196" width="150" height="46" rx="8" fill="#45BBE8"/>
+          <text x="465" y="224" class="hv-seg-dark" text-anchor="middle">4  Podcast</text>
+
+          <path d="M552 138 L 590 138" class="hv-arrow"/>
+          <path d="M584 132 L 591 138 L 584 144" class="hv-arrow"/>
+
+          <rect x="600" y="26" width="140" height="248" rx="18" fill="url(#hv-phone)"/>
+          <rect x="612" y="38" width="30" height="9" rx="3" fill="#18A8E0"/>
+          <circle cx="670" cy="112" r="24" fill="#18926A" opacity=".55"/>
+          <path d="M630 176 Q670 128 710 176 Z" fill="#18926A" opacity=".55"/>
+          <rect x="622" y="196" width="96" height="10" rx="3" fill="#FFFFFF"/>
+          <rect x="638" y="212" width="64" height="10" rx="3" fill="#84D2F0"/>
+          <rect x="614" y="254" width="26" height="4" rx="2" fill="#18926A"/>
+          <rect x="642" y="254" width="28" height="4" rx="2" fill="#136C90"/>
+          <rect x="672" y="254" width="28" height="4" rx="2" fill="#18A8E0"/>
+          <rect x="702" y="254" width="24" height="4" rx="2" fill="#45BBE8"/>
         </svg>
+        <!-- Narrow layout: the same story stacked top to bottom for phones. -->
+        <svg class="hv-narrow" viewBox="0 0 340 520" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="hv-phone-n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E3338"/><stop offset="1" stop-color="#23272B"/></linearGradient>
+          </defs>
+          <text x="0" y="14" class="hv-head">Your recordings</text>
+          <rect x="0" y="24" width="340" height="40" rx="10" class="hv-src"/>
+          <text x="14" y="49" class="hv-label">Webinar</text>
+          <rect x="150" y="38" width="176" height="10" rx="3" fill="#EEF0F2"/><rect x="250" y="37" width="34" height="12" rx="3" fill="#18A8E0"/>
+          <rect x="0" y="72" width="340" height="40" rx="10" class="hv-src"/>
+          <text x="14" y="97" class="hv-label">Product demo</text>
+          <rect x="150" y="86" width="176" height="10" rx="3" fill="#EEF0F2"/><rect x="170" y="85" width="40" height="12" rx="3" fill="#136C90"/>
+          <rect x="0" y="120" width="340" height="40" rx="10" class="hv-src"/>
+          <text x="14" y="145" class="hv-label">Podcast</text>
+          <rect x="150" y="134" width="176" height="10" rx="3" fill="#EEF0F2"/><rect x="284" y="133" width="30" height="12" rx="3" fill="#45BBE8"/>
+          <rect x="0" y="168" width="340" height="40" rx="10" class="hv-src-new"/>
+          <text x="14" y="193" class="hv-label">New intro on camera</text>
+          <rect x="190" y="182" width="50" height="12" rx="3" fill="#18926A"/>
+
+          <path d="M170 216 L 170 238" class="hv-arrow"/><path d="M164 232 L 170 239 L 176 232" class="hv-arrow"/>
+          <text x="0" y="262" class="hv-head">Edited together</text>
+          <rect x="0" y="272" width="80" height="30" rx="6" fill="#18926A"/><text x="40" y="292" class="hv-seg" text-anchor="middle">Intro</text>
+          <rect x="86" y="272" width="80" height="30" rx="6" fill="#136C90"/><text x="126" y="292" class="hv-seg" text-anchor="middle">Demo</text>
+          <rect x="172" y="272" width="84" height="30" rx="6" fill="#18A8E0"/><text x="214" y="292" class="hv-seg" text-anchor="middle">Webinar</text>
+          <rect x="262" y="272" width="78" height="30" rx="6" fill="#45BBE8"/><text x="301" y="292" class="hv-seg-dark" text-anchor="middle">Podcast</text>
+
+          <path d="M170 310 L 170 330" class="hv-arrow"/><path d="M164 324 L 170 331 L 176 324" class="hv-arrow"/>
+          <rect x="110" y="338" width="120" height="180" rx="16" fill="url(#hv-phone-n)"/>
+          <rect x="120" y="348" width="26" height="8" rx="3" fill="#18A8E0"/>
+          <circle cx="170" cy="400" r="20" fill="#18926A" opacity=".55"/>
+          <path d="M137 452 Q170 412 203 452 Z" fill="#18926A" opacity=".55"/>
+          <rect x="128" y="468" width="84" height="9" rx="3" fill="#FFFFFF"/>
+          <rect x="142" y="482" width="56" height="9" rx="3" fill="#84D2F0"/>
+        </svg>
+        </div>
+        <figcaption class="hero-visual-cap">Pull the best moments from any of your recordings, add a fresh intro on camera, and get one finished short in your brand.</figcaption>
       </figure>
     </section>
   </div>
@@ -738,12 +800,12 @@
         <div class="card">
           <div class="step-num">02</div>
           <h3 class="step-title">It finds the moments worth posting</h3>
-          <p class="step-desc">Puffin Ship reads what was said and what was on screen, then pulls out the clips that stand on their own.</p>
+          <p class="step-desc">Puffin Ship reads what was said and what was on screen across all your recordings, then pulls out the moments that stand on their own.</p>
         </div>
         <div class="card">
           <div class="step-num">03</div>
           <h3 class="step-title">Get clips ready to post</h3>
-          <p class="step-desc">Each one is cropped to vertical, captioned, trimmed of dead air and styled to your brand. Review them, then post.</p>
+          <p class="step-desc">It cuts them into shorts, combining moments from different recordings and a fresh intro if you record one, then frames, captions and brands every clip. Review them, then post.</p>
         </div>
       </div>
       <div class="formats-dest">
@@ -894,7 +956,7 @@
     <div class="faq-grid">
         <div class="faq-item">
           <h3 class="faq-q">What does Puffin Ship do?</h3>
-          <p class="faq-a">It turns long recordings, such as webinars, product demos, livestreams and podcast episodes, into short clips that are ready to post. It finds the moments worth sharing, crops them to vertical, adds captions, trims dead air and applies your brand.</p>
+          <p class="faq-a">It turns long recordings, such as webinars, product demos, livestreams and podcast episodes, into short clips that are ready to post. It finds the moments worth sharing, crops them to vertical, adds captions, trims dead air and applies your brand. It can also combine moments from several recordings, with a new intro you record on camera, into one short.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">What kinds of recordings work?</h3>

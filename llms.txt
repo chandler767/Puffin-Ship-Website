@@ -5,8 +5,10 @@
 ## How it works
 
 1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
-2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then pulls out the clips that stand on their own.
-3. **Get clips ready to post**: each clip is cropped to vertical, captioned, trimmed of dead air and styled to the brand. The team reviews them, then posts.
+2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen across all of a team's recordings, then pulls out the moments that stand on their own.
+3. **Get clips ready to post**: it cuts them into shorts, combining moments from different recordings and a fresh intro if one is recorded, then frames, captions and brands every clip. The team reviews them, then posts.
+
+This is more than clipping. One short can combine a moment from a webinar, a moment from a product demo and a moment from a podcast, opened by a new intro recorded on camera, all cut together and finished in the brand.
 
 ## Why teams use it
 
