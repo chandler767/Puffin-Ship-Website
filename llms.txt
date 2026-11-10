@@ -1,55 +1,40 @@
 # Puffin Ship
 
-> Puffin Ship is a video content agency. We produce short form video for our clients at a volume traditional agencies cannot match, using a production platform we built and run ourselves. Depending on what a client needs, we hand over finished video, publish it to their channels on a schedule, or run the whole program and tune it against what performs.
+> Puffin Ship is a video automation platform that turns long recordings into on-brand short clips. Teams upload the webinars, product demos, livestreams and podcast episodes they already record, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. One recording becomes a week of clips for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
 
-## What we do
+## How it works
 
-We make short form video for our clients and we keep it coming. A client tells us what they sell, who buys it, and what their content should sound like. A client can be a company, a product, a service, or a person building an audience. We build the formats, the look, and the rules their videos follow, and then video ships steadily instead of in bursts.
+1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
+2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then pulls out the clips that stand on their own.
+3. **Get clips ready to post**: each clip is cropped to vertical, captioned, trimmed of dead air and styled to the brand. The team reviews them, then posts.
 
-Every video arrives finished and ready to post, made for the channels the client cares about. Nothing goes out unchecked; every video passes a review step before it reaches the client or their audience.
+## Why teams use it
 
-## Why we can produce at this volume
-
-We built our own production platform and we run it ourselves, including the AI agent tooling at the heart of it. The agents that script, cut, and assemble a video are ours, with their own tools and their own checks on the work, rather than an off-the-shelf product wired together. Our output does not depend on how many editors we can hire. That is the reason we can promise a volume a traditional agency structurally cannot, and the reason the way our clients' content gets made is not available to their competitors.
-
-A client's rules are set once and applied to every video after that. No drift, no re-briefing, no explaining it all again next month.
-
-## Using the platform directly
-
-Access to the platform and its API can be part of an engagement, if a client's team would rather run some of it themselves. We set that access up as part of the engagement; there is no public sign-up and no self-serve plan.
-
-## How we work with a client
-
-We build the program around what the client needs. Some want finished video handed over and nothing else. Some want us publishing to their channels and tuning against what performs. Most land somewhere in between. We work out the shape of it with them, then we build it and keep it running.
-
-## How an engagement runs
-
-1. **We learn the client**: what they sell, who buys it, and what their content should sound like. We do the work here so nobody is briefing us every month.
-2. **We build the content system**: the formats, the look, and the rules the videos follow. This is the part that makes everything after it repeatable.
-3. **Video ships on a schedule**: content arrives steadily, either delivered to the client or published straight to their channels.
-4. **We iterate on what performs**: when we are running the full program we watch what lands and adjust, so the content gets better at its job over time.
+- **One recording in, a week of shorts out.** It finds the moments people will actually watch, frames the speaker for vertical, adds captions and cuts the pauses.
+- **The same look on every clip.** A template sets the fonts, colors, captions and layout once. Clip two hundred looks like clip one, whoever on the team made it. A run can stop and wait for review before it finishes, and nothing is posted on anyone's behalf.
+- **Runs itself.** Runs, templates and files are available through an API, so teams can start runs from their own systems on their own schedule. AI assistants such as Claude can drive Puffin Ship directly over MCP.
 
 ## Who it's for
 
-- **Brands and products**: companies that need a steady stream of content and don't have a team to make it. We become that team without them hiring one.
-- **Services and local businesses**: businesses that live on attention in their area and can't produce enough of it to stay top of mind.
-- **Founders and experts**: people with real knowledge and an audience worth building, who never find the time to turn one into the other.
+- **Marketing teams with webinars and demos** (the main audience): teams that already record a webinar, a launch demo or a customer session every week and want a steady run of clips from each one without adding an editor.
+- **Agencies**: run the same system for every client, each in its own workspace with its own template and look.
+- **Streamers and podcasters**: every stream or episode becomes highlights for Shorts, Reels and TikTok without scrubbing through hours of footage.
+
+## Set up for you
+
+Teams that would rather not set it up themselves can have the Puffin Ship team do it, as much or as little as they need: building templates around their brand, fitting Puffin Ship into how they already work, or running it for them and handing over finished clips. Ask through the form at https://puffinship.com/#contact.
 
 ## Pricing
 
-Pricing depends on volume and how involved a client wants us to be, so we quote each engagement individually. There are no published rates and no self-serve tiers.
+There is one plan for everyone, priced by usage. There are no tiers and no per-seat charges, and every account can do everything. New accounts start with credit included, so the first clips can be made before spending anything. The bill shows what each template and each teammate used.
 
-To get a quote, use the form at https://puffinship.com/#contact and tell us what you need. We reply by email, usually within a day.
+## Get started
 
-## How we compare
-
-- Different from a traditional agency: agencies scale by hiring people, so their volume is capped by headcount. Ours is not.
-- Different from a freelancer or a single editor: output stays at the same pace in month six as it was in month one.
-- Different from a social media management tool: those manage distribution. We create the video supply, and publish it too if that is what the client wants.
+- Sign up: https://app.puffinship.com/login
+- Help setting it up: https://puffinship.com/#contact
 
 ## Contact
 
-- Form: https://puffinship.com/#contact
 - Email: info@puffinship.com
 - Phone: 415-409-8722
 - Website: https://puffinship.com/
