@@ -6,7 +6,7 @@
 
 1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
 2. **It suggests the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
-3. **Get clips ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses trimmed, in the brand. Moments from different recordings in the same workspace can also be combined with a fresh intro. The team reviews them, then posts.
+3. **Get clips ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses trimmed, in the brand. With a template set up once, moments described in plain words can be found across recordings in the same workspace and combined with a fresh intro recorded on a teleprompter in the browser. The team reviews them, then posts.
 
 This is more than clipping. One short can combine a moment from a webinar, a moment from a product demo and a moment from a podcast, opened by a new intro recorded on camera, all cut together and finished in the brand.
 
