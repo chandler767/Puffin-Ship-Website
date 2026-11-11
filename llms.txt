@@ -6,6 +6,10 @@
 
 It is not just another clipper. Clipping tools cut one long video into pieces. Puffin Ship builds finished shorts from all of a team's footage: moments from several recordings, a new intro recorded on camera, and the same brand on every one.
 
+## No editing or code needed
+
+Teams start from a ready-made template, answer a few questions, or describe the video they want in plain words and Puffin Ship builds the template. Moments can be found by describing them too, like "the part where we explain pricing."
+
 ## Examples
 
 The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
@@ -18,7 +22,7 @@ Editing a short by hand often takes over an hour: scrubbing the recording for th
 
 1. **Upload your footage**: a webinar, a demo, a livestream, or any raw footage. The video file you already have.
 2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
-3. **Get shorts ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses cut, in the brand. With a template set up once, moments from several recordings can be combined with a new intro recorded on camera. The team reviews them, then posts.
+3. **Get shorts ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses cut, in the brand. For more than one clip, describe the video you want in plain words and Puffin Ship builds the template that makes it, including moments from several recordings and a new intro recorded on camera. The team reviews them, then posts.
 
 It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Runs can start from a team's own tools through the API, or from Claude Code, Claude Desktop, and any other MCP client.
 
