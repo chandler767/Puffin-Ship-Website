@@ -414,11 +414,12 @@
     .carousel-track {
       display: flex; align-items: flex-start; justify-content: safe center; gap: 20px; overflow-x: auto;
       scroll-snap-type: x mandatory; scroll-behavior: smooth;
-      padding: 4px; scrollbar-width: none;
+      padding: 4px; scroll-padding-inline: 4px; scrollbar-width: none;
     }
     .carousel-track::-webkit-scrollbar { display: none; }
     .carousel-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     .sample { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
+    .sample:last-child { scroll-snap-align: end; }
     .sample video {
       display: block; height: var(--slide-h); width: calc(var(--slide-h) * 9 / 16); object-fit: cover;
       background: var(--ink-900); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
@@ -1212,20 +1213,35 @@
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= max;
       }
+      // The stops the buttons move between: each slide's start, capped at
+      // the end of the row. Stops closer together than a third of a slide
+      // merge, so "back" from the end never moves a few pixels and stalls.
+      var pending = null, settle;
+      function stops() {
+        var max = track.scrollWidth - track.clientWidth, first = slides[0].offsetLeft, out = [];
+        var minGap = slides[0].offsetWidth / 3;
+        slides.forEach(function (sl) {
+          var p = Math.min(sl.offsetLeft - first, max);
+          if (!out.length || p - out[out.length - 1] > minGap) out.push(p);
+          else out[out.length - 1] = p;
+        });
+        return out;
+      }
       function step(dir) {
-        var left = track.scrollLeft, base = track.getBoundingClientRect().left;
-        var target = null;
-        for (var i = 0; i < slides.length; i++) {
-          var x = slides[i].getBoundingClientRect().left - base + left - 4;
-          if (dir > 0 && x > left + 4) { target = x; break; }
-          if (dir < 0 && x < left - 4) target = x;
-        }
-        if (target === null) target = dir > 0 ? track.scrollWidth : 0;
-        track.scrollTo({ left: target });
+        var ps = stops();
+        var from = pending !== null ? pending : track.scrollLeft;
+        var idx = 0;
+        for (var i = 1; i < ps.length; i++) if (Math.abs(ps[i] - from) < Math.abs(ps[idx] - from)) idx = i;
+        idx = Math.max(0, Math.min(ps.length - 1, idx + dir));
+        pending = ps[idx];
+        track.scrollTo({ left: pending });
+        clearTimeout(settle);
+        settle = setTimeout(function () { pending = null; update(); }, 700);
       }
       prev.addEventListener('click', function () { step(-1); });
       next.addEventListener('click', function () { step(1); });
       track.addEventListener('scroll', update, { passive: true });
+      track.addEventListener('scrollend', function () { pending = null; update(); });
       window.addEventListener('resize', update);
       track.addEventListener('play', function (e) {
         track.querySelectorAll('video').forEach(function (v) { if (v !== e.target) v.pause(); });
