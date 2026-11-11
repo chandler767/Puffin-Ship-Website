@@ -28,7 +28,7 @@ Everyone records hours of video, but cutting it into shorts is still done by han
 
 ## Who's building it
 
-Puffin Ship is built by Chandler Mayo, who has been running it to make shorts for early teams. Puffin Ship, Inc. is the company behind it.
+Puffin Ship is built by Chandler Mayo (https://www.linkedin.com/in/chandlermayo). He has built software for more than a decade and spent the last seven years in developer relations at Redpanda, Doppler, and PubNub, making talks, videos, and technical content. Turning those recordings into shorts was always the slow part, so he built Puffin Ship to do it, and has been running it to make shorts for early teams. Puffin Ship, Inc. is the company behind it.
 
 ## Pricing
 

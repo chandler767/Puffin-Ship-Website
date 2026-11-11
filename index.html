@@ -80,6 +80,7 @@
       "name": "Puffin Ship",
       "legalName": "Puffin Ship, Inc.",
           "slogan": "Automated video production.",
+          "founder": { "@type": "Person", "name": "Chandler Mayo", "sameAs": "https://www.linkedin.com/in/chandlermayo" },
       "url": "https://puffinship.com/",
       "logo": "https://puffinship.com/assets/logo/puffin-mark-blue.png",
       "description": "Puffin Ship is automated video production: it turns the footage teams and creators already have, from webinars and product demos to interviews and talking-head videos, into on-brand shorts.",
@@ -485,6 +486,8 @@
       letter-spacing: -0.03em; color: var(--ink-900);
       margin: 0 auto var(--space-5); max-width: 20ch; text-wrap: balance;
     }
+    .founder-links { display: flex; justify-content: center; gap: 10px; font-size: 15px; font-weight: 600; margin: -12px 0 0; }
+    .founder-links a { color: var(--ocean-500); text-decoration: underline; text-underline-offset: 3px; }
     .statement-body {
       font-size: 18px; line-height: 1.65; color: var(--text-body);
       margin: 0 auto var(--space-8); max-width: 58ch; text-wrap: pretty;
@@ -840,13 +843,13 @@
   </section>
 
   <!-- ── Founder ───────────────────────────────────────────────────────── -->
-  <!-- Only true, approved facts here. Add Chandler's one-line background
-       to the body when he provides it. -->
+  <!-- Background is from Chandler's resume. Only true, approved facts here. -->
   <section id="founder" class="wrap statement-band" aria-labelledby="founder-h">
     <div class="statement">
       <div class="eyebrow">Who's building it</div>
       <h2 id="founder-h" class="statement-lead">Hi, I'm Chandler Mayo.</h2>
-      <p class="statement-body">I'm building Puffin Ship, and I've been running it to make shorts for early teams. Everything it does for them, you can do yourself. Questions or ideas? Email me at <a href="mailto:info@puffinship.com">info@puffinship.com</a>.</p>
+      <p class="statement-body">I've built software for more than a decade and spent the last seven years in developer relations at Redpanda, Doppler, and PubNub, making talks, videos, and technical content. Turning those recordings into shorts was always the slow part, so I built Puffin Ship to do it. I've been running it to make shorts for early teams, and everything it does for them, you can do yourself.</p>
+      <p class="founder-links"><a href="https://www.linkedin.com/in/chandlermayo">LinkedIn</a><span aria-hidden="true">·</span><a href="mailto:info@puffinship.com">info@puffinship.com</a></p>
     </div>
   </section>
 
