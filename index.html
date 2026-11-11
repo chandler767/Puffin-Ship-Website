@@ -492,6 +492,32 @@
     }
     .section-sub { margin: 12px auto 0; font-size: 16px; color: var(--text-muted); max-width: 56ch; }
 
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    /* ── Time saved ───────────────────────────────────────────────────────── */
+    /* Hand-editing figures are industry rules of thumb (about 30 to 60 minutes
+       of editing per finished minute). Keep the claim loose: no exact multiplier. */
+    .time-band { padding: 8px var(--space-8) 72px; text-align: center; }
+    .time-band .section-h2 { max-width: 24ch; margin: 0 auto; text-wrap: balance; }
+    .time-band .section-h2 span { color: var(--accent); }
+    .time-table {
+      width: 100%; max-width: 760px; margin: 28px auto 0; border-collapse: separate; border-spacing: 0;
+      background: var(--surface-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-xs); overflow: hidden; text-align: left;
+    }
+    .time-table th, .time-table td { padding: 14px 18px; font-size: 15px; border-top: 1px solid var(--border-subtle); vertical-align: top; }
+    .time-table thead th { border-top: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); background: var(--bg-inset); }
+    .time-table tbody th { font-weight: 600; color: var(--ink-900); width: 34%; }
+    .time-table .by-hand { color: var(--text-muted); }
+    .time-table .with-ps { color: var(--ink-900); font-weight: 600; }
+    .time-table thead .with-ps { color: var(--accent); }
+    .time-table tr.total th, .time-table tr.total td { background: var(--bg-inset); font-size: 16px; }
+    .time-note { margin: 14px auto 0; max-width: 60ch; font-size: 13px; color: var(--text-muted); }
+    @media (max-width: 600px) {
+      .time-band { padding: 0 var(--space-5) 56px; }
+      .time-table th, .time-table td { padding: 12px 10px; font-size: 14px; }
+      .time-table thead th { font-size: 11px; }
+    }
+
     /* ── Statement band ───────────────────────────────────────────────────── */
     /* The page's one prose moment. Breaks the rhythm of stacked card grids and
        carries the pitch in a voice, not a menu. */
@@ -800,6 +826,23 @@
       </figure>
     </section>
   </div>
+
+  <!-- ── Time saved ──────────────────────────────────────────────────────── -->
+  <section class="wrap time-band" aria-labelledby="time-h">
+    <h2 id="time-h" class="section-h2">About an hour per short, by hand. <span>A few minutes with Puffin&nbsp;Ship.</span></h2>
+    <table class="time-table">
+      <caption class="sr-only">Time to make one short by hand compared with Puffin Ship</caption>
+      <thead>
+        <tr><th scope="col"><span class="sr-only">Step</span></th><th scope="col" class="by-hand">By hand</th><th scope="col" class="with-ps">Puffin Ship</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Find the moment</th><td class="by-hand">Scrub the whole recording</td><td class="with-ps">Suggested for you</td></tr>
+        <tr><th scope="row">Crop, caption, cut the pauses</th><td class="by-hand">30+ minutes in an editor</td><td class="with-ps">Done on its own</td></tr>
+        <tr class="total"><th scope="row">Your time per clip</th><td class="by-hand">About an hour</td><td class="with-ps">A few minutes to pick and review</td></tr>
+      </tbody>
+    </table>
+    <p class="time-note">Editors commonly quote 30 to 60 minutes of editing for each finished minute of video.</p>
+  </section>
 
   <!-- ── How it works ────────────────────────────────────────────────── -->
   <section id="how" class="how-band" aria-labelledby="how-h">

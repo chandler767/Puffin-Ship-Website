@@ -10,6 +10,10 @@
 
 This is more than clipping. One short can combine a moment from a webinar, a moment from a product demo and a moment from a podcast, opened by a new intro recorded on camera, all cut together and finished in the brand.
 
+## Time saved
+
+Editing a short by hand usually takes about an hour: scrubbing the recording for the moment, then cropping, captioning and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the team's time per clip is a few minutes to pick and review.
+
 ## Examples
 
 The site shows four example shorts (a webinar turned into a short, an event interview, an educational short and a news explainer) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
