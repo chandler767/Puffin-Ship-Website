@@ -20,7 +20,7 @@ It works on almost any footage: webinars, demos, interviews, talking heads, educ
 
 ## Why now
 
-Teams and creators already record hours of video every week, and their audiences now watch short vertical video on LinkedIn as much as on TikTok. The bottleneck is the edit, and it is still done by hand. AI can now follow what was said and what was on screen well enough to pick the moments and make the cut, so the whole job can finally be automated.
+Everyone records hours of video, but cutting it into shorts is still done by hand. AI can now understand footage well enough to do that job.
 
 ## Pricing
 
