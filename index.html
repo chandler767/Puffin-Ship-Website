@@ -432,6 +432,13 @@
       display: block; height: var(--slide-h); width: calc(var(--slide-h) * 9 / 16); object-fit: cover;
       background: var(--ink-900); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
     }
+    /* In full screen show the whole vertical frame with black bars, not a crop. */
+    .sample video:fullscreen {
+      width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 0; box-shadow: none;
+    }
+    .sample video:-webkit-full-screen {
+      width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 0; box-shadow: none;
+    }
     .sample-frame { position: relative; }
     .sample-fs {
       position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border: 0; border-radius: 999px;
