@@ -1,26 +1,26 @@
 # Puffin Ship
 
-> Puffin Ship is automated video production: a platform that turns recorded video into on-brand short clips. It is for marketing teams, agencies, and creators with more recordings than editing time. Teams upload the webinars, product demos and interviews they already record, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. The clips are made for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
+> Puffin Ship is automated video production: a platform that turns recorded video into on-brand shorts. It is for marketing teams, agencies, and creators with more recordings than editing time. Teams and creators upload the raw footage they already record, from webinars and product demos to interviews, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, cuts the pauses, and applies their brand. The shorts are made for LinkedIn, YouTube Shorts, Instagram Reels, and TikTok.
 
 ## Examples
 
-The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
+The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
 
 ## Time saved
 
-Editing a short by hand often takes over an hour: scrubbing the recording for the moment, then cropping, captioning and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the team's time per clip is a few minutes to pick and review.
+Editing a short by hand often takes over an hour: scrubbing the recording for the moment, then cropping, captioning, and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the time per short is a few minutes to pick and review.
 
 ## How it works
 
-1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
+1. **Upload your footage**: a webinar, a demo, a livestream, or any raw footage. The video file you already have.
 2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
-3. **Get clips ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses trimmed, in the brand. With a template set up once, moments from several recordings can be combined with a fresh intro recorded on camera. The team reviews them, then posts.
+3. **Get shorts ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses cut, in the brand. With a template set up once, moments from several recordings can be combined with a new intro recorded on camera. The team reviews them, then posts.
 
-It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Runs can start from a team's own tools through the API, or from Claude Code, Claude Desktop and any other MCP client.
+It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Runs can start from a team's own tools through the API, or from Claude Code, Claude Desktop, and any other MCP client.
 
 ## Why now
 
-Teams already record hours of video every week, and their buyers now watch short vertical clips on LinkedIn as much as anywhere else. The bottleneck is the edit, and it is still done by hand. AI can now follow what was said and what was on screen well enough to pick the moments and make the cut, so the whole job can finally be automated.
+Teams and creators already record hours of video every week, and their audiences now watch short vertical video on LinkedIn as much as on TikTok. The bottleneck is the edit, and it is still done by hand. AI can now follow what was said and what was on screen well enough to pick the moments and make the cut, so the whole job can finally be automated.
 
 ## Pricing
 
