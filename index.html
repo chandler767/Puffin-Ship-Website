@@ -412,7 +412,7 @@
        share one height and take their width from their own aspect ratio. */
     .carousel { --slide-h: 420px; position: relative; }
     .carousel-track {
-      display: flex; align-items: flex-start; gap: 20px; overflow-x: auto;
+      display: flex; align-items: flex-start; justify-content: safe center; gap: 20px; overflow-x: auto;
       scroll-snap-type: x mandatory; scroll-behavior: smooth;
       padding: 4px; scrollbar-width: none;
     }
@@ -423,11 +423,15 @@
       display: block; height: var(--slide-h); width: calc(var(--slide-h) * 9 / 16); object-fit: cover;
       background: var(--ink-900); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
     }
-    /* The landscape promo sits in the same card as the shorts, shown whole. */
-    .sample-wide video { object-fit: contain; }
+    .sample-frame { position: relative; }
+    .sample-fs {
+      position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border: 0; border-radius: 999px;
+      background: rgba(35,39,43,.62); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .sample-fs:hover, .sample-fs:focus-visible { background: rgba(35,39,43,.85); }
     .sample figcaption { margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--text-strong); text-align: center; }
-    .sample-note { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
     .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 14px; }
+    .carousel-nav[hidden] { display: none; }
     .carousel-btn {
       width: 44px; height: 44px; border-radius: 999px; border: 1.5px solid var(--border-default);
       background: var(--surface-card); color: var(--ink-900); font-size: 22px; line-height: 1; cursor: pointer;
@@ -775,46 +779,52 @@
   </div>
 
   <!-- ── Examples ───────────────────────────────────────────────────────── -->
-  <!-- Wording matters here: the product promo was made entirely in Puffin
-       Ship. The four shorts were made with the same process it automates, not
-       all in Puffin Ship itself, so keep "the same process" for them, and keep
-       the 100,000 views tied to those 4 only. -->
+  <!-- Wording matters here: not every one of these was made in Puffin Ship
+       itself, only with the same process it automates. Keep the copy at "the
+       kind of shorts" and "the same process" until they're replaced with
+       shorts made entirely in Puffin Ship. -->
   <section id="examples" class="wrap section-pad" aria-labelledby="examples-h">
     <div class="section-head">
       <div class="eyebrow">Examples</div>
-      <h2 id="examples-h" class="section-h2">The kind of videos it makes</h2>
-      <p class="section-sub">Made with the process Puffin Ship automates. The four shorts alone have passed 100,000&nbsp;views.</p>
+      <h2 id="examples-h" class="section-h2">The kind of shorts it makes</h2>
+      <p class="section-sub">Made with the process Puffin Ship automates. Together just these 4 samples have passed 100,000&nbsp;views.</p>
     </div>
     <div class="carousel">
       <div class="carousel-track" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Example videos">
-        <figure class="sample sample-wide">
-          <video controls playsinline preload="none" poster="assets/samples/product-promo.jpg?v=2" aria-label="A 30-second product promo cut together from several feature demo videos, with captions.">
-            <source src="assets/samples/product-promo.mp4" type="video/mp4" />
-          </video>
-          <figcaption>Product promo<span class="sample-note">Made in Puffin Ship</span></figcaption>
-        </figure>
         <figure class="sample">
-          <video controls playsinline preload="none" poster="assets/samples/news-explainer.jpg?v=3" aria-label="A talking-head news short with b-roll and captions.">
-            <source src="assets/samples/news-explainer.mp4" type="video/mp4" />
+          <div class="sample-frame">
+            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="assets/samples/news-explainer.jpg?v=3" aria-label="A talking-head news short with b-roll and captions.">
+            <source src="assets/samples/news-explainer.mp4?v=2" type="video/mp4" />
           </video>
+            <button type="button" class="sample-fs" aria-label="Play full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
           <figcaption>News explainer</figcaption>
         </figure>
         <figure class="sample">
-          <video controls playsinline preload="none" poster="assets/samples/webinar-to-short.jpg" aria-label="Part of a recorded webinar, cut into a vertical short with captions.">
-            <source src="assets/samples/webinar-to-short.mp4" type="video/mp4" />
+          <div class="sample-frame">
+            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="assets/samples/webinar-to-short.jpg" aria-label="Part of a recorded webinar, cut into a vertical short with captions.">
+            <source src="assets/samples/webinar-to-short.mp4?v=2" type="video/mp4" />
           </video>
+            <button type="button" class="sample-fs" aria-label="Play full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
           <figcaption>Webinar to short</figcaption>
         </figure>
         <figure class="sample">
-          <video controls playsinline preload="none" poster="assets/samples/event-interview.jpg" aria-label="A conversation recorded at an event, framed and captioned for vertical.">
-            <source src="assets/samples/event-interview.mp4" type="video/mp4" />
+          <div class="sample-frame">
+            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="assets/samples/event-interview.jpg" aria-label="A conversation recorded at an event, framed and captioned for vertical.">
+            <source src="assets/samples/event-interview.mp4?v=2" type="video/mp4" />
           </video>
+            <button type="button" class="sample-fs" aria-label="Play full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
           <figcaption>Event interview</figcaption>
         </figure>
         <figure class="sample">
-          <video controls playsinline preload="none" poster="assets/samples/educational-short.jpg" aria-label="A talking-head explainer with on-screen slides and captions.">
-            <source src="assets/samples/educational-short.mp4" type="video/mp4" />
+          <div class="sample-frame">
+            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="assets/samples/educational-short.jpg" aria-label="A talking-head explainer with on-screen slides and captions.">
+            <source src="assets/samples/educational-short.mp4?v=2" type="video/mp4" />
           </video>
+            <button type="button" class="sample-fs" aria-label="Play full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
           <figcaption>Educational short</figcaption>
         </figure>
       </div>
@@ -1195,8 +1205,10 @@
       var prev = document.querySelector('.carousel-btn[data-dir="-1"]');
       var next = document.querySelector('.carousel-btn[data-dir="1"]');
       var slides = Array.prototype.slice.call(track.querySelectorAll('.sample'));
+      var nav = document.querySelector('.carousel-nav');
       function update() {
         var max = track.scrollWidth - track.clientWidth - 2;
+        nav.hidden = max <= 0;
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= max;
       }
@@ -1218,6 +1230,22 @@
       track.addEventListener('play', function (e) {
         track.querySelectorAll('video').forEach(function (v) { if (v !== e.target) v.pause(); });
       }, true);
+      track.querySelectorAll('.sample-fs').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var v = btn.parentNode.querySelector('video');
+          var go = v.requestFullscreen || v.webkitRequestFullscreen;
+          if (go) {
+            var req = go.call(v);
+            if (req && req.catch) req.catch(function () {}); // blocked: just play inline
+            v.play();
+          }
+          else if (v.webkitEnterFullscreen) { v.play(); v.webkitEnterFullscreen(); } // iPhone
+        });
+      });
+      // Discourage "Save video as" from the right-click menu.
+      track.addEventListener('contextmenu', function (e) {
+        if (e.target.tagName === 'VIDEO') e.preventDefault();
+      });
       update();
     })();
   </script>
