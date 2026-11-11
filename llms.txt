@@ -2,6 +2,10 @@
 
 > Puffin Ship is automated video production: a platform that turns recorded video into on-brand shorts. It is for marketing teams, agencies, and creators with more recordings than editing time. Teams and creators upload the raw footage they already record, from webinars and product demos to interviews, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, cuts the pauses, and applies their brand. The shorts are made for LinkedIn, YouTube Shorts, Instagram Reels, and TikTok.
 
+## What makes it different
+
+It is not just another clipper. Clipping tools cut one long video into pieces. Puffin Ship builds finished shorts from all of a team's footage: moments from several recordings, a new intro recorded on camera, and the same brand on every one.
+
 ## Examples
 
 The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
@@ -21,6 +25,10 @@ It works on almost any footage: webinars, demos, interviews, talking heads, educ
 ## Why now
 
 Everyone records hours of video, but cutting it into shorts is still done by hand. AI can now understand footage well enough to do that job.
+
+## Who's building it
+
+Puffin Ship is built by Chandler Mayo, who has been running it to make shorts for early teams. Puffin Ship, Inc. is the company behind it.
 
 ## Pricing
 
