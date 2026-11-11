@@ -48,7 +48,7 @@ Teams that would rather not set it up themselves can have the Puffin Ship team d
 
 ## Pricing
 
-There is one plan for everyone, priced by usage. There are no tiers and no per-seat charges, and every workspace gets every feature. New accounts start with credit included, so the first clips can be made before spending anything. The bill shows what each template and each teammate used.
+There is one plan for everyone, priced by usage. There are no tiers and no per-seat charges, and every workspace gets every feature. New workspaces start with $25 in credit, so the first clips can be made before spending anything. The bill shows what each template and each teammate used. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
 
 ## Your footage
 

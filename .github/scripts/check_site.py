@@ -10,7 +10,9 @@ Rules (see CLAUDE.md and the repositioning design):
 - No "early access", "waitlist", "launching soon", "beta" or "free" (the
   product is not free; new accounts get starting credit). Hyphenated forms
   like "free-form" are allowed.
-- No dollar amounts (the starting credit amount may change).
+- No dollar amounts, except the approved credit offer CREDIT_OFFER. Wherever
+  it appears, "Some restrictions apply" must link to the Terms (TERMS_URL);
+  in llms.txt the phrase and the Terms URL must both be present.
 - Every in-page anchor points at an id that exists.
 - Every "Get started" link carries data-signup and points at SIGNUP_URL, and
   at least one exists.
@@ -23,6 +25,10 @@ import sys
 from html.parser import HTMLParser
 
 SIGNUP_URL = "https://app.puffinship.com/login"
+TERMS_URL = "https://app.puffinship.com/terms"
+# The one dollar figure the site may state. Change it here when the offer changes.
+CREDIT_OFFER = "$25 in credit"
+RESTRICTIONS_RE = re.compile(r"restrictions\s+apply", re.I)
 
 EM_DASH = "—"
 BANNED = ["early access", "waitlist", "launching soon", "beta", "free"]
@@ -137,7 +143,7 @@ def _copy_rules(where, s):
         out.append(f"{where}: em dash in {_around(s, i, i + 1)!r}")
     for m in BANNED_RE.finditer(s):
         out.append(f"{where}: banned word {m.group(0).lower()!r} in {_around(s, m.start(), m.end())!r}")
-    m = DOLLAR_RE.search(s)
+    m = DOLLAR_RE.search(s.replace(CREDIT_OFFER, " " * len(CREDIT_OFFER)))
     if m:
         out.append(f"{where}: dollar amount in {_around(s, m.start(), m.end())!r}")
     return out
@@ -178,6 +184,15 @@ def check(html, llms):
 
     for i, line in enumerate(llms.splitlines(), 1):
         problems += _copy_rules(f"llms.txt:{i}", line)
+
+    page_text = " ".join([_norm(" ".join(p.text))] + [v for _, _, v in p.attrs]
+                         + [x for d in docs for x in _strings(d)])
+    if CREDIT_OFFER in page_text and not any(
+            RESTRICTIONS_RE.search(l["text"]) and l["href"] == TERMS_URL for l in p.links):
+        problems.append(f"the page states {CREDIT_OFFER!r} but has no "
+                        f"'Some restrictions apply' link to {TERMS_URL}")
+    if CREDIT_OFFER in llms and not (RESTRICTIONS_RE.search(llms) and TERMS_URL in llms):
+        problems.append(f"llms.txt states {CREDIT_OFFER!r} without 'Some restrictions apply' and {TERMS_URL}")
 
     for href in p.anchors:
         if href != "#" and href[1:] not in p.ids:

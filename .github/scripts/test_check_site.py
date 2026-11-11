@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
-from check_site import SIGNUP_URL, check  # noqa: E402
+from check_site import SIGNUP_URL, TERMS_URL, check  # noqa: E402
 
 EM = "—"
 
@@ -157,6 +157,27 @@ class CheckSiteTests(unittest.TestCase):
 
     def test_free_form_and_hyphenated_free_not_flagged(self):
         self.assertClean(page(body_extra="<p>Write free-form notes.</p>"))
+
+    RESTRICT = f'<a href="{TERMS_URL}">Some restrictions apply.</a>'
+
+    def test_approved_credit_amount_allowed(self):
+        self.assertClean(page(body_extra=f"<p>New workspaces start with $25 in credit. {self.RESTRICT}</p>"),
+                         llms=f"# P\n\nNew workspaces start with $25 in credit. Some restrictions apply: {TERMS_URL}\n")
+
+    def test_other_dollar_amounts_still_flagged(self):
+        for txt in ["New workspaces start with $50 in credit.", "Only $25 a month.",
+                    "$25 in credit, then $9 per clip."]:
+            self.assertFlags(page(body_extra=f"<p>{txt} {self.RESTRICT}</p>"), "dollar amount")
+
+    def test_credit_amount_without_restrictions_link_flagged(self):
+        self.assertFlags(page(body_extra="<p>Start with $25 in credit.</p>"), "restrictions")
+
+    def test_restrictions_link_must_point_at_terms(self):
+        self.assertFlags(page(body_extra='<p>Start with $25 in credit. '
+                                         '<a href="#faq">Some restrictions apply.</a></p>'), "restrictions")
+
+    def test_credit_amount_in_llms_needs_restrictions(self):
+        self.assertFlags(page(), "restrictions", llms="# P\n\nStart with $25 in credit.\n")
 
     def test_free_standing_still_flagged(self):
         self.assertFlags(page(body_extra="<p>It is free to try.</p>"), "free")

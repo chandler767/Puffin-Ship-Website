@@ -153,7 +153,7 @@
           "name": "How much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "There is one plan, priced by what you use. New accounts start with credit included, and your bill shows what each template and teammate used."
+            "text": "There is one plan, priced by what you use. New workspaces start with $25 in credit, and your bill shows what each template and teammate used. Some restrictions apply."
           }
         },
         {
@@ -413,6 +413,9 @@
       max-width: 56ch; margin: 0 auto var(--space-8); text-wrap: pretty;
     }
     .hero-actions { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: 14px; }
+    .hero-credit { font-size: 14px; color: var(--text-muted); margin: 0 0 10px; }
+    .fine-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    .fine-link:hover { color: var(--ink-900); }
     .hero-alt { font-size: 15px; margin-bottom: 22px; }
     .hero-alt a { color: var(--ocean-500); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
     .hero-alt a:hover { color: var(--ocean-600); }
@@ -732,6 +735,7 @@
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
         <a href="#how" class="btn btn-outline btn-lg">See how it works</a>
       </div>
+      <p class="hero-credit">New workspaces start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
       <p class="hero-alt"><a href="#contact">Or have us set it up for you</a></p>
       <div class="hero-notes">
         <p class="hero-note">
@@ -1022,8 +1026,8 @@
     </div>
     <div class="who-grid">
       <div class="card">
-        <h3 class="who-title">Credit to start</h3>
-        <p class="who-desc">Every new account starts with credit included, so you can make your first clips before you spend anything.</p>
+        <h3 class="who-title">$25 in credit to start</h3>
+        <p class="who-desc">New workspaces start with $25 in credit, so you can make your first clips before you spend anything. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
       </div>
       <div class="card">
         <h3 class="who-title">Priced by usage</h3>
@@ -1071,7 +1075,7 @@
         </div>
         <div class="faq-item">
           <h3 class="faq-q">How much does it cost?</h3>
-          <p class="faq-a">There is one plan, priced by what you use. New accounts start with credit included, and your bill shows what each template and teammate used.</p>
+          <p class="faq-a">There is one plan, priced by what you use. New workspaces start with $25 in credit, and your bill shows what each template and teammate used. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">Can you set it up for us?</h3>
