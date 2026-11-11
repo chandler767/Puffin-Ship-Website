@@ -8,7 +8,7 @@ It is not just another clipper. Clipping tools cut one long video into pieces. P
 
 ## Examples
 
-The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
+The site shows a product promo made in Puffin Ship, cut together from a set of feature demo videos, plus four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just those 4 shorts have passed 100,000 views.
 
 ## Time saved
 
