@@ -1,64 +1,44 @@
 # Puffin Ship
 
-> Puffin Ship is automated video production: a platform that turns recorded video into on-brand short clips. Teams upload the webinars, product demos, livestreams and podcast episodes they already record, or anything else they film, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. The clips are vertical and made for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
+> Puffin Ship is automated video production: a platform that turns recorded video into on-brand short clips. It is for marketing teams and agencies with more recordings than editing time. Teams upload the webinars, product demos and interviews they already record, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. The clips are made for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
 
-## How it works
+## Examples
 
-1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
-2. **It suggests the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
-3. **Get clips ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses trimmed, in the brand. With a template set up once, moments described in plain words can be found across recordings in the same workspace and combined with a fresh intro recorded on a teleprompter in the browser. The team reviews them, then posts.
-
-This is more than clipping. One short can combine a moment from a webinar, a moment from a product demo and a moment from a podcast, opened by a new intro recorded on camera, all cut together and finished in the brand.
+The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
 
 ## Time saved
 
 Editing a short by hand often takes over an hour: scrubbing the recording for the moment, then cropping, captioning and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the team's time per clip is a few minutes to pick and review.
 
-## Examples
+## How it works
 
-The site shows four example shorts (a webinar turned into a short, an event interview, an educational short and a news explainer) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
+1. **Upload a recording**: a webinar, a product demo, a livestream, a podcast episode. The video file you already have.
+2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
+3. **Get clips ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses trimmed, in the brand. With a template set up once, moments from several recordings can be combined with a fresh intro recorded on camera. The team reviews them, then posts.
 
-## Why teams use it
+It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Runs can start from a team's own tools through the API, or from Claude Code, Claude Desktop and any other MCP client.
 
-- **More out of every recording.** It suggests the moments worth posting, and each one picked becomes its own clip: cropped for vertical, captioned, pauses cut.
-- **The same look on every clip.** A template sets the colors, captions and layout once. Clip two hundred looks like clip one, whoever on the team made it. A run can stop and wait for review before it finishes, and nothing is posted on anyone's behalf.
-- **Built to automate.** Runs, templates and files are available through an API, so teams can start runs from their own systems on their own schedule. Claude Code, Claude Desktop and any other MCP client can drive Puffin Ship directly, including writing templates.
+## Why now
 
-## Not just webinars
-
-If it can be recorded, it can become clips. The same templates that cut up a webinar work on whatever footage a team has, long or short:
-
-- **Talking heads and interviews**: upload what was shot, or paste a script and record it in the browser on a teleprompter. It trims the pauses, frames the speaker for vertical and adds captions.
-- **Gameplay and screen recordings with commentary**: a play session, a walkthrough or an on-screen tutorial, talked through as it goes. It pulls out the highlights, keeps the screen in view and captions the commentary.
-- **Educational shorts**: one idea per video, explained on camera and finished in the brand, made the same way every time.
-
-## Who it's for
-
-- **Marketing teams with webinars and demos** (the main audience): teams that already record a webinar, a launch demo or a customer session every week and want a steady run of clips from each one without adding an editor.
-- **Agencies**: run the same system for every client, each in its own workspace with its own template and look.
-- **Streamers and podcasters**: every stream or episode becomes highlights for Shorts, Reels and TikTok without scrubbing through hours of footage.
-
-## Ready-made templates
-
-No template has to be built first. Teams start from ready-made ones, including Webinar to Clips, Stream and Screen Highlights, Trim Dead Space, Teleprompter Short, Demo Explainer Short, News Talking Head and Assemble Clips, and change them later. None needs an account with another service.
-
-## Set up for you
-
-Teams that would rather not set it up themselves can have the Puffin Ship team do it, as much or as little as they need: building templates around their brand, fitting Puffin Ship into how they already work, or running it for them and handing over finished clips. Ask through the form at https://puffinship.com/#contact.
+Teams already record hours of video every week, and their buyers now watch short vertical clips on LinkedIn as much as anywhere else. The bottleneck is the edit, and it is still done by hand. AI can now follow what was said and what was on screen well enough to pick the moments and make the cut, so the whole job can finally be automated.
 
 ## Pricing
 
-There is one plan for everyone, priced by usage. There are no tiers and no per-seat charges, and every workspace gets every feature. New workspaces start with $25 in credit, so the first clips can be made before spending anything. The bill shows what each template and each teammate used. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
+One plan, priced by usage, with no tiers and no seats. New workspaces start with $25 in credit. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
 
 ## Your footage
 
 Customers keep ownership of everything they upload, and it is used to make their videos. Rated runs can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
 
+## Set up for you
+
+Teams that would rather not set it up themselves can have the Puffin Ship team build their templates, fit it into how they already work, or run it for them. Ask through the form at https://puffinship.com/#contact.
+
 ## Get started
 
 - Sign up: https://app.puffinship.com/login
-- Help setting it up: https://puffinship.com/#contact
 - Documentation: https://app.puffinship.com/docs/ (public, no sign-in needed; start with https://app.puffinship.com/docs/getting-started.html)
+- Help setting it up: https://puffinship.com/#contact
 
 ## Contact
 
