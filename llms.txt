@@ -1,6 +1,6 @@
 # Puffin Ship
 
-> Puffin Ship is automated video production: a platform that turns recorded video into on-brand short clips. It is for marketing teams, agencies and creators with more recordings than editing time. Teams upload the webinars, product demos and interviews they already record, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. The clips are made for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
+> Puffin Ship is automated video production: a platform that turns recorded video into on-brand short clips. It is for marketing teams, agencies, and creators with more recordings than editing time. Teams upload the webinars, product demos and interviews they already record, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, trims dead air and applies their brand. The clips are made for LinkedIn, YouTube Shorts, Instagram Reels and TikTok.
 
 ## Examples
 
