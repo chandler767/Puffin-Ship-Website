@@ -12,7 +12,7 @@ This is more than clipping. One short can combine a moment from a webinar, a mom
 
 ## Time saved
 
-Editing a short by hand usually takes about an hour: scrubbing the recording for the moment, then cropping, captioning and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the team's time per clip is a few minutes to pick and review.
+Editing a short by hand often takes over an hour: scrubbing the recording for the moment, then cropping, captioning and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the team's time per clip is a few minutes to pick and review.
 
 ## Examples
 
