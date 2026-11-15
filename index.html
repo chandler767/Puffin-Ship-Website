@@ -139,7 +139,7 @@
           "name": "How much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "There is one plan, priced by what you use. New workspaces start with $25 in credit, and your bill shows what each template and teammate used. Some restrictions apply."
+            "text": "There is one plan, priced by what you use. A token is one cent, and a typical short uses about 100 to 350 tokens. New accounts start with $25 in credit, and your bill shows what each template and teammate used. Some restrictions apply."
           }
         },
         {
@@ -563,6 +563,27 @@
     .who-desc { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-muted); }
     .pricing-cta { display: flex; justify-content: center; margin-top: 32px; }
 
+    /* ── Pricing ──────────────────────────────────────────────────────────── */
+    .price-figure {
+      font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1;
+      letter-spacing: -0.03em; color: var(--text-strong); margin: 0 0 4px;
+      font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .price-figure small { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--text-muted); margin-left: 4px; }
+    .price-label { font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; margin: 0 0 10px; color: var(--accent-press); }
+    .price-card .step-desc + .step-desc { margin-top: 8px; }
+    .price-uses {
+      margin: 28px auto 0; max-width: 820px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      background: var(--bg-inset); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px 28px;
+    }
+    .price-uses h3 { font-family: var(--font-display); font-weight: 600; font-size: 16px; margin: 0 0 8px; color: var(--text-strong); }
+    .price-uses ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
+    .price-note { margin: 16px auto 0; max-width: 64ch; font-size: 13px; color: var(--text-muted); text-align: center; text-wrap: pretty; }
+    @media (max-width: 880px) {
+      .price-uses { grid-template-columns: 1fr; padding: 20px; }
+      .price-figure { font-size: 34px; }
+    }
+
     /* ── Footer ───────────────────────────────────────────────────────────── */
     .footer-wrap { border-top: 1px solid var(--border-subtle); background: var(--ink-50); }
     .footer-inner { padding: 48px var(--space-8) 28px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
@@ -712,7 +733,7 @@
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
         <a href="#examples" class="btn btn-outline btn-lg">See examples</a>
       </div>
-      <p class="hero-credit">New workspaces start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+      <p class="hero-credit">New accounts start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
       <figure class="hero-visual">
         <h2 class="hero-diff">Not just another clipper.</h2>
         <div role="img" aria-label="Moments from a webinar, a product demo, and a podcast, plus a new intro recorded on camera, become one finished vertical short with captions and branding.">
@@ -922,8 +943,44 @@
     <div class="section-head">
       <div class="eyebrow">Pricing</div>
       <h2 id="pricing-h" class="section-h2">One plan. Pay for what you use.</h2>
-      <p class="section-sub">Priced by usage, with no tiers and no seats. New workspaces start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+      <p class="section-sub">Priced by usage in tokens, with no tiers and no seats. Every workspace gets every feature.</p>
     </div>
+    <div class="steps-grid">
+      <div class="card price-card">
+        <p class="price-figure">1<small>cent</small></p>
+        <h3 class="price-label">per token</h3>
+        <p class="step-desc">Tokens pay for the AI work: writing scripts, choosing the cuts and footage, and reading your uploads. Transcription and captions use none.</p>
+      </div>
+      <div class="card price-card">
+        <p class="price-figure"><span aria-label="100 to 350">100&ndash;350</span><small>tokens</small></p>
+        <h3 class="price-label">for a typical short</h3>
+        <p class="step-desc">A 45 to 60 second short. One with a lot of cut-in footage or animated graphics can use up to about 800.</p>
+        <p class="step-desc">Rerun after a small change and the steps that come out the same are reused, so it costs far less.</p>
+      </div>
+      <div class="card price-card">
+        <p class="price-figure">2,500<small>tokens</small></p>
+        <h3 class="price-label">to start</h3>
+        <p class="step-desc">New accounts start with $25 in credit, enough for roughly 7 to 25 shorts. Nothing is charged automatically. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+      </div>
+    </div>
+    <div class="price-uses">
+      <div>
+        <h3>You always see what you used</h3>
+        <ul>
+          <li>Every run shows its tokens as it goes.</li>
+          <li>Your bill breaks usage down by template, run and teammate.</li>
+          <li>A monthly limit on each workspace stops a runaway template.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Billed by the service, not by us</h3>
+        <ul>
+          <li>Avatars, voices, generated video and images, and stock footage use your own HeyGen, ElevenLabs, Google or Pexels account.</li>
+          <li>The ready-made templates need none of them.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note">Token figures are from shorts made so far and depend on your footage and what you ask for. Need more tokens? <a class="fine-link" href="#contact">Contact us</a> and you'll see the price before you pay.</p>
     <div class="pricing-cta">
       <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
     </div>
@@ -953,7 +1010,7 @@
         </div>
         <div class="faq-item">
           <h3 class="faq-q">How much does it cost?</h3>
-          <p class="faq-a">There is one plan, priced by what you use. New workspaces start with $25 in credit, and your bill shows what each template and teammate used. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+          <p class="faq-a">There is one plan, priced by what you use. A token is one cent, and a typical short uses about 100 to 350 tokens. New accounts start with $25 in credit, and your bill shows what each template and teammate used. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">Does it work with our tools and AI agents?</h3>

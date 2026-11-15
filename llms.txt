@@ -36,7 +36,7 @@ Puffin Ship is built by Chandler Mayo (https://www.linkedin.com/in/chandlermayo)
 
 ## Pricing
 
-One plan, priced by usage, with no tiers and no seats. New workspaces start with $25 in credit. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
+One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent and pays for the AI work (writing scripts, choosing cuts and footage, reading uploads); transcription and captions use none. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Services connected with your own keys (HeyGen, ElevenLabs, Google, Pexels) bill you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
 
 ## Your footage
 
