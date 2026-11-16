@@ -434,22 +434,24 @@
     }
 
 
-    /* ── Product tour ────────────────────────────────────────────────────── */
-    .tour { padding: 24px var(--space-8) 72px; }
-    .tour-player {
-      position: relative; max-width: 1000px; margin: 0 auto; aspect-ratio: 16 / 9;
+    /* ── Hero video ──────────────────────────────────────────────────────── */
+    /* Wide screens: copy on the left, the tour on the right, both above the
+       fold. Narrow screens: one column with the video right under the
+       headline, so it is still above the fold on a phone. */
+    .hero-media {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
       border-radius: var(--radius-xl); overflow: hidden; background: var(--ink-900);
       box-shadow: var(--shadow-xl), 0 0 0 1px rgba(35,39,43,.08);
     }
-    .tour-player video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+    .hero-media video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
     .tour-play {
       position: absolute; inset: 0; border: 0; padding: 0; cursor: pointer; color: #fff;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
       background: radial-gradient(ellipse at center, rgba(15,20,30,.10) 0%, rgba(15,20,30,.45) 100%);
       font-family: var(--font-sans);
     }
     .tour-play-icon {
-      width: 88px; height: 88px; border-radius: 999px; background: var(--accent);
+      width: 80px; height: 80px; border-radius: 999px; background: var(--accent);
       display: inline-flex; align-items: center; justify-content: center; padding-left: 5px;
       box-shadow: 0 14px 40px -10px rgba(0,0,0,.55), 0 0 0 10px rgba(255,255,255,.14);
       transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
@@ -457,35 +459,35 @@
     .tour-play:hover .tour-play-icon, .tour-play:focus-visible .tour-play-icon { transform: scale(1.08); background: var(--accent-hover); }
     .tour-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
     .tour-play-label {
-      font-size: 16px; font-weight: 700; padding: 7px 14px; border-radius: 999px;
+      font-size: 15px; font-weight: 700; padding: 6px 13px; border-radius: 999px;
       background: rgba(15,20,30,.72); backdrop-filter: blur(4px);
     }
     .tour-play-len { font-weight: 500; opacity: .75; margin-left: 4px; }
-    .tour.is-playing .tour-play { display: none; }
-    .tour-chapters {
-      list-style: none; padding: 0; margin: 20px auto 0; max-width: 1000px;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    .hero-media.is-playing .tour-play { display: none; }
+    @media (min-width: 1001px) {
+      .hero {
+        max-width: 1280px; text-align: left; padding-top: 64px;
+        display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); column-gap: 56px; align-items: center;
+      }
+      .hero .hero-h1 { font-size: clamp(44px, 4.5vw, 66px); margin-left: 0; max-width: none; }
+      .hero .hero-chores, .hero .hero-actions { justify-content: flex-start; }
+      .hero .hero-body { margin-left: 0; }
+      .hero .hero-for { margin-left: 0; }
+      .hero-visual { grid-column: 1 / -1; text-align: center; }
     }
-    .tour-chap {
-      width: 100%; height: 100%; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px;
-      padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);
-      background: var(--surface-card); color: var(--text-body); font: inherit;
-      transition: border-color var(--dur-fast), background var(--dur-fast);
+    @media (max-width: 1000px) {
+      .hero { display: flex; flex-direction: column; align-items: center; }
+      .hero-copy { display: contents; }
+      .hero-copy > * { order: 2; max-width: 100%; }
+      .hero-copy > .hero-eyebrow, .hero-copy > .hero-h1 { order: 0; }
+      .hero-media { order: 1; max-width: 760px; margin: 4px 0 28px; }
+      .hero-visual { order: 3; width: 100%; }
     }
-    .tour-chap:hover { border-color: var(--border-strong); }
-    .tour-chap:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
-    .tour-chap-t { font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); }
-    .tour-chap-n { font-size: 14px; font-weight: 600; color: var(--text-strong); line-height: 1.3; }
-    .tour-chap[aria-current="true"] { border-color: var(--accent); background: var(--accent-tint); }
-    .tour-chap[aria-current="true"] .tour-chap-t { color: var(--accent); }
-    .btn-watch { gap: 8px; }
-    @media (max-width: 880px) { .tour { padding: 8px var(--space-5) 52px; } }
     @media (max-width: 600px) {
-      .tour-player { border-radius: var(--radius-lg); }
-      .tour-play-icon { width: 64px; height: 64px; }
-      .tour-play-icon svg { width: 24px; height: 24px; }
-      .tour-play-label { font-size: 14px; }
-      .tour-chapters { grid-template-columns: repeat(2, 1fr); }
+      .hero-media { border-radius: var(--radius-lg); }
+      .tour-play-icon { width: 60px; height: 60px; }
+      .tour-play-icon svg { width: 22px; height: 22px; }
+      .tour-play-label { font-size: 13px; }
     }
     @media (prefers-reduced-motion: reduce) { .tour-play-icon { transition: none; } }
 
@@ -820,7 +822,6 @@
         <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
       </a>
       <nav class="nav-links">
-        <a href="#tour">Tour</a>
         <a href="#examples">Examples</a>
         <a href="#how">How it works</a>
         <a href="#why-now">Why now</a>
@@ -843,6 +844,7 @@
   <div class="hero-outer">
     <div class="hero-glow" aria-hidden="true"></div>
     <section class="wrap hero">
+      <div class="hero-copy">
       <div class="hero-eyebrow">Stop wasting time and money</div>
       <h1 class="hero-h1">Automate the <span>boring part</span> of making&nbsp;content.</h1>
       <ul class="hero-chores" aria-label="What Puffin Ship does for you">
@@ -855,9 +857,19 @@
       <p class="hero-for">For marketing teams, agencies, and creators.</p>
       <div class="hero-actions">
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
-        <a href="#tour" class="btn btn-outline btn-lg btn-watch"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>Watch the tour</a>
+        <a href="#examples" class="btn btn-outline btn-lg">See examples</a>
       </div>
       <p class="hero-credit">New accounts start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+      </div>
+      <div id="tour" class="hero-media">
+        <video id="tour-video" playsinline preload="none" poster="assets/tour/getting-started.jpg" aria-label="Getting started with Puffin Ship: a walkthrough of the app with captions.">
+          <source src="assets/tour/getting-started.mp4" type="video/mp4" />
+        </video>
+        <button type="button" class="tour-play" aria-label="Play the product tour">
+          <span class="tour-play-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
+          <span class="tour-play-label">Watch the tour <span class="tour-play-len">1:37</span></span>
+        </button>
+      </div>
       <figure class="hero-visual">
         <div role="img" aria-label="Moments from a webinar, a product demo, and a podcast, plus a new intro recorded on camera, become one finished vertical short with captions and branding.">
         <!-- Wide layout: moments from several sources, plus a new intro, flow
@@ -939,33 +951,6 @@
   </div>
 
 
-  <!-- ── Product tour ───────────────────────────────────────────────────── -->
-  <section id="tour" class="wrap tour" aria-labelledby="tour-h">
-    <div class="section-head">
-      <div class="eyebrow">Product tour</div>
-      <h2 id="tour-h" class="section-h2">See it work, start to finish, in under two&nbsp;minutes.</h2>
-      <p class="section-sub">From your dashboard to a finished video you can post or open in your editor. Jump to any part below.</p>
-    </div>
-    <div class="tour-player">
-      <video id="tour-video" playsinline preload="none" poster="assets/tour/getting-started.jpg" aria-label="Getting started with Puffin Ship: a walkthrough of the app with captions.">
-        <source src="assets/tour/getting-started.mp4" type="video/mp4" />
-      </video>
-      <button type="button" class="tour-play" aria-label="Play the product tour">
-        <span class="tour-play-icon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
-        <span class="tour-play-label">Watch the tour <span class="tour-play-len">1:37</span></span>
-      </button>
-    </div>
-    <ol class="tour-chapters" aria-label="Chapters">
-          <li><button type="button" class="tour-chap" data-t="0"><span class="tour-chap-t">0:00</span><span class="tour-chap-n">Hello</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="7"><span class="tour-chap-t">0:07</span><span class="tour-chap-n">Your dashboard</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="15"><span class="tour-chap-t">0:15</span><span class="tour-chap-n">Two ways to start</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="31"><span class="tour-chap-t">0:31</span><span class="tour-chap-n">Templates as recipes</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="41"><span class="tour-chap-t">0:41</span><span class="tour-chap-n">One template, many videos</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="53"><span class="tour-chap-t">0:53</span><span class="tour-chap-n">New video, one minute</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="64"><span class="tour-chap-t">1:04</span><span class="tour-chap-n">Hands-off editing</span></button></li>
-          <li><button type="button" class="tour-chap" data-t="78"><span class="tour-chap-t">1:18</span><span class="tour-chap-n">Export anywhere</span></button></li>
-    </ol>
-  </section>
 
   <!-- ── Examples ───────────────────────────────────────────────────────── -->
   <!-- Wording matters here: not every one of these was made in Puffin Ship
@@ -1257,8 +1242,7 @@
       <div>
         <div class="footer-col-head">Product</div>
         <div class="footer-col-links">
-          <a href="#tour">Tour</a>
-        <a href="#examples">Examples</a>
+          <a href="#examples">Examples</a>
           <a href="#how">How it works</a>
           <a href="#why-now">Why now</a>
           <a href="#pricing">Pricing</a>
@@ -1490,41 +1474,22 @@
   </script>
 
   <script>
-    // Product tour: a big play button over the poster, then native controls.
-    // Chapter buttons seek and play, and the current chapter stays highlighted.
+    // Hero tour video: a big play button over the poster, then native controls.
     (function () {
-      var sec = document.getElementById('tour');
-      if (!sec) return;
+      var box = document.getElementById('tour');
+      if (!box) return;
       var v = document.getElementById('tour-video');
-      var play = sec.querySelector('.tour-play');
-      var chaps = Array.prototype.slice.call(sec.querySelectorAll('.tour-chap'));
       var tracked = false;
-      function start(t) {
-        sec.classList.add('is-playing');
+      box.querySelector('.tour-play').addEventListener('click', function () {
+        box.classList.add('is-playing');
         v.controls = true;
-        if (typeof t === 'number') {
-          if (v.readyState >= 1) v.currentTime = t;
-          else v.addEventListener('loadedmetadata', function once() { v.removeEventListener('loadedmetadata', once); v.currentTime = t; });
-        }
         var p = v.play();
         if (p && p.catch) p.catch(function () {});
-      }
-      play.addEventListener('click', function () { start(); });
-      chaps.forEach(function (b) {
-        b.addEventListener('click', function () {
-          start(parseFloat(b.getAttribute('data-t')));
-          if (sec.getBoundingClientRect().top < 0) sec.scrollIntoView({ block: 'start' });
-        });
       });
       v.addEventListener('play', function () {
-        sec.classList.add('is-playing');
+        box.classList.add('is-playing');
         v.controls = true;
         if (!tracked && typeof gtag === 'function') { tracked = true; gtag('event', 'tour_play'); }
-      });
-      v.addEventListener('timeupdate', function () {
-        var cur = 0;
-        chaps.forEach(function (b, i) { if (v.currentTime >= parseFloat(b.getAttribute('data-t'))) cur = i; });
-        chaps.forEach(function (b, i) { if (i === cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
       });
       // Only one video on the page plays at a time.
       document.addEventListener('play', function (e) {
