@@ -115,7 +115,7 @@
           "name": "What does Puffin Ship do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It turns any raw footage you record, from webinars and product demos to interviews, into shorts that are ready to post. It finds the moments worth posting, crops them to vertical, adds captions, cuts the pauses, and applies your brand. With a template you set up once, it can also combine moments from several recordings, with a new intro you record on camera, into one short."
+            "text": "It automates video production. Describe the video you want in plain words, or start from a ready-made template, and it does the editing: it picks the best moments from all your recordings, cuts the pauses, frames the shot for any screen, and adds captions, b-roll, music, animated graphics and your brand. It can also write a script and put it on a teleprompter while you record, add AI voices and avatars, and bring in generated or stock footage. You get back a finished video, or a Final Cut Pro project if you want to keep editing. Set it up once and every new recording comes out the same way, whether you start it in the app, through the API, or from an AI agent."
           }
         },
         {
@@ -525,6 +525,11 @@
       border-bottom: 1px solid var(--border-subtle);
       padding: 56px var(--space-5);
     }
+    /* A statement right after another bordered band shares that band's rule
+       instead of drawing a second one beside it. */
+    .statement-band + .statement-band { padding-top: 0; }
+    .statement-band + .statement-band .statement,
+    .how-band + .statement-band .statement { border-top: 0; }
     .statement .eyebrow { margin-bottom: var(--space-4); }
     .statement-lead {
       font-family: var(--font-display); font-weight: 800;
@@ -561,27 +566,70 @@
 
     .who-title { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; margin: 0 0 6px; color: var(--text-strong); }
     .who-desc { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-muted); }
-    .pricing-cta { display: flex; justify-content: center; margin-top: 32px; }
 
     /* ── Pricing ──────────────────────────────────────────────────────────── */
-    .price-figure {
-      font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1;
-      letter-spacing: -0.03em; color: var(--text-strong); margin: 0 0 4px;
-      font-variant-numeric: tabular-nums; white-space: nowrap;
+    .price-table {
+      display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px;
+      max-width: 980px; margin: 0 auto; align-items: stretch;
     }
-    .price-figure small { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--text-muted); margin-left: 4px; }
-    .price-label { font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; margin: 0 0 10px; color: var(--accent-press); }
-    .price-card .step-desc + .step-desc { margin-top: 8px; }
-    .price-uses {
-      margin: 28px auto 0; max-width: 820px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-      background: var(--bg-inset); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px 28px;
+    .price-plan {
+      display: flex; flex-direction: column; gap: 22px;
+      background: var(--surface-card); border: 2px solid var(--accent);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 32px;
     }
-    .price-uses h3 { font-family: var(--font-display); font-weight: 600; font-size: 16px; margin: 0 0 8px; color: var(--text-strong); }
-    .price-uses ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
-    .price-note { margin: 16px auto 0; max-width: 64ch; font-size: 13px; color: var(--text-muted); text-align: center; text-wrap: pretty; }
+    .price-plan-name {
+      margin: 0 0 10px; font-family: var(--font-mono); font-size: var(--text-xs);
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-press);
+    }
+    .price-plan-price { margin: 0; display: flex; align-items: baseline; gap: 10px; }
+    .price-amount {
+      font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: 1;
+      letter-spacing: -0.04em; color: var(--text-strong);
+    }
+    .price-unit { font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--text-muted); }
+    .price-plan-credit {
+      margin: 14px 0 0; padding: 10px 14px; border-radius: var(--radius-md);
+      background: var(--accent-tint); color: var(--text-body); font-size: 14.5px; line-height: 1.5;
+    }
+    .price-includes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; flex: 1; }
+    .price-includes li {
+      position: relative; padding-left: 28px; font-size: 15px; line-height: 1.45; color: var(--text-body);
+    }
+    .price-includes li::before {
+      content: ""; position: absolute; left: 2px; top: 3px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent-subtle);
+    }
+    .price-includes li::after {
+      content: ""; position: absolute; left: 7px; top: 6px; width: 4px; height: 8px;
+      border: solid var(--accent-press); border-width: 0 2px 2px 0; transform: rotate(45deg);
+    }
+    .price-plan-cta { align-self: stretch; text-align: center; justify-content: center; }
+    .price-costs {
+      background: var(--bg-inset); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl); padding: 28px 32px;
+    }
+    .price-costs-h { font-family: var(--font-display); font-weight: 600; font-size: 18px; margin: 0 0 12px; color: var(--text-strong); }
+    .price-costs-h + .price-costs-p { margin-top: 0; }
+    .price-costs .price-credit-line + .price-costs-h { margin-top: 28px; }
+    .price-rows { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .price-rows thead th {
+      font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-faint); text-align: left; padding: 0 0 8px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .price-rows thead th:last-child, .price-rows td { text-align: right; }
+    .price-rows tbody th { font-weight: 500; color: var(--text-body); text-align: left; padding: 12px 16px 12px 0; }
+    .price-rows td {
+      padding: 12px 0; color: var(--text-strong); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .price-rows tbody tr + tr > * { border-top: 1px solid var(--border-subtle); }
+    .price-credit-line { margin: 14px 0 0; font-size: 15px; color: var(--text-body); }
+    .price-costs-p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-muted); }
+    .price-note { margin: 20px auto 0; max-width: 64ch; font-size: 13px; color: var(--text-muted); text-align: center; text-wrap: pretty; }
     @media (max-width: 880px) {
-      .price-uses { grid-template-columns: 1fr; padding: 20px; }
-      .price-figure { font-size: 34px; }
+      .price-table { grid-template-columns: 1fr; }
+      .price-plan, .price-costs { padding: 24px 20px; }
+      .price-amount { font-size: 52px; }
     }
 
     /* ── Footer ───────────────────────────────────────────────────────────── */
@@ -945,45 +993,39 @@
       <h2 id="pricing-h" class="section-h2">One plan. Pay for what you use.</h2>
       <p class="section-sub">Priced by usage in tokens, with no tiers and no seats. Every workspace gets every feature.</p>
     </div>
-    <div class="steps-grid">
-      <div class="card price-card">
-        <p class="price-figure">1<small>cent</small></p>
-        <h3 class="price-label">per token</h3>
-        <p class="step-desc">Tokens pay for the AI work: writing scripts, choosing the cuts and footage, and reading your uploads. Transcription and captions use none.</p>
-      </div>
-      <div class="card price-card">
-        <p class="price-figure"><span aria-label="100 to 350">100&ndash;350</span><small>tokens</small></p>
-        <h3 class="price-label">for a typical short</h3>
-        <p class="step-desc">A 45 to 60 second short. One with a lot of cut-in footage or animated graphics can use up to about 800.</p>
-        <p class="step-desc">Rerun after a small change and the steps that come out the same are reused, so it costs far less.</p>
-      </div>
-      <div class="card price-card">
-        <p class="price-figure">2,500<small>tokens</small></p>
-        <h3 class="price-label">to start</h3>
-        <p class="step-desc">New accounts start with $25 in credit, enough for roughly 7 to 25 shorts. Nothing is charged automatically. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
-      </div>
-    </div>
-    <div class="price-uses">
-      <div>
-        <h3>You always see what you used</h3>
-        <ul>
-          <li>Every run shows its tokens as it goes.</li>
-          <li>Your bill breaks usage down by template, run and teammate.</li>
-          <li>A monthly limit on each workspace stops a runaway template.</li>
+    <div class="price-table">
+      <div class="price-plan">
+        <div class="price-plan-head">
+          <p class="price-plan-name">Pay as you go</p>
+          <p class="price-plan-price"><span class="price-amount">1&cent;</span><span class="price-unit">per token</span></p>
+          <p class="price-plan-credit">New accounts start with $25 in credit (2,500 tokens). <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+        </div>
+        <ul class="price-includes">
+          <li>Every feature in every workspace</li>
+          <li>No tiers, no seats, invite your whole team</li>
+          <li>Every run shows its tokens as it goes</li>
+          <li>Usage broken down by template, run and teammate</li>
+          <li>A monthly limit on each workspace stops a runaway template</li>
+          <li>Nothing is charged automatically</li>
         </ul>
+        <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg price-plan-cta">Get started</a>
       </div>
-      <div>
-        <h3>Billed by the service, not by us</h3>
-        <ul>
-          <li>Avatars, voices, generated video and images, and stock footage use your own HeyGen, ElevenLabs, Google or Pexels account.</li>
-          <li>The ready-made templates need none of them.</li>
-        </ul>
+      <div class="price-costs">
+        <h3 class="price-costs-h">What a short uses</h3>
+        <table class="price-rows">
+          <thead><tr><th scope="col">Short</th><th scope="col">Tokens</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Typical 45 to 60 second short</th><td><span aria-label="100 to 350">100&ndash;350</span></td></tr>
+            <tr><th scope="row">Lots of cut-in footage or animated graphics</th><td>up to about 800</td></tr>
+            <tr><th scope="row">Rerun after a small change (unchanged steps are reused)</th><td>far less</td></tr>
+          </tbody>
+        </table>
+        <p class="price-credit-line"><strong>Your starting credit</strong> covers roughly 7 to 25 shorts.</p>
+        <h3 class="price-costs-h">Billed by the service, not by us</h3>
+        <p class="price-costs-p">Avatars, voices, generated video and images, and stock footage use your own account with the service that makes them, connected with your own key. The ready-made templates need none of them.</p>
       </div>
     </div>
     <p class="price-note">Token figures are from shorts made so far and depend on your footage and what you ask for. Need more tokens? <a class="fine-link" href="#contact">Contact us</a> and you'll see the price before you pay.</p>
-    <div class="pricing-cta">
-      <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
-    </div>
   </section>
 
   <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
@@ -998,7 +1040,7 @@
     <div class="faq-grid">
         <div class="faq-item">
           <h3 class="faq-q">What does Puffin Ship do?</h3>
-          <p class="faq-a">It turns any raw footage you record, from webinars and product demos to interviews, into shorts that are ready to post. It finds the moments worth posting, crops them to vertical, adds captions, cuts the pauses, and applies your brand. With a template you set up once, it can also combine moments from several recordings, with a new intro you record on camera, into one short.</p>
+          <p class="faq-a">It automates video production. Describe the video you want in plain words, or start from a ready-made template, and it does the editing: it picks the best moments from all your recordings, cuts the pauses, frames the shot for any screen, and adds captions, b-roll, music, animated graphics and your brand. It can also write a script and put it on a teleprompter while you record, add AI voices and avatars, and bring in generated or stock footage. You get back a finished video, or a Final Cut Pro project if you want to keep editing. Set it up once and every new recording comes out the same way, whether you start it in the app, through the API, or from an AI agent.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">What kinds of recordings work?</h3>
