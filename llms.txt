@@ -12,7 +12,7 @@ Teams start from a ready-made template, answer a few questions, or describe the 
 
 ## Examples
 
-The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
+The site shows four example shorts: a product tutorial and a science explainer made in Puffin Ship, plus a news explainer and an event interview made with the process Puffin Ship automates.
 
 ## Time saved
 
