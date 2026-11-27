@@ -17,6 +17,10 @@ Rules (see CLAUDE.md and the repositioning design):
 - Every "Get started" link carries data-signup and points at SIGNUP_URL, and
   at least one exists.
 - The FAQPage JSON-LD matches the visible FAQ word for word.
+- No aria-label on a generic element (span, div, p and the like) without a
+  role: screen readers ignore it there, so the label silently never reads.
+- A link or button with an aria-label contains its visible words in that
+  label (WCAG 2.5.3 Label in Name), so voice users can say what they see.
 """
 import html as htmllib
 import json
@@ -41,6 +45,8 @@ _PATTERNS = [r"(?<!-)free(?!-)" if w == "free" else r"[\W_]+".join(map(re.escape
 BANNED_RE = re.compile(r"\b(" + "|".join(_PATTERNS) + r")\b", re.I)
 DOLLAR_RE = re.compile(r"\$\s?\d")
 READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder", "value"}
+# Elements whose implicit role does not allow a name, so aria-label is ignored.
+GENERIC_TAGS = {"span", "div", "p", "em", "strong", "b", "i", "small", "code", "u", "s"}
 
 
 def _norm(s):
@@ -63,11 +69,14 @@ class _Collector(HTMLParser):
         self._faq_field = None  # "q" or "a" while inside one
         self._faq_buf = []
         self.faq = []           # list of [q, a]
+        self.ignored_labels = []  # (tag, label) for aria-label on a generic element
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if "id" in a:
             self.ids.add(a["id"])
+        if tag in GENERIC_TAGS and a.get("aria-label") and not a.get("role"):
+            self.ignored_labels.append((tag, a["aria-label"]))
         for k, v in attrs:
             if k in READABLE_ATTRS and v and tag != "script":
                 self.attrs.append((tag, k, v))
@@ -77,12 +86,14 @@ class _Collector(HTMLParser):
             self._buf = []
             return
         if tag == "button":
-            self._link = {"href": None, "data_signup": "data-signup" in a, "text": [], "tag": "button"}
+            self._link = {"href": None, "data_signup": "data-signup" in a, "text": [], "tag": "button",
+                          "label": a.get("aria-label")}
         if tag == "a":
             href = a.get("href") or ""
             if href.startswith("#"):
                 self.anchors.append(href)
-            self._link = {"href": href, "data_signup": "data-signup" in a, "text": [], "tag": "a"}
+            self._link = {"href": href, "data_signup": "data-signup" in a, "text": [], "tag": "a",
+                          "label": a.get("aria-label")}
         cls = (a.get("class") or "").split()
         if "faq-q" in cls:
             self._faq_field, self._faq_buf = "q", []
@@ -117,6 +128,10 @@ class _Collector(HTMLParser):
             self._link["text"].append(data)
         if self._faq_field:
             self._faq_buf.append(data)
+
+
+def _words(s):
+    return " ".join(re.findall(r"[a-z0-9]+", s.lower()))
 
 
 def _strings(obj):
@@ -209,6 +224,16 @@ def check(html, llms):
             problems.append(f"Get started link points at {l['href']!r}, not {SIGNUP_URL}")
         if not l["data_signup"]:
             problems.append("Get started link is missing data-signup")
+
+    for tag, label in p.ignored_labels:
+        problems.append(f"aria-label {label!r} on <{tag}> without a role is ignored by "
+                        f"screen readers; use visible or sr-only text instead")
+    for l in p.links:
+        label, text = l.get("label"), l["text"]
+        if label and re.search(r"[A-Za-z]", text):
+            if f" {_words(text)} " not in f" {_words(label)} ":
+                problems.append(f"<{l['tag']}> shows {text!r} but its aria-label is {label!r}; "
+                                f"the label must contain the visible words")
 
     visible_faq = [[q, a or ""] for q, a in p.faq]
     ld_faq = _jsonld_faq(docs)

@@ -182,6 +182,52 @@ class CheckSiteTests(unittest.TestCase):
     def test_free_standing_still_flagged(self):
         self.assertFlags(page(body_extra="<p>It is free to try.</p>"), "free")
 
+    # aria-label on generic elements
+    def test_aria_label_on_span_flagged(self):
+        self.assertFlags(page(body_extra='<td><span aria-label="100 to 350">100&ndash;350</span></td>'),
+                         "ignored by screen readers")
+
+    def test_aria_label_on_div_flagged(self):
+        self.assertFlags(page(body_extra='<div aria-label="Samples">x</div>'), "ignored by screen readers")
+
+    def test_aria_label_on_div_with_role_allowed(self):
+        self.assertClean(page(body_extra='<div role="img" aria-label="A diagram">x</div>'))
+
+    def test_aria_label_on_nav_and_section_allowed(self):
+        self.assertClean(page(body_extra='<nav aria-label="Main">x</nav><section aria-label="Examples">y</section>'))
+
+    def test_sr_only_text_pattern_allowed(self):
+        self.assertClean(page(body_extra='<span aria-hidden="true">1&ndash;2</span><span class="sr-only">1 to 2</span>'))
+
+    # Label in Name
+    def test_button_label_missing_visible_words_flagged(self):
+        self.assertFlags(page(body_extra='<button type="button" aria-label="Play the product tour">'
+                                         'Watch the tour <span>2:03</span></button>'), "must contain the visible words")
+
+    def test_link_label_missing_visible_words_flagged(self):
+        self.assertFlags(page(body_extra='<a href="#how" aria-label="Read more">Pricing</a>'),
+                         "must contain the visible words")
+
+    def test_label_containing_visible_words_allowed(self):
+        self.assertClean(page(body_extra='<a href="#how" aria-label="Pricing, opens the plan">Pricing</a>'))
+
+    def test_label_match_ignores_case_and_punctuation(self):
+        self.assertClean(page(body_extra='<button type="button" aria-label="watch the tour (2:03)">'
+                                         'Watch the tour, 2:03</button>'))
+
+    def test_partial_word_does_not_count_as_match(self):
+        self.assertFlags(page(body_extra='<a href="#how" aria-label="Watchful eyes">Watch</a>'),
+                         "must contain the visible words")
+
+    def test_symbol_only_button_with_label_allowed(self):
+        self.assertClean(page(body_extra='<button type="button" aria-label="Next video">&#8250;</button>'))
+
+    def test_icon_button_with_label_allowed(self):
+        self.assertClean(page(body_extra='<button type="button" aria-label="Play full screen"><svg></svg></button>'))
+
+    def test_button_without_label_allowed(self):
+        self.assertClean(page(body_extra='<button type="button">Watch the tour 2:03</button>'))
+
 
 if __name__ == "__main__":
     unittest.main()
