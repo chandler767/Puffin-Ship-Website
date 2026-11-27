@@ -40,7 +40,7 @@ One plan, priced by usage in tokens, with no tiers and no seats. A token is one 
 
 ## Your footage
 
-Customers keep ownership of everything they upload, and it is used to make their videos. Rated videos can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
+Customers keep ownership of everything they upload, and it is used to make their videos. Rated versions can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
 
 ## Set up for you
 

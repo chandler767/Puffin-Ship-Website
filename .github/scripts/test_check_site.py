@@ -183,5 +183,77 @@ class CheckSiteTests(unittest.TestCase):
         self.assertFlags(page(body_extra="<p>It is free to try.</p>"), "free")
 
 
+class RetiredTermTests(unittest.TestCase):
+    def flags(self, html, llms="# P\n"):
+        return [p for p in check(html, llms) if "retired product word" in p]
+
+    def test_template_in_visible_text_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Pick a ready-made template.</p>")))
+
+    def test_plural_and_capitalised_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Templates are recipes.</p>")))
+
+    def test_run_noun_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<li>Every run shows its tokens</li>")))
+
+    def test_runs_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Runs can start from the API.</p>")))
+
+    def test_rerun_and_hyphenated_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Rerun it.</p>")))
+        self.assertTrue(self.flags(page(body_extra="<p>A re-run is cheap.</p>")))
+
+    def test_run_group_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Open the run group.</p>")))
+        self.assertTrue(self.flags(page(body_extra="<p>Open the run-group.</p>")))
+
+    def test_attribute_flagged(self):
+        self.assertTrue(self.flags(page(body_extra='<img src="x.png" alt="A template gallery" />')))
+
+    def test_meta_content_flagged(self):
+        self.assertTrue(self.flags(page(head_extra='<meta name="x" content="Start runs anywhere." />')))
+
+    def test_faq_jsonld_flagged(self):
+        faq = [("Q?", "Write your templates for you.")]
+        self.assertTrue(self.flags(page(faq=faq)))
+
+    def test_llms_flagged(self):
+        self.assertTrue(self.flags(page(), llms="# P\n\nRated runs help.\n"))
+
+    def test_tour_video_jsonld_exempt(self):
+        tour = json.dumps({"@context": "https://schema.org", "@type": "VideoObject",
+                           "description": "two ways to start a template",
+                           "hasPart": [{"@type": "Clip", "name": "Templates as recipes"}]})
+        self.assertEqual(self.flags(page(head_extra=f'<script type="application/ld+json">{tour}</script>')), [])
+
+    def test_other_jsonld_not_exempt(self):
+        org = json.dumps({"@type": "Organization", "description": "It builds your template."})
+        self.assertTrue(self.flags(page(head_extra=f'<script type="application/ld+json">{org}</script>')))
+
+    def test_exemption_does_not_leak_into_visible_text(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Templates as recipes</p>")))
+
+    def test_allowed_plain_english_phrases(self):
+        body = ("<p>A steady run of shorts. The editing runs on its own. "
+                "The team can run it for them. It keeps running.</p>")
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+    def test_allowed_phrase_does_not_hide_a_second_use(self):
+        self.assertTrue(self.flags(page(body_extra="<p>A steady run of shorts, and every run is logged.</p>")))
+
+    def test_words_containing_run_not_flagged(self):
+        body = "<p>A runaway project stops. A frontrunner. Brunch. Rerunning nothing.</p>"
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+    def test_new_names_pass(self):
+        body = ("<p>Pick what you want to make and Puffin Ship builds the project. "
+                "Every version shows its tokens. Make a new version.</p>")
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+    def test_css_and_script_not_checked(self):
+        body = "<style>.g{grid-template-columns:1fr}</style><script>var run = 1;</script>"
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+
 if __name__ == "__main__":
     unittest.main()
