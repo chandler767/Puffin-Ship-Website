@@ -8,7 +8,7 @@ It is not just another clipper. Clipping tools cut one long video into pieces. P
 
 ## No editing or code needed
 
-Teams pick what they want to make and answer a few questions in a chat, or begin with a starter project, and Puffin Ship sets up the project. Moments can be found by describing them too, like "the part where we explain pricing."
+Teams pick what they want to make and answer a few questions in a chat, and Puffin Ship builds the project. Moments can be found by describing them too, like "the part where we explain pricing."
 
 ## Examples
 
@@ -36,7 +36,7 @@ Puffin Ship is built by Chandler Mayo (https://www.linkedin.com/in/chandlermayo)
 
 ## Pricing
 
-One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent, and every run shows the tokens it used, step by step. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Avatars, voices, generated video and images, and stock footage use your own account with each service, connected with your own key, and that service bills you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
+One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent, and every version shows the tokens it used, step by step. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Avatars, voices, generated video and images, and stock footage use your own account with each service, connected with your own key, and that service bills you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
 
 ## Your footage
 
