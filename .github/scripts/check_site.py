@@ -17,6 +17,14 @@ Rules (see CLAUDE.md and the repositioning design):
 - Every "Get started" link carries data-signup and points at SIGNUP_URL, and
   at least one exists.
 - The FAQPage JSON-LD matches the visible FAQ word for word.
+- No aria-label on a generic element (span, div, p and the like) without a
+  role: screen readers ignore it there, so the label silently never reads.
+- A link or button with an aria-label contains its visible words in that
+  label (WCAG 2.5.3 Label in Name), so voice users can say what they see.
+- Colour contrast (WCAG 1.4.3 AA) in the page's CSS: every pair in
+  CONTRAST_PAIRS meets its ratio once the :root tokens are resolved, any rule
+  that sets both a text colour and a solid background meets 4.5:1, and the
+  bright brand blue (LIGHT_ACCENT) is never used as a text colour.
 """
 import html as htmllib
 import json
@@ -41,6 +49,20 @@ _PATTERNS = [r"(?<!-)free(?!-)" if w == "free" else r"[\W_]+".join(map(re.escape
 BANNED_RE = re.compile(r"\b(" + "|".join(_PATTERNS) + r")\b", re.I)
 DOLLAR_RE = re.compile(r"\$\s?\d")
 READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder", "value"}
+# Elements whose implicit role does not allow a name, so aria-label is ignored.
+GENERIC_TAGS = {"span", "div", "p", "em", "strong", "b", "i", "small", "code", "u", "s"}
+
+
+# Text colour / background token pairs the page relies on, with the minimum
+# ratio. Token names resolve through :root; plain hex values are used as is.
+_LIGHT_BGS = ["--white", "--paper", "--ink-50"]
+CONTRAST_PAIRS = (
+    [(fg, bg, 4.5) for fg in ("--text-body", "--text-muted", "--text-faint", "--accent-strong")
+     for bg in _LIGHT_BGS]
+    + [("#FFFFFF", bg, 4.5) for bg in ("--accent-strong", "--accent-hover", "--accent-press")]
+)
+# The bright brand blue is 2.7:1 on white: fine for fills and art, never for text.
+LIGHT_ACCENT = {"--accent", "--orange-500", "#18a8e0"}
 
 
 def _norm(s):
@@ -63,11 +85,15 @@ class _Collector(HTMLParser):
         self._faq_field = None  # "q" or "a" while inside one
         self._faq_buf = []
         self.faq = []           # list of [q, a]
+        self.ignored_labels = []  # (tag, label) for aria-label on a generic element
+        self.css = []           # contents of <style> blocks
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if "id" in a:
             self.ids.add(a["id"])
+        if tag in GENERIC_TAGS and a.get("aria-label") and not a.get("role"):
+            self.ignored_labels.append((tag, a["aria-label"]))
         for k, v in attrs:
             if k in READABLE_ATTRS and v and tag != "script":
                 self.attrs.append((tag, k, v))
@@ -77,12 +103,14 @@ class _Collector(HTMLParser):
             self._buf = []
             return
         if tag == "button":
-            self._link = {"href": None, "data_signup": "data-signup" in a, "text": [], "tag": "button"}
+            self._link = {"href": None, "data_signup": "data-signup" in a, "text": [], "tag": "button",
+                          "label": a.get("aria-label")}
         if tag == "a":
             href = a.get("href") or ""
             if href.startswith("#"):
                 self.anchors.append(href)
-            self._link = {"href": href, "data_signup": "data-signup" in a, "text": [], "tag": "a"}
+            self._link = {"href": href, "data_signup": "data-signup" in a, "text": [], "tag": "a",
+                          "label": a.get("aria-label")}
         cls = (a.get("class") or "").split()
         if "faq-q" in cls:
             self._faq_field, self._faq_buf = "q", []
@@ -93,6 +121,8 @@ class _Collector(HTMLParser):
         if tag in ("script", "style"):
             if tag == "script" and self._script_type == "application/ld+json":
                 self.jsonld.append("".join(self._buf))
+            if tag == "style":
+                self.css.append("".join(self._buf))
             self._skip = max(0, self._skip - 1)
             self._script_type = None
             return
@@ -117,6 +147,10 @@ class _Collector(HTMLParser):
             self._link["text"].append(data)
         if self._faq_field:
             self._faq_buf.append(data)
+
+
+def _words(s):
+    return " ".join(re.findall(r"[a-z0-9]+", s.lower()))
 
 
 def _strings(obj):
@@ -146,6 +180,83 @@ def _copy_rules(where, s):
     m = DOLLAR_RE.search(s.replace(CREDIT_OFFER, " " * len(CREDIT_OFFER)))
     if m:
         out.append(f"{where}: dollar amount in {_around(s, m.start(), m.end())!r}")
+    return out
+
+
+def _hex(v):
+    v = v.strip().lower()
+    m = re.fullmatch(r"#([0-9a-f]{3}|[0-9a-f]{6})", v)
+    if m:
+        h = m.group(1)
+        return "#" + ("".join(c * 2 for c in h) if len(h) == 3 else h)
+    if v in ("white", "#fff"):
+        return "#ffffff"
+    return None
+
+
+def _css_tokens(css):
+    """Custom properties from :root blocks, as name -> raw value."""
+    tokens = {}
+    for block in re.findall(r":root\s*\{([^{}]*)\}", css):
+        for name, val in re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", block):
+            tokens[name] = val.strip()
+    return tokens
+
+
+def _resolve(v, tokens, depth=0):
+    """A token name, var(...) or hex value resolved to #rrggbb, or None."""
+    v = v.strip()
+    if depth > 10:
+        return None
+    m = re.fullmatch(r"var\(\s*(--[\w-]+)\s*(?:,[^)]*)?\)", v)
+    name = m.group(1) if m else (v if v.startswith("--") else None)
+    if name:
+        return _resolve(tokens[name], tokens, depth + 1) if name in tokens else None
+    return _hex(v)
+
+
+def _luminance(h):
+    c = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    c = [x / 12.92 if x <= 0.03928 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+
+
+def contrast(a, b):
+    hi, lo = sorted((_luminance(a), _luminance(b)), reverse=True)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def _contrast_rules(css):
+    out = []
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    tokens = _css_tokens(css)
+    if not tokens:
+        return out
+    for fg, bg, need in CONTRAST_PAIRS:
+        f, b = _resolve(fg, tokens), _resolve(bg, tokens)
+        if f is None or b is None:
+            out.append(f"contrast: cannot resolve {fg if f is None else bg} in the :root tokens")
+            continue
+        r = contrast(f, b)
+        if r < need:
+            out.append(f"contrast: {fg} on {bg} is {r:.2f}:1, needs {need}:1")
+    for sel, body in re.findall(r"([^{}]+)\{([^{}]*)\}", css):
+        sel = " ".join(sel.split())
+        decls = dict((k.strip().lower(), v.strip())
+                     for k, v in re.findall(r"([\w-]+)\s*:\s*([^;]+)", body))
+        color = decls.get("color")
+        if color:
+            raw = color.strip().lower()
+            m = re.fullmatch(r"var\(\s*(--[\w-]+)\s*\)", raw)
+            if (m and m.group(1) in LIGHT_ACCENT) or _hex(raw) in LIGHT_ACCENT:
+                out.append(f"contrast: {sel} uses the bright brand blue ({color}) as text; "
+                           f"use var(--accent-strong)")
+        bg = decls.get("background-color") or decls.get("background")
+        if color and bg:
+            f, b = _resolve(color, tokens), _resolve(bg, tokens)
+            if f and b and contrast(f, b) < 4.5:
+                out.append(f"contrast: {sel} sets {color} on {bg}, "
+                           f"{contrast(f, b):.2f}:1, needs 4.5:1")
     return out
 
 
@@ -209,6 +320,18 @@ def check(html, llms):
             problems.append(f"Get started link points at {l['href']!r}, not {SIGNUP_URL}")
         if not l["data_signup"]:
             problems.append("Get started link is missing data-signup")
+
+    problems += _contrast_rules("\n".join(p.css))
+
+    for tag, label in p.ignored_labels:
+        problems.append(f"aria-label {label!r} on <{tag}> without a role is ignored by "
+                        f"screen readers; use visible or sr-only text instead")
+    for l in p.links:
+        label, text = l.get("label"), l["text"]
+        if label and re.search(r"[A-Za-z]", text):
+            if f" {_words(text)} " not in f" {_words(label)} ":
+                problems.append(f"<{l['tag']}> shows {text!r} but its aria-label is {label!r}; "
+                                f"the label must contain the visible words")
 
     visible_faq = [[q, a or ""] for q, a in p.faq]
     ld_faq = _jsonld_faq(docs)
