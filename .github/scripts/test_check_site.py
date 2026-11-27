@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
-from check_site import SIGNUP_URL, TERMS_URL, check  # noqa: E402
+from check_site import SIGNUP_URL, TERMS_URL, check, contrast  # noqa: E402
 
 EM = "—"
 
@@ -227,6 +227,84 @@ class CheckSiteTests(unittest.TestCase):
 
     def test_button_without_label_allowed(self):
         self.assertClean(page(body_extra='<button type="button">Watch the tour 2:03</button>'))
+
+
+GOOD_ROOT = """:root {
+  --ink-800: #2E3338; --ink-600: #5C6268; --ink-50: #F6F7F9;
+  --paper: #F7F9FB; --white: #FFFFFF;
+  --orange-700: #0A6E97; --orange-500: #18A8E0;
+  --ocean-600: #0E4E6E; --ocean-700: #0A3A52;
+  --text-body: var(--ink-800); --text-muted: var(--ink-600); --text-faint: var(--ink-600);
+  --accent: var(--orange-500); --accent-strong: var(--orange-700);
+  --accent-hover: var(--ocean-600); --accent-press: var(--ocean-700);
+}"""
+
+
+def styled(css="", root=GOOD_ROOT):
+    return page(head_extra=f"<style>{root}\n{css}</style>")
+
+
+class ContrastTests(unittest.TestCase):
+    def flags(self, html):
+        return [p for p in check(html, "# P\n") if p.startswith("contrast")]
+
+    def test_contrast_math(self):
+        self.assertAlmostEqual(contrast("#000000", "#ffffff"), 21.0, places=2)
+        self.assertAlmostEqual(contrast("#18a8e0", "#ffffff"), 2.72, places=2)
+        self.assertAlmostEqual(contrast("#0a6e97", "#ffffff"), 5.69, places=2)
+
+    def test_good_tokens_pass(self):
+        self.assertEqual(self.flags(styled(".btn-primary { background: var(--accent-strong); color: #fff; }")), [])
+
+    def test_page_without_tokens_not_checked(self):
+        self.assertEqual(self.flags(page()), [])
+
+    def test_faint_text_too_light_flagged(self):
+        root = GOOD_ROOT.replace("--text-faint: var(--ink-600)", "--text-faint: #7C838A")
+        self.assertTrue(any("--text-faint" in p for p in self.flags(styled(root=root))))
+
+    def test_light_accent_strong_flagged(self):
+        root = GOOD_ROOT.replace("--accent-strong: var(--orange-700)", "--accent-strong: var(--orange-500)")
+        self.assertTrue(any("--accent-strong on --white" in p for p in self.flags(styled(root=root))))
+
+    def test_light_hover_under_white_text_flagged(self):
+        root = GOOD_ROOT.replace("--accent-hover: var(--ocean-600)", "--accent-hover: #1389C2")
+        self.assertTrue(any("on --accent-hover" in p for p in self.flags(styled(root=root))))
+
+    def test_missing_token_flagged(self):
+        root = GOOD_ROOT.replace("--accent-strong: var(--orange-700);", "")
+        self.assertTrue(any("cannot resolve --accent-strong" in p for p in self.flags(styled(root=root))))
+
+    def test_white_on_bright_blue_button_flagged(self):
+        self.assertTrue(any(".btn-primary" in p for p in
+                            self.flags(styled(".btn-primary { background: var(--accent); color: #fff; }"))))
+
+    def test_hex_pair_in_one_rule_flagged(self):
+        self.assertTrue(self.flags(styled(".tag { color: #ffffff; background-color: #45BBE8; }")))
+
+    def test_dark_on_dark_flagged(self):
+        self.assertTrue(self.flags(styled(".x { color: #444; background: #222; }")))
+
+    def test_bright_blue_as_text_flagged(self):
+        for v in ("var(--accent)", "var(--orange-500)", "#18A8E0"):
+            self.assertTrue(self.flags(styled(f".eyebrow {{ color: {v}; }}")), v)
+
+    def test_bright_blue_as_fill_or_border_allowed(self):
+        css = (".card { border: 2px solid var(--accent); } "
+               ".bar { background: var(--accent); } "
+               ".strike { text-decoration-color: var(--accent); }")
+        self.assertEqual(self.flags(styled(css)), [])
+
+    def test_rule_inside_media_query_checked(self):
+        css = "@media (max-width: 600px) { .eyebrow { color: var(--accent); } }"
+        self.assertTrue(self.flags(styled(css)))
+
+    def test_commented_out_rule_ignored(self):
+        self.assertEqual(self.flags(styled("/* .eyebrow { color: var(--accent); } */")), [])
+
+    def test_unresolvable_background_skipped(self):
+        css = ".hero { color: #fff; background: linear-gradient(#000, #333); }"
+        self.assertEqual(self.flags(styled(css)), [])
 
 
 if __name__ == "__main__":
