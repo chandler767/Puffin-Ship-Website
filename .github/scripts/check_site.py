@@ -25,6 +25,11 @@ Rules (see CLAUDE.md and the repositioning design):
   CONTRAST_PAIRS meets its ratio once the :root tokens are resolved, any rule
   that sets both a text colour and a solid background meets 4.5:1, and the
   bright brand blue (LIGHT_ACCENT) is never used as a text colour.
+- No retired product words: the app calls templates "projects", run groups
+  "videos" and single runs "versions", so "template", "run group", "run" and
+  "rerun" may not appear in copy. Exempt: the tour video's JSON-LD (it names
+  what the recorded footage shows until the tour is re-recorded) and the
+  plain-English uses in OLD_TERM_ALLOWED.
 """
 import html as htmllib
 import json
@@ -48,6 +53,13 @@ _PATTERNS = [r"(?<!-)free(?!-)" if w == "free" else r"[\W_]+".join(map(re.escape
              for w in BANNED]
 BANNED_RE = re.compile(r"\b(" + "|".join(_PATTERNS) + r")\b", re.I)
 DOLLAR_RE = re.compile(r"\$\s?\d")
+# Retired product words. "running" is not matched: it is never the product noun.
+OLD_TERM_RE = re.compile(r"\b(templates?|run[\W_]+groups?|re-?runs?|runs?)\b", re.I)
+# Plain-English phrases that use "run" without meaning the product. Add a phrase
+# here, not a looser pattern above, when new copy needs one.
+OLD_TERM_ALLOWED = ["steady run of", "runs on its own", "run it for them"]
+# JSON-LD nodes describing the recorded tour, which still shows the old UI.
+OLD_TERM_EXEMPT_TYPES = {"VideoObject", "Clip"}
 READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder", "value"}
 # Elements whose implicit role does not allow a name, so aria-label is ignored.
 GENERIC_TAGS = {"span", "div", "p", "em", "strong", "b", "i", "small", "code", "u", "s"}
@@ -260,6 +272,29 @@ def _contrast_rules(css):
     return out
 
 
+def _old_terms(where, s):
+    masked = s
+    for phrase in OLD_TERM_ALLOWED:
+        masked = re.sub(re.escape(phrase), lambda m: " " * len(m.group(0)), masked, flags=re.I)
+    return [f"{where}: retired product word {m.group(0).lower()!r} in {_around(s, m.start(), m.end())!r}"
+            for m in OLD_TERM_RE.finditer(masked)]
+
+
+def _strings_outside(obj, skip_types):
+    """Like _strings, but skips any node whose @type is in skip_types."""
+    if isinstance(obj, dict):
+        t = obj.get("@type")
+        if (t in skip_types) if isinstance(t, str) else any(x in skip_types for x in (t or [])):
+            return
+        for v in obj.values():
+            yield from _strings_outside(v, skip_types)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _strings_outside(v, skip_types)
+    elif isinstance(obj, str):
+        yield obj
+
+
 def _jsonld_faq(docs):
     pairs = []
     for d in docs:
@@ -295,6 +330,16 @@ def check(html, llms):
 
     for i, line in enumerate(llms.splitlines(), 1):
         problems += _copy_rules(f"llms.txt:{i}", line)
+
+    problems += _old_terms("visible text", _norm(" ".join(p.text)))
+    for tag, attr, val in p.attrs:
+        problems += _old_terms(f"<{tag} {attr}>", val)
+    for d in docs:
+        for s in _strings_outside(d, OLD_TERM_EXEMPT_TYPES):
+            if not s.startswith("http"):
+                problems += _old_terms("JSON-LD", s)
+    for i, line in enumerate(llms.splitlines(), 1):
+        problems += _old_terms(f"llms.txt:{i}", line)
 
     page_text = " ".join([_norm(" ".join(p.text))] + [v for _, _, v in p.attrs]
                          + [x for d in docs for x in _strings(d)])

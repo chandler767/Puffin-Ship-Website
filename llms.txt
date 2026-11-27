@@ -8,7 +8,7 @@ It is not just another clipper. Clipping tools cut one long video into pieces. P
 
 ## No editing or code needed
 
-Teams start from a ready-made template, answer a few questions, or describe the video they want in plain words and Puffin Ship builds the template. Moments can be found by describing them too, like "the part where we explain pricing."
+Teams pick what they want to make and answer a few questions in a chat, and Puffin Ship builds the project. Moments can be found by describing them too, like "the part where we explain pricing."
 
 ## Examples
 
@@ -22,9 +22,9 @@ Editing a short by hand often takes over an hour: scrubbing the recording for th
 
 1. **Upload your footage**: a webinar, a demo, a livestream, or any raw footage. The video file you already have.
 2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
-3. **Get shorts ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses cut, in the brand. For more than one clip, describe the video you want in plain words and Puffin Ship builds the template that makes it, including moments from several recordings and a new intro recorded on camera. The team reviews them, then posts.
+3. **Get shorts ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses cut, in the brand. For more than one clip, describe the video you want in plain words and Puffin Ship sets up a project that makes it, including moments from several recordings and a new intro recorded on camera. The team reviews them, then posts.
 
-It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Runs can start from a team's own tools through the API, or from Claude Code, Claude Desktop, and any other MCP client.
+It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Videos can be made from a team's own tools through the API, or from Claude Code, Claude Desktop, and any other MCP client.
 
 ## Why now
 
@@ -36,15 +36,15 @@ Puffin Ship is built by Chandler Mayo (https://www.linkedin.com/in/chandlermayo)
 
 ## Pricing
 
-One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent, and every run shows the tokens it used, step by step. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Avatars, voices, generated video and images, and stock footage use your own account with each service, connected with your own key, and that service bills you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
+One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent, and every version shows the tokens it used, step by step. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Avatars, voices, generated video and images, and stock footage use your own account with each service, connected with your own key, and that service bills you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
 
 ## Your footage
 
-Customers keep ownership of everything they upload, and it is used to make their videos. Rated runs can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
+Customers keep ownership of everything they upload, and it is used to make their videos. Rated versions can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
 
 ## Set up for you
 
-Teams that would rather not set it up themselves can have the Puffin Ship team build their templates, fit it into how they already work, or run it for them. Ask through the form at https://puffinship.com/#contact.
+Teams that would rather not set it up themselves can have the Puffin Ship team build their projects, fit it into how they already work, or run it for them. Ask through the form at https://puffinship.com/#contact.
 
 ## Get started
 
