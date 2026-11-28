@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
-from check_site import SIGNUP_URL, TERMS_URL, check  # noqa: E402
+from check_site import SIGNUP_URL, TERMS_URL, check, contrast  # noqa: E402
 
 EM = "—"
 
@@ -181,6 +181,202 @@ class CheckSiteTests(unittest.TestCase):
 
     def test_free_standing_still_flagged(self):
         self.assertFlags(page(body_extra="<p>It is free to try.</p>"), "free")
+
+    # aria-label on generic elements
+    def test_aria_label_on_span_flagged(self):
+        self.assertFlags(page(body_extra='<td><span aria-label="100 to 350">100&ndash;350</span></td>'),
+                         "ignored by screen readers")
+
+    def test_aria_label_on_div_flagged(self):
+        self.assertFlags(page(body_extra='<div aria-label="Samples">x</div>'), "ignored by screen readers")
+
+    def test_aria_label_on_div_with_role_allowed(self):
+        self.assertClean(page(body_extra='<div role="img" aria-label="A diagram">x</div>'))
+
+    def test_aria_label_on_nav_and_section_allowed(self):
+        self.assertClean(page(body_extra='<nav aria-label="Main">x</nav><section aria-label="Examples">y</section>'))
+
+    def test_sr_only_text_pattern_allowed(self):
+        self.assertClean(page(body_extra='<span aria-hidden="true">1&ndash;2</span><span class="sr-only">1 to 2</span>'))
+
+    # Label in Name
+    def test_button_label_missing_visible_words_flagged(self):
+        self.assertFlags(page(body_extra='<button type="button" aria-label="Play the product tour">'
+                                         'Watch the tour <span>2:03</span></button>'), "must contain the visible words")
+
+    def test_link_label_missing_visible_words_flagged(self):
+        self.assertFlags(page(body_extra='<a href="#how" aria-label="Read more">Pricing</a>'),
+                         "must contain the visible words")
+
+    def test_label_containing_visible_words_allowed(self):
+        self.assertClean(page(body_extra='<a href="#how" aria-label="Pricing, opens the plan">Pricing</a>'))
+
+    def test_label_match_ignores_case_and_punctuation(self):
+        self.assertClean(page(body_extra='<button type="button" aria-label="watch the tour (2:03)">'
+                                         'Watch the tour, 2:03</button>'))
+
+    def test_partial_word_does_not_count_as_match(self):
+        self.assertFlags(page(body_extra='<a href="#how" aria-label="Watchful eyes">Watch</a>'),
+                         "must contain the visible words")
+
+    def test_symbol_only_button_with_label_allowed(self):
+        self.assertClean(page(body_extra='<button type="button" aria-label="Next video">&#8250;</button>'))
+
+    def test_icon_button_with_label_allowed(self):
+        self.assertClean(page(body_extra='<button type="button" aria-label="Play full screen"><svg></svg></button>'))
+
+    def test_button_without_label_allowed(self):
+        self.assertClean(page(body_extra='<button type="button">Watch the tour 2:03</button>'))
+
+
+GOOD_ROOT = """:root {
+  --ink-800: #2E3338; --ink-600: #5C6268; --ink-50: #F6F7F9;
+  --paper: #F7F9FB; --white: #FFFFFF;
+  --orange-700: #0A6E97; --orange-500: #18A8E0;
+  --ocean-600: #0E4E6E; --ocean-700: #0A3A52;
+  --text-body: var(--ink-800); --text-muted: var(--ink-600); --text-faint: var(--ink-600);
+  --accent: var(--orange-500); --accent-strong: var(--orange-700);
+  --accent-hover: var(--ocean-600); --accent-press: var(--ocean-700);
+}"""
+
+
+def styled(css="", root=GOOD_ROOT):
+    return page(head_extra=f"<style>{root}\n{css}</style>")
+
+
+class ContrastTests(unittest.TestCase):
+    def flags(self, html):
+        return [p for p in check(html, "# P\n") if p.startswith("contrast")]
+
+    def test_contrast_math(self):
+        self.assertAlmostEqual(contrast("#000000", "#ffffff"), 21.0, places=2)
+        self.assertAlmostEqual(contrast("#18a8e0", "#ffffff"), 2.72, places=2)
+        self.assertAlmostEqual(contrast("#0a6e97", "#ffffff"), 5.69, places=2)
+
+    def test_good_tokens_pass(self):
+        self.assertEqual(self.flags(styled(".btn-primary { background: var(--accent-strong); color: #fff; }")), [])
+
+    def test_page_without_tokens_not_checked(self):
+        self.assertEqual(self.flags(page()), [])
+
+    def test_faint_text_too_light_flagged(self):
+        root = GOOD_ROOT.replace("--text-faint: var(--ink-600)", "--text-faint: #7C838A")
+        self.assertTrue(any("--text-faint" in p for p in self.flags(styled(root=root))))
+
+    def test_light_accent_strong_flagged(self):
+        root = GOOD_ROOT.replace("--accent-strong: var(--orange-700)", "--accent-strong: var(--orange-500)")
+        self.assertTrue(any("--accent-strong on --white" in p for p in self.flags(styled(root=root))))
+
+    def test_light_hover_under_white_text_flagged(self):
+        root = GOOD_ROOT.replace("--accent-hover: var(--ocean-600)", "--accent-hover: #1389C2")
+        self.assertTrue(any("on --accent-hover" in p for p in self.flags(styled(root=root))))
+
+    def test_missing_token_flagged(self):
+        root = GOOD_ROOT.replace("--accent-strong: var(--orange-700);", "")
+        self.assertTrue(any("cannot resolve --accent-strong" in p for p in self.flags(styled(root=root))))
+
+    def test_white_on_bright_blue_button_flagged(self):
+        self.assertTrue(any(".btn-primary" in p for p in
+                            self.flags(styled(".btn-primary { background: var(--accent); color: #fff; }"))))
+
+    def test_hex_pair_in_one_rule_flagged(self):
+        self.assertTrue(self.flags(styled(".tag { color: #ffffff; background-color: #45BBE8; }")))
+
+    def test_dark_on_dark_flagged(self):
+        self.assertTrue(self.flags(styled(".x { color: #444; background: #222; }")))
+
+    def test_bright_blue_as_text_flagged(self):
+        for v in ("var(--accent)", "var(--orange-500)", "#18A8E0"):
+            self.assertTrue(self.flags(styled(f".eyebrow {{ color: {v}; }}")), v)
+
+    def test_bright_blue_as_fill_or_border_allowed(self):
+        css = (".card { border: 2px solid var(--accent); } "
+               ".bar { background: var(--accent); } "
+               ".strike { text-decoration-color: var(--accent); }")
+        self.assertEqual(self.flags(styled(css)), [])
+
+    def test_rule_inside_media_query_checked(self):
+        css = "@media (max-width: 600px) { .eyebrow { color: var(--accent); } }"
+        self.assertTrue(self.flags(styled(css)))
+
+    def test_commented_out_rule_ignored(self):
+        self.assertEqual(self.flags(styled("/* .eyebrow { color: var(--accent); } */")), [])
+
+    def test_unresolvable_background_skipped(self):
+        css = ".hero { color: #fff; background: linear-gradient(#000, #333); }"
+        self.assertEqual(self.flags(styled(css)), [])
+
+
+class RetiredTermTests(unittest.TestCase):
+    def flags(self, html, llms="# P\n"):
+        return [p for p in check(html, llms) if "retired product word" in p]
+
+    def test_template_in_visible_text_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Pick a ready-made template.</p>")))
+
+    def test_plural_and_capitalised_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Templates are recipes.</p>")))
+
+    def test_run_noun_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<li>Every run shows its tokens</li>")))
+
+    def test_runs_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Runs can start from the API.</p>")))
+
+    def test_rerun_and_hyphenated_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Rerun it.</p>")))
+        self.assertTrue(self.flags(page(body_extra="<p>A re-run is cheap.</p>")))
+
+    def test_run_group_flagged(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Open the run group.</p>")))
+        self.assertTrue(self.flags(page(body_extra="<p>Open the run-group.</p>")))
+
+    def test_attribute_flagged(self):
+        self.assertTrue(self.flags(page(body_extra='<img src="x.png" alt="A template gallery" />')))
+
+    def test_meta_content_flagged(self):
+        self.assertTrue(self.flags(page(head_extra='<meta name="x" content="Start runs anywhere." />')))
+
+    def test_faq_jsonld_flagged(self):
+        faq = [("Q?", "Write your templates for you.")]
+        self.assertTrue(self.flags(page(faq=faq)))
+
+    def test_llms_flagged(self):
+        self.assertTrue(self.flags(page(), llms="# P\n\nRated runs help.\n"))
+
+    def test_tour_video_jsonld_exempt(self):
+        tour = json.dumps({"@context": "https://schema.org", "@type": "VideoObject",
+                           "description": "two ways to start a template",
+                           "hasPart": [{"@type": "Clip", "name": "Templates as recipes"}]})
+        self.assertEqual(self.flags(page(head_extra=f'<script type="application/ld+json">{tour}</script>')), [])
+
+    def test_other_jsonld_not_exempt(self):
+        org = json.dumps({"@type": "Organization", "description": "It builds your template."})
+        self.assertTrue(self.flags(page(head_extra=f'<script type="application/ld+json">{org}</script>')))
+
+    def test_exemption_does_not_leak_into_visible_text(self):
+        self.assertTrue(self.flags(page(body_extra="<p>Templates as recipes</p>")))
+
+    def test_allowed_plain_english_phrases(self):
+        body = ("<p>A steady run of shorts. The editing runs on its own. "
+                "The team can run it for them. It keeps running.</p>")
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+    def test_allowed_phrase_does_not_hide_a_second_use(self):
+        self.assertTrue(self.flags(page(body_extra="<p>A steady run of shorts, and every run is logged.</p>")))
+
+    def test_words_containing_run_not_flagged(self):
+        body = "<p>A runaway project stops. A frontrunner. Brunch. Rerunning nothing.</p>"
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+    def test_new_names_pass(self):
+        body = ("<p>Pick what you want to make and Puffin Ship builds the project. "
+                "Every version shows its tokens. Make a new version.</p>")
+        self.assertEqual(self.flags(page(body_extra=body)), [])
+
+    def test_css_and_script_not_checked(self):
+        body = "<style>.g{grid-template-columns:1fr}</style><script>var run = 1;</script>"
+        self.assertEqual(self.flags(page(body_extra=body)), [])
 
 
 if __name__ == "__main__":

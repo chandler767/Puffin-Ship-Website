@@ -135,7 +135,7 @@
           "name": "What does Puffin Ship do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It automates video production. Describe the video you want in plain words, or start from a ready-made template, and it does the editing: it picks the best moments from all your recordings, cuts the pauses, frames the shot for any screen, and adds captions, b-roll, music, animated graphics and your brand. It can also write a script and put it on a teleprompter while you record, add AI voices and avatars, and bring in generated or stock footage. You get back a finished video, or a Final Cut Pro project if you want to keep editing. Set it up once and every new recording comes out the same way, whether you start it in the app, through the API, or from an AI agent."
+            "text": "It automates video production. Pick what you want to make, describe it in plain words, and it does the editing: it picks the best moments from all your recordings, cuts the pauses, frames the shot for any screen, and adds captions, b-roll, music, animated graphics and your brand. It can also write a script and put it on a teleprompter while you record, add AI voices and avatars, and bring in generated or stock footage. You get back a finished video, or a Final Cut Pro project if you want to keep editing. Set it up once and every new recording comes out the same way, whether you start it in the app, through the API, or from an AI agent."
           }
         },
         {
@@ -151,7 +151,7 @@
           "name": "Do I need to know how to edit or code?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Start from a ready-made template, answer a few questions, or describe the video you want in plain words and Puffin Ship builds it. You can even ask for a moment by describing it, like \"the part where we explain pricing.\""
+            "text": "No. Pick what you want to make and answer a few questions in a chat, and Puffin Ship builds the project. You can even ask for a moment by describing it, like \"the part where we explain pricing.\""
           }
         },
         {
@@ -159,7 +159,7 @@
           "name": "How much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "There is one plan, priced by what you use. A token is one cent, and a typical short uses about 100 to 350 tokens. New accounts start with $25 in credit, and your bill shows what each template and teammate used. Some restrictions apply."
+            "text": "There is one plan, priced by what you use. A token is one cent, and a typical short uses about 100 to 350 tokens. New accounts start with $25 in credit, and your bill shows what each project and teammate used. Some restrictions apply."
           }
         },
         {
@@ -167,7 +167,7 @@
           "name": "Does it work with our tools and AI agents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Runs, templates, and files are all available through an API, so you can start runs from your own systems on your own schedule. Claude Code, Claude Desktop, and any other MCP client can drive it directly, and can even write your templates for you."
+            "text": "Yes. Projects, videos, and files are all available through an API, so you can make videos from your own systems on your own schedule. Claude Code, Claude Desktop, and any other MCP client can drive it directly, and can even set up your projects for you."
           }
         },
         {
@@ -175,7 +175,7 @@
           "name": "What happens to my footage?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It stays yours. You keep ownership of everything you upload, and it is used to make your videos. Runs you rate can also help improve Puffin Ship's models; that is on by default, and a workspace admin can turn it off at any time in workspace settings."
+            "text": "It stays yours. You keep ownership of everything you upload, and it is used to make your videos. Versions you rate can also help improve Puffin Ship's models; that is on by default, and a workspace admin can turn it off at any time in workspace settings."
           }
         }
       ]
@@ -264,18 +264,25 @@
       --text-strong:       var(--ink-900);
       --text-body:         var(--ink-800);
       /* ink-500 on white is 3.84:1 — below the 4.5:1 AA floor for body copy.
-         ink-600 clears it at 6.2:1. */
+         ink-600 clears it at 6.2:1. Faint text is all small (labels, table
+         heads, fine print), so it needs 4.5:1 too and uses ink-600 as well. */
       --text-muted:        var(--ink-600);
-      --text-faint:        var(--ink-500);
+      --text-faint:        var(--ink-600);
+      /* --accent is the bright brand blue: fills, borders and art only. On
+         white it is 2.7:1, too light for text or for white text on top.
+         Text in blue and button fills use --accent-strong (5.7:1 on white,
+         and white on it is 5.7:1), with darker hover and press steps.
+         .github/scripts/check_site.py enforces both rules. */
       --accent:            var(--orange-500);
-      --accent-hover:      var(--orange-600);
-      --accent-press:      var(--orange-700);
+      --accent-strong:     var(--orange-700);
+      --accent-hover:      var(--ocean-600);
+      --accent-press:      var(--ocean-700);
       --accent-subtle:     var(--orange-100);
       --accent-tint:       var(--orange-50);
       --secondary:         var(--ocean-500);
       --secondary-hover:   var(--ocean-600);
       --secondary-subtle:  var(--ocean-100);
-      --focus-ring:        rgba(24, 168, 224, 0.40);
+      --focus-ring:        rgba(10, 110, 151, 0.75);
 
       /* Spacing — 4px grid */
       --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
@@ -292,7 +299,7 @@
       --shadow-md: 0 6px 18px -6px rgba(35,39,43,0.14), 0 2px 6px -2px rgba(35,39,43,0.08);
       --shadow-lg: 0 18px 44px -14px rgba(35,39,43,0.22), 0 6px 14px -8px rgba(35,39,43,0.12);
       --shadow-xl: 0 32px 70px -20px rgba(35,39,43,0.30);
-      --shadow-accent: 0 10px 28px -10px rgba(24,168,224,0.45);
+      --shadow-accent: 0 10px 28px -10px rgba(10,110,151,0.45);
       --shadow-focus: 0 0 0 3px var(--focus-ring);
 
       /* Motion */
@@ -332,16 +339,69 @@
       font-family: var(--font-display); font-weight: 800; font-size: 19px;
       letter-spacing: -0.03em; color: var(--ink-900);
     }
-    .nav-wordmark span { color: var(--accent); }
+    .nav-wordmark span { color: var(--accent-strong); }
     .nav-wordmark .tm {
       font-size: 0.5em; font-weight: 600; vertical-align: super;
       letter-spacing: 0; color: var(--text-body);
     }
     .nav-links { display: flex; gap: var(--space-6); flex: 1; margin-left: var(--space-2); }
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-body); white-space: nowrap; }
-    /* Six links need room; below this width the nav keeps only the logo and Get started. */
-    @media (max-width: 960px) { .nav-links { display: none; } }
     .nav-links a:hover { color: var(--text-strong); }
+    /* Six links need room; below this width they move into a Menu panel. The
+       Menu button starts hidden and the script reveals it, so without
+       JavaScript the header keeps the logo and Get started and the footer
+       carries the links. */
+    .nav-toggle { display: none; }
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-toggle:not([hidden]) {
+        display: inline-flex; align-items: center; gap: 6px; min-height: 40px;
+        padding: 8px 12px; font: 600 14px var(--font-sans); color: var(--text-strong);
+        background: var(--white); border: 1px solid var(--border-default);
+        border-radius: var(--radius-md); cursor: pointer;
+      }
+      .nav-toggle:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+      .nav-toggle-icon { width: 16px; height: 12px; position: relative; }
+      .nav-toggle-icon::before, .nav-toggle-icon::after, .nav-toggle-icon span {
+        content: ""; position: absolute; left: 0; right: 0; height: 2px;
+        background: currentColor; border-radius: 2px; transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+      }
+      .nav-toggle-icon::before { top: 0; }
+      .nav-toggle-icon span { top: 5px; }
+      .nav-toggle-icon::after { top: 10px; }
+      .nav.is-open .nav-toggle-icon::before { transform: translateY(5px) rotate(45deg); }
+      .nav.is-open .nav-toggle-icon span { opacity: 0; }
+      .nav.is-open .nav-toggle-icon::after { transform: translateY(-5px) rotate(-45deg); }
+      .nav.is-open .nav-links {
+        display: flex; flex-direction: column; gap: 0; margin: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        padding: 8px var(--space-8) 16px; background: var(--paper);
+        border-bottom: 1px solid var(--border-subtle); box-shadow: var(--shadow-md);
+      }
+      .nav.is-open .nav-links a {
+        font-size: 16px; padding: 12px 0; min-height: 44px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+      .nav.is-open .nav-links a:last-child { border-bottom: 0; }
+      .nav-cta { gap: var(--space-2); }
+    }
+    /* Phones: the logo, Get started and Menu must fit side by side down to
+       320px, so the gaps tighten and Menu shows its icon only (the word stays
+       as its accessible name). */
+    @media (max-width: 600px) {
+      .nav-inner { gap: var(--space-3); }
+      .nav-cta .btn-sm { padding: 8px 12px; }
+    }
+    @media (max-width: 420px) {
+      .nav-toggle:not([hidden]) { padding: 8px 11px; }
+      .nav-toggle-text { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .nav-logo { gap: 7px; }
+      .nav-logo img { width: 26px; height: 26px; }
+      .nav-wordmark { font-size: 17px; }
+    }
+    @media (max-width: 960px) and (prefers-reduced-motion: reduce) {
+      .nav-toggle-icon::before, .nav-toggle-icon::after, .nav-toggle-icon span { transition: none; }
+    }
     .nav-cta { display: flex; align-items: center; gap: var(--space-3); margin-left: auto; }
 
     /* ── Buttons ─────────────────────────────────────────────────────────── */
@@ -355,7 +415,7 @@
     .btn-sm  { font-size: 14px; padding: 8px 16px; }
     .btn-md  { font-size: 15px; padding: 10px 20px; }
     .btn-lg  { font-size: 16px; padding: 13px 24px; }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-accent); }
+    .btn-primary { background: var(--accent-strong); color: #fff; box-shadow: var(--shadow-accent); }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
     .btn-primary:active { background: var(--accent-press); transform: translateY(1px) scale(0.99); }
     .btn-outline {
@@ -395,7 +455,7 @@
       letter-spacing: -0.042em; color: var(--ink-900);
       margin: 0 auto 22px; max-width: 16ch; text-wrap: balance;
     }
-    .hero-h1 span { color: var(--accent); }
+    .hero-h1 span { color: var(--accent-strong); }
     .hero-chores {
       display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 10px;
       list-style: none; padding: 0; margin: 0 auto 22px; max-width: 640px;
@@ -451,13 +511,13 @@
       font-family: var(--font-sans);
     }
     .tour-play-icon {
-      width: 80px; height: 80px; border-radius: 999px; background: var(--accent);
+      width: 80px; height: 80px; border-radius: 999px; background: var(--accent-strong);
       display: inline-flex; align-items: center; justify-content: center; padding-left: 5px;
       box-shadow: 0 14px 40px -10px rgba(0,0,0,.55), 0 0 0 10px rgba(255,255,255,.14);
       transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
     }
     .tour-play:hover .tour-play-icon, .tour-play:focus-visible .tour-play-icon { transform: scale(1.08); background: var(--accent-hover); }
-    .tour-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+    .tour-play:focus-visible { outline: 3px solid var(--accent-strong); outline-offset: -3px; }
     .tour-play-label {
       font-size: 15px; font-weight: 700; padding: 6px 13px; border-radius: 999px;
       background: rgba(15,20,30,.72); backdrop-filter: blur(4px);
@@ -502,7 +562,7 @@
       padding: 4px; scroll-padding-inline: 4px; scrollbar-width: none;
     }
     .carousel-track::-webkit-scrollbar { display: none; }
-    .carousel-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .carousel-track:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 4px; }
     .sample { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
     .sample:last-child { scroll-snap-align: end; }
     .sample video {
@@ -556,7 +616,7 @@
     .eyebrow {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.10em;
-      text-transform: uppercase; color: var(--accent);
+      text-transform: uppercase; color: var(--accent-strong);
     }
     .section-h2 {
       font-family: var(--font-display); font-weight: 700;
@@ -572,7 +632,7 @@
        of editing per finished minute). Keep the claim loose: no exact multiplier. */
     .time-band { padding: 8px var(--space-8) 72px; text-align: center; }
     .time-band .section-h2 { max-width: 24ch; margin: 0 auto; text-wrap: balance; }
-    .time-band .section-h2 span { color: var(--accent); }
+    .time-band .section-h2 span { color: var(--accent-strong); }
     .time-table {
       width: 100%; max-width: 760px; margin: 28px auto 0; border-collapse: separate; border-spacing: 0;
       background: var(--surface-card); border: 1px solid var(--border-subtle);
@@ -583,7 +643,7 @@
     .time-table tbody th { font-weight: 600; color: var(--ink-900); width: 34%; }
     .time-table .by-hand { color: var(--text-muted); }
     .time-table .with-ps { color: var(--ink-900); font-weight: 600; }
-    .time-table thead .with-ps { color: var(--accent); }
+    .time-table thead .with-ps { color: var(--accent-strong); }
     .time-table tr.total th, .time-table tr.total td { background: var(--bg-inset); font-size: 16px; }
     .time-note { margin: 14px auto 0; max-width: 60ch; font-size: 13px; color: var(--text-muted); }
     @media (max-width: 600px) {
@@ -716,15 +776,15 @@
     .footer-brand img { width: 26px; }
     .footer-brand-name { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.03em; color: var(--ink-900); }
     .footer-tagline { font-size: 13px; color: var(--text-muted); max-width: 30ch; }
-    .footer-contact { margin-top: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 14px; }
-    .footer-contact a { color: var(--accent); font-weight: 500; }
+    .footer-contact { margin-top: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-style: normal; }
+    .footer-contact a { color: var(--accent-strong); font-weight: 500; }
     .footer-contact a:hover { text-decoration: underline; }
     .footer-col-head { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 12px; }
     .footer-col-links { display: flex; flex-direction: column; gap: 9px; }
     .footer-col-links a { font-size: 14px; color: var(--text-body); }
     .footer-col-links a:hover { color: var(--text-strong); }
     .footer-linklike {
-      background: none; border: 0; padding: 0; font: inherit; color: inherit;
+      background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--text-body);
       cursor: pointer; text-align: left;
     }
     .footer-linklike:hover { color: var(--text-strong); }
@@ -753,7 +813,7 @@
     .lead-field > span, .lead-field > legend {
       font-size: 14px; font-weight: 600; color: var(--ink-800); padding: 0;
     }
-    .lead-field em { font-style: normal; font-weight: 500; color: var(--ink-500); }
+    .lead-field em { font-style: normal; font-weight: 500; color: var(--text-faint); }
     .lead-field input[type="text"], .lead-field input[type="email"],
     .lead-field input[type="url"], .lead-field textarea {
       font: inherit; font-size: 15px; color: var(--ink-900); background: var(--white);
@@ -761,8 +821,8 @@
       padding: 11px 13px; width: 100%; box-sizing: border-box;
     }
     .lead-field input:focus, .lead-field textarea:focus {
-      outline: none; border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(24,168,224,0.18);
+      outline: none; border-color: var(--accent-strong);
+      box-shadow: 0 0 0 3px rgba(10,110,151,0.25);
     }
     .lead-checks { display: flex; flex-wrap: wrap; gap: 10px 18px; }
     .lead-checks label {
@@ -771,7 +831,7 @@
     }
     .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .lead-error { color: #B4232A; font-size: 14px; margin: 0 0 var(--space-3); }
-    .lead-fine { font-size: 13px; color: var(--ink-500); margin: 14px 0 0; }
+    .lead-fine { font-size: 13px; color: var(--text-faint); margin: 14px 0 0; }
     #lead-submit[disabled] { opacity: 0.6; cursor: default; }
     @media (max-width: 640px) {
       .lead-card { padding: 24px; }
@@ -818,10 +878,10 @@
   <header id="top" class="nav">
     <div class="wrap nav-inner">
       <a href="#top" class="nav-logo">
-        <img src="assets/logo/puffin-mark.png" alt="Puffin Ship" />
+        <img src="assets/logo/puffin-mark.png" alt="" />
         <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="site-menu" aria-label="Main">
         <a href="#examples">Examples</a>
         <a href="#how">How it works</a>
         <a href="#why-now">Why now</a>
@@ -835,6 +895,9 @@
              the app gets a dedicated signup page, change SIGNUP_URL there and
              every href here in one find-and-replace. -->
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-sm">Get started</a>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-menu" hidden>
+          <span class="nav-toggle-icon" aria-hidden="true"><span></span></span><span class="nav-toggle-text">Menu</span>
+        </button>
       </div>
     </div>
   </header>
@@ -865,7 +928,7 @@
         <video id="tour-video" playsinline preload="none" poster="assets/tour/getting-started.jpg?v=2" aria-label="Getting started with Puffin Ship: a walkthrough of the app with captions.">
           <source src="assets/tour/getting-started.mp4?v=2" type="video/mp4" />
         </video>
-        <button type="button" class="tour-play" aria-label="Play the product tour">
+        <button type="button" class="tour-play">
           <span class="tour-play-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
           <span class="tour-play-label">Watch the tour <span class="tour-play-len">2:03</span></span>
         </button>
@@ -945,7 +1008,7 @@
           <rect x="142" y="390" width="56" height="9" rx="3" fill="#84D2F0"/>
         </svg>
         </div>
-        <figcaption class="hero-visual-cap">It builds finished shorts from all your footage: moments from several recordings, a new intro recorded on camera, and your brand on every one. Describe it in plain words, and it builds the template for you.</figcaption>
+        <figcaption class="hero-visual-cap">It builds finished shorts from all your footage: moments from several recordings, a new intro recorded on camera, and your brand on every one. Describe it in plain words, and it sets up the project for you.</figcaption>
       </figure>
     </section>
   </div>
@@ -1050,10 +1113,10 @@
         <div class="card">
           <div class="step-num">03</div>
           <h3 class="step-title">Get shorts ready to post</h3>
-          <p class="step-desc">Each moment you pick becomes its own short: cropped for vertical, captioned, pauses cut, in your brand. Want more than one clip? Describe the video you want in plain words, and Puffin Ship builds the template that makes it. Review, then post.</p>
+          <p class="step-desc">Each moment you pick becomes its own short: cropped for vertical, captioned, pauses cut, in your brand. Want more than one clip? Describe the video you want in plain words, and Puffin Ship sets up a project that makes it. Review, then post.</p>
         </div>
       </div>
-      <p class="how-more">Works on almost any footage. Runs can also start from your own tools through the API, or from AI agents like Claude Code.</p>
+      <p class="how-more">Works on almost any footage. You can also make videos from your own tools through the API, or from AI agents like Claude Code.</p>
     </div>
   </section>
 
@@ -1094,9 +1157,9 @@
         <ul class="price-includes">
           <li>Every feature in every workspace</li>
           <li>No tiers, no seats, invite your whole team</li>
-          <li>Every run shows its tokens as it goes</li>
-          <li>Usage broken down by template, run and teammate</li>
-          <li>A monthly limit on each workspace stops a runaway template</li>
+          <li>Every version shows its tokens as it goes</li>
+          <li>Usage broken down by project, video and teammate</li>
+          <li>A monthly limit on each workspace stops a runaway project</li>
           <li>Nothing is charged automatically</li>
         </ul>
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg price-plan-cta">Get started</a>
@@ -1106,14 +1169,14 @@
         <table class="price-rows">
           <thead><tr><th scope="col">Short</th><th scope="col">Tokens</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Typical 45 to 60 second short</th><td><span aria-label="100 to 350">100&ndash;350</span></td></tr>
+            <tr><th scope="row">Typical 45 to 60 second short</th><td><span aria-hidden="true">100&ndash;350</span><span class="sr-only">100 to 350</span></td></tr>
             <tr><th scope="row">Lots of cut-in footage or animated graphics</th><td>up to about 800</td></tr>
-            <tr><th scope="row">Rerun after a small change (unchanged steps are reused)</th><td>far less</td></tr>
+            <tr><th scope="row">A new version after a small change (unchanged steps are reused)</th><td>far less</td></tr>
           </tbody>
         </table>
         <p class="price-credit-line"><strong>Your starting credit</strong> covers roughly 7 to 25 shorts.</p>
         <h3 class="price-costs-h">Billed by the service, not by us</h3>
-        <p class="price-costs-p">Avatars, voices, generated video and images, and stock footage use your own account with the service that makes them, connected with your own key. The ready-made templates need none of them.</p>
+        <p class="price-costs-p">Avatars, voices, generated video and images, and stock footage use your own account with the service that makes them, connected with your own key. A project only needs them if you ask for them.</p>
       </div>
     </div>
     <p class="price-note">Token figures are from shorts made so far and depend on your footage and what you ask for. Need more tokens? <a class="fine-link" href="#contact">Contact us</a> and you'll see the price before you pay.</p>
@@ -1131,7 +1194,7 @@
     <div class="faq-grid">
         <div class="faq-item">
           <h3 class="faq-q">What does Puffin Ship do?</h3>
-          <p class="faq-a">It automates video production. Describe the video you want in plain words, or start from a ready-made template, and it does the editing: it picks the best moments from all your recordings, cuts the pauses, frames the shot for any screen, and adds captions, b-roll, music, animated graphics and your brand. It can also write a script and put it on a teleprompter while you record, add AI voices and avatars, and bring in generated or stock footage. You get back a finished video, or a Final Cut Pro project if you want to keep editing. Set it up once and every new recording comes out the same way, whether you start it in the app, through the API, or from an AI agent.</p>
+          <p class="faq-a">It automates video production. Pick what you want to make, describe it in plain words, and it does the editing: it picks the best moments from all your recordings, cuts the pauses, frames the shot for any screen, and adds captions, b-roll, music, animated graphics and your brand. It can also write a script and put it on a teleprompter while you record, add AI voices and avatars, and bring in generated or stock footage. You get back a finished video, or a Final Cut Pro project if you want to keep editing. Set it up once and every new recording comes out the same way, whether you start it in the app, through the API, or from an AI agent.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">What kinds of recordings work?</h3>
@@ -1139,19 +1202,19 @@
         </div>
         <div class="faq-item">
           <h3 class="faq-q">Do I need to know how to edit or code?</h3>
-          <p class="faq-a">No. Start from a ready-made template, answer a few questions, or describe the video you want in plain words and Puffin Ship builds it. You can even ask for a moment by describing it, like "the part where we explain pricing."</p>
+          <p class="faq-a">No. Pick what you want to make and answer a few questions in a chat, and Puffin Ship builds the project. You can even ask for a moment by describing it, like "the part where we explain pricing."</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">How much does it cost?</h3>
-          <p class="faq-a">There is one plan, priced by what you use. A token is one cent, and a typical short uses about 100 to 350 tokens. New accounts start with $25 in credit, and your bill shows what each template and teammate used. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+          <p class="faq-a">There is one plan, priced by what you use. A token is one cent, and a typical short uses about 100 to 350 tokens. New accounts start with $25 in credit, and your bill shows what each project and teammate used. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">Does it work with our tools and AI agents?</h3>
-          <p class="faq-a">Yes. Runs, templates, and files are all available through an API, so you can start runs from your own systems on your own schedule. Claude Code, Claude Desktop, and any other MCP client can drive it directly, and can even write your templates for you.</p>
+          <p class="faq-a">Yes. Projects, videos, and files are all available through an API, so you can make videos from your own systems on your own schedule. Claude Code, Claude Desktop, and any other MCP client can drive it directly, and can even set up your projects for you.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">What happens to my footage?</h3>
-          <p class="faq-a">It stays yours. You keep ownership of everything you upload, and it is used to make your videos. Runs you rate can also help improve Puffin Ship's models; that is on by default, and a workspace admin can turn it off at any time in workspace settings.</p>
+          <p class="faq-a">It stays yours. You keep ownership of everything you upload, and it is used to make your videos. Versions you rate can also help improve Puffin Ship's models; that is on by default, and a workspace admin can turn it off at any time in workspace settings.</p>
         </div>
     </div>
   </section>
@@ -1232,7 +1295,7 @@
     <div class="wrap footer-inner">
       <div>
         <div class="footer-brand">
-          <img src="assets/logo/puffin-mark.png" alt="Puffin Ship" />
+          <img src="assets/logo/puffin-mark.png" alt="" />
           <span class="footer-brand-name">Puffin Ship</span>
         </div>
         <p class="footer-tagline">Automated video production.</p>
@@ -1476,6 +1539,47 @@
   </script>
 
   <script>
+    // Mobile menu: a disclosure button that shows the header links as a panel.
+    // The links come before the button in the page, so opening the menu moves
+    // focus to the first link; Escape or leaving the menu closes it.
+    (function () {
+      var nav = document.querySelector('.nav');
+      var btn = nav && nav.querySelector('.nav-toggle');
+      var menu = document.getElementById('site-menu');
+      if (!btn || !menu) return;
+      btn.hidden = false;
+      var wide = window.matchMedia('(min-width: 961px)');
+      function isOpen() { return nav.classList.contains('is-open'); }
+      function setOpen(open, returnFocus) {
+        nav.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) {
+          var first = menu.querySelector('a');
+          if (first) first.focus();
+        } else if (returnFocus) {
+          btn.focus();
+        }
+      }
+      btn.addEventListener('click', function () { setOpen(!isOpen(), false); });
+      document.addEventListener('keydown', function (e) {
+        if ((e.key === 'Escape' || e.key === 'Esc') && isOpen()) {
+          setOpen(false, menu.contains(document.activeElement) || document.activeElement === btn);
+        }
+      });
+      menu.addEventListener('click', function (e) {
+        if (e.target.closest('a') && isOpen()) setOpen(false, false);
+      });
+      document.addEventListener('click', function (e) {
+        if (isOpen() && !nav.contains(e.target)) setOpen(false, false);
+      });
+      nav.addEventListener('focusout', function (e) {
+        if (isOpen() && e.relatedTarget && !nav.contains(e.relatedTarget)) setOpen(false, false);
+      });
+      function onWide() { if (wide.matches && isOpen()) setOpen(false, false); }
+      if (wide.addEventListener) wide.addEventListener('change', onWide); else wide.addListener(onWide);
+    })();
+  </script>
+  <script>
     // Hero tour video: a big play button over the poster, then native controls.
     (function () {
       var box = document.getElementById('tour');
@@ -1485,6 +1589,8 @@
       box.querySelector('.tour-play').addEventListener('click', function () {
         box.classList.add('is-playing');
         v.controls = true;
+        // The button hides itself, so hand keyboard focus to the player.
+        v.focus();
         var p = v.play();
         if (p && p.catch) p.catch(function () {});
       });
