@@ -256,6 +256,16 @@ img { display: block; }
   margin: 0 auto 22px; max-width: 16ch; text-wrap: balance;
 }
 .hero-h1 span { color: var(--accent-strong); }
+.hero-chores {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 10px;
+  list-style: none; padding: 0; margin: 0 auto 22px; max-width: 640px;
+}
+.hero-chores li {
+  font-size: 15px; color: var(--text-muted); background: var(--ink-50);
+  border: 1px solid var(--ink-200); border-radius: 999px; padding: 5px 13px;
+  text-decoration: line-through; text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
 .hero-body {
   font-size: 19px; line-height: 1.6; color: var(--text-body);
   max-width: 56ch; margin: 0 auto var(--space-8); text-wrap: pretty;
@@ -302,7 +312,7 @@ img { display: block; }
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); column-gap: 56px; align-items: center;
   }
   .hero .hero-h1 { font-size: clamp(44px, 4.5vw, 66px); margin-left: 0; max-width: none; }
-  .hero .hero-actions { justify-content: flex-start; }
+  .hero .hero-chores, .hero .hero-actions { justify-content: flex-start; }
   .hero .hero-body { margin-left: 0; }
   .hero .hero-for { margin-left: 0; }
 
