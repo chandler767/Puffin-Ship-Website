@@ -5,7 +5,9 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
-from check_site import SIGNUP_URL, TERMS_URL, check  # noqa: E402
+import shutil  # noqa: E402
+import tempfile  # noqa: E402
+from check_site import SIGNUP_URL, TERMS_URL, check, check_site  # noqa: E402
 
 EM = "—"
 
@@ -181,6 +183,137 @@ class CheckSiteTests(unittest.TestCase):
 
     def test_free_standing_still_flagged(self):
         self.assertFlags(page(body_extra="<p>It is free to try.</p>"), "free")
+
+
+    def test_faq_with_h2_questions_matches(self):
+        html = page().replace('<h3 class="faq-q">What is it?</h3>', '<h2 class="faq-q">What is it?</h2>')
+        self.assertIn('<h2 class="faq-q">', html)
+        self.assertClean(html)
+
+
+GA = ("<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-RY63074N1P\"></script>"
+      "<script>gtag('config', 'G-RY63074N1P', {});</script>")
+HEADER = ('<header id="top"><a href="/">Home</a><a href="/pricing/"{cur}>Pricing</a>'
+          f'<a href="{SIGNUP_URL}" data-signup>Get started</a></header>')
+FOOTER = '<footer><a href="/pricing/">Pricing</a></footer>'
+BANNER = '<div id="cookie-banner"><p>Cookies?</p><div><button>Accept</button></div></div>'
+
+
+def site_page(url, title, body="", header=None, footer=FOOTER, canonical=None, og=None, ga=GA, head_extra=""):
+    canonical = canonical if canonical is not None else "https://puffinship.com" + url
+    og = og if og is not None else canonical
+    header = header if header is not None else HEADER.format(cur=' aria-current="page"' if url == "/pricing/" else "")
+    return f"""<!DOCTYPE html><html><head><title>{title}</title>
+<meta name="description" content="About {title}." />
+<link rel="canonical" href="{canonical}" />
+<meta property="og:url" content="{og}" />
+{ga}{head_extra}</head><body>{header}<main>{body}</main>{footer}{BANNER}</body></html>"""
+
+
+class CheckWholeSiteTests(unittest.TestCase):
+    def setUp(self):
+        self.root = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.root)
+        self.write("index.html", site_page("/", "Home", '<p id="hello">Hi</p>'))
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", '<p id="plan">One plan</p>'))
+        self.write("404.html", site_page("/404.html", "Not found"))
+        self.write("docs/index.html", "<p>moved</p>")  # a redirect page, not part of the site
+        self.write("assets/a.png", "x")
+        self.write("sitemap.xml", "<urlset><url><loc>https://puffinship.com/</loc></url>"
+                                  "<url><loc>https://puffinship.com/pricing/</loc></url></urlset>")
+        self.write("llms.txt", "# P\n\nPricing: https://puffinship.com/pricing/#plan\n")
+
+    def write(self, rel, text):
+        path = os.path.join(self.root, rel)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(text)
+
+    def flags(self, needle):
+        problems = check_site(self.root)
+        self.assertTrue(any(needle in p for p in problems), f"expected {needle!r} in {problems}")
+
+    def test_good_site_passes(self):
+        self.assertEqual(check_site(self.root), [])
+
+    def test_link_to_missing_page(self):
+        self.write("index.html", site_page("/", "Home", '<a href="/nope/">x</a>'))
+        self.flags("/nope/")
+
+    def test_link_without_trailing_slash(self):
+        self.write("index.html", site_page("/", "Home", '<a href="/pricing">x</a>'))
+        self.flags("/pricing")
+
+    def test_cross_page_fragment_must_exist(self):
+        self.write("index.html", site_page("/", "Home", '<a href="/pricing/#plan">ok</a><a href="/pricing/#gone">x</a>'))
+        problems = check_site(self.root)
+        self.assertTrue(any("#gone" in p for p in problems), problems)
+        self.assertFalse(any("#plan" in p for p in problems), problems)
+
+    def test_missing_asset(self):
+        self.write("index.html", site_page("/", "Home", '<img src="/assets/a.png" alt="" /><video poster="/assets/b.jpg?v=2"></video>'))
+        self.flags("/assets/b.jpg")
+
+    def test_relative_link_flagged(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", '<img src="assets/a.png" alt="" />'))
+        self.flags("relative")
+
+    def test_absolute_site_url_checked_like_a_path(self):
+        self.write("index.html", site_page("/", "Home", '<a href="https://puffinship.com/gone/">x</a>'))
+        self.flags("/gone/")
+
+    def test_header_drift(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", header="<header id=\"top\">Other</header>"))
+        self.flags("header differs")
+
+    def test_aria_current_ignored_in_header(self):
+        self.assertEqual(check_site(self.root), [])
+
+    def test_footer_drift(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", footer="<footer>Other</footer>"))
+        self.flags("footer differs")
+
+    def test_wrong_canonical(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", canonical="https://puffinship.com/"))
+        self.flags("canonical")
+
+    def test_og_url_must_match_canonical(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", og="https://puffinship.com/"))
+        self.flags("og:url")
+
+    def test_duplicate_title(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Home"))
+        self.flags("more than one page")
+
+    def test_missing_ga(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", ga=""))
+        self.flags("Google Analytics")
+
+    def test_page_copy_rules_apply_to_every_page(self):
+        self.write("pricing/index.html", site_page("/pricing/", "Pricing", "<p>Start free today</p>"))
+        self.flags("/pricing/: visible text: banned word")
+
+    def test_sitemap_missing_page(self):
+        self.write("about/index.html", site_page("/about/", "About"))
+        self.flags("sitemap.xml is missing https://puffinship.com/about/")
+
+    def test_sitemap_lists_non_page(self):
+        self.write("sitemap.xml", "<urlset><url><loc>https://puffinship.com/</loc></url>"
+                                  "<url><loc>https://puffinship.com/pricing/</loc></url>"
+                                  "<url><loc>https://puffinship.com/old/</loc></url></urlset>")
+        self.flags("not a page")
+
+    def test_404_not_required_in_sitemap(self):
+        problems = check_site(self.root)
+        self.assertFalse(any("404" in p for p in problems), problems)
+
+    def test_llms_link_to_old_anchor_flagged(self):
+        self.write("llms.txt", "# P\n\nAsk at https://puffinship.com/#contact.\n")
+        self.flags("#contact")
+
+    def test_llms_copy_rules(self):
+        self.write("llms.txt", "# P\n\nTry it free.\n")
+        self.flags("banned word")
 
 
 if __name__ == "__main__":

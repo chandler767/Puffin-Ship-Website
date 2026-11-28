@@ -1,34 +1,44 @@
 # Puffin Ship
 
-> Puffin Ship is automated video production: a platform that turns recorded video into on-brand shorts. It is for marketing teams, agencies, and creators with more recordings than editing time. Teams and creators upload the raw footage they already record, from webinars and product demos to interviews, and Puffin Ship finds the moments worth posting, crops them to vertical, adds captions, cuts the pauses, and applies their brand. The shorts are made for LinkedIn, YouTube Shorts, Instagram Reels, and TikTok.
+> Puffin Ship is automated video production. Choose the type of video you want to make, upload your files, and answer a few questions, and Puffin Ship builds a project that makes the video. The project is reusable: every video after the first uses the same style, with a new script or new footage, in about a minute of your time. It is for marketing teams, agencies, and creators, and the videos are made for LinkedIn, YouTube Shorts, Instagram Reels, TikTok, YouTube and websites.
 
-## What makes it different
+## Pages
 
-It is not just another clipper. Clipping tools cut one long video into pieces. Puffin Ship builds finished shorts from all of a team's footage: moments from several recordings, a new intro recorded on camera, and the same brand on every one.
-
-## No editing or code needed
-
-Teams start from a ready-made template, answer a few questions, or describe the video they want in plain words and Puffin Ship builds the template. Moments can be found by describing them too, like "the part where we explain pricing."
-
-## Examples
-
-The site shows four example shorts (a news explainer, a webinar turned into a short, an event interview, and an educational short) made with the same process Puffin Ship automates. Together, just these 4 samples have passed 100,000 views.
-
-## Time saved
-
-Editing a short by hand often takes over an hour: scrubbing the recording for the moment, then cropping, captioning, and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the moments are suggested and the editing runs on its own, so the time per short is a few minutes to pick and review.
+- Home: https://puffinship.com/
+- How it works: https://puffinship.com/how-it-works/
+- Showcase: https://puffinship.com/showcase/
+- Use with your AI agent: https://puffinship.com/ai-agents/
+- Pricing: https://puffinship.com/pricing/
+- FAQ: https://puffinship.com/faq/
+- About: https://puffinship.com/about/
+- Set up for you (contact form): https://puffinship.com/contact/
 
 ## How it works
 
-1. **Upload your footage**: a webinar, a demo, a livestream, or any raw footage. The video file you already have.
-2. **It finds the moments worth posting**: Puffin Ship reads what was said and what was on screen, then suggests the moments that stand on their own. The team picks the ones it wants.
-3. **Get shorts ready to post**: each moment picked becomes its own short, cropped for vertical, captioned, pauses cut, in the brand. For more than one clip, describe the video you want in plain words and Puffin Ship builds the template that makes it, including moments from several recordings and a new intro recorded on camera. The team reviews them, then posts.
+1. **Choose the type.** On the New project screen, pick the card closest to your idea, or pick "Something else" and describe it.
+2. **Upload your files.** Recordings, screen captures, photos or clips from your phone, or files already in your workspace. Some types need no footage at all, such as an AI avatar reading your script. For a series, say you will add new files each time.
+3. **Answer the questions.** A short chat asks only what it cannot choose well itself: vertical or landscape, roughly how long, who is on screen, which settings stay the same and which change every video, and where a video should stop for you to check (for example after the script is written). It builds a first draft while you answer.
+4. **Reuse the style.** Your answers become a project, the recipe for that kind of video. Press New Video, add this time's script or footage, and the video comes out in the same style. Change the project once and every later video gets the change.
 
-It works on almost any footage: webinars, demos, interviews, talking heads, educational shorts, and gameplay or screen recordings with commentary. Runs can start from a team's own tools through the API, or from Claude Code, Claude Desktop, and any other MCP client.
+After a video is made you can edit one version (trim or move a clip, fix a caption) and carry the fix back to the project, download the MP4, subtitles and a Final Cut Pro project, and share a link others can comment on. Brand kits put your colors, fonts and logo on every video.
 
-## Why now
+## Types of video
 
-Everyone records hours of video, but cutting it into shorts is still done by hand. AI can now understand footage well enough to do that job.
+Talking-head short from a recording; short from a script you write; AI avatar presenter; product demo or walkthrough; tutorial for a tool or library; clips from a webinar, talk or podcast; stream or gameplay highlights; news or commentary series; story from your footage; founder or pitch video; explainer told in animated graphics; turn a blog post or article into a short; or something else, described in plain words.
+
+## Showcase
+
+The showcase features recent videos from the founder's own workspace, each made from a project and presented by his AI avatar: How to Buy a Snowboard; Is "fake snow" actually fake? (how snowmaking works); Why your phone dies at 30% on a ski lift; Maeklong Railway Market (a travel story cut from clips); and The science of deep frying a turkey, made from the same project as the snowboard video. It also keeps four earlier example shorts made with the process Puffin Ship automates; together those four have passed 100,000 views.
+
+## Use with your AI agent
+
+Puffin Ship works with any AI tool that supports MCP, the open standard for connecting AI apps to other services, including ChatGPT, Claude, Cursor, Gemini CLI and VS Code. Add https://app.puffinship.com/mcp as an MCP server or connector, sign in and approve it, then ask for the video you want. The agent can start a new project with you, upload footage through a link, start a video once you agree, answer review stops as you decide, and hand you the MP4 and Final Cut Pro project. It asks before anything that costs money, and it never asks you to paste a key into the chat. Setup steps for each app: https://app.puffinship.com/docs/guides/mcp-connect.html
+
+Developers can also start videos from their own systems through the API.
+
+## Time saved
+
+Editing a short by hand often takes over an hour: scrubbing the recording for the moment, then cropping, captioning, and cutting the pauses (editors commonly quote 30 to 60 minutes of editing per finished minute of video). With Puffin Ship the editing runs on its own, so the time per video is a few minutes to pick and review.
 
 ## Who's building it
 
@@ -36,21 +46,21 @@ Puffin Ship is built by Chandler Mayo (https://www.linkedin.com/in/chandlermayo)
 
 ## Pricing
 
-One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent, and every run shows the tokens it used, step by step. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Avatars, voices, generated video and images, and stock footage use your own account with each service, connected with your own key, and that service bills you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
+One plan, priced by usage in tokens, with no tiers and no seats. A token is one cent, and every version of a video shows the tokens it used, step by step. A typical 45 to 60 second short uses about 100 to 350 tokens, and one with a lot of cut-in footage or animated graphics up to about 800. New accounts start with $25 in credit (2,500 tokens, roughly 7 to 25 shorts). Nothing is charged automatically; more tokens are bought by contacting Puffin Ship. Avatars, voices, generated video and images, and stock footage use your own account with each service, connected with your own key, and that service bills you directly. Some restrictions apply (see the Terms of Service: https://app.puffinship.com/terms).
 
 ## Your footage
 
-Customers keep ownership of everything they upload, and it is used to make their videos. Rated runs can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
+Customers keep ownership of everything they upload, and it is used to make their videos. Rated versions can also help improve Puffin Ship's models; that is on by default and a workspace admin can turn it off in workspace settings.
 
 ## Set up for you
 
-Teams that would rather not set it up themselves can have the Puffin Ship team build their templates, fit it into how they already work, or run it for them. Ask through the form at https://puffinship.com/#contact.
+Teams that would rather not set it up themselves can have the Puffin Ship team build their projects, fit it into how they already work, or run it for them. Ask through the form at https://puffinship.com/contact/
 
 ## Get started
 
 - Sign up: https://app.puffinship.com/login
 - Documentation: https://app.puffinship.com/docs/ (public, no sign-in needed; start with https://app.puffinship.com/docs/getting-started.html)
-- Help setting it up: https://puffinship.com/#contact
+- Help setting it up: https://puffinship.com/contact/
 
 ## Contact
 

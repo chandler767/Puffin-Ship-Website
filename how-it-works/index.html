@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works: Four Steps to a Reusable Video | Puffin Ship</title>
+  <meta name="description" content="Choose the type, upload your files, answer a few questions, then reuse the same style. How Puffin Ship turns a short chat into a project that makes every video after it." />
+  <link rel="canonical" href="https://puffinship.com/how-it-works/" />
+  <link rel="icon" id="favicon" type="image/png" href="/assets/logo/puffin-mark.png" />
+  <script>
+    // Google Analytics with Consent Mode v2 (advanced). Consent defaults are set
+    // FIRST, before the tag processes anything, so analytics_storage is denied
+    // until the visitor accepts the cookie banner. The tag then loads on every
+    // page view and, while consent is denied, sends only cookieless pings (no
+    // analytics cookies are set). Accepting flips analytics_storage to granted;
+    // see the cookie banner code in /assets/site.js.
+    document.documentElement.className += ' js';
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    gtag('set', 'url_passthrough', true);
+    gtag('js', new Date());
+    gtag('config', 'G-RY63074N1P', { anonymize_ip: true });
+    // The black mark disappears on dark browser tab strips: swap in the paper one there.
+    (function () {
+      var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+      if (!mq) return;
+      function apply() {
+        var el = document.getElementById('favicon');
+        if (el) el.href = '/assets/logo/puffin-mark' + (mq.matches ? '-paper' : '') + '.png';
+      }
+      mq.addEventListener('change', apply);
+      document.addEventListener('DOMContentLoaded', apply);
+    })();
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY63074N1P"></script>
+  <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://puffinship.com/llms.txt" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Puffin Ship" />
+  <meta property="og:title" content="How It Works: Four Steps to a Reusable Video | Puffin Ship" />
+  <meta property="og:description" content="Choose the type, upload your files, answer a few questions, then reuse the same style. How Puffin Ship turns a short chat into a project that makes every video after it." />
+  <meta property="og:url" content="https://puffinship.com/how-it-works/" />
+  <meta property="og:image" content="https://puffinship.com/assets/og-image.jpg?v=8" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Puffin Ship: automate the boring part of making content. Over an hour per short, by hand. A few minutes with Puffin Ship." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How It Works: Four Steps to a Reusable Video | Puffin Ship" />
+  <meta name="twitter:description" content="Choose the type, upload your files, answer a few questions, then reuse the same style. How Puffin Ship turns a short chat into a project that makes every video after it." />
+  <meta name="twitter:image" content="https://puffinship.com/assets/og-image.jpg?v=8" />
+  <meta name="twitter:image:alt" content="Puffin Ship: automate the boring part of making content. Over an hour per short, by hand. A few minutes with Puffin Ship." />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://puffinship.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How it works",
+          "item": "https://puffinship.com/how-it-works/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Make a video with Puffin Ship",
+      "description": "Choose the type, upload your files, answer a few questions, then reuse the same style. How Puffin Ship turns a short chat into a project that makes every video after it.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Choose the type",
+          "text": "Pick the kind of video you want to make, or describe something else.",
+          "url": "https://puffinship.com/how-it-works/#choose"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Upload your files",
+          "text": "Upload your recordings, screen captures or photos, pick files already in your workspace, or say you will add new ones each time.",
+          "url": "https://puffinship.com/how-it-works/#upload"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Answer the questions",
+          "text": "A short chat asks what it cannot choose well itself, then builds the project.",
+          "url": "https://puffinship.com/how-it-works/#answer"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Reuse the style",
+          "text": "Press New Video on the project for each new video, with a new script or new footage.",
+          "url": "https://puffinship.com/how-it-works/#reuse"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css?v=3" />
+  <script defer src="/assets/site.js?v=3"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Header: the same on every page (check_site.py fails if one drifts),
+       except aria-current, which marks the page you are on. -->
+  <header id="top" class="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/assets/logo/puffin-mark.png" alt="" width="30" height="30" />
+        <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="/how-it-works/" aria-current="page">How it works</a>
+        <a href="/showcase/">Showcase</a>
+        <a href="/ai-agents/">AI agents</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="https://app.puffinship.com/docs/">Docs</a>
+      </nav>
+      <div class="nav-cta">
+        <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+        <!-- Every "Get started" link goes to the same signup URL, and
+             .github/scripts/check_site.py fails the build if one drifts. -->
+        <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-sm">Get started</a>
+      </div>
+    </div>
+    <nav id="nav-panel" class="nav-panel" aria-label="Main (menu)">
+      <ul>
+        <li><a href="/how-it-works/" aria-current="page">How it works</a></li>
+        <li><a href="/showcase/">Showcase</a></li>
+        <li><a href="/ai-agents/">AI agents</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="https://app.puffinship.com/docs/">Docs</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+  <span id="how" aria-hidden="true"></span>
+  <div class="page-hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="page-hero-inner">
+      <div class="hero-eyebrow">How it works</div>
+      <h1 class="page-h1">Four steps to your first video. <span>One click to the next.</span></h1>
+      <p class="page-sub">You never touch a timeline. You say what you want, Puffin Ship builds a project that makes it, and the project makes every video after it the same way.</p>
+    </div>
+  </div>
+
+  <section class="wrap" style="padding-bottom:56px" aria-label="The four steps">
+      <ol class="steps4">
+        <li><div class="card">
+          <div class="step-badge" aria-hidden="true">1</div>
+          <h2 class="step-title">Choose the type</h2>
+          <p class="step-desc">A talking-head short, a product demo, an AI avatar, clips from a webinar, a story from your trip, or describe something else.</p>
+        </div></li>
+        <li><div class="card">
+          <div class="step-badge" aria-hidden="true">2</div>
+          <h2 class="step-title">Upload your files</h2>
+          <p class="step-desc">Recordings, screen captures or photos. Or nothing at all, if an avatar presents it.</p>
+        </div></li>
+        <li><div class="card">
+          <div class="step-badge" aria-hidden="true">3</div>
+          <h2 class="step-title">Answer the questions</h2>
+          <p class="step-desc">A short chat asks only what it needs: vertical or landscape, how long, who is on screen, and where to stop for you to check.</p>
+        </div></li>
+        <li><div class="card">
+          <div class="step-badge" aria-hidden="true">4</div>
+          <h2 class="step-title">Reuse the style</h2>
+          <p class="step-desc">Your answers become a project. Next time, press New Video, add the new script or footage, and get the same look again.</p>
+          <span class="step-repeat"><span aria-hidden="true">&#8635;</span> Every video after the first</span>
+        </div></li>
+      </ol>
+  </section>
+
+  <section class="how-band">
+    <div class="wrap">
+
+    <div class="step-row" id="choose">
+      <div class="step-row-copy">
+        <div class="step-badge" aria-hidden="true">1</div>
+        <h2>Choose the type</h2>
+        <p>Start with <strong>New project</strong> and pick the card closest to your idea. Each type knows what a good video of that kind needs, so the questions that follow are the right ones.</p>
+        <p>Nothing fits? Pick <strong>Something else</strong> and describe it in plain words.</p>
+      </div>
+      <div class="mock" role="img" aria-label="An illustration of the New project screen asking what type of content you want to create, with type cards to pick from.">
+        <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><b>New project</b></div>
+        <p class="mock-title">What type of content do you want to create?</p>
+        <div class="mock-cards">
+          <div>Talking-head short<small>From a recording</small></div>
+          <div class="on">Product demo<small>Or walkthrough</small></div>
+          <div>AI avatar presenter<small>Reads your script</small></div>
+          <div>Clips from a webinar<small>Or a talk or podcast</small></div>
+          <div>Story from your footage<small>A trip, event or day</small></div>
+          <div>Something else<small>Describe it</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row" id="upload">
+      <div class="step-row-copy">
+        <div class="step-badge" aria-hidden="true">2</div>
+        <h2>Upload your files</h2>
+        <p>Drop in the files you already have: a webinar, a demo, a screen recording, clips from your phone. Or pick files already in your workspace.</p>
+        <p>Making a series? Tick that you will add new files each time, and each new video asks for its own.</p>
+      </div>
+      <div class="mock" role="img" aria-label="An illustration of the Your files card, with three uploaded videos and an option to add new files each time.">
+        <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><b>Your files</b></div>
+        <div class="mock-file"><span class="thumb"></span><div><strong>product-demo.mp4</strong><small>4:12</small></div><span class="ok">Ready</span></div>
+        <div class="mock-file"><span class="thumb b"></span><div><strong>webcam-intro.mov</strong><small>0:48</small></div><span class="ok">Ready</span></div>
+        <div class="mock-file"><span class="thumb c"></span><div><strong>dashboard-tour.mp4</strong><small>2:05</small></div><span class="ok">Ready</span></div>
+        <div class="mock-drop">Drop files here or pick from your workspace</div>
+        <div class="mock-check"><i></i>I'll add new files each time I make a video</div>
+      </div>
+    </div>
+
+    <div class="step-row" id="answer">
+      <div class="step-row-copy">
+        <div class="step-badge" aria-hidden="true">3</div>
+        <h2>Answer the questions</h2>
+        <p>A short chat asks only what it cannot choose well itself, and builds a first draft while you answer. Tap an answer or type your own.</p>
+        <ul>
+          <li>Vertical for social, or landscape?</li>
+          <li>Roughly how long, and who is on screen?</li>
+          <li>Which settings stay the same, and which change every video?</li>
+          <li>Where should it stop for you to check, such as after the script?</li>
+        </ul>
+      </div>
+      <div class="mock" role="img" aria-label="An illustration of the new project chat: the assistant asks vertical or landscape, the answer is vertical, and a checklist shows files, settings and review stops being ticked off.">
+        <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><b>New project</b></div>
+        <div class="mock-chat">
+          <div class="bubble ai">Vertical for social, or landscape for YouTube?<div class="mock-opts"><span class="on">Vertical</span><span>Landscape</span></div></div>
+          <div class="bubble me">Vertical, about a minute.</div>
+          <div class="bubble ai">Got it. Where should a video stop for you to check?</div>
+        </div>
+        <ul class="mock-list">
+          <li class="done">Your files</li>
+          <li class="done">Settings</li>
+          <li>Where it stops for you</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-row" id="reuse">
+      <div class="step-row-copy">
+        <div class="step-badge" aria-hidden="true">4</div>
+        <h2>Reuse the style</h2>
+        <p>Your answers become a <strong>project</strong>: the recipe for this kind of video. When it says it is ready, press <strong>New Video</strong>, add this time's script or footage, and the video comes out in the same style.</p>
+        <p>That is about a minute of your time per video. Change the project once and every later video gets the change.</p>
+      </div>
+      <div class="mock" role="img" aria-label="An illustration of a project overview: a Next video card says Ready to make a video with a New Video button, above a list of videos already made from the project.">
+        <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><b>Weekly explainer (vertical)</b></div>
+        <div class="mock-next"><div><strong>Next video</strong><small>Ready to make a video</small></div><span class="mock-btn">New Video</span></div>
+        <div class="mock-rows">
+          <div><span>How to Buy a Snowboard</span><span>2 versions</span></div>
+          <div><span>Deep frying a turkey</span><span>2 versions</span></div>
+          <div><span>Personal vs corporate AI budgets</span><span>1 version</span></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+  <section class="wrap section-pad" id="types" aria-labelledby="types-h">
+    <div class="section-head">
+      <div class="eyebrow">Step one, in full</div>
+      <h2 id="types-h" class="section-h2">Every type you can start from</h2>
+      <p class="section-sub">These are the cards on the New project screen. Each one starts from a ready-made project you can change.</p>
+    </div>
+    <ul class="type-grid"><li><strong><span class="ti" aria-hidden="true">🎙️</span>Talking-head short from a recording</strong><span>One video of you talking, tightened into a captioned short.</span></li><li><strong><span class="ti" aria-hidden="true">📝</span>Short from a script you write</strong><span>You write the words; read them on camera or have an avatar present them.</span></li><li><strong><span class="ti" aria-hidden="true">🧑‍💻</span>AI avatar presenter</strong><span>An avatar presents your script, with captions and graphics.</span></li><li><strong><span class="ti" aria-hidden="true">🖥️</span>Product demo or walkthrough</strong><span>A screen recording of your product, narrated or presented, kept in step with the voice.</span></li><li><strong><span class="ti" aria-hidden="true">🛠️</span>Tutorial for a tool or library</strong><span>A screen or terminal recording with a presenter explaining each step.</span></li><li><strong><span class="ti" aria-hidden="true">✂️</span>Clips from a webinar, talk or podcast</strong><span>One long recording cut into several short clips worth sharing.</span></li><li><strong><span class="ti" aria-hidden="true">🎮</span>Stream or gameplay highlights</strong><span>The best moments of a stream, game or screen session, cut into highlights.</span></li><li><strong><span class="ti" aria-hidden="true">📰</span>News or commentary series</strong><span>A recurring series that finds fresh topics each time and explains one.</span></li><li><strong><span class="ti" aria-hidden="true">🎞️</span>Story from your footage</strong><span>Your own clips from a trip, event or day cut into one short story.</span></li><li><strong><span class="ti" aria-hidden="true">🚀</span>Founder or pitch video</strong><span>The short founder introduction an accelerator or investor asks for.</span></li><li><strong><span class="ti" aria-hidden="true">✨</span>Explainer told in animated graphics</strong><span>An idea explained mostly in animated graphics, with a presenter for a few beats.</span></li><li><strong><span class="ti" aria-hidden="true">📄</span>Turn a blog post or article into a short</strong><span>An article or post you wrote, turned into a short video.</span></li><li><strong><span class="ti" aria-hidden="true">💬</span>Something else</strong><span>Describe what you want to make and the assistant builds it with you.</span></li></ul>
+  </section>
+
+  <section class="how-band" aria-labelledby="after-h">
+    <div class="wrap section-pad">
+      <div class="section-head">
+        <div class="eyebrow">After the first video</div>
+        <h2 id="after-h" class="section-h2">Change anything without starting over</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="card"><h3>Edit one video</h3><p>Trim a clip, move it, or fix a caption word in the Edits panel of any version. Like the fix? Carry it back to the project so every later video gets it too.</p></div>
+        <div class="card"><h3>It stops when you want to check</h3><p>Choose the steps a video pauses at for you: after the script is written, at the storyboard, or before anything paid is made.</p></div>
+        <div class="card"><h3>Take it anywhere</h3><p>Download the MP4, the subtitles, and a Final Cut Pro project if you want to keep editing by hand. Share a link others can comment on.</p></div>
+        <div class="card"><h3>Your brand on every video</h3><p>Set up a brand kit once, with your colors, fonts and logo, and every video from the project wears it.</p></div>
+        <div class="card"><h3>Ask the project assistant</h3><p>Ask how something works or ask for a change. Changes come back as a proposal you read first, and nothing changes until you press Apply.</p></div>
+        <div class="card"><h3>Or ask your AI agent</h3><p>Everything here also works from ChatGPT, Claude, Cursor and other MCP clients. <a class="text-link" href="/ai-agents/">How to connect</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap time-band" style="padding-top:72px" aria-labelledby="time-h">
+    <h2 id="time-h" class="section-h2">Over an hour per short, by hand. <span>A few minutes with Puffin&nbsp;Ship.</span></h2>
+    <table class="time-table">
+      <caption class="sr-only">Time to make one short by hand compared with Puffin Ship</caption>
+      <thead>
+        <tr><th scope="col"><span class="sr-only">Step</span></th><th scope="col" class="by-hand">By hand</th><th scope="col" class="with-ps">Puffin Ship</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Find the moment</th><td class="by-hand">Scrub the whole recording</td><td class="with-ps">Suggested for you</td></tr>
+        <tr><th scope="row">Crop, caption, cut the pauses</th><td class="by-hand">30+ minutes in an editor</td><td class="with-ps">Done on its own</td></tr>
+        <tr class="total"><th scope="row">Your time per short</th><td class="by-hand">Over an hour</td><td class="with-ps">A few minutes to pick and review</td></tr>
+      </tbody>
+    </table>
+    <p class="time-note">Editors commonly quote 30 to 60 minutes of editing for each finished minute of video.</p>
+  </section>
+  <section class="wrap closing" aria-labelledby="closing-h">
+    <h2 id="closing-h" class="section-h2">Your next video is four steps away.</h2>
+    <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-lg">Get started</a>
+    <p class="hero-credit" style="margin-top:14px">New accounts start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
+  </section>
+  </main>
+  <!-- Footer: the same on every page (check_site.py fails if one drifts). -->
+  <footer class="footer-wrap">
+    <div class="wrap footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="/assets/logo/puffin-mark.png" alt="" width="26" height="26" />
+          <span class="footer-brand-name">Puffin Ship</span>
+        </div>
+        <p class="footer-tagline">Automated video production.</p>
+        <address class="footer-contact">
+          <a href="tel:+14154098722">415-409-8722</a>
+          <a href="mailto:info@puffinship.com">info@puffinship.com</a>
+        </address>
+      </div>
+      <div>
+        <div class="footer-col-head">Product</div>
+        <div class="footer-col-links">
+          <a href="/how-it-works/">How it works</a>
+          <a href="/showcase/">Showcase</a>
+          <a href="/ai-agents/">Use with your AI agent</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/faq/">FAQ</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Set up for you</a>
+          <!-- The docs live in the app and are public. -->
+          <a href="https://app.puffinship.com/docs/">Docs</a>
+          <a href="https://app.puffinship.com/login">Sign in</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-head">Legal</div>
+        <div class="footer-col-links">
+          <a href="https://app.puffinship.com/terms">Terms of Service</a>
+          <a href="https://app.puffinship.com/privacy">Privacy Policy</a>
+          <a href="https://app.puffinship.com/aup">Acceptable Use</a>
+          <button type="button" id="cookie-settings" class="footer-linklike">Cookie settings</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Puffin Ship, Inc.</span>
+      <span>Automated video production</span>
+    </div>
+  </footer>
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <p class="cookie-banner-text">
+      We'd like to use Google Analytics to understand how this site is used. It's optional, and nothing is set unless you accept.
+      See our <a href="https://app.puffinship.com/privacy">Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <!-- btn-ghost, not btn-outline: the banner sits on --ink-900, and
+           btn-outline's dark --text-body gave 1.18:1 contrast (invisible).
+           Both buttons share one style so neither is the nudged option. -->
+      <button type="button" id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button>
+      <button type="button" id="cookie-accept" class="btn btn-ghost btn-sm">Accept</button>
+    </div>
+  </div>
+</body>
+</html>

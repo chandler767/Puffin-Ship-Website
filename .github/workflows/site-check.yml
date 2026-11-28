@@ -1,9 +1,10 @@
 name: Site copy and link rules
 
 # Enforces the copy rules from CLAUDE.md and the site's link rules on every
-# push: no em dashes or banned launch words, no credit amounts, in-page links
-# resolve, every "Get started" goes to signup, and the FAQ structured data
-# matches the visible FAQ.
+# push, across every page: no em dashes or banned launch words, no credit
+# amounts, links between pages and to anchors resolve, every "Get started"
+# goes to signup, the FAQ structured data matches the visible FAQ, every page
+# shares the header and footer, and the sitemap and llms.txt match the pages.
 
 on:
   push:
@@ -21,4 +22,4 @@ jobs:
       - name: Test the checker
         run: python3 -m unittest discover -s .github/scripts -v
       - name: Check the site
-        run: python3 .github/scripts/check_site.py index.html llms.txt
+        run: python3 .github/scripts/check_site.py
