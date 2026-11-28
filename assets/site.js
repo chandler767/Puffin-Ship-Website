@@ -2,20 +2,44 @@
    Google Analytics itself is set up inline in each page's <head> so consent
    defaults are in place before the tag loads. */
 
-// Mobile menu: the Menu button opens the panel of nav links below 960px.
+// Mobile menu: a disclosure button that shows the header links as a panel.
+// The links come before the button in the page, so opening the menu moves
+// focus to the first link; Escape or leaving the menu closes it.
 (function () {
-  var btn = document.querySelector('.nav-menu-btn');
-  var panel = document.getElementById('nav-panel');
-  if (!btn || !panel) return;
-  function set(open) {
-    panel.classList.toggle('is-open', open);
+  var nav = document.querySelector('.nav');
+  var btn = nav && nav.querySelector('.nav-toggle');
+  var menu = document.getElementById('site-menu');
+  if (!btn || !menu) return;
+  btn.hidden = false;
+  var wide = window.matchMedia('(min-width: 961px)');
+  function isOpen() { return nav.classList.contains('is-open'); }
+  function setOpen(open, returnFocus) {
+    nav.classList.toggle('is-open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      var first = menu.querySelector('a');
+      if (first) first.focus();
+    } else if (returnFocus) {
+      btn.focus();
+    }
   }
-  btn.addEventListener('click', function () { set(btn.getAttribute('aria-expanded') !== 'true'); });
+  btn.addEventListener('click', function () { setOpen(!isOpen(), false); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+    if ((e.key === 'Escape' || e.key === 'Esc') && isOpen()) {
+      setOpen(false, menu.contains(document.activeElement) || document.activeElement === btn);
+    }
   });
-  window.addEventListener('resize', function () { if (window.innerWidth > 960) set(false); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a') && isOpen()) setOpen(false, false);
+  });
+  document.addEventListener('click', function (e) {
+    if (isOpen() && !nav.contains(e.target)) setOpen(false, false);
+  });
+  nav.addEventListener('focusout', function (e) {
+    if (isOpen() && e.relatedTarget && !nav.contains(e.relatedTarget)) setOpen(false, false);
+  });
+  function onWide() { if (wide.matches && isOpen()) setOpen(false, false); }
+  if (wide.addEventListener) wide.addEventListener('change', onWide); else wide.addListener(onWide);
 })();
 
 // Copy buttons: copy the text of the element named in data-copy.

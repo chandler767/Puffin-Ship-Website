@@ -13,11 +13,17 @@
     (function () {
       var map = { examples: '/showcase/', how: '/how-it-works/', 'why-now': '/about/', founder: '/about/',
                   pricing: '/pricing/', faq: '/faq/', contact: '/contact/' };
-      var h = location.hash.slice(1);
-      if (map[h]) location.replace(map[h] + '#' + h);
+      function go() {
+        var h = location.hash.slice(1);
+        if (map[h]) location.replace(map[h] + '#' + h);
+      }
+      go();
+      // Also when the hash changes on an open home page (an old link
+      // followed from a bookmark or typed into the address bar).
+      window.addEventListener('hashchange', go);
     })();
   </script>
-  <link rel="preload" as="image" href="/assets/tour/getting-started.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/tour/getting-started.jpg?v=2" fetchpriority="high" />
   <script>
     // Google Analytics with Consent Mode v2 (advanced). Consent defaults are set
     // FIRST, before the tag processes anything, so analytics_storage is denied
@@ -122,14 +128,65 @@
       "@type": "VideoObject",
       "@id": "https://puffinship.com/#tour",
       "name": "Getting started with Puffin Ship",
-      "description": "A quick walkthrough of Puffin Ship: starting a project, making a new video from it, and getting the finished files.",
+      "description": "A walkthrough of Puffin Ship: the dashboard, two ways to start a template, templates as recipes, making a new video in about a minute, reviewing the timeline, making videos from a chat with Claude, and exporting anywhere.",
       "thumbnailUrl": "https://puffinship.com/assets/tour/getting-started.jpg",
       "contentUrl": "https://puffinship.com/assets/tour/getting-started.mp4",
-      "uploadDate": "2026-11-16",
-      "duration": "PT1M37S",
+      "uploadDate": "2026-11-22",
+      "duration": "PT2M3S",
       "publisher": {
         "@id": "https://puffinship.com/#org"
-      }
+      },
+      "hasPart": [
+        {
+          "@type": "Clip",
+          "name": "Your dashboard",
+          "startOffset": 9,
+          "endOffset": 15,
+          "url": "https://puffinship.com/#tour"
+        },
+        {
+          "@type": "Clip",
+          "name": "Two ways to start",
+          "startOffset": 15,
+          "endOffset": 25,
+          "url": "https://puffinship.com/#tour"
+        },
+        {
+          "@type": "Clip",
+          "name": "Templates as recipes",
+          "startOffset": 25,
+          "endOffset": 46,
+          "url": "https://puffinship.com/#tour"
+        },
+        {
+          "@type": "Clip",
+          "name": "A video in a minute",
+          "startOffset": 46,
+          "endOffset": 64,
+          "url": "https://puffinship.com/#tour"
+        },
+        {
+          "@type": "Clip",
+          "name": "Review the timeline",
+          "startOffset": 64,
+          "endOffset": 73,
+          "url": "https://puffinship.com/#tour"
+        },
+        {
+          "@type": "Clip",
+          "name": "Make videos in chat",
+          "startOffset": 73,
+          "endOffset": 101,
+          "url": "https://puffinship.com/#tour"
+        },
+        {
+          "@type": "Clip",
+          "name": "Take it anywhere",
+          "startOffset": 101,
+          "endOffset": 120,
+          "url": "https://puffinship.com/#tour"
+        }
+      ]
     }
   ]
 }
@@ -137,8 +194,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/site.css?v=4" />
-  <script defer src="/assets/site.js?v=4"></script>
+  <link rel="stylesheet" href="/assets/site.css?v=5" />
+  <script defer src="/assets/site.js?v=5"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -150,7 +207,7 @@
         <img src="/assets/logo/puffin-mark.png" alt="" width="30" height="30" />
         <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
       </a>
-      <nav class="nav-links" aria-label="Main">
+      <nav class="nav-links" id="site-menu" aria-label="Main">
         <a href="/how-it-works/">How it works</a>
         <a href="/showcase/">Showcase</a>
         <a href="/ai-agents/">AI agents</a>
@@ -159,22 +216,14 @@
         <a href="https://app.puffinship.com/docs/">Docs</a>
       </nav>
       <div class="nav-cta">
-        <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
         <!-- Every "Get started" link goes to the same signup URL, and
              .github/scripts/check_site.py fails the build if one drifts. -->
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-sm">Get started</a>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-menu" hidden>
+          <span class="nav-toggle-icon" aria-hidden="true"><span></span></span><span class="nav-toggle-text">Menu</span>
+        </button>
       </div>
     </div>
-    <nav id="nav-panel" class="nav-panel" aria-label="Main (menu)">
-      <ul>
-        <li><a href="/how-it-works/">How it works</a></li>
-        <li><a href="/showcase/">Showcase</a></li>
-        <li><a href="/ai-agents/">AI agents</a></li>
-        <li><a href="/pricing/">Pricing</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="https://app.puffinship.com/docs/">Docs</a></li>
-      </ul>
-    </nav>
   </header>
   <main id="main">
   <!-- ── Hero ───────────────────────────────────────────────────────────── -->
@@ -193,15 +242,16 @@
       <p class="hero-credit">New accounts start with $25 in credit. <a class="fine-link" href="https://app.puffinship.com/terms">Some restrictions apply.</a></p>
       </div>
       <!-- Quickstart video slot. To swap in a new quickstart, replace
-           assets/tour/getting-started.mp4 and .jpg (or change the two paths
-           here and in the JSON-LD above) and update the length label. -->
+           assets/tour/getting-started.mp4 and .jpg, bump the ?v= on both
+           (here, in the preload link and the JSON-LD), and update the length
+           label, duration and chapters. -->
       <div id="tour" class="hero-media">
-        <video id="tour-video" playsinline preload="none" poster="/assets/tour/getting-started.jpg" aria-label="Getting started with Puffin Ship: a quick walkthrough of the app, with captions." width="1920" height="1080">
-          <source src="/assets/tour/getting-started.mp4" type="video/mp4" />
+        <video id="tour-video" playsinline preload="none" poster="/assets/tour/getting-started.jpg?v=2" aria-label="Getting started with Puffin Ship: a quick walkthrough of the app, with captions." width="1920" height="1080">
+          <source src="/assets/tour/getting-started.mp4?v=2" type="video/mp4" />
         </video>
         <button type="button" class="tour-play">
           <span class="tour-play-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
-          <span class="tour-play-label">Watch the quickstart <span class="tour-play-len">1:37</span></span>
+          <span class="tour-play-label">Watch the quickstart <span class="tour-play-len">2:03</span></span>
         </button>
       </div>
     </section>

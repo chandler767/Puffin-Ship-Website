@@ -175,8 +175,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/site.css?v=4" />
-  <script defer src="/assets/site.js?v=4"></script>
+  <link rel="stylesheet" href="/assets/site.css?v=5" />
+  <script defer src="/assets/site.js?v=5"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -188,7 +188,7 @@
         <img src="/assets/logo/puffin-mark.png" alt="" width="30" height="30" />
         <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
       </a>
-      <nav class="nav-links" aria-label="Main">
+      <nav class="nav-links" id="site-menu" aria-label="Main">
         <a href="/how-it-works/">How it works</a>
         <a href="/showcase/" aria-current="page">Showcase</a>
         <a href="/ai-agents/">AI agents</a>
@@ -197,22 +197,14 @@
         <a href="https://app.puffinship.com/docs/">Docs</a>
       </nav>
       <div class="nav-cta">
-        <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
         <!-- Every "Get started" link goes to the same signup URL, and
              .github/scripts/check_site.py fails the build if one drifts. -->
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-sm">Get started</a>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-menu" hidden>
+          <span class="nav-toggle-icon" aria-hidden="true"><span></span></span><span class="nav-toggle-text">Menu</span>
+        </button>
       </div>
     </div>
-    <nav id="nav-panel" class="nav-panel" aria-label="Main (menu)">
-      <ul>
-        <li><a href="/how-it-works/">How it works</a></li>
-        <li><a href="/showcase/" aria-current="page">Showcase</a></li>
-        <li><a href="/ai-agents/">AI agents</a></li>
-        <li><a href="/pricing/">Pricing</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="https://app.puffinship.com/docs/">Docs</a></li>
-      </ul>
-    </nav>
   </header>
   <main id="main">
   <span id="examples" aria-hidden="true"></span>
@@ -308,14 +300,16 @@
     </div>
   </section>
 
-  <!-- Wording matters here: not every one of these was made in Puffin Ship
-       itself, only with the same process it automates. Keep the copy at "the
-       same process" for these four. -->
+  <!-- Wording matters here: the product tutorial was made entirely in
+       Puffin Ship; the news explainer and the event interview were made with
+       the process it automates. Keep the copy at "the process it automates"
+       until all of them are made in Puffin Ship. (The science explainer that
+       sat here is the fake snow video, now featured above.) -->
   <section class="wrap section-pad" aria-labelledby="earlier-h">
     <div class="section-head">
       <div class="eyebrow">Earlier examples</div>
-      <h2 id="earlier-h" class="section-h2">Shorts cut from recordings</h2>
-      <p class="section-sub">Made with the process Puffin Ship automates. Together just these 4 samples have passed 100,000&nbsp;views.</p>
+      <h2 id="earlier-h" class="section-h2">More shorts</h2>
+      <p class="section-sub">Made with Puffin Ship and the process it automates.</p>
     </div>
     <div class="carousel">
       <div class="carousel-track" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Earlier example videos">
@@ -330,12 +324,12 @@
         </figure>
         <figure class="sample">
           <div class="sample-frame">
-            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="/assets/samples/webinar-to-short.jpg" aria-label="Part of a recorded webinar, cut into a vertical short with captions.">
-              <source src="/assets/samples/webinar-to-short.mp4?v=2" type="video/mp4" />
+            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="/assets/samples/product-tutorial.jpg" aria-label="A product tutorial: terminal demos above a presenter, with captions.">
+              <source src="/assets/samples/product-tutorial.mp4" type="video/mp4" />
             </video>
-            <button type="button" class="sample-fs" aria-label="Play Webinar to short full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+            <button type="button" class="sample-fs" aria-label="Play Product tutorial full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
           </div>
-          <figcaption>Webinar to short</figcaption>
+          <figcaption>Product tutorial</figcaption>
         </figure>
         <figure class="sample">
           <div class="sample-frame">
@@ -345,15 +339,6 @@
             <button type="button" class="sample-fs" aria-label="Play Event interview full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
           </div>
           <figcaption>Event interview</figcaption>
-        </figure>
-        <figure class="sample">
-          <div class="sample-frame">
-            <video controls controlslist="nodownload" disablepictureinpicture playsinline preload="none" poster="/assets/samples/educational-short.jpg" aria-label="A talking-head explainer with on-screen slides and captions.">
-              <source src="/assets/samples/educational-short.mp4?v=2" type="video/mp4" />
-            </video>
-            <button type="button" class="sample-fs" aria-label="Play Educational short full screen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
-          </div>
-          <figcaption>Educational short</figcaption>
         </figure>
       </div>
       <div class="carousel-nav">

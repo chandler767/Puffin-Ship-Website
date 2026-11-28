@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set Up for You: Get Help with Puffin Ship</title>
-  <meta name="description" content="Have the Puffin Ship team set up your projects, fit it into how you already work, or run it for you. Tell us what you make and we'll reply by email, usually within a day." />
+  <meta name="description" content="Have the Puffin Ship team set up your projects, fit it into how you already work, or make the videos for you. Tell us what you make and we'll reply by email, usually within a day." />
   <link rel="canonical" href="https://puffinship.com/contact/" />
   <link rel="icon" id="favicon" type="image/png" href="/assets/logo/puffin-mark.png" />
   <script>
@@ -45,7 +45,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Puffin Ship" />
   <meta property="og:title" content="Set Up for You: Get Help with Puffin Ship" />
-  <meta property="og:description" content="Have the Puffin Ship team set up your projects, fit it into how you already work, or run it for you. Tell us what you make and we'll reply by email, usually within a day." />
+  <meta property="og:description" content="Have the Puffin Ship team set up your projects, fit it into how you already work, or make the videos for you. Tell us what you make and we'll reply by email, usually within a day." />
   <meta property="og:url" content="https://puffinship.com/contact/" />
   <meta property="og:image" content="https://puffinship.com/assets/og-image.jpg?v=8" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -54,7 +54,7 @@
   <meta property="og:image:alt" content="Puffin Ship: automate the boring part of making content. Over an hour per short, by hand. A few minutes with Puffin Ship." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Set Up for You: Get Help with Puffin Ship" />
-  <meta name="twitter:description" content="Have the Puffin Ship team set up your projects, fit it into how you already work, or run it for you. Tell us what you make and we'll reply by email, usually within a day." />
+  <meta name="twitter:description" content="Have the Puffin Ship team set up your projects, fit it into how you already work, or make the videos for you. Tell us what you make and we'll reply by email, usually within a day." />
   <meta name="twitter:image" content="https://puffinship.com/assets/og-image.jpg?v=8" />
   <meta name="twitter:image:alt" content="Puffin Ship: automate the boring part of making content. Over an hour per short, by hand. A few minutes with Puffin Ship." />
   <script type="application/ld+json">
@@ -121,8 +121,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/site.css?v=4" />
-  <script defer src="/assets/site.js?v=4"></script>
+  <link rel="stylesheet" href="/assets/site.css?v=5" />
+  <script defer src="/assets/site.js?v=5"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -134,7 +134,7 @@
         <img src="/assets/logo/puffin-mark.png" alt="" width="30" height="30" />
         <span class="nav-wordmark">Puffin<span> Ship</span><span class="tm">™</span></span>
       </a>
-      <nav class="nav-links" aria-label="Main">
+      <nav class="nav-links" id="site-menu" aria-label="Main">
         <a href="/how-it-works/">How it works</a>
         <a href="/showcase/">Showcase</a>
         <a href="/ai-agents/">AI agents</a>
@@ -143,22 +143,14 @@
         <a href="https://app.puffinship.com/docs/">Docs</a>
       </nav>
       <div class="nav-cta">
-        <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
         <!-- Every "Get started" link goes to the same signup URL, and
              .github/scripts/check_site.py fails the build if one drifts. -->
         <a href="https://app.puffinship.com/login" data-signup class="btn btn-primary btn-sm">Get started</a>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-menu" hidden>
+          <span class="nav-toggle-icon" aria-hidden="true"><span></span></span><span class="nav-toggle-text">Menu</span>
+        </button>
       </div>
     </div>
-    <nav id="nav-panel" class="nav-panel" aria-label="Main (menu)">
-      <ul>
-        <li><a href="/how-it-works/">How it works</a></li>
-        <li><a href="/showcase/">Showcase</a></li>
-        <li><a href="/ai-agents/">AI agents</a></li>
-        <li><a href="/pricing/">Pricing</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="https://app.puffinship.com/docs/">Docs</a></li>
-      </ul>
-    </nav>
   </header>
   <main id="main">
   <div class="page-hero">
@@ -166,7 +158,7 @@
     <div class="page-hero-inner">
       <div class="hero-eyebrow">Set up for you</div>
       <h1 class="page-h1">Want help <span>setting it up?</span></h1>
-      <p class="page-sub">We can build your projects, fit Puffin Ship into how you already work, or run it for you. Tell us what you make and where you post. We'll reply by email, usually within a day.</p>
+      <p class="page-sub">We can build your projects, fit Puffin Ship into how you already work, or make the videos for you. Tell us what you make and where you post. We'll reply by email, usually within a day.</p>
     </div>
   </div>
 

@@ -67,21 +67,21 @@
      ink-600 clears it at 6.2:1. */
   --text-muted:        var(--ink-600);
   --text-faint:        var(--ink-600);
+  /* --accent is the bright brand blue: fills, borders and art only. On
+     white it is 2.7:1, too light for text or for white text on top.
+     Text in blue and button fills use --accent-strong (5.7:1 on white,
+     and white on it is 5.7:1), with darker hover and press steps.
+     .github/scripts/check_site.py enforces both rules. */
   --accent:            var(--orange-500);
-  --accent-hover:      var(--orange-600);
-  --accent-press:      var(--orange-700);
+  --accent-strong:     var(--orange-700);
+  --accent-hover:      var(--ocean-600);
+  --accent-press:      var(--ocean-700);
   --accent-subtle:     var(--orange-100);
   --accent-tint:       var(--orange-50);
   --secondary:         var(--ocean-500);
   --secondary-hover:   var(--ocean-600);
   --secondary-subtle:  var(--ocean-100);
-  --focus-ring:        rgba(24, 168, 224, 0.40);
-  /* The brand sky blue (#18A8E0) is 2.7:1 against white, too light for
-     text. Text and filled buttons with white text use these instead:
-     --accent-strong is 4.9:1 with white (AA for any text size), and
-     --accent-large is 3.7:1 on paper (AA for large headline text). */
-  --accent-strong:     #0E78AB;
-  --accent-large:      var(--orange-600);
+  --focus-ring:        rgba(10, 110, 151, 0.75);
 
   /* Spacing — 4px grid */
   --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
@@ -98,7 +98,7 @@
   --shadow-md: 0 6px 18px -6px rgba(35,39,43,0.14), 0 2px 6px -2px rgba(35,39,43,0.08);
   --shadow-lg: 0 18px 44px -14px rgba(35,39,43,0.22), 0 6px 14px -8px rgba(35,39,43,0.12);
   --shadow-xl: 0 32px 70px -20px rgba(35,39,43,0.30);
-  --shadow-accent: 0 10px 28px -10px rgba(24,168,224,0.45);
+  --shadow-accent: 0 10px 28px -10px rgba(10,110,151,0.45);
   --shadow-focus: 0 0 0 3px var(--focus-ring);
 
   /* Motion */
@@ -138,17 +138,70 @@ img { display: block; }
   font-family: var(--font-display); font-weight: 800; font-size: 19px;
   letter-spacing: -0.03em; color: var(--ink-900);
 }
-.nav-wordmark span { color: var(--accent); }
+.nav-wordmark span { color: var(--accent-strong); }
 .nav-wordmark .tm {
   font-size: 0.5em; font-weight: 600; vertical-align: super;
   letter-spacing: 0; color: var(--text-body);
 }
 .nav-links { display: flex; gap: var(--space-5); flex: 1; margin-left: var(--space-2); }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-body); white-space: nowrap; }
-/* Below this width the links move into the Menu panel. */
-@media (max-width: 960px) { .nav-links { display: none; } }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text-strong); }
 .nav-links a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); }
+/* The nav links need room; below this width they move into a Menu panel. The
+   Menu button starts hidden and the script reveals it, so without
+   JavaScript the header keeps the logo and Get started and the footer
+   carries the links. */
+.nav-toggle { display: none; }
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .nav-toggle:not([hidden]) {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 40px;
+    padding: 8px 12px; font: 600 14px var(--font-sans); color: var(--text-strong);
+    background: var(--white); border: 1px solid var(--border-default);
+    border-radius: var(--radius-md); cursor: pointer;
+  }
+  .nav-toggle:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+  .nav-toggle-icon { width: 16px; height: 12px; position: relative; }
+  .nav-toggle-icon::before, .nav-toggle-icon::after, .nav-toggle-icon span {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px;
+    background: currentColor; border-radius: 2px; transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+  }
+  .nav-toggle-icon::before { top: 0; }
+  .nav-toggle-icon span { top: 5px; }
+  .nav-toggle-icon::after { top: 10px; }
+  .nav.is-open .nav-toggle-icon::before { transform: translateY(5px) rotate(45deg); }
+  .nav.is-open .nav-toggle-icon span { opacity: 0; }
+  .nav.is-open .nav-toggle-icon::after { transform: translateY(-5px) rotate(-45deg); }
+  .nav.is-open .nav-links {
+    display: flex; flex-direction: column; gap: 0; margin: 0;
+    position: absolute; top: 100%; left: 0; right: 0;
+    padding: 8px var(--space-8) 16px; background: var(--paper);
+    border-bottom: 1px solid var(--border-subtle); box-shadow: var(--shadow-md);
+  }
+  .nav.is-open .nav-links a {
+    font-size: 16px; padding: 12px 0; min-height: 44px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav.is-open .nav-links a:last-child { border-bottom: 0; }
+  .nav-cta { gap: var(--space-2); }
+}
+/* Phones: the logo, Get started and Menu must fit side by side down to
+   320px, so the gaps tighten and Menu shows its icon only (the word stays
+   as its accessible name). */
+@media (max-width: 600px) {
+  .nav-inner { gap: var(--space-3); }
+  .nav-cta .btn-sm { padding: 8px 12px; }
+}
+@media (max-width: 420px) {
+  .nav-toggle:not([hidden]) { padding: 8px 11px; }
+  .nav-toggle-text { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .nav-logo { gap: 7px; }
+  .nav-logo img { width: 26px; height: 26px; }
+  .nav-wordmark { font-size: 17px; }
+}
+@media (max-width: 960px) and (prefers-reduced-motion: reduce) {
+  .nav-toggle-icon::before, .nav-toggle-icon::after, .nav-toggle-icon span { transition: none; }
+}
 .nav-cta { display: flex; align-items: center; gap: var(--space-3); margin-left: auto; }
 
 /* ── Buttons ─────────────────────────────────────────────────────────── */
@@ -163,7 +216,7 @@ img { display: block; }
 .btn-md  { font-size: 15px; padding: 10px 20px; }
 .btn-lg  { font-size: 16px; padding: 13px 24px; }
 .btn-primary { background: var(--accent-strong); color: #fff; box-shadow: var(--shadow-accent); }
-.btn-primary:hover { background: var(--accent-press); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
 .btn-primary:active { background: var(--accent-press); transform: translateY(1px) scale(0.99); }
 .btn-outline {
   background: transparent; color: var(--text-body);
@@ -202,7 +255,7 @@ img { display: block; }
   letter-spacing: -0.042em; color: var(--ink-900);
   margin: 0 auto 22px; max-width: 16ch; text-wrap: balance;
 }
-.hero-h1 span { color: var(--accent-large); }
+.hero-h1 span { color: var(--accent-strong); }
 .hero-body {
   font-size: 19px; line-height: 1.6; color: var(--text-body);
   max-width: 56ch; margin: 0 auto var(--space-8); text-wrap: pretty;
@@ -230,13 +283,13 @@ img { display: block; }
   font-family: var(--font-sans);
 }
 .tour-play-icon {
-  width: 80px; height: 80px; border-radius: 999px; background: var(--accent);
+  width: 80px; height: 80px; border-radius: 999px; background: var(--accent-strong);
   display: inline-flex; align-items: center; justify-content: center; padding-left: 5px;
   box-shadow: 0 14px 40px -10px rgba(0,0,0,.55), 0 0 0 10px rgba(255,255,255,.14);
   transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
 }
 .tour-play:hover .tour-play-icon, .tour-play:focus-visible .tour-play-icon { transform: scale(1.08); background: var(--accent-hover); }
-.tour-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.tour-play:focus-visible { outline: 3px solid var(--accent-strong); outline-offset: -3px; }
 .tour-play-label {
   font-size: 15px; font-weight: 700; padding: 6px 13px; border-radius: 999px;
   background: rgba(15,20,30,.72); backdrop-filter: blur(4px);
@@ -281,7 +334,7 @@ img { display: block; }
   padding: 4px; scroll-padding-inline: 4px; scrollbar-width: none;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
-.carousel-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.carousel-track:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 4px; }
 .sample { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
 .sample:last-child { scroll-snap-align: end; }
 .sample video {
@@ -351,7 +404,7 @@ img { display: block; }
    of editing per finished minute). Keep the claim loose: no exact multiplier. */
 .time-band { padding: 8px var(--space-8) 72px; text-align: center; }
 .time-band .section-h2 { max-width: 24ch; margin: 0 auto; text-wrap: balance; }
-.time-band .section-h2 span { color: var(--accent-large); }
+.time-band .section-h2 span { color: var(--accent-strong); }
 .time-table {
   width: 100%; max-width: 760px; margin: 28px auto 0; border-collapse: separate; border-spacing: 0;
   background: var(--surface-card); border: 1px solid var(--border-subtle);
@@ -495,7 +548,7 @@ img { display: block; }
 .footer-brand img { width: 26px; }
 .footer-brand-name { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.03em; color: var(--ink-900); }
 .footer-tagline { font-size: 13px; color: var(--text-muted); max-width: 30ch; }
-.footer-contact { margin-top: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 14px; }
+.footer-contact { margin-top: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-style: normal; }
 .footer-contact a { color: var(--accent-strong); font-weight: 500; }
 .footer-contact a:hover { text-decoration: underline; }
 .footer-col-head { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 12px; }
@@ -503,7 +556,7 @@ img { display: block; }
 .footer-col-links a { font-size: 14px; color: var(--text-body); }
 .footer-col-links a:hover { color: var(--text-strong); }
 .footer-linklike {
-  background: none; border: 0; padding: 0; font: inherit; color: inherit;
+  background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--text-body);
   cursor: pointer; text-align: left;
 }
 .footer-linklike:hover { color: var(--text-strong); }
@@ -540,8 +593,8 @@ img { display: block; }
   padding: 11px 13px; width: 100%; box-sizing: border-box;
 }
 .lead-field input:focus, .lead-field textarea:focus {
-  outline: none; border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(24,168,224,0.18);
+  outline: none; border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(10,110,151,0.25);
 }
 .lead-checks { display: flex; flex-wrap: wrap; gap: 10px 18px; }
 .lead-checks label {
@@ -589,28 +642,6 @@ img { display: block; }
   .cookie-banner-actions .btn { flex: 1 1 0; justify-content: center; }
 }
 
-/* ── Mobile menu ──────────────────────────────────────────────────────── */
-/* Below 960px the nav links live in a panel opened by the Menu button.
-   Without JavaScript the button stays hidden and the footer carries every
-   link, so nothing is unreachable. */
-.nav-menu-btn {
-  display: none; align-items: center; gap: 6px; background: none; cursor: pointer;
-  border: 1.5px solid var(--border-default); border-radius: var(--radius-md);
-  font: 600 14px/1 var(--font-sans); color: var(--text-body); padding: 8px 12px;
-}
-.nav-menu-btn:hover { border-color: var(--ink-400); }
-.nav-menu-btn svg { width: 16px; height: 16px; }
-.js .nav-menu-btn { display: none; }
-@media (max-width: 960px) { .js .nav-menu-btn { display: inline-flex; } }
-.nav-panel { display: none; border-top: 1px solid var(--border-subtle); background: var(--paper); }
-.nav-panel.is-open { display: block; }
-.nav-panel ul { list-style: none; margin: 0; padding: 8px var(--space-5) 16px; display: grid; gap: 2px; }
-.nav-panel a { display: block; padding: 12px 4px; font-size: 16px; font-weight: 600; color: var(--text-body); border-bottom: 1px solid var(--border-subtle); }
-.nav-panel li:last-child a { border-bottom: 0; }
-.nav-panel a[aria-current="page"] { color: var(--accent-press); }
-@media (min-width: 961px) { .nav-panel { display: none !important; } }
-@media (max-width: 420px) { .nav-wordmark .tm { display: none; } .nav-inner { gap: var(--space-3); } }
-
 /* ── Skip link ────────────────────────────────────────────────────────── */
 .skip-link { position: absolute; left: 12px; top: -48px; z-index: 300; background: var(--ink-900); color: #fff; padding: 10px 14px; border-radius: var(--radius-md); font-weight: 600; }
 .skip-link:focus { top: 12px; }
@@ -631,7 +662,7 @@ img { display: block; }
   font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 5.2vw, 62px);
   line-height: 1.02; letter-spacing: -0.04em; color: var(--ink-900); margin: 14px auto 18px; max-width: 18ch; text-wrap: balance;
 }
-.page-h1 span { color: var(--accent-large); }
+.page-h1 span { color: var(--accent-strong); }
 .page-sub { font-size: 19px; line-height: 1.6; color: var(--text-body); max-width: 58ch; margin: 0 auto; text-wrap: pretty; }
 .page-hero .hero-actions { margin-top: 28px; }
 @media (max-width: 880px) { .page-hero-inner { padding: 52px var(--space-5) 28px; } .page-sub { font-size: 17px; } }
