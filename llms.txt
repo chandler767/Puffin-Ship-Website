@@ -28,7 +28,7 @@ Talking-head short from a recording; short from a script you write; AI avatar pr
 
 ## Showcase
 
-The showcase features recent videos from the founder's own workspace, each made from a project and presented by his AI avatar: How to Buy a Snowboard; Is "fake snow" actually fake? (how snowmaking works); Why your phone dies at 30% on a ski lift; Maeklong Railway Market (a travel story cut from clips); and The science of deep frying a turkey, made from the same project as the snowboard video. It also keeps three more example shorts: a product tutorial made in Puffin Ship, plus a news explainer and an event interview made with the process Puffin Ship automates.
+The showcase features recent videos made entirely in Puffin Ship, each from a project: How to Buy a Snowboard; Is "fake snow" actually fake? (how snowmaking works); Why your phone dies at 30% on a ski lift; Maeklong Railway Market (a travel story cut from clips); The science of deep frying a turkey, made from the same project as the snowboard video; and a product tutorial with terminal demos above a presenter. The first five are presented by the founder's AI avatar.
 
 ## Use with your AI agent
 
