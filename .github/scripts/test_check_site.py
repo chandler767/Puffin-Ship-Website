@@ -316,6 +316,12 @@ class RetiredTermTests(unittest.TestCase):
     def test_template_in_visible_text_flagged(self):
         self.assertTrue(self.flags(page(body_extra="<p>Pick a ready-made template.</p>")))
 
+    def test_video_template_allowed(self):
+        self.assertFalse(self.flags(page(body_extra="<p>Your project is a reusable video template. Video templates save time.</p>")))
+
+    def test_bare_template_still_flagged_next_to_video_template(self):
+        self.assertTrue(self.flags(page(body_extra="<p>A video template. Pick a template.</p>")))
+
     def test_plural_and_capitalised_flagged(self):
         self.assertTrue(self.flags(page(body_extra="<p>Templates are recipes.</p>")))
 

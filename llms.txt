@@ -1,6 +1,6 @@
 # Puffin Ship
 
-> Puffin Ship is automated video production. Choose the type of video you want to make, upload your files, and answer a few questions, and Puffin Ship builds a project that makes the video. The project is reusable: every video after the first uses the same style, with a new script or new footage, in about a minute of your time. It is for marketing teams, agencies, and creators, and the videos are made for LinkedIn, YouTube Shorts, Instagram Reels, TikTok, YouTube and websites.
+> Puffin Ship is automated video production. Choose the type of video you want to make, upload your files, and answer a few questions, and Puffin Ship builds a project that makes the video. The project is a reusable video template: every video after the first uses the same style, with a new script or new footage, in about a minute of your time. It is for marketing teams, agencies, and creators, and the videos are made for LinkedIn, YouTube Shorts, Instagram Reels, TikTok, YouTube and websites.
 
 ## Pages
 
@@ -18,7 +18,7 @@
 1. **Choose the type.** On the New project screen, pick the card closest to your idea, or pick "Something else" and describe it.
 2. **Upload your files.** Recordings, screen captures, photos or clips from your phone, or files already in your workspace. Some types need no footage at all, such as an AI avatar reading your script. For a series, say you will add new files each time.
 3. **Answer the questions.** A short chat asks only what it cannot choose well itself: vertical or landscape, roughly how long, who is on screen, which settings stay the same and which change every video, and where a video should stop for you to check (for example after the script is written). It builds a first draft while you answer.
-4. **Reuse the style.** Your answers become a project, the recipe for that kind of video. Press New Video, add this time's script or footage, and the video comes out in the same style. Change the project once and every later video gets the change.
+4. **Reuse the style.** Your answers become a project, a reusable video template for that kind of video. Press New Video, add this time's script or footage, and the video comes out in the same style. Change the project once and every later video gets the change.
 
 After a video is made you can edit one version (trim or move a clip, fix a caption) and carry the fix back to the project, download the MP4, subtitles and a Final Cut Pro project, and share a link others can comment on. Brand kits put your colors, fonts and logo on every video.
 

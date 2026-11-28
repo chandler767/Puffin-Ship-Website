@@ -30,7 +30,9 @@ Rules (see CLAUDE.md and the repositioning design):
   "videos" and single runs "versions", so "template", "run group", "run" and
   "rerun" may not appear in copy. Exempt: the tour video's JSON-LD (it names
   what the recorded footage shows until the tour is re-recorded) and the
-  plain-English uses in OLD_TERM_ALLOWED.
+  plain-English uses in OLD_TERM_ALLOWED. "Video template" is allowed:
+  "project" stays the main word, but calling a project a reusable video
+  template is fine where it helps explain reuse (Chandler, 2026-11-28).
 
 Across the whole site (check_site):
 - Every link to a page on this site ("/pricing/", "/faq/#x") reaches a page
@@ -72,7 +74,7 @@ DOLLAR_RE = re.compile(r"\$\s?\d")
 OLD_TERM_RE = re.compile(r"\b(templates?|run[\W_]+groups?|re-?runs?|runs?)\b", re.I)
 # Plain-English phrases that use "run" without meaning the product. Add a phrase
 # here, not a looser pattern above, when new copy needs one.
-OLD_TERM_ALLOWED = ["steady run of", "runs on its own", "run it for them"]
+OLD_TERM_ALLOWED = ["steady run of", "runs on its own", "run it for them", "video template"]
 # JSON-LD nodes describing the recorded tour, which still shows the old UI.
 OLD_TERM_EXEMPT_TYPES = {"VideoObject", "Clip"}
 READABLE_ATTRS = {"content", "alt", "title", "aria-label", "placeholder", "value"}
